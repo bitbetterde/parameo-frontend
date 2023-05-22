@@ -9,7 +9,9 @@
       "@components/*": ["src/components/*"],
       "@components": ["src/components"],
       "@assets/*": ["src/assets/*"],
-      "@assets": ["src/assets"]
+      "@assets": ["src/assets"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@interfaces": ["src/interfaces"]
     },
 
     /* Bundler mode */
