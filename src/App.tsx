@@ -1,4 +1,25 @@
-import { NavBar, FeatureSection } from "@components";
+import { NavBar, FeatureSection, Avatar } from "@components";
+
+const people = [
+  {
+    name: "Aware consumers & makers",
+    image:
+      "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+    imageAlt: "",
+  },
+  {
+    name: "Distributed designers",
+    image:
+      "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+    imageAlt: "",
+  },
+  {
+    name: "Local manufacturers",
+    image:
+      "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+    imageAlt: "",
+  },
+];
 
 const features = [
   {
@@ -37,6 +58,7 @@ const App = () => {
         description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
         features={features}
       />
+      <Avatar people={people} />
     </>
   );
 };
