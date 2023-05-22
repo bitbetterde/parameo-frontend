@@ -1,7 +1,11 @@
 import { ReactComponent as ParameoLogo } from "@assets/logos/parameo-icon.svg";
+import { ButtonLink } from "@components";
 
 interface Props {
   className?: string;
+  buttonLinkTarget?: string;
+  buttonLinkCaption: string;
+  buttonLinkVariant?: string;
 }
 
 const navigation = [
@@ -11,7 +15,12 @@ const navigation = [
   { name: "About", href: "#" },
 ];
 
-const NavBar: React.FC<Props> = ({ className }) => {
+const NavBar: React.FC<Props> = ({
+  className,
+  buttonLinkTarget,
+  buttonLinkCaption,
+  buttonLinkVariant,
+}) => {
   return (
     <div className={`relative bg-white ${className || ""}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:justify-start md:space-x-10 lg:px-8">
@@ -33,12 +42,12 @@ const NavBar: React.FC<Props> = ({ className }) => {
           ))}
         </div>
         <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-          <a
-            href="#"
-            className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-          >
-            CTA
-          </a>
+          <ButtonLink
+            className="ml-8 inline-flex items-center justify-center whitespace-nowrap px-4 py-2"
+            target={buttonLinkTarget}
+            caption={buttonLinkCaption}
+            variant={buttonLinkVariant}
+          />
         </div>
       </div>
     </div>

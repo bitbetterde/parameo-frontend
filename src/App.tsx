@@ -1,4 +1,9 @@
-import { NavBar, FeatureSection, Avatar } from "@components";
+import { NavBar, FeatureSection, Avatar, HeroSection } from "@components";
+
+const heroButtons = [
+  { caption: "Try it!", target: "#", variant: "light" as const },
+  { caption: "FAQ", target: "#", variant: "transparent" as const },
+];
 
 const people = [
   {
@@ -51,7 +56,18 @@ const features = [
 const App = () => {
   return (
     <>
-      <NavBar />
+      <NavBar
+        buttonLinkTarget="#"
+        buttonLinkCaption="CTA"
+        buttonLinkVariant="dark"
+      />
+      <HeroSection
+        title="Customize, calculate and manufacture with ease"
+        subtitle="parameo is an open tool for customizing parametric product designs, calculating costs and emissions and generating individual production data for CNC machines."
+        heroImage="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100"
+        heroImageAlt="People working on laptops"
+        buttons={heroButtons}
+      />
       <FeatureSection
         title="Leave the math to parameo"
         subtitle="automagic Features"
