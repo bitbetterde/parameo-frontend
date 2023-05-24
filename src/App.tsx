@@ -3,6 +3,7 @@ import {
   FeatureSection,
   Avatar,
   HeroSection,
+  CardsSlider,
   ImageSlider,
   Footer,
 } from "@components";
@@ -57,6 +58,102 @@ const features = [
     description:
       "Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.",
     icon: "ChatBubbleBottomCenterTextIcon",
+  },
+];
+
+const cards = [
+  {
+    title: "Multibox",
+    href: "#",
+    category: { name: "CNC", href: "#" },
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
+    licence: "licence type",
+    cardImage:
+      "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+    author: {
+      name: "regenholz",
+      href: "#",
+      authorImage:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+  {
+    title: "Standdesk",
+    href: "#",
+    category: { name: "CNC", href: "#" },
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
+    licence: "licence type",
+    cardImage:
+      "https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+    author: {
+      name: "regenholz",
+      href: "#",
+      authorImage:
+        "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+  {
+    title: "Picture Frame",
+    href: "#",
+    category: { name: "Lasercutter", href: "#" },
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
+    licence: "licence type",
+    cardImage:
+      "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+    author: {
+      name: "Daniela Metz",
+      href: "#",
+      authorImage:
+        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+];
+
+const FAQCards = [
+  {
+    title: "Maslow CNC",
+    href: "#",
+    category: { name: "CNC", href: "#" },
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
+    licence: "OSH - licence type?",
+    cardImage: "images/maslow.jpg",
+    author: {
+      name: "Maslow",
+      href: "#",
+      authorImage: "",
+    },
+  },
+  {
+    title: "FABULASER mini",
+    href: "#",
+    category: { name: "Lasercutter", href: "#" },
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
+    licence: "OSH - licence type?",
+    cardImage: "images/fabulaser-mini.jpg",
+    author: {
+      name: "INMACHINES",
+      href: "#",
+      authorImage: "",
+    },
+  },
+  {
+    title: "More machine types",
+    href: "#",
+    category: { name: "Lasercutter", href: "#" },
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
+    licence: "OSH - licence type?",
+    cardImage: "images/other-machines.jpg",
+    author: {
+      name: "Manufacterer",
+      href: "#",
+      authorImage: "",
+    },
   },
 ];
 
@@ -143,7 +240,17 @@ const App = () => {
         features={features}
       />
       <Avatar people={people} />
+      <CardsSlider
+        title="Customize designs"
+        description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
+        cardsData={cards}
+      />
       <ImageSlider items={images} />
+      <CardsSlider
+        title="Featured machinery"
+        description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
+        cardsData={FAQCards}
+      />
       <Footer
         menu={footerMenu}
         links={footerSocial}
