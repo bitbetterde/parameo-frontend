@@ -5,6 +5,7 @@ import FeatureSection from "@components/FeatureSection";
 import FeatureItem from "@components/FeatureItem";
 import Icon from "@components/Icon";
 import Avatar from "@components/Avatar";
+import Footer from "@components/Footer";
 
 export {
   NavBar,
@@ -14,4 +15,5 @@ export {
   Avatar,
   HeroSection,
   ButtonLink,
+  Footer
 };
