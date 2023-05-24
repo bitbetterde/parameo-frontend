@@ -1,4 +1,10 @@
-import { NavBar, FeatureSection, Avatar, HeroSection } from "@components";
+import {
+  NavBar,
+  FeatureSection,
+  Avatar,
+  HeroSection,
+  Footer,
+} from "@components";
 
 const heroButtons = [
   { caption: "Try it!", target: "#", variant: "light" as const },
@@ -53,6 +59,47 @@ const features = [
   },
 ];
 
+const footerMenu = [
+  { name: "Home", href: "#" },
+  { name: "Configurator", href: "#" },
+  { name: "About", href: "#" },
+  { name: "Imprint", href: "#" },
+  { name: "Privacy", href: "#" },
+];
+
+const footerSocial = [
+  {
+    name: "Instagram",
+    href: "#",
+    alt: "Instagram",
+    type: "instagram" as const,
+  },
+  {
+    name: "Twitter",
+    href: "#",
+    alt: "Twitter",
+    type: "twitter" as const,
+  },
+  {
+    name: "GitHub",
+    href: "#",
+    alt: "GitHub",
+    type: "github" as const,
+  },
+  {
+    name: "GitLab",
+    href: "#",
+    alt: "GitLab",
+    type: "gitlab" as const,
+  },
+  {
+    name: "Dribble",
+    href: "#",
+    alt: "Dribble",
+    type: "dribble" as const,
+  },
+];
+
 const App = () => {
   return (
     <>
@@ -75,6 +122,11 @@ const App = () => {
         features={features}
       />
       <Avatar people={people} />
+      <Footer
+        menu={footerMenu}
+        links={footerSocial}
+        copyright="2023 regenholz Gbr. All rights reserved."
+      />
     </>
   );
 };
