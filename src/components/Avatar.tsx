@@ -5,7 +5,7 @@ interface Props {
 
 const Avatar: React.FC<Props> = ({ className, people }) => {
   return (
-    <div className={`flex justify-center py-24 ${className || ""}`}>
+    <div className={`flex justify-center py-12 ${className || ""}`}>
       <div className="flex flex-col justify-center items-center max-w-7xl px-6 text-center lg:px-8">
         <div className="max-w-2xl">
           <h2 className="text-base font-semibold tracking-wide text-indigo-600 uppercase">
