@@ -5,6 +5,7 @@ import FeatureSection from "@components/FeatureSection";
 import FeatureItem from "@components/FeatureItem";
 import Icon from "@components/Icon";
 import Avatar from "@components/Avatar";
+import ImageSlider from "@components/ImageSlider";
 import Footer from "@components/Footer";
 
 export {
@@ -15,5 +16,6 @@ export {
   Avatar,
   HeroSection,
   ButtonLink,
-  Footer
+  ImageSlider,
+  Footer,
 };

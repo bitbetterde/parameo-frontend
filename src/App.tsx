@@ -3,6 +3,7 @@ import {
   FeatureSection,
   Avatar,
   HeroSection,
+  ImageSlider,
   Footer,
 } from "@components";
 
@@ -56,6 +57,26 @@ const features = [
     description:
       "Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.",
     icon: "ChatBubbleBottomCenterTextIcon",
+  },
+];
+
+const images = [
+  { image: "images/forrest.jpg", imageAlt: "Forrest photo" },
+  {
+    image: "https://picsum.photos/800/500?random=2",
+    imageAlt: "Photo from Picsum",
+  },
+  {
+    image: "https://picsum.photos/1200/300?random=3",
+    imageAlt: "Photo from Picsum",
+  },
+  {
+    image: "https://picsum.photos/600/500?random=4",
+    imageAlt: "Photo from Picsum",
+  },
+  {
+    image: "https://picsum.photos/800/1200?random=5",
+    imageAlt: "Photo from Picsum",
   },
 ];
 
@@ -122,6 +143,7 @@ const App = () => {
         features={features}
       />
       <Avatar people={people} />
+      <ImageSlider items={images} />
       <Footer
         menu={footerMenu}
         links={footerSocial}
