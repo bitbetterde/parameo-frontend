@@ -3,6 +3,7 @@ import {
   FeatureSection,
   Avatar,
   HeroSection,
+  LogoGrid,
   CardsSlider,
   ImageSlider,
   Footer,
@@ -218,6 +219,39 @@ const footerSocial = [
   },
 ];
 
+const logos = [
+  {
+    href: "#",
+    alt: "IFB-Hamburg",
+    type: "ifbhamburg" as const,
+  },
+  {
+    href: "#",
+    alt: "regenholz",
+    type: "regenholz" as const,
+  },
+  {
+    href: "#",
+    alt: "InMachines",
+    type: "inmachines" as const,
+  },
+  {
+    href: "#",
+    alt: "bitbetter",
+    type: "bitbetter" as const,
+  },
+  {
+    href: "#",
+    alt: "FreeCad",
+    type: "freecad" as const,
+  },
+  {
+    href: "#",
+    alt: "Statamic",
+    type: "statamic" as const,
+  },
+];
+
 const App = () => {
   return (
     <>
@@ -251,6 +285,7 @@ const App = () => {
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
         cardsData={FAQCards}
       />
+      <LogoGrid title="Supported by" logos={logos} />
       <Footer
         menu={footerMenu}
         links={footerSocial}

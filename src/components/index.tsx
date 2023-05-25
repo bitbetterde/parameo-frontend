@@ -5,6 +5,7 @@ import FeatureSection from "@components/FeatureSection";
 import FeatureItem from "@components/FeatureItem";
 import Icon from "@components/Icon";
 import Avatar from "@components/Avatar";
+import LogoGrid from "@components/LogoGrid";
 import CardsSlider from "@components/CardsSlider";
 import Card from "@components/Card";
 import ImageSlider from "@components/ImageSlider";
@@ -18,6 +19,7 @@ export {
   Avatar,
   HeroSection,
   ButtonLink,
+  LogoGrid,
   Card,
   CardsSlider,
   ImageSlider,
