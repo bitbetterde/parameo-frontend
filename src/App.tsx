@@ -3,6 +3,7 @@ import {
   FeatureSection,
   Avatar,
   HeroSection,
+  FaqSection,
   LogoGrid,
   CardsSlider,
   ImageSlider,
@@ -59,6 +60,41 @@ const features = [
     description:
       "Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.",
     icon: "ChatBubbleBottomCenterTextIcon",
+  },
+];
+
+const FAQdata = [
+  {
+    title: "FABULASER mini",
+    href: "#",
+    teaser:
+      "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
+    category: "Machinery",
+    callToAction: "Read full entry",
+  },
+  {
+    title: "How to calculate material costs?",
+    href: "#",
+    teaser:
+      "Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.",
+    category: "Costs",
+    callToAction: "Read full entry",
+  },
+  {
+    title: "...",
+    href: "#",
+    teaser:
+      "Cupiditate maiores ullam eveniet adipisci in doloribus nulla minus. Voluptas iusto libero adipisci rem et corporis.",
+    category: "Manufacturing",
+    callToAction: "Read full entry",
+  },
+  {
+    title: "How can I help develop new features?",
+    href: "#",
+    teaser:
+      "Ipsum voluptates quia doloremque culpa qui eius. Id qui id officia molestias quaerat deleniti. Qui facere numquam autem libero quae cupiditate asperiores vitae cupiditate. Cumque id deleniti explicabo.",
+    category: "Code",
+    callToAction: "Read full entry",
   },
 ];
 
@@ -280,6 +316,10 @@ const App = () => {
         cardsData={cards}
       />
       <ImageSlider items={images} />
+      <FaqSection
+        title="Learn more and get involved – it's open source"
+        data={FAQdata}
+      />
       <CardsSlider
         title="Featured machinery"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
