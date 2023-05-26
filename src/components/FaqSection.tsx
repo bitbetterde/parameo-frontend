@@ -10,7 +10,7 @@ interface Props {
 const FaqSection: React.FC<Props> = ({ title, className, data }) => {
   return (
     <div
-      className={`bg-white px-6 pb-20 pt-16 lg:px-8 lg:pb-28 lg:pt-12 ${
+      className={`bg-white px-6 pb-20 pt-16 lg:px-8 lg:pb-24 lg:pt-12 ${
         className || ""
       }`}
     >

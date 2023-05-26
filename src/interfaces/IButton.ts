@@ -1,5 +1,5 @@
 export interface IButton {
-  target?: string;
+  target: string;
   caption: string;
   variant?: "dark" | "light" | "transparent";
 }

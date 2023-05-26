@@ -1,5 +1,6 @@
 import React from "react";
 import type { IButton } from "@interfaces/IButton";
+import { Link } from "wouter";
 
 interface Props extends IButton {
   className?: string;
@@ -17,14 +18,14 @@ const ButtonLink: React.FC<Props> = ({
     transparent: "bg-indigo-500 bg-opacity-60 text-white hover:bg-opacity-70",
   };
   return (
-    <a
+    <Link
       href={target}
       className={`rounded-md border border-transparent text-base font-medium shadow-sm ${
         classes[variant]
       } ${className || ""}`}
     >
       {caption}
-    </a>
+    </Link>
   );
 };
 

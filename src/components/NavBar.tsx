@@ -1,17 +1,18 @@
 import { ReactComponent as ParameoLogo } from "@assets/logos/parameo-icon.svg";
 import { ButtonLink } from "@components";
+import { Link } from "wouter";
 
 interface Props {
   className?: string;
-  buttonLinkTarget?: string;
+  buttonLinkTarget: string;
   buttonLinkCaption: string;
   buttonLinkVariant?: string;
 }
 
 const navigation = [
-  { name: "Home", href: "#" },
+  { name: "Home", href: "/" },
   { name: "Configurator", href: "#" },
-  { name: "FAQ", href: "#" },
+  { name: "FAQ", href: "/faq" },
   { name: "About", href: "#" },
 ];
 
@@ -25,20 +26,20 @@ const NavBar: React.FC<Props> = ({
     <div className={`relative bg-white ${className || ""}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:justify-start md:space-x-10 lg:px-8">
         <div className="flex justify-start lg:w-0 lg:flex-1">
-          <a href="#">
+          <Link href="/">
             <span className="sr-only">{import.meta.env.VITE_APP_TITLE}</span>
             <ParameoLogo className="h-8 w-auto sm:h-10" />
-          </a>
+          </Link>
         </div>
         <div className="hidden space-x-10 md:flex">
           {navigation.map((item) => (
-            <a
-              key={item.name}
+            <Link
               href={item.href}
+              key={item.name}
               className="text-base font-medium text-gray-500 hover:text-gray-900"
             >
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
         <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
