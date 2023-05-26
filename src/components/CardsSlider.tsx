@@ -16,7 +16,7 @@ const CardsSlider: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={`relative mx-auto max-w-7xl px-6 pb-20 pt-16 lg:px-[39px] lg:pb-14 lg:pt-12 ${
+      className={`relative mx-auto max-w-7xl px-6 pb-20 pt-16 lg:px-[39px] lg:py-24 ${
         className || ""
       }`}
     >

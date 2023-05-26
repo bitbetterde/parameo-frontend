@@ -1,6 +1,6 @@
 export interface ICard {
   title: string;
-  href?: string;
+  href: string;
   category: ICardCategory;
   description: string;
   cardImage?: string;
@@ -11,12 +11,12 @@ export interface ICard {
 
 export interface ICardCategory {
   name: string;
-  href?: string;
+  href: string;
 }
 
 export interface ICardAuthor {
   name: string;
-  href?: string;
+  href: string;
   authorImage?: string;
   authorImageAlt?: string;
 }

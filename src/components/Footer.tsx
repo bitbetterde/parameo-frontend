@@ -4,6 +4,7 @@ import TwitterLogo from "@assets/logos/twitter.svg";
 import GitHubLogo from "@assets/logos/github.svg";
 import GitLabLogo from "@assets/logos/gitlab.svg";
 import DribbleLogo from "@assets/logos/dribble.svg";
+import { Link } from "wouter";
 
 interface Props {
   className?: string;
@@ -47,12 +48,12 @@ const HorizontalMenu: React.FC<HorizontalMenuProps> = ({ menu }) => {
       {menu.map((item) => (
         <ul key={item.name} className="pb-6">
           <li>
-            <a
+            <Link
               href={item.href}
               className="text-base font-normal text-gray-500 hover:text-gray-900"
             >
               {item.name}
-            </a>
+            </Link>
           </li>
         </ul>
       ))}
@@ -69,9 +70,9 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ links }) => {
     <ul className="mt-10 flex justify-center space-x-10">
       {links.map((item) => (
         <li>
-          <a
-            key={item.name}
+          <Link
             href={item.href}
+            key={item.name}
             className="text-gray-400 hover:text-gray-500"
             target="_blank"
             rel="noreferrer"
@@ -82,7 +83,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ links }) => {
               alt={item.alt}
               src={socialMediaIconMapping[item.type]}
             />
-          </a>
+          </Link>
         </li>
       ))}
     </ul>
