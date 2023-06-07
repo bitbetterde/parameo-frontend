@@ -7,7 +7,12 @@ interface Props {
   className?: string;
 }
 
-const FeatureItem: React.FC<Props> = ({ name, description, icon, className }) => {
+const FeatureItem: React.FC<Props> = ({
+  name,
+  description,
+  icon,
+  className,
+}) => {
   return (
     <>
       <dt
