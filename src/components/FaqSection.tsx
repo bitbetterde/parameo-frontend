@@ -1,10 +1,10 @@
 import { FaqEntry } from "@components";
-import { IFaq } from "@interfaces/IFaq";
+import { IFaqFile } from "@interfaces/IFaq";
 
 interface Props {
   title: string;
   className?: string;
-  data: Array<IFaq>;
+  data: Array<IFaqFile>;
 }
 
 const FaqSection: React.FC<Props> = ({ title, className, data }) => {

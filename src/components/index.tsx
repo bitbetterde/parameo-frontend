@@ -12,6 +12,8 @@ import CardsSlider from "@components/CardsSlider";
 import Card from "@components/Card";
 import ImageSlider from "@components/ImageSlider";
 import Footer from "@components/Footer";
+import Tabs from "@components/Tabs";
+import Accordion from "@components/Accordion";
 
 export {
   NavBar,
@@ -28,4 +30,6 @@ export {
   CardsSlider,
   ImageSlider,
   Footer,
+  Tabs,
+  Accordion,
 };

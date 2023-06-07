@@ -85,8 +85,8 @@ const App = () => {
         buttonLinkVariant="dark"
       />
       <Switch>
-        <Route path="/faq">
-          <FaqPage />
+        <Route path="/faq/:faqitem?">
+          {(params) => <FaqPage itemFromPath={params.faqitem} />}
         </Route>
         <Route>
           <HomePage />

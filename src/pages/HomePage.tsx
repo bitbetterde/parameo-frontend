@@ -6,6 +6,7 @@ import {
   ImageSlider,
   FaqSection,
 } from "@components";
+import rawFaqs from "@faqs";
 
 const heroButtons = [
   { caption: "Try it!", target: "#", variant: "light" as const },
@@ -176,42 +177,11 @@ const images = [
   },
 ];
 
-const FAQdata = [
-  {
-    title: "FABULASER mini",
-    href: "#",
-    teaser:
-      "Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.",
-    category: "Machinery",
-    callToAction: "Read full entry",
-  },
-  {
-    title: "How to calculate material costs?",
-    href: "#",
-    teaser:
-      "Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.",
-    category: "Costs",
-    callToAction: "Read full entry",
-  },
-  {
-    title: "...",
-    href: "#",
-    teaser:
-      "Cupiditate maiores ullam eveniet adipisci in doloribus nulla minus. Voluptas iusto libero adipisci rem et corporis.",
-    category: "Manufacturing",
-    callToAction: "Read full entry",
-  },
-  {
-    title: "How can I help develop new features?",
-    href: "#",
-    teaser:
-      "Ipsum voluptates quia doloremque culpa qui eius. Id qui id officia molestias quaerat deleniti. Qui facere numquam autem libero quae cupiditate asperiores vitae cupiditate. Cumque id deleniti explicabo.",
-    category: "Code",
-    callToAction: "Read full entry",
-  },
-];
-
 const HomePage = () => {
+  const visibleFaqItems = rawFaqs
+    .sort((a, b) => (a.order || 0) - (b.order || 0))
+    .filter((faq) => faq.showOnHomePage);
+
   return (
     <>
       <HeroSection
@@ -236,7 +206,7 @@ const HomePage = () => {
       <ImageSlider items={images} />
       <FaqSection
         title="Learn more and get involved – it's open source"
-        data={FAQdata}
+        data={visibleFaqItems}
       />
       <CardsSlider
         title="Featured machinery"

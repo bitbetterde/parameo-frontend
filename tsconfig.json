@@ -13,7 +13,9 @@
       "@interfaces/*": ["src/interfaces/*"],
       "@interfaces": ["src/interfaces"],
       "@pages/*": ["src/pages/*"],
-      "@pages": ["src/pages"]
+      "@pages": ["src/pages"],
+      "@faqs/*": ["src/faqs/*"],
+      "@faqs": ["src/faqs"]
     },
 
     /* Bundler mode */
