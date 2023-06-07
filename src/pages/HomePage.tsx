@@ -4,7 +4,7 @@ import {
   HeroSection,
   CardsSlider,
   ImageSlider,
-  FaqSection
+  FaqSection,
 } from "@components";
 
 const heroButtons = [
