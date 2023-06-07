@@ -68,8 +68,8 @@ interface SocialMediaProps {
 const SocialMedia: React.FC<SocialMediaProps> = ({ links }) => {
   return (
     <ul className="mt-10 flex justify-center space-x-10">
-      {links.map((item) => (
-        <li>
+      {links.map((item, i) => (
+        <li key={i}>
           <Link
             href={item.href}
             key={item.name}

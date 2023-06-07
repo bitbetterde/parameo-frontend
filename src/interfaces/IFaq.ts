@@ -1,7 +1,9 @@
-export interface IFaq {
+export interface IFaqFile {
   title: string;
-  category: string;
+  id: string;
+  body?: JSX.Element;
+  tags: Array<string>;
   teaser: string;
-  href: string;
-  callToAction: string;
+  showOnHomePage: boolean;
+  order?: number;
 }

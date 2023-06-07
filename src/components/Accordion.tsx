@@ -1,0 +1,42 @@
+import { LinkIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { Link } from "wouter";
+import { forwardRef } from "react";
+
+interface AccordionProps {
+  className?: string;
+  title: string;
+  open?: boolean;
+  children?: React.ReactNode;
+  href: string;
+}
+
+const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
+  ({ className, children, title, open = false, href }, ref) => {
+    return (
+      <details
+        className={`mx-auto max-w-7xl lg:w-[768px] border-b border-gray-200 py-6 group ${
+          className || ""
+        }`}
+        open={open}
+        ref={ref}
+      >
+        <summary className="flex justify-between items-center cursor-pointer">
+          <Link href={href}>
+            <LinkIcon className="w-[18px] text-gray-400 mr-7 cursor-pointer" />
+          </Link>
+          <h4 className="inline w-full cursor-pointer text-lg font-medium text-gray-400">
+            {title}
+          </h4>
+          <div className="transition-transform ease-in duration-100 rotate-0 group-open:rotate-180">
+            <ChevronDownIcon className="w-5 text-gray-400" />
+          </div>
+        </summary>
+        <div className="py-6 prose prose-headings:text-xl max-w-none text-lg text-gray-500">
+          {children}
+        </div>
+      </details>
+    );
+  }
+);
+
+export default Accordion;

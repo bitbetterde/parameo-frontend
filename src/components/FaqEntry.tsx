@@ -1,25 +1,28 @@
-import type { IFaq } from "@interfaces/IFaq";
+import type { IFaqFile } from "@interfaces/IFaq";
+import { Link } from "wouter";
 
 interface Props {
   className?: string;
-  data: IFaq;
+  data: IFaqFile;
 }
 
 const FaqEntry: React.FC<Props> = ({ className, data }) => {
   return (
     <div className={className}>
-      <p className="text-sm text-gray-500 font-normal">{data.category}</p>
-      <a href={data.href} className="mt-2 block">
+      <p className="text-sm text-gray-500 font-normal">
+        {data.tags.join(", ")}
+      </p>
+      <div className="mt-2 block">
         <p className="text-xl font-semibold text-gray-900">{data.title}</p>
         <p className="mt-3 text-base text-gray-500">{data.teaser}</p>
-      </a>
+      </div>
       <div className="mt-3">
-        <a
-          href={data.href}
+        <Link
+          href={"/faq/" + data.id}
           className="text-base font-semibold text-indigo-600 hover:text-indigo-500"
         >
-          {data.callToAction}
-        </a>
+          Read full entry
+        </Link>
       </div>
     </div>
   );
