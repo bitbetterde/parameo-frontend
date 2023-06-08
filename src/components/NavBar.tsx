@@ -6,7 +6,7 @@ interface Props {
   className?: string;
   buttonLinkTarget: string;
   buttonLinkCaption: string;
-  buttonLinkVariant?: string;
+  buttonLinkVariant?: "dark" | "light" | "transparent";
 }
 
 const navigation = [
