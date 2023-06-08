@@ -182,10 +182,10 @@ const HomePage = () => {
               href: "#",
               category: { name: machine.type, href: "#" },
               description: machine.description_en,
-              licence: "OSH - licence type?",
+              licence: "OSH - License type",
               cardImage: machine.pictures[0].image_url,
               author: {
-                name: "Manufacterer",
+                name: machine.manufacturer,
                 href: "#",
                 authorImage: "",
               },
