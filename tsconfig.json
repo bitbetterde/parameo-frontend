@@ -15,7 +15,9 @@
       "@pages/*": ["src/pages/*"],
       "@pages": ["src/pages"],
       "@faqs/*": ["src/faqs/*"],
-      "@faqs": ["src/faqs"]
+      "@faqs": ["src/faqs"],
+      "@hooks/*": ["src/hooks/*"],
+      "@hooks": ["src/hooks"]
     },
 
     /* Bundler mode */

@@ -41,16 +41,15 @@ const HeroSection: React.FC<Props> = ({
               <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                 <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0">
                   {buttons &&
-                    buttons.map((button) => {
-                      return (
-                        <ButtonLink
-                          className="flex items-center justify-center px-4 py-3 sm:px-[55px]"
-                          caption={button.caption}
-                          target={button.target}
-                          variant={button.variant}
-                        />
-                      );
-                    })}
+                    buttons.map((button, i) => (
+                      <ButtonLink
+                        key={i}
+                        className="flex items-center justify-center px-4 py-3 sm:px-[55px]"
+                        caption={button.caption}
+                        target={button.target}
+                        variant={button.variant}
+                      />
+                    ))}
                 </div>
               </div>
             </div>

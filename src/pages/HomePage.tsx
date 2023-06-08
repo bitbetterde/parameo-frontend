@@ -5,8 +5,10 @@ import {
   CardsSlider,
   ImageSlider,
   FaqSection,
+  Spinner,
 } from "@components";
 import rawFaqs from "@faqs";
+import useMachines from "@hooks/useMachines";
 
 const heroButtons = [
   { caption: "Try it!", target: "/configurator", variant: "light" as const },
@@ -112,51 +114,6 @@ const cards = [
   },
 ];
 
-const FAQCards = [
-  {
-    title: "Maslow CNC",
-    href: "#",
-    category: { name: "CNC", href: "#" },
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
-    licence: "OSH - licence type?",
-    cardImage: "images/maslow.jpg",
-    author: {
-      name: "Maslow",
-      href: "#",
-      authorImage: "",
-    },
-  },
-  {
-    title: "FABULASER mini",
-    href: "#",
-    category: { name: "Lasercutter", href: "#" },
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
-    licence: "OSH - licence type?",
-    cardImage: "images/fabulaser-mini.jpg",
-    author: {
-      name: "INMACHINES",
-      href: "#",
-      authorImage: "",
-    },
-  },
-  {
-    title: "More machine types",
-    href: "#",
-    category: { name: "Lasercutter", href: "#" },
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
-    licence: "OSH - licence type?",
-    cardImage: "images/other-machines.jpg",
-    author: {
-      name: "Manufacterer",
-      href: "#",
-      authorImage: "",
-    },
-  },
-];
-
 const images = [
   { image: "images/forrest.jpg", imageAlt: "Forrest photo" },
   {
@@ -181,6 +138,8 @@ const HomePage = () => {
   const visibleFaqItems = rawFaqs
     .sort((a, b) => (a.order || 0) - (b.order || 0))
     .filter((faq) => faq.showOnHomePage);
+
+  const { machines, isLoading } = useMachines();
 
   return (
     <>
@@ -208,11 +167,32 @@ const HomePage = () => {
         title="Learn more and get involved – it's open source"
         data={visibleFaqItems}
       />
-      <CardsSlider
-        title="Featured machinery"
-        description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
-        cardsData={FAQCards}
-      />
+      {isLoading ? (
+        <div className="w-full h-32 flex items-center justify-center">
+          <Spinner />
+        </div>
+      ) : (
+        <CardsSlider
+          title="Featured machinery"
+          description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
+          cardsData={
+            machines &&
+            machines?.map((machine: any) => ({
+              title: machine.title_en,
+              href: "#",
+              category: { name: machine.type, href: "#" },
+              description: machine.description_en,
+              licence: "OSH - licence type?",
+              cardImage: machine.pictures[0].image_url,
+              author: {
+                name: "Manufacterer",
+                href: "#",
+                authorImage: "",
+              },
+            }))
+          }
+        />
+      )}
     </>
   );
 };
