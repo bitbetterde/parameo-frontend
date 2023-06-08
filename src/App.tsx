@@ -82,7 +82,7 @@ const App = () => {
       <NavBar
         buttonLinkTarget="#"
         buttonLinkCaption="CTA"
-        buttonLinkVariant="dark"
+        buttonLinkVariant={"dark" as const}
       />
       <Switch>
         <Route path="/configurator">

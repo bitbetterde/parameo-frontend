@@ -1,0 +1,39 @@
+image: node:alpine
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_COMMIT_BRANCH == "main"
+
+stages:
+  - build
+  - deploy
+
+build-job:
+  stage: build
+  script:
+    - echo "Installing dependencies..."
+    - npm ci
+    - echo "Compiling the code..."
+    - npm run build
+  artifacts:
+    name: $CI_COMMIT_REF_SLUG
+    expire_in: 1 day
+    paths:
+      - dist
+
+deploy-job:
+  stage: deploy
+  environment:
+    name: production
+    url: https://$SFTP_HOST
+  variables:
+    GIT_STRATEGY: none
+  before_script:
+    - apk update
+    - apk add --no-cache lftp openssh
+    - mkdir -p ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+  script:
+    - lftp -e "set sftp:auto-confirm yes; set ftp:list-options -a; set net:timeout 5; set net:max-retries 3; set net:reconnect-interval-base 5; open sftp://$SFTP_HOST; user $SFTP_USER $SFTP_PASSWORD; mirror --reverse --delete ./dist/ ./html/; bye"
