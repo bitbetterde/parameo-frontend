@@ -9,7 +9,7 @@ import {
 import rawFaqs from "@faqs";
 
 const heroButtons = [
-  { caption: "Try it!", target: "#", variant: "light" as const },
+  { caption: "Try it!", target: "/configurator", variant: "light" as const },
   { caption: "FAQ", target: "/faq", variant: "transparent" as const },
 ];
 

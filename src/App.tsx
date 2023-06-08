@@ -1,10 +1,10 @@
 import { NavBar, LogoGrid, Footer } from "@components";
-import { HomePage, FaqPage } from "@pages";
+import { HomePage, FaqPage, ConfiguratorPage } from "@pages";
 import { Switch, Route } from "wouter";
 
 const footerMenu = [
   { name: "Home", href: "/" },
-  { name: "Configurator", href: "#" },
+  { name: "Configurator", href: "/configurator" },
   { name: "About", href: "#" },
   { name: "Imprint", href: "#" },
   { name: "Privacy", href: "#" },
@@ -85,6 +85,9 @@ const App = () => {
         buttonLinkVariant="dark"
       />
       <Switch>
+        <Route path="/configurator">
+          <ConfiguratorPage />
+        </Route>
         <Route path="/faq/:faqitem?">
           {(params) => <FaqPage itemFromPath={params.faqitem} />}
         </Route>

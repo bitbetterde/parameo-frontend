@@ -11,7 +11,7 @@ interface Props {
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Configurator", href: "#" },
+  { name: "Configurator", href: "/configurator" },
   { name: "FAQ", href: "/faq" },
   { name: "About", href: "#" },
 ];
