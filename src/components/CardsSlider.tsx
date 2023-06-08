@@ -5,7 +5,7 @@ interface Props {
   className?: string;
   title: string;
   description?: string;
-  cardsData: Array<ICard>;
+  cardsData?: Array<ICard>;
 }
 
 const CardsSlider: React.FC<Props> = ({
@@ -14,7 +14,7 @@ const CardsSlider: React.FC<Props> = ({
   description,
   cardsData,
 }) => {
-  return (
+  return cardsData ? (
     <div
       className={`relative mx-auto max-w-7xl px-6 pb-20 pt-16 lg:px-[39px] lg:py-24 ${
         className || ""
@@ -37,12 +37,10 @@ const CardsSlider: React.FC<Props> = ({
           className || ""
         }`}
       >
-        {cardsData.map((card) => (
-          <Card data={card} />
-        ))}
+        {cardsData && cardsData.map((card, i) => <Card data={card} key={i} />)}
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default CardsSlider;
