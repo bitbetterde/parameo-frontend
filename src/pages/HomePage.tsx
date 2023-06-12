@@ -2,7 +2,7 @@ import {
   FeatureSection,
   Avatar,
   HeroSection,
-  CardsSlider,
+  CardsGrid,
   ImageSlider,
   FaqSection,
   Spinner,
@@ -157,7 +157,7 @@ const HomePage = () => {
         features={features}
       />
       <Avatar people={people} />
-      <CardsSlider
+      <CardsGrid
         title="Customize designs"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
         cardsData={cards}
@@ -172,7 +172,7 @@ const HomePage = () => {
           <Spinner />
         </div>
       ) : (
-        <CardsSlider
+        <CardsGrid
           title="Featured machinery"
           description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
           cardsData={
