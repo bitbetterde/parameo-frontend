@@ -1,4 +1,4 @@
-import { HeroSection, CardsSlider, ImageSlider } from "@components";
+import { HeroSection, CardsGrid, ImageSlider } from "@components";
 
 const cards = [
   {
@@ -80,7 +80,7 @@ const ConfiguratorPage = () => {
         heroImage="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100"
         heroImageAlt="People working on laptops"
       />
-      <CardsSlider
+      <CardsGrid
         title="Customize designs"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
         cardsData={cards}

@@ -1,4 +1,4 @@
-import { Card } from "@components";
+import { Card, CardSlider } from "@components";
 import { ICard } from "@interfaces/ICard";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   cardsData?: Array<ICard>;
 }
 
-const CardsSlider: React.FC<Props> = ({
+const CardsGrid: React.FC<Props> = ({
   className,
   title,
   description,
@@ -32,15 +32,20 @@ const CardsSlider: React.FC<Props> = ({
           )}
         </div>
       </div>
-      <div
-        className={`mx-auto mt-6 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3 ${
-          className || ""
-        }`}
-      >
-        {cardsData && cardsData.map((card, i) => <Card data={card} key={i} />)}
+      <CardSlider cardsData={cardsData} className="md:hidden" />
+      <div className="hidden md:block">
+        <div
+          className={`mx-auto mt-6 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3 ${
+            className || ""
+          }`}
+        >
+          {cardsData.map((card) => (
+            <Card data={card} />
+          ))}
+        </div>
       </div>
     </div>
   ) : null;
 };
 
-export default CardsSlider;
+export default CardsGrid;
