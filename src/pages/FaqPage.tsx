@@ -5,6 +5,7 @@ import { groupBy } from "lodash-es";
 
 interface Props {
   itemFromPath?: string;
+  onClickLinkIcon?: () => void;
 }
 
 const images = [
@@ -27,7 +28,7 @@ const images = [
   },
 ];
 
-const FaqPage: React.FC<Props> = ({ itemFromPath }) => {
+const FaqPage: React.FC<Props> = ({ itemFromPath, onClickLinkIcon }) => {
   const [activeTab, setActiveTab] = useState<string>("All");
   const openAccordionRef = useRef<HTMLDetailsElement>(null);
 
@@ -72,7 +73,7 @@ const FaqPage: React.FC<Props> = ({ itemFromPath }) => {
             ref={itemFromPath === faq.id ? openAccordionRef : undefined}
             key={faq.id}
             title={faq.title}
-            href={"hello"}
+            onClickLinkIcon={onClickLinkIcon}
             children={faq.body}
             open={itemFromPath === faq.id}
           />

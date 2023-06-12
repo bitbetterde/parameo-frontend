@@ -1,5 +1,4 @@
 import { LinkIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
-import { Link } from "wouter";
 import { forwardRef } from "react";
 
 interface AccordionProps {
@@ -7,11 +6,11 @@ interface AccordionProps {
   title: string;
   open?: boolean;
   children?: React.ReactNode;
-  href: string;
+  onClickLinkIcon?: () => void;
 }
 
 const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
-  ({ className, children, title, open = false, href }, ref) => {
+  ({ className, children, title, open = false, onClickLinkIcon }, ref) => {
     return (
       <details
         className={`mx-auto max-w-7xl lg:w-[768px] border-b border-gray-200 py-6 group ${
@@ -21,9 +20,11 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
         ref={ref}
       >
         <summary className="flex justify-between items-center cursor-pointer">
-          <Link href={href}>
-            <LinkIcon className="w-[18px] text-gray-400 mr-7 cursor-pointer" />
-          </Link>
+          {onClickLinkIcon && (
+            <button onClick={onClickLinkIcon}>
+              <LinkIcon className="w-[18px] text-gray-400 mr-7 cursor-pointer" />
+            </button>
+          )}
           <h4 className="inline w-full cursor-pointer text-lg font-medium text-gray-400">
             {title}
           </h4>

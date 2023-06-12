@@ -1,6 +1,8 @@
-import { NavBar, LogoGrid, Footer } from "@components";
+import { useState } from "react";
+import { NavBar, LogoGrid, Footer, Notification } from "@components";
 import { HomePage, FaqPage, ConfiguratorPage } from "@pages";
 import { Switch, Route } from "wouter";
+import { INotification } from "@interfaces/INotification";
 
 const footerMenu = [
   { name: "Home", href: "/" },
@@ -77,6 +79,8 @@ const logos = [
 ];
 
 const App = () => {
+  const [notificationData, setNotificationData] = useState<INotification>();
+
   return (
     <>
       <NavBar
@@ -84,12 +88,32 @@ const App = () => {
         buttonLinkCaption="CTA"
         buttonLinkVariant={"dark" as const}
       />
+      <Notification
+        show={Boolean(notificationData)}
+        onClickClose={() => {
+          setNotificationData(undefined);
+        }}
+        title={notificationData && notificationData.title}
+        text={notificationData && notificationData.text}
+        variant={notificationData && notificationData.variant}
+      />
       <Switch>
         <Route path="/configurator">
           <ConfiguratorPage />
         </Route>
         <Route path="/faq/:faqitem?">
-          {(params) => <FaqPage itemFromPath={params.faqitem} />}
+          {(params) => (
+            <FaqPage
+              itemFromPath={params.faqitem}
+              onClickLinkIcon={() => {
+                setNotificationData({
+                  title: "Link copied to clipboard",
+                  text: "Lorem ipsum",
+                  variant: "success",
+                });
+              }}
+            />
+          )}
         </Route>
         <Route>
           <HomePage />
