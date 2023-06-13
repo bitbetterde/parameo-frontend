@@ -19,7 +19,7 @@ const HeroSection: React.FC<Props> = ({
   buttons,
 }) => {
   return (
-    <main className={`pb-12 ${className || ""}`}>
+    <main className={`pb-6 md:pb-12 ${className || ""}`}>
       <div className="relative">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="relative shadow-xl sm:overflow-hidden sm:rounded-2xl">

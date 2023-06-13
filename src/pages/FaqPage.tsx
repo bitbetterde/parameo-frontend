@@ -5,6 +5,8 @@ import { groupBy } from "lodash-es";
 
 interface Props {
   itemFromPath?: string;
+  subtitle?: string;
+  title?: string;
   onClickLinkIcon?: () => void;
 }
 
@@ -28,11 +30,16 @@ const images = [
   },
 ];
 
-const FaqPage: React.FC<Props> = ({ itemFromPath, onClickLinkIcon }) => {
+const FaqPage: React.FC<Props> = ({
+  itemFromPath,
+  subtitle,
+  title,
+  onClickLinkIcon,
+}) => {
   const [activeTab, setActiveTab] = useState<string>("All");
   const openAccordionRef = useRef<HTMLDetailsElement>(null);
 
-  const deduplicatedByTags = rawFaqs.flatMap((faq) => [
+  const deduplicatedByTags = rawFaqs?.flatMap((faq) => [
     ...faq.tags.map((tag) => ({ ...faq, tags: tag })),
     { ...faq, tags: "All" },
   ]);
@@ -47,7 +54,7 @@ const FaqPage: React.FC<Props> = ({ itemFromPath, onClickLinkIcon }) => {
     }
   };
   const uniqueTags = Object.entries(groupedByTags)
-    .map((tag) => ({ label: tag[0], length: tag[1].length }))
+    ?.map((tag) => ({ label: tag[0], length: tag[1].length }))
     .sort((a, b) => a.label.localeCompare(b.label));
 
   useEffect(() => {
@@ -64,20 +71,34 @@ const FaqPage: React.FC<Props> = ({ itemFromPath, onClickLinkIcon }) => {
         heroImage="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100"
         heroImageAlt="People working on laptops"
       />
+      <div className="mx-auto max-w-2xl text-center p-6 md:pb-10 md:pt-[44px]">
+        {subtitle && (
+          <h2 className="text-base font-semibold text-indigo-600 uppercase">
+            {subtitle}
+          </h2>
+        )}
+        {title && (
+          <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            {title}
+          </h1>
+        )}
+      </div>
       <Tabs tabs={uniqueTags} activeTab={activeTab} onClickTab={selectTags} />
-      <div className="border-b-2 border-gray-200 mx-auto max-w-7xl lg:w-[768px]" />
-      {activeTab &&
-        groupedByTags &&
-        groupedByTags[activeTab].map((faq) => (
-          <Accordion
-            ref={itemFromPath === faq.id ? openAccordionRef : undefined}
-            key={faq.id}
-            title={faq.title}
-            onClickLinkIcon={onClickLinkIcon}
-            children={faq.body}
-            open={itemFromPath === faq.id}
-          />
-        ))}
+      <div className="border-b-2 border-gray-200 mx-auto max-w-7xl hidden lg:w-[768px]" />
+      <div className="pb-10">
+        {activeTab &&
+          groupedByTags &&
+          groupedByTags[activeTab]?.map((faq) => (
+            <Accordion
+              ref={itemFromPath === faq.id ? openAccordionRef : undefined}
+              key={faq.id}
+              title={faq.title}
+              onClickLinkIcon={onClickLinkIcon}
+              children={faq.body}
+              open={itemFromPath === faq.id}
+            />
+          ))}
+      </div>
       <ImageSlider items={images} />
     </>
   );

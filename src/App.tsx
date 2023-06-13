@@ -105,6 +105,8 @@ const App = () => {
           {(params) => (
             <FaqPage
               itemFromPath={params.faqitem}
+              title="Frequently Asked Questions"
+              subtitle="FAQ"
               onClickLinkIcon={() => {
                 setNotificationData({
                   title: "Link copied to clipboard",

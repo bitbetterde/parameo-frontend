@@ -81,9 +81,11 @@ const ConfiguratorPage = () => {
         heroImageAlt="People working on laptops"
       />
       <CardsGrid
-        title="Customize designs"
+        title="Explore & customize parameo products"
+        subtitle="Configurator"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
         cardsData={cards}
+        className="py-5 md:py-10"
       />
       <ImageSlider items={images} />
     </>

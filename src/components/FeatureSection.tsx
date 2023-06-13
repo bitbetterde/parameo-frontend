@@ -16,9 +16,9 @@ const FeatureSection: React.FC<Props> = ({
   features,
 }) => {
   return (
-    <div className={`bg-white py-8 sm:py-12 ${className || ""}`}>
+    <div className={`bg-white pt-6 pb-12 md:py-12 ${className || ""}`}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center">
+        <div className="mx-auto max-w-2xl text-center pb-10">
           {subtitle && (
             <h2 className="text-base font-semibold text-indigo-600 uppercase">
               {subtitle}
@@ -35,9 +35,9 @@ const FeatureSection: React.FC<Props> = ({
             </p>
           )}
         </div>
-        <div className="mx-auto sm:mt-8 lg:mt-10">
+        <div className="mx-auto">
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2">
-            {features.map((feature) => (
+            {features?.map((feature) => (
               <div key={feature.name} className="relative pl-16">
                 <FeatureItem
                   name={feature.name}

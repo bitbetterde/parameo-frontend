@@ -14,7 +14,7 @@ const FaqSection: React.FC<Props> = ({ title, className, data }) => {
         className || ""
       }`}
     >
-      <div className="relative mx-auto max-w-lg divide-y-2 divide-gray-200 lg:max-w-7xl">
+      <div className="relative mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
         <div>
           <div className="flex justify-center">
             <h2 className="lg:w-1/2 lg:px-12 text-center text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -28,7 +28,7 @@ const FaqSection: React.FC<Props> = ({ title, className, data }) => {
           />
         </div>
         <div className="mt-6 grid gap-16 pt-10 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12 ">
-          {data.map((data, i) => (
+          {data?.map((data, i) => (
             <FaqEntry data={data} key={i} />
           ))}
         </div>
@@ -56,7 +56,7 @@ const SubscriptionBar: React.FC<SuscriptionProps> = ({
         className || ""
       }`}
     >
-      <p className="text-xl font-normal text-gray-500">{subscriptionCta}</p>
+      <p className="text-xl font-normal text-gray-500 text-center md:text-left">{subscriptionCta}</p>
       <form className="mt-6 flex flex-col sm:flex-row lg:mt-0 lg:justify-end">
         <div>
           <label htmlFor="email-address" className="sr-only">
