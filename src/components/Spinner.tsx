@@ -1,3 +1,5 @@
+import { SPINNER_SCREEN_READER } from "@translations/en.json";
+
 const Spinner: React.FC = ({ className }: { className?: string }) => {
   return (
     <div role="status">
@@ -19,7 +21,7 @@ const Spinner: React.FC = ({ className }: { className?: string }) => {
           fill="currentFill"
         />
       </svg>
-      <span className="sr-only">Loading...</span>
+      <span className="sr-only">{SPINNER_SCREEN_READER}</span>
     </div>
   );
 };

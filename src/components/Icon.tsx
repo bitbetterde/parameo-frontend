@@ -10,7 +10,12 @@ interface Props {
   variant?: "solid" | "outline";
 }
 
-const Icon: React.FC<Props> = ({ name, size, className = "", variant }) => {
+const Icon: React.FC<Props> = ({
+  name,
+  size = 24,
+  className = "",
+  variant = "solid",
+}) => {
   let icons;
   if (variant === "solid") {
     if (size === 24) {
@@ -21,7 +26,7 @@ const Icon: React.FC<Props> = ({ name, size, className = "", variant }) => {
   } else {
     ({ ...icons } = OutlineHero24);
   }
-  // @ts-ignore
+
   const Comp = icons[name];
   return Comp ? <Comp className={className} /> : null;
 };
