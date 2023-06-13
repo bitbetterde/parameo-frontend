@@ -30,8 +30,8 @@ const LogoGrid: React.FC<Props> = ({ className, title, logos }) => {
             {title}
           </h2>
         </div>
-        <div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3">
-          {logos.map((logo, i) => (
+        <div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3 px-6">
+          {logos?.map((logo, i) => (
             <div
               className="bg-gray-400/5 p-8 sm:p-10 flex justify-center items-center"
               key={i}

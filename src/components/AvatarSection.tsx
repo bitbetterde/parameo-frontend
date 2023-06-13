@@ -6,20 +6,24 @@ interface Props {
 
 const AvatarSection: React.FC<Props> = ({ className, people, title }) => {
   return (
-    <div className={`flex justify-center py-12 ${className || ""}`}>
-      <div className="flex flex-col justify-center items-center max-w-7xl px-6 text-center lg:px-8">
-        {title && (
-          <div className="max-w-2xl">
-            <h2 className="text-base font-semibold tracking-wide text-indigo-600 uppercase">
-              {title}
-            </h2>
-          </div>
-        )}
+    <div
+      className={`flex flex-col justify-center pb-16 pt-12 md:py-12 ${
+        className || ""
+      }`}
+    >
+      {title && (
+        <div className="w-full px-6 md:text-center">
+          <h2 className="text-base font-semibold tracking-wide text-indigo-600 uppercase">
+            {title}
+          </h2>
+        </div>
+      )}
+      <div className="flex flex-col justify-center items-center max-w-7xl px-6 text-center lg:px-8 mx-auto">
         <ul
           role="list"
           className="mt-[37px] grid max-w-2xl grid-cols-1 gap-x-32 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
         >
-          {people.map((person) => (
+          {people?.map((person) => (
             <li key={person.name}>
               <img
                 className="h-56 w-56 rounded-full"

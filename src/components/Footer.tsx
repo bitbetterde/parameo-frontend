@@ -42,10 +42,10 @@ interface HorizontalMenuProps {
 const HorizontalMenu: React.FC<HorizontalMenuProps> = ({ menu }) => {
   return (
     <nav
-      className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
+      className="-mb-6 flex justify-center gap-x-12 flex-wrap"
       aria-label="Footer"
     >
-      {menu.map((item) => (
+      {menu?.map((item) => (
         <ul key={item.name} className="pb-6">
           <li>
             <Link
@@ -68,7 +68,7 @@ interface SocialMediaProps {
 const SocialMedia: React.FC<SocialMediaProps> = ({ links }) => {
   return (
     <ul className="mt-10 flex justify-center space-x-10">
-      {links.map((item, i) => (
+      {links?.map((item, i) => (
         <li key={i}>
           <Link
             href={item.href}

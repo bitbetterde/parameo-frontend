@@ -20,16 +20,16 @@ const ImageSlider: React.FC<Props> = ({ className = "", items }) => {
   });
   return (
     <div
-      className={`mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-24 ${
+      className={`mx-auto max-w-7xl px-6 lg:px-8 lg:py-12 ${
         className || ""
       }`}
     >
       <div className="relative overflow-hidden">
         <div
           ref={sliderRef}
-          className="keen-slider flex h-[574px] overflow-hidden rounded-xl"
+          className="keen-slider flex h-[229px] md:h-[574px] overflow-hidden rounded-xl"
         >
-          {items.map((item, index) => (
+          {items?.map((item, index) => (
             <img
               key={index}
               src={item.image}
@@ -39,7 +39,7 @@ const ImageSlider: React.FC<Props> = ({ className = "", items }) => {
           ))}
         </div>
         {loaded && instanceRef.current && (
-          <div className="flex justify-center items-center py-4">
+          <div className="flex justify-center items-center pt-10">
             {[
               ...Array(instanceRef.current.track.details.slides.length).keys(),
             ].map((idx) => {

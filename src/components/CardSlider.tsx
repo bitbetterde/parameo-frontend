@@ -30,8 +30,8 @@ interface Props {
             ref={sliderRef}
             className="keen-slider flex h-full overflow-hidden rounded-xl shadow-lg"
           >
-            {cardsData.map((card) => (
-              <Card data={card} className="keen-slider__slide" />
+            {cardsData?.map((card) => (
+              <Card data={card} key={card.title} className="keen-slider__slide" />
             ))}
           </div>
           {loaded && instanceRef.current && (

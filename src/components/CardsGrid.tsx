@@ -6,6 +6,7 @@ interface Props {
   title: string;
   description?: string;
   cardsData?: Array<ICard>;
+  subtitle?: string;
 }
 
 const CardsGrid: React.FC<Props> = ({
@@ -13,15 +14,21 @@ const CardsGrid: React.FC<Props> = ({
   title,
   description,
   cardsData,
+  subtitle,
 }) => {
   return cardsData ? (
     <div
-      className={`relative mx-auto max-w-7xl px-6 pb-20 pt-16 lg:px-[39px] lg:py-24 ${
+      className={`relative mx-auto max-w-7xl px-6 py-16 lg:px-[39px] lg:py-12 ${
         className || ""
       }`}
     >
-      <div className="relative mx-auto max-w-7xl lg:pb-6">
+      <div className="relative mx-auto max-w-7xl pb-8 lg:pb-6">
         <div className="text-center">
+          {subtitle && (
+            <h3 className="text-base font-semibold text-indigo-600 uppercase">
+              {subtitle}
+            </h3>
+          )}
           <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
             {title}
           </h2>
@@ -39,9 +46,7 @@ const CardsGrid: React.FC<Props> = ({
             className || ""
           }`}
         >
-          {cardsData.map((card) => (
-            <Card data={card} />
-          ))}
+          {cardsData?.map((card) => <Card key={card.title} data={card} />)}
         </div>
       </div>
     </div>
