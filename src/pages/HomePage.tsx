@@ -10,7 +10,6 @@ import {
 import rawFaqs from "@faqs";
 import useMachines from "@hooks/useMachines";
 
-
 const heroButtons = [
   { caption: "Try it!", target: "/configurator", variant: "light" as const },
   { caption: "FAQ", target: "/faq", variant: "transparent" as const },

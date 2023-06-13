@@ -15,14 +15,14 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
       <details
         className={`mx-auto max-w-7xl lg:w-[768px] border-b border-gray-200 p-6 group text-gray-400 open:text-indigo-600 ${
           className || ""
-        }`}
+        } hover:text-black`}
         open={open}
         ref={ref}
       >
         <summary className="flex justify-between items-center cursor-pointer">
           {onClickLinkIcon && (
             <button onClick={onClickLinkIcon}>
-              <LinkIcon className="w-[18px] text-gray-400 mr-7 cursor-pointer" />
+              <LinkIcon className="w-[18px] text-gray-400 mr-7 cursor-pointer hover:text-black active:text-indigo-600" />
             </button>
           )}
           <h4 className="inline w-full cursor-pointer text-lg font-medium text-inherit">

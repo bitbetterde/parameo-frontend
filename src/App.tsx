@@ -80,6 +80,7 @@ const logos = [
 
 const App = () => {
   const [notificationData, setNotificationData] = useState<INotification>();
+  const [showNotification, setShowNotification] = useState(false);
 
   return (
     <>
@@ -89,9 +90,12 @@ const App = () => {
         buttonLinkVariant={"dark" as const}
       />
       <Notification
-        show={Boolean(notificationData)}
+        show={showNotification}
         onClickClose={() => {
-          setNotificationData(undefined);
+          setShowNotification(false);
+          setTimeout(() => {
+            setNotificationData(undefined);
+          }, 300);
         }}
         title={notificationData && notificationData.title}
         text={notificationData && notificationData.text}
@@ -108,9 +112,9 @@ const App = () => {
               title="Frequently Asked Questions"
               subtitle="FAQ"
               onClickLinkIcon={() => {
+                setShowNotification(true);
                 setNotificationData({
                   title: "Link copied to clipboard",
-                  text: "Lorem ipsum",
                   variant: "success",
                 });
               }}

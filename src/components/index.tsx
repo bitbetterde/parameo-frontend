@@ -16,6 +16,7 @@ import Tabs from "./Tabs";
 import Accordion from "./Accordion";
 import Notification from "./Notification";
 import Spinner from "./Spinner";
+import RangeSlider from "./RangeSlider";
 import Select from "./Select";
 import CardSlider from "./CardSlider";
 
@@ -38,6 +39,7 @@ export {
   Accordion,
   Notification,
   Spinner,
+  RangeSlider,
   Select,
   CardSlider,
 };
