@@ -1,6 +1,6 @@
 import {
   FeatureSection,
-  Avatar,
+  AvatarSection,
   HeroSection,
   CardsGrid,
   ImageSlider,
@@ -9,6 +9,7 @@ import {
 } from "@components";
 import rawFaqs from "@faqs";
 import useMachines from "@hooks/useMachines";
+
 
 const heroButtons = [
   { caption: "Try it!", target: "/configurator", variant: "light" as const },
@@ -156,7 +157,7 @@ const HomePage = () => {
         description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
         features={features}
       />
-      <Avatar people={people} />
+      <AvatarSection people={people} title="Connecting" />
       <CardsGrid
         title="Customize designs"
         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."

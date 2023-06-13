@@ -1,5 +1,6 @@
 import type { IFaqFile } from "@interfaces/IFaq";
 import { Link } from "wouter";
+import { FAQ_ENTRY_READ_MORE } from "@translations/en.json";
 
 interface Props {
   className?: string;
@@ -21,7 +22,7 @@ const FaqEntry: React.FC<Props> = ({ className, data }) => {
           href={"/faq/" + data.id}
           className="text-base font-semibold text-indigo-600 hover:text-indigo-500"
         >
-          Read full entry
+          {FAQ_ENTRY_READ_MORE}
         </Link>
       </div>
     </div>

@@ -17,7 +17,9 @@
       "@faqs/*": ["src/faqs/*"],
       "@faqs": ["src/faqs"],
       "@hooks/*": ["src/hooks/*"],
-      "@hooks": ["src/hooks"]
+      "@hooks": ["src/hooks"],
+      "@translations/*": ["src/translations/*"],
+      "@translations": ["src/translations"]
     },
 
     /* Bundler mode */

@@ -119,11 +119,11 @@ const App = () => {
           <HomePage />
         </Route>
       </Switch>
-      <LogoGrid title="Supported by" logos={logos} />
+      <LogoGrid title={"Supported by"} logos={logos} />
       <Footer
         menu={footerMenu}
         links={footerSocial}
-        copyright="2023 regenholz Gbr. All rights reserved."
+        copyright={"2023 regenholz Gbr. All rights reserved."}
       />
     </>
   );
