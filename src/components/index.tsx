@@ -19,6 +19,7 @@ import Spinner from "./Spinner";
 import RangeSlider from "./RangeSlider";
 import Select from "./Select";
 import CardSlider from "./CardSlider";
+import Checkbox from "./Checkbox";
 
 export {
   NavBar,
@@ -42,4 +43,5 @@ export {
   RangeSlider,
   Select,
   CardSlider,
+  Checkbox
 };
