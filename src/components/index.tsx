@@ -19,6 +19,7 @@ import Spinner from "./Spinner";
 import RangeSlider from "./RangeSlider";
 import Select from "./Select";
 import CardSlider from "./CardSlider";
+import Toggle from "./Toggle";
 import TextInput from "./TextInput";
 import Checkbox from "./Checkbox";
 
@@ -44,6 +45,7 @@ export {
   RangeSlider,
   Select,
   CardSlider,
+  Toggle,
   TextInput,
   Checkbox,
 };
