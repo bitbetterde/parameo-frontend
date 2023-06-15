@@ -111,8 +111,12 @@ const App = () => {
               itemFromPath={params.faqitem}
               title="Frequently Asked Questions"
               subtitle="FAQ"
-              onClickLinkIcon={() => {
+              onClickLinkIcon={(id) => {
                 setShowNotification(true);
+                id &&
+                  navigator.clipboard.writeText(
+                    window.location.origin + "/faq/" + id
+                  );
                 setNotificationData({
                   title: "Link copied to clipboard",
                   variant: "success",

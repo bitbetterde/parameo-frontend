@@ -7,7 +7,7 @@ interface Props {
   itemFromPath?: string;
   subtitle?: string;
   title?: string;
-  onClickLinkIcon?: () => void;
+  onClickLinkIcon?: (id?: string) => void;
 }
 
 const images = [
@@ -90,6 +90,7 @@ const FaqPage: React.FC<Props> = ({
           groupedByTags &&
           groupedByTags[activeTab]?.map((faq) => (
             <Accordion
+              id={faq.id}
               ref={itemFromPath === faq.id ? openAccordionRef : undefined}
               key={faq.id}
               title={faq.title}
