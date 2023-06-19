@@ -8,7 +8,7 @@ import Icon from "./Icon";
 import FaqSection from "./FaqSection";
 import FaqEntry from "./FaqEntry";
 import LogoGrid from "./LogoGrid";
-import CardsGrid from "./CardsGrid";
+import CardSlider from "./CardSlider";
 import Card from "./Card";
 import ImageSlider from "./ImageSlider";
 import Footer from "./Footer";
@@ -18,7 +18,6 @@ import Notification from "./Notification";
 import Spinner from "./Spinner";
 import RangeSlider from "./RangeSlider";
 import Select from "./Select";
-import CardSlider from "./CardSlider";
 import Toggle from "./Toggle";
 import TextInput from "./TextInput";
 import Checkbox from "./Checkbox";
@@ -35,7 +34,7 @@ export {
   FaqEntry,
   LogoGrid,
   Card,
-  CardsGrid,
+  CardSlider,
   ImageSlider,
   Footer,
   Tabs,
@@ -44,7 +43,6 @@ export {
   Spinner,
   RangeSlider,
   Select,
-  CardSlider,
   Toggle,
   TextInput,
   Checkbox,
