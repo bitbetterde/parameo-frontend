@@ -11,7 +11,7 @@ const Card: React.FC<Props> = ({ className, data }) => {
     <>
       <div
         key={data.title}
-        className={`flex flex-col overflow-hidden rounded-lg shadow-lg ${
+        className={`flex flex-col overflow-hidden rounded-lg ${
           className || ""
         }`}
       >
