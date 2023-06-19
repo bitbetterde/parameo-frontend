@@ -1,8 +1,8 @@
 interface Props {
   className?: string;
   options: Array<string>;
-  selectedOption: string;
-  onClickSelectedOption: (tab: string) => void;
+  selectedOption?: string;
+  onClickSelectedOption?: (tab: string) => void;
   name: string;
   label?: string;
 }
@@ -17,7 +17,7 @@ const Select: React.FC<Props> = ({
 }) => {
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
-    onClickSelectedOption(selectedValue);
+    onClickSelectedOption && onClickSelectedOption(selectedValue);
   };
   return (
     <>

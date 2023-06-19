@@ -6,8 +6,8 @@ interface Props {
   rangeMax: number;
   id: string;
   className?: string;
-  value: number;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: number;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: number | string;
 }
 const RangeSlider: React.FC<Props> = ({
@@ -24,7 +24,7 @@ const RangeSlider: React.FC<Props> = ({
     <div className={className}>
       <label
         htmlFor={id}
-        className="block pb-[22px] text-base font-medium text-gray-500"
+        className="block text-base font-medium text-gray-500"
       >
         {label}
       </label>

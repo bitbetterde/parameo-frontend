@@ -85,7 +85,7 @@ const FaqPage: React.FC<Props> = ({
       </div>
       <Tabs tabs={uniqueTags} activeTab={activeTab} onClickTab={selectTags} />
       <div className="border-b-2 border-gray-200 mx-auto max-w-7xl hidden lg:w-[768px]" />
-      <div className="pb-10">
+      <div className="pb-10 mx-auto lg:w-[768px]">
         {activeTab &&
           groupedByTags &&
           groupedByTags[activeTab]?.map((faq) => (

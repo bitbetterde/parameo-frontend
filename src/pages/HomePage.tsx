@@ -11,7 +11,11 @@ import rawFaqs from "@faqs";
 import useMachines from "@hooks/useMachines";
 
 const heroButtons = [
-  { caption: "Try it!", target: "/configurator", variant: "light" as const },
+  {
+    caption: "Try it!",
+    target: "/configurator/products",
+    variant: "light" as const,
+  },
   { caption: "FAQ", target: "/faq", variant: "transparent" as const },
 ];
 
@@ -66,7 +70,7 @@ const features = [
 const cards = [
   {
     title: "Multibox",
-    href: "#",
+    href: "/configurator/parameters",
     category: { name: "CNC", href: "#" },
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
@@ -82,7 +86,7 @@ const cards = [
   },
   {
     title: "Standdesk",
-    href: "#",
+    href: "/configurator/parameters",
     category: { name: "CNC", href: "#" },
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
@@ -98,7 +102,7 @@ const cards = [
   },
   {
     title: "Picture Frame",
-    href: "#",
+    href: "/configurator/parameters",
     category: { name: "Lasercutter", href: "#" },
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
@@ -115,7 +119,7 @@ const cards = [
 ];
 
 const images = [
-  { image: "images/forrest.jpg", imageAlt: "Forrest photo" },
+  { image: "/images/forrest.jpg", imageAlt: "Forrest photo" },
   {
     image: "https://picsum.photos/800/500?random=2",
     imageAlt: "Photo from Picsum",

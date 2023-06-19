@@ -2,8 +2,8 @@ interface Props {
   className?: string;
   name: string;
   label: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  checked: boolean
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  checked?: boolean
 }
 
 const Checkbox: React.FC<Props> = ({ className, name, label, onChange, checked }) => {
@@ -19,7 +19,7 @@ const Checkbox: React.FC<Props> = ({ className, name, label, onChange, checked }
           checked={checked}
         />
       </div>
-      <div className="ml-3 text-sm leading-6">
+      <div className="ml-3">
         <label htmlFor={name} className="text-base font-medium text-gray-800">
           {label}
         </label>
