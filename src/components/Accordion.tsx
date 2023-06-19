@@ -1,5 +1,6 @@
 import { LinkIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { forwardRef } from "react";
+import { Icon } from "@components";
 
 interface AccordionProps {
   className?: string;
@@ -8,13 +9,27 @@ interface AccordionProps {
   children?: React.ReactNode;
   onClickLinkIcon?: (id?: string) => void;
   id?: string;
+  icon?: string;
+  isProse?: boolean;
 }
 
 const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
-  ({ className, children, title, open = false, onClickLinkIcon, id }, ref) => {
+  (
+    {
+      className,
+      children,
+      title,
+      open = false,
+      onClickLinkIcon,
+      id,
+      icon,
+      isProse = true,
+    },
+    ref
+  ) => {
     return (
       <details
-        className={`mx-auto max-w-7xl lg:w-[768px] border-b border-gray-200 p-6 group text-gray-400 open:text-indigo-600 ${
+        className={`mx-auto max-w-7xl border-b border-gray-200 p-6 group text-gray-400 open:text-indigo-600 ${
           className || ""
         } hover:text-black`}
         open={open}
@@ -26,6 +41,13 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
               <LinkIcon className="w-[18px] text-gray-400 mr-7 cursor-pointer hover:text-black active:text-indigo-600" />
             </button>
           )}
+          {icon && (
+            <Icon
+              className="w-[18px] text-gray-400 mr-7"
+              name={icon}
+              variant="outline"
+            />
+          )}
           <h4 className="inline w-full cursor-pointer text-lg font-medium text-inherit">
             {title}
           </h4>
@@ -33,7 +55,13 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
             <ChevronDownIcon className="w-5 text-gray-400" />
           </div>
         </summary>
-        <div className="py-6 prose prose-headings:text-xl max-w-none text-lg text-gray-500">
+        <div
+          className={`py-6 ${
+            isProse
+              ? "prose prose-headings:text-xl text-lg prose-p:text-gray-500 max-w-none"
+              : ""
+          } text-gray-900`}
+        >
           {children}
         </div>
       </details>

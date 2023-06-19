@@ -1,5 +1,11 @@
 import HomePage from "@pages/HomePage";
 import FaqPage from "@pages/FaqPage";
-import ConfiguratorPage from "@pages/ConfiguratorPage";
+import ConfiguratorProductsPage from "@pages/ConfiguratorProductsPage";
+import ConfiguratorParametersPage from "@pages/ConfiguratorParametersPage";
 
-export { HomePage, FaqPage, ConfiguratorPage };
+export {
+  HomePage,
+  FaqPage,
+  ConfiguratorProductsPage,
+  ConfiguratorParametersPage,
+};

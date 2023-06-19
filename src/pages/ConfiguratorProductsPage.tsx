@@ -52,7 +52,7 @@ const cards = [
 ];
 
 const images = [
-  { image: "images/forrest.jpg", imageAlt: "Forrest photo" },
+  { image: "/images/forrest.jpg", imageAlt: "Forrest photo" },
   {
     image: "https://picsum.photos/800/500?random=2",
     imageAlt: "Photo from Picsum",
@@ -71,7 +71,7 @@ const images = [
   },
 ];
 
-const ConfiguratorPage = () => {
+const ConfiguratorProductsPage = () => {
   return (
     <>
       <HeroSection
@@ -92,4 +92,4 @@ const ConfiguratorPage = () => {
   );
 };
 
-export default ConfiguratorPage;
+export default ConfiguratorProductsPage;

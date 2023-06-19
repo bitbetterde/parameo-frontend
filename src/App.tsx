@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { NavBar, LogoGrid, Footer, Notification } from "@components";
-import { HomePage, FaqPage, ConfiguratorPage } from "@pages";
+import {
+  HomePage,
+  FaqPage,
+  ConfiguratorProductsPage,
+  ConfiguratorParametersPage,
+} from "@pages";
 import { Switch, Route } from "wouter";
 import { INotification } from "@interfaces/INotification";
 
 const footerMenu = [
   { name: "Home", href: "/" },
-  { name: "Configurator", href: "/configurator" },
+  { name: "Configurator", href: "/configurator/products" },
   { name: "About", href: "#" },
   { name: "Imprint", href: "#" },
   { name: "Privacy", href: "#" },
@@ -102,8 +107,15 @@ const App = () => {
         variant={notificationData && notificationData.variant}
       />
       <Switch>
-        <Route path="/configurator">
-          <ConfiguratorPage />
+        <Route path="/configurator/parameters">
+          <ConfiguratorParametersPage
+            title="Stand desk"
+            subtitle="Design"
+            description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
+          />
+        </Route>
+        <Route path="/configurator/products">
+          <ConfiguratorProductsPage />
         </Route>
         <Route path="/faq/:faqitem?">
           {(params) => (

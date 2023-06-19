@@ -2,8 +2,8 @@ import { Switch } from "@headlessui/react";
 
 interface Props {
   className?: string;
-  checked: boolean;
-  onChange: ()=> void;
+  checked?: boolean;
+  onChange?: ()=> void;
 }
 
 const Toggle: React.FC<Props> = ({ className, checked, onChange }) => {
