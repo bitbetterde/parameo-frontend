@@ -75,8 +75,7 @@ const cards = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
     licence: "licence type",
-    cardImage:
-      "/images/box-preview-lo.jpg",
+    cardImage: "/images/box-preview-lo.jpg",
     author: {
       name: "regenholz",
       href: "#",
@@ -230,14 +229,16 @@ const HomePage = () => {
           cardsData={
             machines &&
             machines?.map((machine: any) => ({
-              title: machine.title_en,
+              title: machine?.title_en,
               href: "#",
-              category: { name: machine.type, href: "#" },
-              description: machine.description_en,
+              category: { name: machine?.type, href: "#" },
+              description:
+                machine?.description_en || "No description available",
               licence: "OSH - License type",
-              cardImage: machine.pictures[0].image_url,
+              cardImage:
+                machine?.pictures[0]?.image_url,
               author: {
-                name: machine.manufacturer,
+                name: machine?.manufacturer,
                 href: "#",
                 authorImage: "",
               },

@@ -1,5 +1,6 @@
 import type { ICard } from "@interfaces/ICard";
 import { Link } from "wouter";
+import { PhotoIcon } from "@heroicons/react/20/solid";
 
 interface Props {
   className?: string;
@@ -16,11 +17,15 @@ const Card: React.FC<Props> = ({ className, data }) => {
         }`}
       >
         <div className="flex-shrink-0">
-          <img
-            className="h-48 w-full object-cover"
-            src={data.cardImage}
-            alt={data.cardImageAlt}
-          />
+          {data.cardImage ? (
+            <img
+              className="h-48 w-full object-cover"
+              src={data.cardImage}
+              alt={data.cardImageAlt}
+            />
+          ) : (
+            <PhotoIcon className="h-48 w-full text-gray-50 bg-gray-300 p-6" />
+          )}
         </div>
         <div className="flex flex-1 flex-col justify-between bg-white p-6">
           <div className="flex-1">
@@ -49,7 +54,7 @@ const Card: React.FC<Props> = ({ className, data }) => {
                     alt={data.author.authorImageAlt}
                   />
                 ) : (
-                  <div className="bg-gray-400 h-10 w-10 rounded-full" />
+                  <PhotoIcon className="h-10 w-10 rounded-full text-gray-50 bg-gray-300 p-2" />
                 )}
               </Link>
             </div>
