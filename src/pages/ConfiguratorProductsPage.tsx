@@ -3,8 +3,8 @@ import { HeroSection, CardSlider, ImageSlider } from "@components";
 const cards = [
   {
     title: "Multibox",
-    href: "#",
-    category: { name: "CNC", href: "#" },
+    href: "/configurator/parameters",
+    subtitle: "CNC",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
     licence: "licence type",
@@ -19,8 +19,8 @@ const cards = [
   },
   {
     title: "Standdesk",
-    href: "#",
-    category: { name: "CNC", href: "#" },
+    href: "/configurator/parameters",
+    subtitle: "CNC",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
     licence: "licence type",
@@ -28,15 +28,15 @@ const cards = [
       "https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
     author: {
       name: "regenholz",
-      href: "#",
+      href: "/configurator/parameters",
       authorImage:
         "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
   },
   {
     title: "Picture Frame",
-    href: "#",
-    category: { name: "Lasercutter", href: "#" },
+    href: "/configurator/parameters",
+    subtitle: "Lasercutter",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
     licence: "licence type",

@@ -6,7 +6,7 @@ import { useWindowSize } from "usehooks-ts";
 
 interface Props {
   className?: string;
-  title: string;
+  title?: string;
   description?: string;
   cardsData?: Array<ICard>;
   subtitle?: string;
@@ -55,30 +55,32 @@ const CardSlider: React.FC<Props> = ({
         className || ""
       }`}
     >
-      <div className="relative mx-auto max-w-7xl pb-8 lg:pb-12">
-        <div className="text-center">
-          {subtitle && (
-            <h3 className="text-base font-semibold text-indigo-600 uppercase">
-              {subtitle}
-            </h3>
-          )}
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            {title}
-          </h2>
-          {description && (
-            <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 font-normal sm:mt-4">
-              {description}
-            </p>
-          )}
+      {title && (
+        <div className="relative mx-auto max-w-7xl pb-8 lg:pb-12">
+          <div className="text-center">
+            {subtitle && (
+              <h3 className="text-base font-semibold text-indigo-600 uppercase">
+                {subtitle}
+              </h3>
+            )}
+            <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              {title}
+            </h2>
+            {description && (
+              <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 font-normal sm:mt-4">
+                {description}
+              </p>
+            )}
+          </div>
         </div>
-      </div>
+      )}
       <div
         ref={ref}
         className="overflow-hidden flex relative w-[calc(100%+32px)] rounded-lg pb-6 -mx-4"
       >
         {cardsData?.map((card) => (
-          <div className="keen-slider__slide px-4">
-            <Card key={card.title} data={card} className="shadow-lg h-full" />
+          <div className="keen-slider__slide px-4" key={card.title}>
+            <Card data={card} className="shadow-lg h-full" />
           </div>
         ))}
       </div>

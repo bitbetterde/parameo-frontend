@@ -21,6 +21,8 @@ import Select from "./Select";
 import Toggle from "./Toggle";
 import TextInput from "./TextInput";
 import Checkbox from "./Checkbox";
+import FeaturedImageGallery from "./FeaturedImageGallery";
+import DownloadListItem from "./DownloadListItem";
 
 export {
   NavBar,
@@ -46,4 +48,6 @@ export {
   Toggle,
   TextInput,
   Checkbox,
+  FeaturedImageGallery,
+  DownloadListItem,
 };

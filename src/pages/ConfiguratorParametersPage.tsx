@@ -170,7 +170,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
             </div>
             <ButtonLink
               target="#"
-              variant="dark"
+              variant="primary"
               caption="Generate Formats"
               className="w-full py-3 text-center text-base font-medium"
             />
@@ -190,7 +190,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
             <div className="h-[540px] bg-gray-100" />
             <ButtonLink
               target="#"
-              variant="dark"
+              variant="primary"
               caption="Generate Preview"
               className="w-full py-3 text-center text-base font-medium"
             />

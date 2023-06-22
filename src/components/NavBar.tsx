@@ -8,7 +8,7 @@ interface Props {
   className?: string;
   buttonLinkTarget: string;
   buttonLinkCaption: string;
-  buttonLinkVariant?: "dark" | "light" | "transparent";
+  buttonLinkVariant?: "primary" | "white" | "transparent";
 }
 
 const navigation = [

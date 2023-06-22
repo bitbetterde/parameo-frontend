@@ -1,17 +1,12 @@
 export interface ICard {
   title: string;
   href: string;
-  category: ICardCategory;
+  subtitle: string;
   description: string;
   cardImage?: string;
   cardImageAlt?: string;
   licence?: string;
-  author: ICardAuthor;
-}
-
-export interface ICardCategory {
-  name: string;
-  href: string;
+  author?: ICardAuthor;
 }
 
 export interface ICardAuthor {
