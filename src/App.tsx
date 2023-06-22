@@ -5,6 +5,7 @@ import {
   FaqPage,
   ConfiguratorProductsPage,
   ConfiguratorParametersPage,
+  ConfiguratorResultPage,
 } from "@pages";
 import { Switch, Route } from "wouter";
 import { INotification } from "@interfaces/INotification";
@@ -92,7 +93,7 @@ const App = () => {
       <NavBar
         buttonLinkTarget="#"
         buttonLinkCaption="CTA"
-        buttonLinkVariant={"dark" as const}
+        buttonLinkVariant={"primary" as const}
       />
       <Notification
         show={showNotification}
@@ -116,6 +117,13 @@ const App = () => {
         </Route>
         <Route path="/configurator/products">
           <ConfiguratorProductsPage />
+        </Route>
+        <Route path="/configurator/result">
+          <ConfiguratorResultPage
+            title="Ollies desk"
+            subtitle="Stand desk"
+            description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
+          />
         </Route>
         <Route path="/faq/:faqitem?">
           {(params) => (

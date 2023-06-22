@@ -14,7 +14,7 @@ const heroButtons = [
   {
     caption: "Try it!",
     target: "/configurator/products",
-    variant: "light" as const,
+    variant: "white" as const,
   },
   { caption: "FAQ", target: "/faq", variant: "transparent" as const },
 ];
@@ -71,7 +71,7 @@ const cards = [
   {
     title: "Multibox",
     href: "/configurator/parameters",
-    category: { name: "CNC", href: "#" },
+    subtitle: "CNC",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
     licence: "licence type",
@@ -86,7 +86,7 @@ const cards = [
   {
     title: "Standdesk",
     href: "/configurator/parameters",
-    category: { name: "CNC", href: "#" },
+    subtitle: "CNC",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
     licence: "licence type",
@@ -102,7 +102,7 @@ const cards = [
   {
     title: "Picture Frame",
     href: "/configurator/parameters",
-    category: { name: "Lasercutter", href: "#" },
+    subtitle: "Lasercutter",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
     licence: "licence type",
@@ -117,8 +117,8 @@ const cards = [
   },
   {
     title: "Multibox2",
-    href: "#",
-    category: { name: "CNC", href: "#" },
+    href: "/configurator/parameters",
+    subtitle: "CNC",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
     licence: "licence type",
@@ -133,8 +133,8 @@ const cards = [
   },
   {
     title: "Standdesk3",
-    href: "#",
-    category: { name: "CNC", href: "#" },
+    href: "/configurator/parameters",
+    subtitle: "CNC",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
     licence: "licence type",
@@ -149,8 +149,8 @@ const cards = [
   },
   {
     title: "Picture Frame4",
-    href: "#",
-    category: { name: "Lasercutter", href: "#" },
+    href: "/configurator/parameters",
+    subtitle: "Lasercutter",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
     licence: "licence type",
@@ -231,12 +231,11 @@ const HomePage = () => {
             machines?.map((machine: any) => ({
               title: machine?.title_en,
               href: "#",
-              category: { name: machine?.type, href: "#" },
+              subtitle: machine.type,
               description:
                 machine?.description_en || "No description available",
               licence: "OSH - License type",
-              cardImage:
-                machine?.pictures[0]?.image_url,
+              cardImage: machine?.pictures[0]?.image_url,
               author: {
                 name: machine?.manufacturer,
                 href: "#",
