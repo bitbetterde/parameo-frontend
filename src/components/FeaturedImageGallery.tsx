@@ -20,11 +20,11 @@ const FeaturedImageGallery: React.FC<Props> = ({ className, images }) => {
           alt=""
         />
       </div>
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-5 gap-4 cursor-pointer">
         {images.map((item, index) => (
           <div key={index} onClick={() => handleImageClick(item.image)}>
             <img
-              className="rounded-lg object-cover aspect-square"
+              className="rounded-lg object-cover aspect-square w-full"
               src={item.image}
               alt={item.imageAlt}
             />
