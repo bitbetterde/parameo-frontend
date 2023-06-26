@@ -21,6 +21,7 @@ import Select from "./Select";
 import Toggle from "./Toggle";
 import TextInput from "./TextInput";
 import Checkbox from "./Checkbox";
+import ContactForm from "./ContactForm";
 import FeaturedImageGallery from "./FeaturedImageGallery";
 import DownloadListItem from "./DownloadListItem";
 
@@ -48,6 +49,7 @@ export {
   Toggle,
   TextInput,
   Checkbox,
+  ContactForm,
   FeaturedImageGallery,
   DownloadListItem,
 };

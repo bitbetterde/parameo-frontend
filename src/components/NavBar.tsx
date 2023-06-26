@@ -15,7 +15,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "Configurator", href: "/configurator/products" },
   { name: "FAQ", href: "/faq" },
-  { name: "About", href: "#" },
+  { name: "About", href: "/about" },
 ];
 
 const NavBar: React.FC<Props> = ({
