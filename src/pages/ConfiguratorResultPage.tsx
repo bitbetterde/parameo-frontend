@@ -5,6 +5,7 @@ import {
   ImageSlider,
   FeaturedImageGallery,
   DownloadListItem,
+  DoughnutChart,
 } from "@components";
 
 interface Props {
@@ -84,6 +85,18 @@ const descriptionList = [
   { title: "Nested parts (.svg)", filePath: "#" },
 ];
 
+const chartData = {
+  labels: ["Material", "Machines", "Logistic"],
+  datasets: [
+    {
+      data: [47, 15, 38],
+      backgroundColor: ["#4F46E5", "#059669", "#DB2777"],
+      borderWidth: 5,
+      borderColor: "#F3F4F6",
+    },
+  ],
+};
+
 const ConfiguratorResultPage: React.FC<Props> = ({
   className,
   title,
@@ -110,7 +123,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({
         </div>
         <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-24 lg:pt-4 pb-12">
           <div className="lg:w-1/3 flex flex-col gap-10">
-            <div className="bg-gray-100 h-60 w-full rounded-lg" />
+            <DoughnutChart className="h-60 bg-gray-100 rounded-lg" data={chartData}/>
             {descriptionList && (
               <dl className="divide-y divide-gray-200">
                 {descriptionList?.map((item, i) => (

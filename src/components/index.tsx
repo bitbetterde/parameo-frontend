@@ -24,6 +24,7 @@ import Checkbox from "./Checkbox";
 import ContactForm from "./ContactForm";
 import FeaturedImageGallery from "./FeaturedImageGallery";
 import DownloadListItem from "./DownloadListItem";
+import DoughnutChart from "./DoughnutChart";
 
 export {
   NavBar,
@@ -52,4 +53,5 @@ export {
   ContactForm,
   FeaturedImageGallery,
   DownloadListItem,
+  DoughnutChart
 };
