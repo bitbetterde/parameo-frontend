@@ -5,6 +5,7 @@ import {
   FaqPage,
   ConfiguratorProductsPage,
   ConfiguratorParametersPage,
+  AboutPage,
   ConfiguratorResultPage,
 } from "@pages";
 import { Switch, Route } from "wouter";
@@ -13,7 +14,7 @@ import { INotification } from "@interfaces/INotification";
 const footerMenu = [
   { name: "Home", href: "/" },
   { name: "Configurator", href: "/configurator/products" },
-  { name: "About", href: "#" },
+  { name: "About", href: "/about" },
   { name: "Imprint", href: "#" },
   { name: "Privacy", href: "#" },
 ];
@@ -144,6 +145,13 @@ const App = () => {
               }}
             />
           )}
+        </Route>
+        <Route path="/about">
+          <AboutPage
+            title="About parameo"
+            subtitle="Project Background"
+            description="Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend egestas fringilla sapien."
+          />
         </Route>
         <Route>
           <HomePage />
