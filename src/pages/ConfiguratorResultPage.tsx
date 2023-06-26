@@ -6,7 +6,9 @@ import {
   FeaturedImageGallery,
   DownloadListItem,
   DoughnutChart,
+  Spinner,
 } from "@components";
+import useProducers from "@hooks/useProducers";
 
 interface Props {
   className?: string;
@@ -20,33 +22,6 @@ const instructionsAccordion = [
   "Machine hint from the Machine File",
   "Product hint from the Product File",
   "Machine hint from the Machine File",
-];
-
-const cards = [
-  {
-    title: "regenholz",
-    href: "#",
-    subtitle: "Hamburg",
-    description:
-      "regenholz GbR Steinbeker Straße 62 20537 Hamburg Germany https://regenholz.de/",
-    cardImage: "/images/hamburg.png",
-  },
-  {
-    title: "FAB LAB BCN",
-    href: "#",
-    subtitle: "Barcelona",
-    description:
-      "Fab Lab Barcelona Pujades 102 Barcelona Spain https://fablabbcn.org/",
-    cardImage: "/images/barcelona.png",
-  },
-  {
-    title: "You?",
-    href: "#",
-    subtitle: "City",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
-    cardImage: "/images/manufacturer.png",
-  },
 ];
 
 const images = [
@@ -103,6 +78,8 @@ const ConfiguratorResultPage: React.FC<Props> = ({
   subtitle,
   description,
 }) => {
+  const { producers, isLoading } = useProducers();
+
   return (
     <div className={`bg-white pt-6 md:pt-12 ${className || ""}`}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -123,7 +100,10 @@ const ConfiguratorResultPage: React.FC<Props> = ({
         </div>
         <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-24 lg:pt-4 pb-12">
           <div className="lg:w-1/3 flex flex-col gap-10">
-            <DoughnutChart className="h-60 bg-gray-100 rounded-lg" data={chartData}/>
+            <DoughnutChart
+              className="h-60 bg-gray-100 rounded-lg"
+              data={chartData}
+            />
             {descriptionList && (
               <dl className="divide-y divide-gray-200">
                 {descriptionList?.map((item, i) => (
@@ -177,18 +157,24 @@ const ConfiguratorResultPage: React.FC<Props> = ({
         <h2 className="text-base font-semibold text-indigo-600 uppercase pt-7 text-center">
           Local Manufacturing
         </h2>
-        <CardSlider
-          cardsData={
-            cards &&
-            cards?.map((card: any) => ({
-              title: card.title,
-              href: "#",
-              subtitle: card.subtitle,
-              description: card.description,
-              cardImage: card.cardImage,
-            }))
-          }
-        />
+        {isLoading ? (
+          <div className="w-full h-32 flex items-center justify-center">
+            <Spinner />
+          </div>
+        ) : (
+          <CardSlider
+            cardsData={
+              producers &&
+              producers?.map((producer: any) => ({
+                title: producer?.name,
+                externalHref: producer?.website_url,
+                subtitle: "City",
+                cardImage: producer?.pictures[0]?.image_url,
+                description: "No description available",
+              }))
+            }
+          />
+        )}
         <ImageSlider items={images} />
       </div>
     </div>

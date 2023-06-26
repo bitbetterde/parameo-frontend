@@ -7,6 +7,7 @@ export interface ICard {
   cardImageAlt?: string;
   licence?: string;
   author?: ICardAuthor;
+  externalHref?: string;
 }
 
 export interface ICardAuthor {
