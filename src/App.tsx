@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { NavBar, LogoGrid, Footer, Notification } from "@components";
+import {
+  NavBar,
+  LogoGrid,
+  Footer,
+  Notification,
+  ScrollToTop,
+} from "@components";
 import {
   HomePage,
   FaqPage,
@@ -91,6 +97,7 @@ const App = () => {
 
   return (
     <>
+      <ScrollToTop/>
       <NavBar
         buttonLinkTarget="#"
         buttonLinkCaption="CTA"
