@@ -23,6 +23,7 @@ import TextInput from "./TextInput";
 import Checkbox from "./Checkbox";
 import FeaturedImageGallery from "./FeaturedImageGallery";
 import DownloadListItem from "./DownloadListItem";
+import DoughnutChart from "./DoughnutChart";
 
 export {
   NavBar,
@@ -50,4 +51,5 @@ export {
   Checkbox,
   FeaturedImageGallery,
   DownloadListItem,
+  DoughnutChart
 };
