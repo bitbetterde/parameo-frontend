@@ -25,6 +25,7 @@ import ContactForm from "./ContactForm";
 import FeaturedImageGallery from "./FeaturedImageGallery";
 import DownloadListItem from "./DownloadListItem";
 import DoughnutChart from "./DoughnutChart";
+import ScrollToTop from "./ScrollToTop";
 
 export {
   NavBar,
@@ -53,5 +54,6 @@ export {
   ContactForm,
   FeaturedImageGallery,
   DownloadListItem,
-  DoughnutChart
+  DoughnutChart,
+  ScrollToTop,
 };
