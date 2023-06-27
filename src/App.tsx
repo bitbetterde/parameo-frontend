@@ -13,6 +13,7 @@ import {
   ConfiguratorParametersPage,
   AboutPage,
   ConfiguratorResultPage,
+  PrivacyPage,
 } from "@pages";
 import { Switch, Route } from "wouter";
 import { INotification } from "@interfaces/INotification";
@@ -22,7 +23,7 @@ const footerMenu = [
   { name: "Configurator", href: "/configurator/products" },
   { name: "About", href: "/about" },
   { name: "Imprint", href: "#" },
-  { name: "Privacy", href: "#" },
+  { name: "Privacy", href: "/privacy" },
 ];
 
 const footerSocial = [
@@ -97,7 +98,7 @@ const App = () => {
 
   return (
     <>
-      <ScrollToTop/>
+      <ScrollToTop />
       <NavBar
         buttonLinkTarget="#"
         buttonLinkCaption="CTA"
@@ -158,6 +159,13 @@ const App = () => {
             title="About parameo"
             subtitle="Project Background"
             description="Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend egestas fringilla sapien."
+          />
+        </Route>
+        <Route path="/privacy">
+          <PrivacyPage
+            title="Privacy Notice"
+            subtitle="Lorem ipsum dolor sit amet"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
           />
         </Route>
         <Route>
