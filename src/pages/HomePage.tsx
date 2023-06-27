@@ -9,6 +9,7 @@ import {
 } from "@components";
 import rawFaqs from "@faqs";
 import useMachines from "@hooks/useMachines";
+import useProducts from "@hooks/useProducts";
 
 const heroButtons = [
   {
@@ -67,104 +68,6 @@ const features = [
   },
 ];
 
-const cards = [
-  {
-    title: "Multibox",
-    href: "/configurator/parameters",
-    subtitle: "CNC",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
-    licence: "licence type",
-    cardImage: "/images/box-preview-lo.jpg",
-    author: {
-      name: "regenholz",
-      href: "#",
-      authorImage:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  },
-  {
-    title: "Standdesk",
-    href: "/configurator/parameters",
-    subtitle: "CNC",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
-    licence: "licence type",
-    cardImage:
-      "https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
-    author: {
-      name: "regenholz",
-      href: "#",
-      authorImage:
-        "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  },
-  {
-    title: "Picture Frame",
-    href: "/configurator/parameters",
-    subtitle: "Lasercutter",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
-    licence: "licence type",
-    cardImage:
-      "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
-    author: {
-      name: "Daniela Metz",
-      href: "#",
-      authorImage:
-        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  },
-  {
-    title: "Multibox2",
-    href: "/configurator/parameters",
-    subtitle: "CNC",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
-    licence: "licence type",
-    cardImage:
-      "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
-    author: {
-      name: "regenholz",
-      href: "#",
-      authorImage:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  },
-  {
-    title: "Standdesk3",
-    href: "/configurator/parameters",
-    subtitle: "CNC",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
-    licence: "licence type",
-    cardImage:
-      "https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
-    author: {
-      name: "regenholz",
-      href: "#",
-      authorImage:
-        "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  },
-  {
-    title: "Picture Frame4",
-    href: "/configurator/parameters",
-    subtitle: "Lasercutter",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
-    licence: "licence type",
-    cardImage:
-      "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
-    author: {
-      name: "Daniela Metz",
-      href: "#",
-      authorImage:
-        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    },
-  },
-];
-
 const images = [
   { image: "/images/forrest.jpg", imageAlt: "Forrest photo" },
   {
@@ -191,6 +94,7 @@ const HomePage = () => {
     .filter((faq) => faq.showOnHomePage);
 
   const { machines, isLoading } = useMachines();
+  const { products } = useProducts();
 
   return (
     <>
@@ -208,11 +112,33 @@ const HomePage = () => {
         features={features}
       />
       <AvatarSection people={people} title="Connecting" />
-      <CardSlider
-        title="Customize designs"
-        description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
-        cardsData={cards}
-      />
+      {isLoading ? (
+        <div className="w-full h-32 flex items-center justify-center">
+          <Spinner />
+        </div>
+      ) : (
+        <CardSlider
+          title="Customize designs"
+          description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
+          cardsData={
+            products &&
+            products?.map((product: any) => ({
+              title: product?.title,
+              href: "/configurator/parameters",
+              subtitle: product?.machine,
+              description: product?.description || "No description available",
+              licence: "licence type",
+              cardImage: product?.pictures[0]?.image_url,
+              author: {
+                name: "Producer",
+                href: "#",
+                authorImage: "",
+              },
+            }))
+          }
+        />
+      )}
+
       <ImageSlider items={images} />
       <FaqSection
         title="Learn more and get involved – it's open source"
