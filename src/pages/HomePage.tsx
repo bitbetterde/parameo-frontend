@@ -69,22 +69,23 @@ const features = [
 ];
 
 const images = [
-  { image: "/images/forrest.jpg", imageAlt: "Forrest photo" },
+  { image: "/images/parameo-mood_production-01.jpg",
+    imageAlt: "parameo production" },
   {
-    image: "https://picsum.photos/800/500?random=2",
-    imageAlt: "Photo from Picsum",
+    image: "/images/parameo-mood_production-02.jpg",
+    imageAlt: "parameo production",
   },
   {
-    image: "https://picsum.photos/1200/300?random=3",
-    imageAlt: "Photo from Picsum",
+    image: "/images/parameo-mood_production-03.jpg",
+    imageAlt: "parameo production",
   },
   {
-    image: "https://picsum.photos/600/500?random=4",
-    imageAlt: "Photo from Picsum",
+    image: "/images/parameo-mood_production-04.jpg",
+    imageAlt: "parameo production",
   },
   {
-    image: "https://picsum.photos/800/1200?random=5",
-    imageAlt: "Photo from Picsum",
+    image: "/images/parameo-mood_production-05.jpg",
+    imageAlt: "parameo production",
   },
 ];
 
