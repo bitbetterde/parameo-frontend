@@ -4,6 +4,7 @@ import ConfiguratorProductsPage from "@pages/ConfiguratorProductsPage";
 import ConfiguratorParametersPage from "@pages/ConfiguratorParametersPage";
 import AboutPage from "@pages/AboutPage";
 import ConfiguratorResultPage from "@pages/ConfiguratorResultPage";
+import ImprintPage from "@pages/ImprintPage";
 import PrivacyPage from "@pages/PrivacyPage";
 
 export {
@@ -13,5 +14,6 @@ export {
   ConfiguratorParametersPage,
   AboutPage,
   ConfiguratorResultPage,
+  ImprintPage,
   PrivacyPage,
 };

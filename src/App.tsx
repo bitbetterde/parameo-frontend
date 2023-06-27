@@ -13,6 +13,7 @@ import {
   ConfiguratorParametersPage,
   AboutPage,
   ConfiguratorResultPage,
+  ImprintPage,
   PrivacyPage,
 } from "@pages";
 import { Switch, Route } from "wouter";
@@ -22,7 +23,7 @@ const footerMenu = [
   { name: "Home", href: "/" },
   { name: "Configurator", href: "/configurator/products" },
   { name: "About", href: "/about" },
-  { name: "Imprint", href: "#" },
+  { name: "Imprint", href: "/imprint" },
   { name: "Privacy", href: "/privacy" },
 ];
 
@@ -159,6 +160,13 @@ const App = () => {
             title="About parameo"
             subtitle="Project Background"
             description="Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend egestas fringilla sapien."
+          />
+        </Route>
+        <Route path="/imprint">
+          <ImprintPage
+            title="Imprint"
+            subtitle="Felis eget velit"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id aliquet lectus proin nibh. Morbi tristique senectus et netus et malesuada."
           />
         </Route>
         <Route path="/privacy">
