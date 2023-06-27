@@ -32,14 +32,30 @@ const Card: React.FC<Props> = ({ className, data }) => {
             <p className="text-sm font-medium text-indigo-600 hover:underline">
               {data?.subtitle}
             </p>
-            <Link href={data?.href} className="mt-2 block">
-              <p className="text-xl font-semibold text-gray-900">
-                {data?.title}
-              </p>
-              <p className="mt-3 text-base font-normal text-gray-500">
-                {data?.description}
-              </p>
-            </Link>
+            {data?.externalHref ? (
+              <a
+                href={data?.externalHref}
+                className="mt-2 block"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <p className="text-xl font-semibold text-gray-900">
+                  {data?.title}
+                </p>
+                <p className="mt-3 text-base font-normal text-gray-500">
+                  {data?.description}
+                </p>
+              </a>
+            ) : (
+              <Link href={data?.href} className="mt-2 block">
+                <p className="text-xl font-semibold text-gray-900">
+                  {data?.title}
+                </p>
+                <p className="mt-3 text-base font-normal text-gray-500">
+                  {data?.description}
+                </p>
+              </Link>
+            )}
           </div>
           {data?.author && (
             <div className="mt-6 flex items-center">
