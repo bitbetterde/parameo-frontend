@@ -36,7 +36,7 @@ const people = [
   {
     name: "Manufacturers",
     image:
-      "parameo-portrait-illustration_manufacturer.png",
+      "images/parameo-portrait-illustration_manufacturer.png",
     imageAlt: "",
   },
 ];
