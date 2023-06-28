@@ -24,19 +24,19 @@ const people = [
   {
     name: "Users & Makers",
     image:
-      "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+      "/images/parameo-portrait-illustration_user.png",
     imageAlt: "",
   },
   {
     name: "Designers",
     image:
-      "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+      "images/parameo-portrait-illustration_designer.png",
     imageAlt: "",
   },
   {
     name: "Manufacturers",
     image:
-      "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+      "parameo-portrait-illustration_manufacturer.png",
     imageAlt: "",
   },
 ];
