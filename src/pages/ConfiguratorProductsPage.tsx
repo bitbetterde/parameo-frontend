@@ -31,7 +31,7 @@ const ConfiguratorProductsPage = () => {
         title="Configurator headline here ..."
         subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
         heroImage="/images/parameo-hero-img_configurator.jpg"
-        heroImageAlt="People working on laptops"
+        heroImageAlt="carpenter working on a laptop"
       />
       {isLoading ? (
         <div className="w-full h-32 flex items-center justify-center">
