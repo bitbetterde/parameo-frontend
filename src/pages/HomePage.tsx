@@ -102,8 +102,8 @@ const HomePage = () => {
       <HeroSection
         title="Customize, calculate and manufacture with ease"
         subtitle="parameo is an open tool for customizing parametric product designs, calculating costs and emissions and generating individual production data for CNC machines."
-        heroImage="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100"
-        heroImageAlt="People working on laptops"
+        heroImage="/images/parameo-hero-img_home.jpg"
+        heroImageAlt="wood plate goods"
         buttons={heroButtons}
       />
       <FeatureSection
