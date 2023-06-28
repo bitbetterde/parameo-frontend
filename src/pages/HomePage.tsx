@@ -64,7 +64,7 @@ const features = [
     name: "DYI or BUY",
     description:
       "Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.",
-    icon: "cursor-arrow-rays",
+    icon: "CursorArrowRaysIcon",
   },
 ];
 
