@@ -46,19 +46,19 @@ const features = [
     name: "CO2 footprint",
     description:
       "Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.",
-    icon: "light-bulb",
+    icon: "LightBulbIcon",
   },
   {
     name: "Material price",
     description:
       "Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.",
-    icon: "presentation-chart-line",
+    icon: "PresentationChartLineIcon",
   },
   {
     name: "Bill of materials",
     description:
       "Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.",
-    icon: "list-bullet",
+    icon: "ListBulletIcon",
   },
   {
     name: "DYI or BUY",
