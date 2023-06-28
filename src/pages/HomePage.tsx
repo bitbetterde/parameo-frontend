@@ -22,19 +22,19 @@ const heroButtons = [
 
 const people = [
   {
-    name: "Aware consumers & makers",
+    name: "Users & Makers",
     image:
       "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
     imageAlt: "",
   },
   {
-    name: "Distributed designers",
+    name: "Designers",
     image:
       "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
     imageAlt: "",
   },
   {
-    name: "Local manufacturers",
+    name: "Manufacturers",
     image:
       "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
     imageAlt: "",
