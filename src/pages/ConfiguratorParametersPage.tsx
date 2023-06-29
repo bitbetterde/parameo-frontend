@@ -169,7 +169,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               </div>
             </div>
             <ButtonLink
-              target="#"
+              target="/configurator/result"
               variant="primary"
               caption="Generate Formats"
               className="w-full py-3 text-center text-base font-medium"
