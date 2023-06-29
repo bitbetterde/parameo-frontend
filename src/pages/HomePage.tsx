@@ -23,21 +23,24 @@ const heroButtons = [
 const people = [
   {
     name: "Users & Makers",
-    image:
-      "/images/parameo-portrait-illustration_user.png",
+    image: "/images/parameo-portrait-illustration_user.png",
     imageAlt: "",
+    href: "/faq",
+    hoverImage: "images/cta-text.png",
   },
   {
     name: "Designers",
-    image:
-      "images/parameo-portrait-illustration_designer.png",
+    image: "images/parameo-portrait-illustration_designer.png",
     imageAlt: "",
+    href: "/faq",
+    hoverImage: "images/cta-text.png",
   },
   {
     name: "Manufacturers",
-    image:
-      "images/parameo-portrait-illustration_manufacturer.png",
+    image: "images/parameo-portrait-illustration_manufacturer.png",
     imageAlt: "",
+    href: "/faq",
+    hoverImage: "images/cta-text.png",
   },
 ];
 
@@ -69,8 +72,10 @@ const features = [
 ];
 
 const images = [
-  { image: "/images/parameo-mood_production-01.jpg",
-    imageAlt: "parameo production" },
+  {
+    image: "/images/parameo-mood_production-01.jpg",
+    imageAlt: "parameo production",
+  },
   {
     image: "/images/parameo-mood_production-02.jpg",
     imageAlt: "parameo production",
