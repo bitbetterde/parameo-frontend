@@ -1,3 +1,4 @@
+import React from "react";
 import type { ICard } from "@interfaces/ICard";
 import { Link } from "wouter";
 import { PhotoIcon } from "@heroicons/react/20/solid";
@@ -7,14 +8,38 @@ interface Props {
   data: ICard;
 }
 
+interface CardLinkWrapper {
+  component: any;
+  props?: React.HTMLProps<HTMLAnchorElement>;
+}
+
 const Card: React.FC<Props> = ({ className, data }) => {
+  let CardLinkWrapper: CardLinkWrapper;
+  if (data?.externalHref) {
+    CardLinkWrapper = {
+      component: "a",
+      props: {
+        href: data?.externalHref,
+        target: "_blank",
+        rel: "noreferrer",
+      },
+    };
+  } else if (data?.href) {
+    CardLinkWrapper = {
+      component: Link,
+      props: { href: data?.href },
+    };
+  } else {
+    CardLinkWrapper = { component: React.Fragment };
+  }
+
   return (
-    <>
+    <CardLinkWrapper.component {...CardLinkWrapper.props}>
       <div
         key={data?.title}
         className={`flex flex-col overflow-hidden rounded-lg ${
-          className || ""
-        }`}
+          data?.href || data?.externalHref ? "cursor-pointer" : ""
+        } ${className || ""}`}
       >
         <div className="flex-shrink-0">
           {data?.cardImage ? (
@@ -29,33 +54,13 @@ const Card: React.FC<Props> = ({ className, data }) => {
         </div>
         <div className="flex flex-1 flex-col justify-between bg-white p-6">
           <div className="flex-1">
-            <p className="text-sm font-medium text-indigo-600 hover:underline">
+            <p className="text-sm font-medium text-indigo-600 hover:underline pb-2">
               {data?.subtitle}
             </p>
-            {data?.externalHref ? (
-              <a
-                href={data?.externalHref}
-                className="mt-2 block"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <p className="text-xl font-semibold text-gray-900">
-                  {data?.title}
-                </p>
-                <p className="mt-3 text-base font-normal text-gray-500">
-                  {data?.description}
-                </p>
-              </a>
-            ) : (
-              <Link href={data?.href} className="mt-2 block">
-                <p className="text-xl font-semibold text-gray-900">
-                  {data?.title}
-                </p>
-                <p className="mt-3 text-base font-normal text-gray-500">
-                  {data?.description}
-                </p>
-              </Link>
-            )}
+            <p className="text-xl font-semibold text-gray-900">{data?.title}</p>
+            <p className="mt-3 text-base font-normal text-gray-500">
+              {data?.description}
+            </p>
           </div>
           {data?.author && (
             <div className="mt-6 flex items-center">
@@ -91,7 +96,7 @@ const Card: React.FC<Props> = ({ className, data }) => {
           )}
         </div>
       </div>
-    </>
+    </CardLinkWrapper.component>
   );
 };
 
