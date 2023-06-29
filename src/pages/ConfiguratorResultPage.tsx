@@ -169,7 +169,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({
                 title: producer?.name,
                 externalHref: producer?.website_url,
                 subtitle: "City",
-                cardImage: producer?.pictures[0]?.image_url,
+                cardImage: producer?.pictures?.[0]?.image_url,
                 description: "No description available",
               }))
             }

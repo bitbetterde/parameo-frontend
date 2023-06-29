@@ -129,7 +129,7 @@ const HomePage = () => {
               subtitle: product?.machine,
               description: product?.description || "No description available",
               licence: "licence type",
-              cardImage: product?.pictures[0]?.image_url,
+              cardImage: product?.pictures?.[0]?.image_url,
               author: {
                 name: "Producer",
                 href: "#",
@@ -162,7 +162,7 @@ const HomePage = () => {
               description:
                 machine?.description_en || "No description available",
               licence: "OSH - License type",
-              cardImage: machine?.pictures[0]?.image_url,
+              cardImage: machine?.pictures?.[0]?.image_url,
               author: {
                 name: machine?.manufacturer,
                 href: "#",
