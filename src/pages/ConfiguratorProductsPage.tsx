@@ -51,7 +51,7 @@ const ConfiguratorProductsPage = () => {
               description:
                 product?.description || "No description available",
               licence: "licence type",
-              cardImage: product?.pictures[0]?.image_url,
+              cardImage: product?.pictures?.[0]?.image_url,
               author: {
                 name: "Producer",
                 href: "#",
