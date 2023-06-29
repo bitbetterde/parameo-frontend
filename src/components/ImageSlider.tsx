@@ -11,6 +11,7 @@ const ImageSlider: React.FC<Props> = ({ className = "", items }) => {
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
+    loop: true,
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
     },
@@ -20,9 +21,7 @@ const ImageSlider: React.FC<Props> = ({ className = "", items }) => {
   });
   return (
     <div
-      className={`mx-auto max-w-7xl px-6 lg:px-8 lg:py-12 ${
-        className || ""
-      }`}
+      className={`mx-auto max-w-7xl px-6 lg:px-8 lg:py-12 ${className || ""}`}
     >
       <div className="relative overflow-hidden">
         <div
@@ -35,6 +34,9 @@ const ImageSlider: React.FC<Props> = ({ className = "", items }) => {
               src={item.image}
               className="keen-slider__slide object-cover"
               alt={item.imageAlt}
+              onClick={() => {
+                instanceRef.current?.next();
+              }}
             />
           ))}
         </div>
