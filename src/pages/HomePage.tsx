@@ -25,7 +25,7 @@ const people = [
     name: "Users & Makers",
     image: "/images/parameo-portrait-illustration_user.png",
     imageAlt: "",
-    href: "/faq",
+    href: "/faq/fabulaser",
     hoverImage: "images/cta-text.png",
   },
   {
