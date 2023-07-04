@@ -168,9 +168,9 @@ const ConfiguratorResultPage: React.FC<Props> = ({
               producers?.map((producer: any) => ({
                 title: producer?.name,
                 externalHref: producer?.website_url,
-                subtitle: "City",
+                subtitle: producer?.location_name || "City",
                 cardImage: producer?.pictures?.[0]?.image_url,
-                description: "No description available",
+                description: producer?.description || "No description available",
               }))
             }
           />
