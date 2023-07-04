@@ -133,12 +133,12 @@ const HomePage = () => {
               href: "/configurator/parameters",
               subtitle: product?.machine,
               description: product?.description || "No description available",
-              licence: "licence type",
+              licence: product?.subtitle || "licence type",
               cardImage: product?.pictures?.[0]?.image_url,
               author: {
-                name: "Producer",
+                name: product?.designer_name,
                 href: "#",
-                authorImage: "",
+                authorImage: product?.designer_image_file,
               },
             }))
           }

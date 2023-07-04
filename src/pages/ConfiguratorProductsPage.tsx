@@ -53,9 +53,9 @@ const ConfiguratorProductsPage = () => {
               licence: "licence type",
               cardImage: product?.pictures?.[0]?.image_url,
               author: {
-                name: "Producer",
+                name: product?.designer_name,
                 href: "#",
-                authorImage: "",
+                authorImage: product?.designer_image_file,
               },
             }))
           }
