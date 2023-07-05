@@ -27,7 +27,7 @@ const body = (
 
 export default {
   title: "Maker collaboration",
-  id: "example",
+  id: "maker-collaboration",
   tags: ["Manufacturing"],
   body,
   teaser:
