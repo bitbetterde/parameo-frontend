@@ -28,10 +28,10 @@ const body = (
 export default {
   title: "This is a faq item example",
   id: "example",
-  tags: ["Design", "Code"],
+  tags: ["Manufacturing"],
   body,
   teaser:
     "Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.",
-  showOnHomePage: true,
+  showOnHomePage: false,
   order: 1,
 } as IFaqFile;
