@@ -26,8 +26,8 @@ const body = (
 );
 
 export default {
-  title: "This is a faq item example",
-  id: "example",
+  title: "Manufacturer Collaboration",
+  id: "maufacturer-collaboration",
   tags: ["Manufacturing"],
   body,
   teaser:
