@@ -26,21 +26,21 @@ const people = [
     image: "/images/parameo-portrait-illustration_user.png",
     imageAlt: "",
     href: "/faq/fabulaser",
-    hoverImage: "images/cta-text.png",
+    hoverImage: "images/parameo-user-learnmore.png",
   },
   {
     name: "Designers",
     image: "images/parameo-portrait-illustration_designer.png",
     imageAlt: "",
     href: "/faq",
-    hoverImage: "images/cta-text.png",
+    hoverImage: "images/parameo-designer-learnmore.png",
   },
   {
     name: "Manufacturers",
     image: "images/parameo-portrait-illustration_manufacturer.png",
     imageAlt: "",
     href: "/faq",
-    hoverImage: "images/cta-text.png",
+    hoverImage: "images/parameo-manufacturer-learnmore.png",
   },
 ];
 
