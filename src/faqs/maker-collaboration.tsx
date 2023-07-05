@@ -26,7 +26,7 @@ const body = (
 );
 
 export default {
-  title: "This is a faq item example",
+  title: "Maker collaboration",
   id: "example",
   tags: ["Manufacturing"],
   body,
