@@ -26,7 +26,7 @@ const body = (
 );
 
 export default {
-  title: "This is a faq item example",
+  title: "Designer collaboration",
   id: "example",
   tags: ["Design"],
   body,
