@@ -1,9 +1,9 @@
 import fabulaser from "./fabulaser";
 import maslowcnc from "./maslowcnc";
 import example from "./example";
-import designer collaboration from "./designer-collaboration";
-import developer collaboration from "./developer-collaboration";
-import manufacturer collaboration from "./manufacturer-collaboration";
-import maker collaboration from "./maker-collaboration";
+import designerCollaboration from "./designer-collaboration";
+import developerCollaboration from "./developer-collaboration";
+import manufacturerCollaboration from "./manufacturer-collaboration";
+import makerCollaboration from "./maker-collaboration";
 
-export default [fabulaser, maslowcnc, example];
+export default [fabulaser, maslowcnc, example, designerCollaboration,developerCollaboration, manufacturerCollaboration, makerCollaboration];
