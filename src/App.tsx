@@ -102,7 +102,7 @@ const App = () => {
       <ScrollToTop />
       <NavBar
         buttonLinkTarget="#"
-        buttonLinkCaption="CTA"
+        buttonLinkCaption="TRY IT"
         buttonLinkVariant={"primary" as const}
       />
       <Notification
