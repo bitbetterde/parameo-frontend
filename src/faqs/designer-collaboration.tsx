@@ -27,7 +27,7 @@ const body = (
 
 export default {
   title: "Designer collaboration",
-  id: "example",
+  id: "designer-collaboration",
   tags: ["Design"],
   body,
   teaser:
