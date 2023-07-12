@@ -7,6 +7,11 @@ export default {
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        indigo: {
+          600: "#4F46E5"
+        }
+      }
     },
   },
   plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],

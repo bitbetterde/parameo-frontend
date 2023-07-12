@@ -36,7 +36,7 @@ const NavBar: React.FC<Props> = ({
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <Link href="/">
             <span className="sr-only">{import.meta.env.VITE_APP_TITLE}</span>
-            <ParameoLogo className="h-8 w-auto sm:h-10" />
+            <ParameoLogo className="h-8 w-auto sm:h-10 text-indigo-600" />
           </Link>
         </div>
         <div className="hidden md:flex space-x-10">
