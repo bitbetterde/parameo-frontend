@@ -5,7 +5,11 @@ interface Props {
   subtitle?: string;
   description?: string;
   className?: string;
-  features: Array<{ name: string; description: string; icon: string }>;
+  features: Array<{
+    name: string;
+    description: string;
+    icon: "globe" | "annotation" | "lightning" | "scale";
+  }>;
 }
 
 const FeatureSection: React.FC<Props> = ({

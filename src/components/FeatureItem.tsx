@@ -7,11 +7,11 @@ import React from "react";
 interface Props {
   name: string;
   description: string;
-  icon?: keyof typeof iconMapping;
+  icon?: "globe" | "annotation" | "lightning" | "scale";
   className?: string;
 }
 
-const iconMapping = {
+const iconMapping: Record<string, any> = {
   globe: GlobeIcon,
   annotation: AnnotationIcon,
   lightning: LightningIcon,
