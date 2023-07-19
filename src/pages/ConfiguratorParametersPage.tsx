@@ -6,6 +6,7 @@ import {
   Select,
   RangeSlider,
   ButtonLink,
+  ModelViewer,
 } from "@components";
 import { Link } from "wouter";
 
@@ -187,7 +188,10 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                 <Toggle />
               </div>
             </div>
-            <div className="h-[540px] bg-gray-100" />
+            <ModelViewer
+              modelSrc="https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
+              modelAlt="A 3D model"
+            />
             <ButtonLink
               target="#"
               variant="primary"

@@ -26,6 +26,7 @@ import FeaturedImageGallery from "./FeaturedImageGallery";
 import DownloadListItem from "./DownloadListItem";
 import DoughnutChart from "./DoughnutChart";
 import ScrollToTop from "./ScrollToTop";
+import ModelViewer from "./ModelViewer";
 
 export {
   NavBar,
@@ -56,4 +57,5 @@ export {
   DownloadListItem,
   DoughnutChart,
   ScrollToTop,
+  ModelViewer
 };
