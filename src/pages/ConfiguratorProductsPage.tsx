@@ -2,8 +2,10 @@ import { HeroSection, CardSlider, ImageSlider, Spinner } from "@components";
 import useProducts from "@hooks/useProducts";
 
 const images = [
-  { image: "/images/parameo-mood_production-01.jpg",
-    imageAlt: "parameo production" },
+  {
+    image: "/images/parameo-mood_production-01.jpg",
+    imageAlt: "parameo production",
+  },
   {
     image: "/images/parameo-mood_production-02.jpg",
     imageAlt: "parameo production",
@@ -44,12 +46,11 @@ const ConfiguratorProductsPage = () => {
           description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
           cardsData={
             products &&
-            products?.map((product: any) => ({
+            products?.map((product) => ({
               title: product?.title,
-              href: "/configurator/parameters",
+              href: `/configurator/${product.id}/parameters`,
               subtitle: product?.machine,
-              description:
-                product?.description || "No description available",
+              description: product?.description || "No description available",
               licence: "licence type",
               cardImage: product?.pictures?.[0]?.image_url,
               author: {

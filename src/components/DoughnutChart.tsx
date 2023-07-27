@@ -1,6 +1,7 @@
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import type { ChartOptions, ChartData } from "chart.js";
+import type React from "react";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -34,7 +35,8 @@ const DoughnutChart: React.FC<Props> = ({ className, data }) => {
             };
           },
           labelColor: (tooltipItem) => {
-            const backgroundColor = tooltipItem?.element?.options?.backgroundColor;
+            const backgroundColor =
+              tooltipItem?.element?.options?.backgroundColor;
             return {
               borderColor: backgroundColor,
               backgroundColor: backgroundColor,

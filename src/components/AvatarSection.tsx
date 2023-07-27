@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { PhotoIcon } from "@heroicons/react/20/solid";
+import type React from "react";
 
 interface Person {
   name: string;

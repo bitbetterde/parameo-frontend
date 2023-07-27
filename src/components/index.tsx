@@ -27,6 +27,7 @@ import DownloadListItem from "./DownloadListItem";
 import DoughnutChart from "./DoughnutChart";
 import ScrollToTop from "./ScrollToTop";
 import ModelViewer from "./ModelViewer";
+import ProductPartConfigurator from "./ProductPartConfigurator";
 
 export {
   NavBar,
@@ -57,5 +58,6 @@ export {
   DownloadListItem,
   DoughnutChart,
   ScrollToTop,
-  ModelViewer
+  ModelViewer,
+  ProductPartConfigurator
 };

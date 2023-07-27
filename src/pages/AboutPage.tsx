@@ -1,4 +1,5 @@
 import { ContactForm } from "@components";
+import type React from "react";
 
 interface Props {
   className?: string;

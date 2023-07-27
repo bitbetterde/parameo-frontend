@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
+import type React from "react";
 
 type Props = {
   className?: string;

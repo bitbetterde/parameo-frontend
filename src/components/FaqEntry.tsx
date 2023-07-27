@@ -1,6 +1,7 @@
 import type { IFaqFile } from "@interfaces/IFaq";
 import { Link } from "wouter";
 import { FAQ_ENTRY_READ_MORE } from "@translations/en.json";
+import type React from "react";
 
 interface Props {
   className?: string;

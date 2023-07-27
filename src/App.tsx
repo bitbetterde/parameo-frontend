@@ -118,12 +118,15 @@ const App = () => {
         variant={notificationData && notificationData.variant}
       />
       <Switch>
-        <Route path="/configurator/parameters">
-          <ConfiguratorParametersPage
-            title="Stand desk"
-            subtitle="Design"
-            description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
-          />
+        <Route path="/configurator/:id/parameters">
+          {(params) => (
+            <ConfiguratorParametersPage
+              productId={Number(params.id)}
+              title="Stand desk"
+              subtitle="Design"
+              description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
+            />
+          )}
         </Route>
         <Route path="/configurator/products">
           <ConfiguratorProductsPage />
