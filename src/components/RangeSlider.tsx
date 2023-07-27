@@ -1,4 +1,5 @@
 import "@styles/input.css";
+import type React from "react";
 
 interface Props {
   label: string;
@@ -10,6 +11,7 @@ interface Props {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: number | string;
 }
+
 const RangeSlider: React.FC<Props> = ({
   label,
   rangeMin,
@@ -18,14 +20,11 @@ const RangeSlider: React.FC<Props> = ({
   className,
   value,
   onChange,
-  placeholder
+  placeholder,
 }) => {
   return (
     <div className={className}>
-      <label
-        htmlFor={id}
-        className="block text-base font-medium text-gray-500"
-      >
+      <label htmlFor={id} className="block text-base font-medium text-gray-500">
         {label}
       </label>
       <div className="flex items-center gap-4">
@@ -47,7 +46,12 @@ const RangeSlider: React.FC<Props> = ({
           min={rangeMin}
           max={rangeMax}
           value={value}
-          onChange={onChange}
+          onChange={(e) => {
+            parseInt(e.currentTarget.value) < rangeMax &&
+              parseInt(e.currentTarget.value) > rangeMin &&
+              onChange &&
+              onChange(e);
+          }}
           inputMode="numeric"
           pattern="\d*"
           placeholder={placeholder?.toString()}

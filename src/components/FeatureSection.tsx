@@ -1,4 +1,5 @@
 import { FeatureItem } from "@components";
+import type React from "react";
 
 interface Props {
   title?: string;

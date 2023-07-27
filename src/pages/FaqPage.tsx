@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { HeroSection, ImageSlider, Tabs, Accordion } from "@components";
 import rawFaqs from "@faqs";
 import { groupBy } from "lodash-es";
+import type React from "react";
 
 interface Props {
   itemFromPath?: string;
@@ -11,8 +12,10 @@ interface Props {
 }
 
 const images = [
-  { image: "/images/parameo-mood_production-01.jpg",
-    imageAlt: "parameo production" },
+  {
+    image: "/images/parameo-mood_production-01.jpg",
+    imageAlt: "parameo production",
+  },
   {
     image: "/images/parameo-mood_production-02.jpg",
     imageAlt: "parameo production",

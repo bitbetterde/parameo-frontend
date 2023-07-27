@@ -1,4 +1,5 @@
 import { Select } from "@components";
+import type React from "react";
 
 interface Props {
   className?: string;
@@ -13,8 +14,8 @@ const Tabs: React.FC<Props> = ({ className, tabs, activeTab, onClickTab }) => {
       <div className="sm:hidden px-6 pt-2.5">
         <Select
           options={tabs?.map((tab) => tab.label)}
-          selectedOption={activeTab}
-          onClickSelectedOption={onClickTab}
+          value={activeTab}
+          onChange={(e) => onClickTab(e.currentTarget.value)}
           name="tabs"
           label="Select an option"
         />

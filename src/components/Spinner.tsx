@@ -1,4 +1,5 @@
 import { SPINNER_SCREEN_READER } from "@translations/en.json";
+import type React from "react";
 
 const Spinner: React.FC = ({ className }: { className?: string }) => {
   return (

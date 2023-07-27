@@ -5,6 +5,7 @@ import GitHubLogo from "@assets/logos/github.svg";
 import GitLabLogo from "@assets/logos/gitlab.svg";
 import DribbleLogo from "@assets/logos/dribble.svg";
 import { Link } from "wouter";
+import type React from "react";
 
 interface Props {
   className?: string;

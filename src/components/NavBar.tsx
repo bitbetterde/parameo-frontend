@@ -3,6 +3,7 @@ import { ButtonLink } from "@components";
 import { Link } from "wouter";
 import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import type React from "react";
 
 interface Props {
   className?: string;

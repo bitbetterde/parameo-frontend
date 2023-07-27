@@ -1,4 +1,5 @@
 import "@google/model-viewer";
+import type React from "react";
 
 interface Props {
   className?: string;
@@ -6,11 +7,7 @@ interface Props {
   modelAlt?: string;
 }
 
-const ModelViewer: React.FC<Props> = ({
-  className,
-  modelSrc,
-  modelAlt,
-}) => {
+const ModelViewer: React.FC<Props> = ({ className, modelSrc, modelAlt }) => {
   return (
     //@ts-expect-error
     <model-viewer

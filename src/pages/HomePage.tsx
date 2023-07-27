@@ -128,9 +128,9 @@ const HomePage = () => {
           description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
           cardsData={
             products &&
-            products?.map((product: any) => ({
+            products?.map((product) => ({
               title: product?.title,
-              href: "/configurator/parameters",
+              href: `/configurator/${product?.id}/parameters`,
               subtitle: product?.machine,
               description: product?.description || "No description available",
               licence: product?.subtitle || "licence type",

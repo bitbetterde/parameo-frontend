@@ -1,5 +1,6 @@
 import { FaqEntry } from "@components";
 import { IFaqFile } from "@interfaces/IFaq";
+import type React from "react";
 
 interface Props {
   title: string;
@@ -56,7 +57,9 @@ const SubscriptionBar: React.FC<SuscriptionProps> = ({
         className || ""
       }`}
     >
-      <p className="text-xl font-normal text-gray-500 text-center md:text-left">{subscriptionCta}</p>
+      <p className="text-xl font-normal text-gray-500 text-center md:text-left">
+        {subscriptionCta}
+      </p>
       <form className="mt-6 flex flex-col sm:flex-row lg:mt-0 lg:justify-end">
         <div>
           <label htmlFor="email-address" className="sr-only">
