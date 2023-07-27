@@ -19,7 +19,7 @@ export interface IProductPartParameter {
   maximum: number;
 }
 
-export interface IProductPartParameterValue {
+export interface IConfiguredParameter {
   id: number;
   value: number;
 }

@@ -1,9 +1,6 @@
 import { Accordion, Select, RangeSlider } from "@components";
 import { Link } from "wouter";
-import type {
-  IProductPart,
-  IProductPartParameterValue,
-} from "@interfaces/IProduct";
+import type { IProductPart, IConfiguredParameter } from "@interfaces/IProduct";
 import { useEffect, useState } from "react";
 import type React from "react";
 
@@ -11,7 +8,7 @@ interface Props {
   part: IProductPart;
   onChange: (a: {
     material: string;
-    parametersValues: IProductPartParameterValue[];
+    parametersValues: IConfiguredParameter[];
   }) => void;
 }
 
@@ -20,7 +17,7 @@ const ProductPartConfigurator: React.FC<Props> = ({ part, onChange }) => {
     part?.materials?.[0]?.title_en
   );
   const [parametersValues, setParametersValues] = useState<
-    IProductPartParameterValue[]
+    IConfiguredParameter[]
   >(
     part.parameters.map((parameter) => ({
       id: parameter.id,

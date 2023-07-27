@@ -9,11 +9,13 @@ import {
 } from "@components";
 import { Link } from "wouter";
 import { useEffect, useState } from "react";
-import { IProductPartParameterValue } from "@interfaces/IProduct.ts";
+import { IConfiguredParameter } from "@interfaces/IProduct.ts";
 import { useForm } from "react-hook-form";
 import { ReactComponent as ExclamationIcon } from "@assets/icons/exclamation-triangle.svg";
 import useProduct from "@hooks/useProduct.ts";
 import type React from "react";
+import sessionService from "@hooks/session.service.ts";
+import { ISession } from "@interfaces/ISession.ts";
 
 interface Props {
   productId: number;
@@ -23,7 +25,7 @@ interface Props {
   description?: string;
 }
 
-interface GenerateFormatsData extends FormInput {
+export interface GenerateFormatsData extends FormInput {
   parts: Array<PartConfiguration>;
 }
 
@@ -40,7 +42,7 @@ interface FormInput {
 interface PartConfiguration {
   id: number;
   material: string;
-  parametersValues: IProductPartParameterValue[];
+  parametersValues: IConfiguredParameter[];
 }
 
 const ConfiguratorParametersPage: React.FC<Props> = ({
@@ -48,6 +50,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   productId,
 }) => {
   const product = useProduct(productId)?.product;
+
   const [partsValues, setPartsValues] = useState<PartConfiguration[]>(
     product?.parts.map((part) => ({
       id: part.id,
@@ -55,6 +58,8 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
       parametersValues: [],
     }))
   );
+
+  const [session, setSession] = useState<ISession>();
 
   const { register, handleSubmit, formState } = useForm<FormInput>({
     mode: "onBlur",
@@ -220,15 +225,32 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               </div>
             </div>
             <ModelViewer
-              modelSrc="https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
+              modelSrc={
+                session?.preview_file_url ?? ""
+                //   ??
+                // "https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
+              }
               modelAlt="A 3D model"
             />
-            <ButtonLink
-              target="#"
-              variant="primary"
-              caption="Generate Preview"
-              className="w-full py-3 text-center text-base font-medium"
-            />
+            <button
+              disabled={!isValid}
+              className="bg-indigo-600 text-white hover:bg-indigo-700 w-full py-3 text-center text-base font-medium rounded-md disabled:bg-gray-200"
+              onClick={(e) => {
+                e.preventDefault();
+                sessionService.getSession().then((res) => {
+                  setSession(res?.[0]);
+                  handleSubmit((formInputs) => {
+                    const result: GenerateFormatsData = {
+                      ...formInputs,
+                      parts: partsValues,
+                    };
+                    console.log(result);
+                  })();
+                });
+              }}
+            >
+              Generate Preview
+            </button>
           </div>
         </div>
       </div>
