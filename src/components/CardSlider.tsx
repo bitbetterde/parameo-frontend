@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import { Card } from "@components";
 import { ICard } from "@interfaces/ICard";
@@ -48,6 +48,10 @@ const CardSlider: React.FC<Props> = ({
   const { width } = useWindowSize();
   const isMobileViewport = width && width < BREAKPOINT_TABLET;
   const isDesktopViewport = width && width > BREAKPOINT_DESKTOP;
+
+  useEffect(() => {
+    instanceRef?.current?.update();
+  }, [cardsData]);
 
   return cardsData ? (
     <div
