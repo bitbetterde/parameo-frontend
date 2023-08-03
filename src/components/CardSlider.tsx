@@ -82,8 +82,8 @@ const CardSlider: React.FC<Props> = ({
         ref={ref}
         className="overflow-hidden flex relative w-[calc(100%+32px)] rounded-lg pb-6 -mx-4"
       >
-        {cardsData?.map((card) => (
-          <div className="keen-slider__slide px-4" key={card.title}>
+        {cardsData?.map((card, i) => (
+          <div className="keen-slider__slide px-4" key={card.title ?? i}>
             <Card data={card} className="shadow-lg h-full" />
           </div>
         ))}
