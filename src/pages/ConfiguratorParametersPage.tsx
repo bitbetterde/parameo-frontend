@@ -1,21 +1,23 @@
 import {
-  TextInput,
-  Toggle,
   Checkbox,
-  Select,
-  ButtonLink,
   ModelViewer,
   ProductPartConfigurator,
+  Select,
+  TextInput,
+  Toggle,
 } from "@components";
 import { Link } from "wouter";
+import type React from "react";
 import { useEffect, useState } from "react";
-import { IConfiguredParameter } from "@interfaces/IProduct.ts";
 import { useForm } from "react-hook-form";
 import { ReactComponent as ExclamationIcon } from "@assets/icons/exclamation-triangle.svg";
 import useProduct from "@hooks/useProduct.ts";
-import type React from "react";
-import sessionService from "@hooks/session.service.ts";
+import sessionService, {
+  IConfiguredParameter,
+  PartConfiguration,
+} from "@hooks/session.service.ts";
 import { ISession } from "@interfaces/ISession.ts";
+import { IProductPart } from "@interfaces/IProduct.ts";
 
 interface Props {
   productId: number;
@@ -39,12 +41,6 @@ interface FormInput {
   localManufacturers: boolean;
 }
 
-interface PartConfiguration {
-  id: number;
-  material: string;
-  parametersValues: IConfiguredParameter[];
-}
-
 const ConfiguratorParametersPage: React.FC<Props> = ({
   className,
   productId,
@@ -53,28 +49,54 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
 
   const [partsValues, setPartsValues] = useState<PartConfiguration[]>(
     product?.parts.map((part) => ({
-      id: part.id,
-      material: part?.materials?.[0]?.title_en,
-      parametersValues: [],
+      part_id: part.id,
+      material_id: part?.materials?.[0]?.id,
+      parameters: [],
     }))
   );
 
   const [session, setSession] = useState<ISession>();
 
-  const { register, handleSubmit, formState } = useForm<FormInput>({
+  const { register, watch, formState } = useForm<FormInput>({
     mode: "onBlur",
   });
   const { isValid, isDirty, errors } = formState;
+  const machine = watch("machine");
 
   useEffect(() => {
     setPartsValues(
       product?.parts.map((part) => ({
-        id: part.id,
-        material: part?.materials?.[0]?.title_en,
-        parametersValues: [],
+        part_id: part.id,
+        material_id: part?.materials?.[0]?.id,
+        parameters: [],
       }))
     );
   }, [product]);
+
+  useEffect(() => {
+    if (product?.id) {
+      sessionService
+        .getSession({ product_id: product.id })
+        .then((newSession) => setSession(newSession));
+    }
+  }, [product?.id]);
+
+  useEffect(() => {
+    //TODO need field in endpoint
+    updateSession();
+  }, [machine, partsValues]);
+
+  const updateSession = () => {
+    if (session)
+      sessionService
+        .updateSession(session?.uuid, {
+          session: {},
+          parts: partsValues,
+        })
+        .then((res) => {
+          setSession(res);
+        });
+  };
 
   return product ? (
     <form className={`bg-white pt-6 pb-12 md:py-12 ${className || ""}`}>
@@ -127,7 +149,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                   onChange={(partValues) => {
                     setPartsValues((prevPartValues) =>
                       prevPartValues?.map((prevPartValue) =>
-                        prevPartValue.id === part.id
+                        prevPartValue.part_id === part.id
                           ? { ...prevPartValue, ...partValues }
                           : prevPartValue
                       )
@@ -196,17 +218,11 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               </div>
             )}
             <button
-              disabled={!isValid}
+              disabled={!isValid && !session}
               className="bg-indigo-600 text-white hover:bg-indigo-700 w-full py-3 text-center text-base font-medium rounded-md disabled:bg-gray-200"
               onClick={(e) => {
                 e.preventDefault();
-                handleSubmit((formInputs) => {
-                  const result: GenerateFormatsData = {
-                    ...formInputs,
-                    parts: partsValues,
-                  };
-                  console.log(result);
-                })();
+                sessionService.regenerateFormats((session as ISession).uuid);
               }}
             >
               Generate Formats
@@ -233,20 +249,11 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               modelAlt="A 3D model"
             />
             <button
-              disabled={!isValid}
+              disabled={!isValid && !session}
               className="bg-indigo-600 text-white hover:bg-indigo-700 w-full py-3 text-center text-base font-medium rounded-md disabled:bg-gray-200"
               onClick={(e) => {
                 e.preventDefault();
-                sessionService.getSession().then((res) => {
-                  setSession(res?.[0]);
-                  handleSubmit((formInputs) => {
-                    const result: GenerateFormatsData = {
-                      ...formInputs,
-                      parts: partsValues,
-                    };
-                    console.log(result);
-                  })();
-                });
+                sessionService.regeneratePreview((session as ISession).uuid);
               }}
             >
               Generate Preview
@@ -257,5 +264,4 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     </form>
   ) : null;
 };
-
 export default ConfiguratorParametersPage;
