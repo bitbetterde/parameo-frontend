@@ -246,7 +246,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               {currentlyGenerating === "formats" ? (
                 <Spinner className={"!w-[1.5rem] !h-[1.5rem]"} />
               ) : (
-                <> Generate Formats</>
+                <>Generate Formats</>
               )}
             </Button>
           </div>
@@ -264,9 +264,8 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
             </div>
             <ModelViewer
               modelSrc={
-                session?.preview_file_url ?? ""
-                //   ??
-                // "https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
+                session?.preview_file_url ??
+                "https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
               }
               modelAlt="A 3D model"
             />
