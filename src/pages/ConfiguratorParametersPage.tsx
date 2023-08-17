@@ -74,22 +74,24 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     );
   }, [product]);
 
-  const regeneratePreview = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const regeneratePreview = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCurrentlyGenerating("preview");
     e.preventDefault();
-    const sessionId = await createOrUpdateSession();
-    sessionService
-      .regeneratePreview(sessionId)
-      .then(() => setCurrentlyGenerating(undefined));
+    createOrUpdateSession().then((sessionId) => {
+      sessionService
+        .regeneratePreview(sessionId)
+        .then(() => setCurrentlyGenerating(undefined));
+    });
   };
 
-  const regenerateFormats = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const regenerateFormats = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCurrentlyGenerating("formats");
     e.preventDefault();
-    const sessionId = await createOrUpdateSession();
-    sessionService
-      .regenerateFormats(sessionId)
-      .then(() => setCurrentlyGenerating(undefined));
+    createOrUpdateSession().then((sessionId) => {
+      sessionService
+        .regenerateFormats(sessionId)
+        .then(() => setCurrentlyGenerating(undefined));
+    });
   };
 
   const createOrUpdateSession = async (): Promise<string> => {
