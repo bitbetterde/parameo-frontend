@@ -1,7 +1,11 @@
 import { SPINNER_SCREEN_READER } from "@translations/en.json";
 import type React from "react";
 
-const Spinner: React.FC = ({ className }: { className?: string }) => {
+interface Props {
+  className?: string;
+}
+
+const Spinner: React.FC<Props> = ({ className }) => {
   return (
     <div role="status">
       <svg

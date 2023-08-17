@@ -2,6 +2,7 @@ import { ISession } from "@interfaces/ISession.ts";
 
 interface ICreateSessionData {
   product_id: number;
+  machine_id: number;
 }
 
 export interface PartConfiguration {
@@ -29,6 +30,10 @@ const sessionService = {
       {
         method: "POST",
         body: JSON.stringify(data),
+        headers: {
+          Authorization: "Token 6ac946d67e890845bb97248270baed92ba4d4ec7",
+          "content-type": "application/json",
+        },
       }
     ).then((res) => res.json());
   },
@@ -38,10 +43,14 @@ const sessionService = {
     data: IUpdateSessionData
   ): Promise<ISession> => {
     return fetch(
-      `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/sessions/${uuid}`,
+      `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/sessions/${uuid}/`,
       {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify(data),
+        headers: {
+          Authorization: "Token 6ac946d67e890845bb97248270baed92ba4d4ec7",
+          "content-type": "application/json",
+        },
       }
     ).then((res) => res.json());
   },
@@ -50,9 +59,13 @@ const sessionService = {
     return fetch(
       `https://${
         import.meta.env.VITE_PARAMEO_BACKEND_URL
-      }/sessions/${uuid}/preview`,
+      }/sessions/${uuid}/preview/`,
       {
         method: "GET",
+        headers: {
+          Authorization: "Token 6ac946d67e890845bb97248270baed92ba4d4ec7",
+          "content-type": "application/json",
+        },
       }
     ).then((res) => res.json());
   },
@@ -61,9 +74,13 @@ const sessionService = {
     return fetch(
       `https://${
         import.meta.env.VITE_PARAMEO_BACKEND_URL
-      }/sessions/${uuid}/regenerate`,
+      }/sessions/${uuid}/regenerate/`,
       {
         method: "GET",
+        headers: {
+          Authorization: "Token 6ac946d67e890845bb97248270baed92ba4d4ec7",
+          "content-type": "application/json",
+        },
       }
     ).then((res) => res.json());
   },

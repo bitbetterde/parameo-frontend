@@ -12,12 +12,10 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ReactComponent as ExclamationIcon } from "@assets/icons/exclamation-triangle.svg";
 import useProduct from "@hooks/useProduct.ts";
-import sessionService, {
-  IConfiguredParameter,
-  PartConfiguration,
-} from "@hooks/session.service.ts";
+import sessionService, { PartConfiguration } from "@hooks/session.service.ts";
 import { ISession } from "@interfaces/ISession.ts";
-import { IProductPart } from "@interfaces/IProduct.ts";
+import Button from "@components/Button.tsx";
+import Spinner from "@components/Spinner.tsx";
 
 interface Props {
   productId: number;
@@ -56,6 +54,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   );
 
   const [session, setSession] = useState<ISession>();
+  const [currentlyGenerating, setCurrentlyGenerating] = useState<
+    "preview" | "formats"
+  >();
 
   const { register, watch, formState } = useForm<FormInput>({
     mode: "onBlur",
@@ -73,29 +74,48 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     );
   }, [product]);
 
-  useEffect(() => {
-    if (product?.id) {
-      sessionService
-        .getSession({ product_id: product.id })
-        .then((newSession) => setSession(newSession));
+  const regeneratePreview = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    setCurrentlyGenerating("preview");
+    e.preventDefault();
+    const sessionId = await createOrUpdateSession();
+    sessionService
+      .regeneratePreview(sessionId)
+      .then(() => setCurrentlyGenerating(undefined));
+  };
+
+  const regenerateFormats = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    setCurrentlyGenerating("formats");
+    e.preventDefault();
+    const sessionId = await createOrUpdateSession();
+    sessionService
+      .regenerateFormats(sessionId)
+      .then(() => setCurrentlyGenerating(undefined));
+  };
+
+  const createOrUpdateSession = async (): Promise<string> => {
+    let sessionId;
+    if (!session) {
+      sessionId = (
+        await sessionService
+          .getSession({ product_id: product.id, machine_id: 1 }) //TODO machine_id
+          .then((newSession) => {
+            setSession(newSession);
+            return newSession;
+          })
+      ).uuid;
+    } else {
+      sessionId = session.uuid;
     }
-  }, [product?.id]);
+    await sessionService
+      .updateSession(sessionId, {
+        session: {},
+        parts: partsValues,
+      })
+      .then((res) => {
+        setSession(res);
+      });
 
-  useEffect(() => {
-    //TODO need field in endpoint
-    updateSession();
-  }, [machine, partsValues]);
-
-  const updateSession = () => {
-    if (session)
-      sessionService
-        .updateSession(session?.uuid, {
-          session: {},
-          parts: partsValues,
-        })
-        .then((res) => {
-          setSession(res);
-        });
+    return sessionId;
   };
 
   return product ? (
@@ -217,16 +237,18 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                 <span>Please follow tooltips to continue</span>
               </div>
             )}
-            <button
-              disabled={!isValid && !session}
-              className="bg-indigo-600 text-white hover:bg-indigo-700 w-full py-3 text-center text-base font-medium rounded-md disabled:bg-gray-200"
-              onClick={(e) => {
-                e.preventDefault();
-                sessionService.regenerateFormats((session as ISession).uuid);
-              }}
+            <Button
+              disabled={!isValid || !!currentlyGenerating}
+              variant={"primary"}
+              className="w-full py-3 flex items-center justify-center"
+              onClick={regenerateFormats}
             >
-              Generate Formats
-            </button>
+              {currentlyGenerating === "formats" ? (
+                <Spinner className={"!w-[1.5rem] !h-[1.5rem]"}></Spinner>
+              ) : (
+                <> Generate Formats</>
+              )}
+            </Button>
           </div>
           <div className="lg:w-[40%] flex flex-col gap-4">
             <div className="flex justify-between pb-2">
@@ -248,16 +270,18 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               }
               modelAlt="A 3D model"
             />
-            <button
-              disabled={!isValid && !session}
-              className="bg-indigo-600 text-white hover:bg-indigo-700 w-full py-3 text-center text-base font-medium rounded-md disabled:bg-gray-200"
-              onClick={(e) => {
-                e.preventDefault();
-                sessionService.regeneratePreview((session as ISession).uuid);
-              }}
+            <Button
+              disabled={!isValid || !!currentlyGenerating}
+              variant={"primary"}
+              className="w-full py-3 flex items-center justify-center"
+              onClick={regeneratePreview}
             >
-              Generate Preview
-            </button>
+              {currentlyGenerating === "preview" ? (
+                <Spinner className={"!w-[1.5rem] !h-[1.5rem]"}></Spinner>
+              ) : (
+                <>Generate Preview</>
+              )}
+            </Button>
           </div>
         </div>
       </div>
