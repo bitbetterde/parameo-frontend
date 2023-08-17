@@ -1,4 +1,5 @@
 import { IProduct } from "@interfaces/IProduct.ts";
+import { commonHeaderJson } from "./commonHeaders.ts";
 
 const productService = {
   getProducts: (): Promise<IProduct[]> => {
@@ -6,10 +7,7 @@ const productService = {
       `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/products/`,
       {
         method: "GET",
-        headers: {
-          Authorization: "Token 6ac946d67e890845bb97248270baed92ba4d4ec7",
-          "content-type": "application/json",
-        },
+        headers: commonHeaderJson,
       }
     ).then((res) => res.json());
   },
@@ -18,10 +16,7 @@ const productService = {
       `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/products/${id}/`,
       {
         method: "GET",
-        headers: {
-          Authorization: "Token 6ac946d67e890845bb97248270baed92ba4d4ec7",
-          "content-type": "application/json",
-        },
+        headers: commonHeaderJson,
       }
     ).then((res) => res.json());
   },

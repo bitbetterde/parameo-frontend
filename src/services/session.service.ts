@@ -1,4 +1,5 @@
 import { ISession } from "@interfaces/ISession.ts";
+import { commonHeaderJson } from "./commonHeaders.ts";
 
 interface ICreateSessionData {
   product_id: number;
@@ -30,10 +31,7 @@ const sessionService = {
       {
         method: "POST",
         body: JSON.stringify(data),
-        headers: {
-          Authorization: "Token 6ac946d67e890845bb97248270baed92ba4d4ec7",
-          "content-type": "application/json",
-        },
+        headers: commonHeaderJson,
       }
     ).then((res) => res.json());
   },
@@ -47,10 +45,7 @@ const sessionService = {
       {
         method: "PUT",
         body: JSON.stringify(data),
-        headers: {
-          Authorization: "Token 6ac946d67e890845bb97248270baed92ba4d4ec7",
-          "content-type": "application/json",
-        },
+        headers: commonHeaderJson,
       }
     ).then((res) => res.json());
   },
@@ -62,10 +57,7 @@ const sessionService = {
       }/sessions/${uuid}/preview/`,
       {
         method: "GET",
-        headers: {
-          Authorization: "Token 6ac946d67e890845bb97248270baed92ba4d4ec7",
-          "content-type": "application/json",
-        },
+        headers: commonHeaderJson,
       }
     ).then((res) => res.json());
   },
@@ -77,10 +69,7 @@ const sessionService = {
       }/sessions/${uuid}/regenerate/`,
       {
         method: "GET",
-        headers: {
-          Authorization: "Token 6ac946d67e890845bb97248270baed92ba4d4ec7",
-          "content-type": "application/json",
-        },
+        headers: commonHeaderJson,
       }
     ).then((res) => res.json());
   },

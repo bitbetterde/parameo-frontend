@@ -82,7 +82,9 @@ const ConfiguratorResultPage: React.FC<Props> = ({
   const [producers, setProducers] = useState<any[]>();
 
   useEffect(() => {
-    producerService.getProducers().then((producers) => setProducers(producers));
+    producerService.getProducers().then((producers) => {
+      setProducers(producers);
+    });
   }, []);
 
   return (

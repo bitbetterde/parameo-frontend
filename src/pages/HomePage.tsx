@@ -105,8 +105,12 @@ const HomePage = () => {
   const [machines, setMachines] = useState<any>();
 
   useEffect(() => {
-    productService.getProducts().then((products) => setProducts(products));
-    machineService.getMachines().then((machines) => setMachines(machines));
+    productService.getProducts().then((products) => {
+      setProducts(products);
+    });
+    machineService.getMachines().then((machines) => {
+      setMachines(machines);
+    });
   }, []);
 
   return (

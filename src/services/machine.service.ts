@@ -1,3 +1,4 @@
+import { commonHeaderJson } from "./commonHeaders.ts";
 
 const machineService = {
   getMachines: (): Promise<any[]> => {
@@ -5,10 +6,7 @@ const machineService = {
       `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/machines/`,
       {
         method: "GET",
-        headers: {
-          Authorization: "Token 6ac946d67e890845bb97248270baed92ba4d4ec7",
-          "content-type": "application/json",
-        },
+        headers: commonHeaderJson,
       }
     ).then((res) => res.json());
   },
@@ -17,10 +15,7 @@ const machineService = {
       `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/machines/${id}/`,
       {
         method: "GET",
-        headers: {
-          Authorization: "Token 6ac946d67e890845bb97248270baed92ba4d4ec7",
-          "content-type": "application/json",
-        },
+        headers: commonHeaderJson,
       }
     ).then((res) => res.json());
   },

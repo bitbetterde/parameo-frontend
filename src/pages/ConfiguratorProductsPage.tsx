@@ -30,7 +30,9 @@ const ConfiguratorProductsPage = () => {
   const [products, setProducts] = useState<IProduct[]>();
 
   useEffect(() => {
-    productService.getProducts().then((products) => setProducts(products));
+    productService.getProducts().then((products) => {
+      setProducts(products);
+    });
   }, []);
 
   return (

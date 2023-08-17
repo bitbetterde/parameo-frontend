@@ -76,9 +76,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     setCurrentlyGenerating("preview");
     e.preventDefault();
     createOrUpdateSession().then((sessionId) => {
-      sessionService
-        .regeneratePreview(sessionId)
-        .then(() => setCurrentlyGenerating(undefined));
+      sessionService.regeneratePreview(sessionId).then(() => {
+        setCurrentlyGenerating(undefined);
+      });
     });
   };
 
@@ -86,9 +86,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     setCurrentlyGenerating("formats");
     e.preventDefault();
     createOrUpdateSession().then((sessionId) => {
-      sessionService
-        .regenerateFormats(sessionId)
-        .then(() => setCurrentlyGenerating(undefined));
+      sessionService.regenerateFormats(sessionId).then(() => {
+        setCurrentlyGenerating(undefined);
+      });
     });
   };
 
@@ -238,13 +238,13 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               </div>
             )}
             <Button
-              disabled={!isValid || !!currentlyGenerating}
+              disabled={!isValid || Boolean(currentlyGenerating)}
               variant={"primary"}
               className="w-full py-3 flex items-center justify-center"
               onClick={regenerateFormats}
             >
               {currentlyGenerating === "formats" ? (
-                <Spinner className={"!w-[1.5rem] !h-[1.5rem]"}></Spinner>
+                <Spinner className={"!w-[1.5rem] !h-[1.5rem]"} />
               ) : (
                 <> Generate Formats</>
               )}
@@ -271,13 +271,13 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               modelAlt="A 3D model"
             />
             <Button
-              disabled={!isValid || !!currentlyGenerating}
+              disabled={!isValid || Boolean(currentlyGenerating)}
               variant={"primary"}
               className="w-full py-3 flex items-center justify-center"
               onClick={regeneratePreview}
             >
               {currentlyGenerating === "preview" ? (
-                <Spinner className={"!w-[1.5rem] !h-[1.5rem]"}></Spinner>
+                <Spinner className={"!w-[1.5rem] !h-[1.5rem]"} />
               ) : (
                 <>Generate Preview</>
               )}
