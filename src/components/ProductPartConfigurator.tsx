@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import type { IProductPart } from "@interfaces/IProduct";
 import { useEffect, useState } from "react";
 import type React from "react";
-import { IConfiguredParameter } from "@hooks/session.service.ts";
+import { IConfiguredParameter } from "../services/session.service.ts";
 
 interface Props {
   part: IProductPart;

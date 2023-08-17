@@ -1,5 +1,7 @@
-import { HeroSection, CardSlider, ImageSlider, Spinner } from "@components";
-import useProducts from "@hooks/useProducts";
+import { CardSlider, HeroSection, ImageSlider, Spinner } from "@components";
+import { useEffect, useState } from "react";
+import { IProduct } from "@interfaces/IProduct.ts";
+import productService from "../services/product.service.ts";
 
 const images = [
   {
@@ -25,7 +27,11 @@ const images = [
 ];
 
 const ConfiguratorProductsPage = () => {
-  const { products, isLoading } = useProducts();
+  const [products, setProducts] = useState<IProduct[]>();
+
+  useEffect(() => {
+    productService.getProducts().then((products) => setProducts(products));
+  }, []);
 
   return (
     <>
@@ -35,7 +41,7 @@ const ConfiguratorProductsPage = () => {
         heroImage="/images/parameo-hero-img_configurator.jpg"
         heroImageAlt="carpenter working on a laptop"
       />
-      {isLoading ? (
+      {!products ? (
         <div className="w-full h-32 flex items-center justify-center">
           <Spinner />
         </div>

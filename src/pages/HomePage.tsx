@@ -1,15 +1,17 @@
 import {
-  FeatureSection,
   AvatarSection,
-  HeroSection,
   CardSlider,
-  ImageSlider,
   FaqSection,
+  FeatureSection,
+  HeroSection,
+  ImageSlider,
   Spinner,
 } from "@components";
 import rawFaqs from "@faqs";
-import useMachines from "@hooks/useMachines";
-import useProducts from "@hooks/useProducts";
+import { useEffect, useState } from "react";
+import { IProduct } from "@interfaces/IProduct.ts";
+import productService from "../services/product.service.ts";
+import machineService from "../services/machine.service.ts";
 
 const heroButtons = [
   {
@@ -99,8 +101,13 @@ const HomePage = () => {
     .sort((a, b) => (a.order || 0) - (b.order || 0))
     .filter((faq) => faq.showOnHomePage);
 
-  const { machines, isLoading } = useMachines();
-  const { products } = useProducts();
+  const [products, setProducts] = useState<IProduct[]>();
+  const [machines, setMachines] = useState<any>();
+
+  useEffect(() => {
+    productService.getProducts().then((products) => setProducts(products));
+    machineService.getMachines().then((machines) => setMachines(machines));
+  }, []);
 
   return (
     <>
@@ -118,7 +125,7 @@ const HomePage = () => {
         features={features}
       />
       <AvatarSection people={people} title="Connecting" />
-      {isLoading ? (
+      {!products ? (
         <div className="w-full h-32 flex items-center justify-center">
           <Spinner />
         </div>
@@ -150,7 +157,7 @@ const HomePage = () => {
         title="Learn more and get involved – it's open source"
         data={visibleFaqItems}
       />
-      {isLoading ? (
+      {!machines ? (
         <div className="w-full h-32 flex items-center justify-center">
           <Spinner />
         </div>

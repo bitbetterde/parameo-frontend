@@ -11,11 +11,14 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ReactComponent as ExclamationIcon } from "@assets/icons/exclamation-triangle.svg";
-import useProduct from "@hooks/useProduct.ts";
-import sessionService, { PartConfiguration } from "@hooks/session.service.ts";
+import sessionService, {
+  PartConfiguration,
+} from "../services/session.service.ts";
 import { ISession } from "@interfaces/ISession.ts";
 import Button from "@components/Button.tsx";
 import Spinner from "@components/Spinner.tsx";
+import { IProduct } from "@interfaces/IProduct.ts";
+import productService from "../services/product.service.ts";
 
 interface Props {
   productId: number;
@@ -43,16 +46,8 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   className,
   productId,
 }) => {
-  const product = useProduct(productId)?.product;
-
-  const [partsValues, setPartsValues] = useState<PartConfiguration[]>(
-    product?.parts.map((part) => ({
-      part_id: part.id,
-      material_id: part?.materials?.[0]?.id,
-      parameters: [],
-    }))
-  );
-
+  const [product, setProduct] = useState<IProduct>();
+  const [partsValues, setPartsValues] = useState<PartConfiguration[]>([]);
   const [session, setSession] = useState<ISession>();
   const [currentlyGenerating, setCurrentlyGenerating] = useState<
     "preview" | "formats"
@@ -65,14 +60,17 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   const machine = watch("machine");
 
   useEffect(() => {
-    setPartsValues(
-      product?.parts.map((part) => ({
-        part_id: part.id,
-        material_id: part?.materials?.[0]?.id,
-        parameters: [],
-      }))
-    );
-  }, [product]);
+    productService.getProduct(productId).then((product) => {
+      setProduct(product);
+      setPartsValues(
+        product?.parts.map((part) => ({
+          part_id: part.id,
+          material_id: part?.materials?.[0]?.id,
+          parameters: [],
+        }))
+      );
+    });
+  }, [productId]);
 
   const regeneratePreview = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCurrentlyGenerating("preview");
@@ -99,7 +97,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     if (!session) {
       sessionId = (
         await sessionService
-          .getSession({ product_id: product.id, machine_id: 1 }) //TODO machine_id
+          .getSession({ product_id: product?.id ?? 0, machine_id: 1 }) //TODO machine_id
           .then((newSession) => {
             setSession(newSession);
             return newSession;
