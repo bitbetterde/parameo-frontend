@@ -49,6 +49,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   const [product, setProduct] = useState<IProduct>();
   const [partsValues, setPartsValues] = useState<PartConfiguration[]>([]);
   const [session, setSession] = useState<ISession>();
+  const [previewURL, setPreviewURL] = useState<string>();
   const [currentlyGenerating, setCurrentlyGenerating] = useState<
     "preview" | "formats"
   >();
@@ -76,7 +77,8 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     setCurrentlyGenerating("preview");
     e.preventDefault();
     createOrUpdateSession().then((sessionId) => {
-      sessionService.regeneratePreview(sessionId).then(() => {
+      sessionService.regeneratePreview(sessionId).then((preview_url) => {
+        setPreviewURL(preview_url.url);
         setCurrentlyGenerating(undefined);
       });
     });
@@ -264,7 +266,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
             </div>
             <ModelViewer
               modelSrc={
-                session?.preview_file_url ??
+                previewURL ??
                 "https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
               }
               modelAlt="A 3D model"

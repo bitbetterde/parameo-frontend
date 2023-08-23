@@ -50,7 +50,7 @@ const sessionService = {
     ).then((res) => res.json());
   },
 
-  regeneratePreview: (uuid: string): Promise<ISession[]> => {
+  regeneratePreview: (uuid: string): Promise<any> => {
     return fetch(
       `https://${
         import.meta.env.VITE_PARAMEO_BACKEND_URL
