@@ -61,9 +61,7 @@ const AboutPage: React.FC<Props> = ({
           diam.
         </p>
         <blockquote>
-          “Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum
-          urna sed consectetur neque tristique pellentesque. Blandit amet, sed
-          aenean erat arcu morbi.”
+          “The >Build Assistant Tool< is a freely accessible online tool for generating parametric* designs and production data for CNC machines and laser cutters. The online tool is used, for example, to design objects such as tables, shelves, lampshades, etc. according to individual dimensions. The special feature: The additional, automated calculation and provision of the machine code and material requirements enables the local production of one-offs and small series of individual designs for end users and local production facilities. On the one hand, the >Build Assistant Tool< acts as a digital assistant for the user during design and generates the respective machine code for production on common CNC machines from the design. Through data-based design and production, CO2 emissions and material costs are calculated automatically in addition to the machine code and material requirements. The >Build Assistant Tool< opens up new opportunities in local value creation for Hamburg citizens, open workshops and production companies.”
         </blockquote>
         <p>
           Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
