@@ -84,6 +84,9 @@ Last but not least: The way any product is manufactured has an impact on climate
           praesent donec est. Odio penatibus risus viverra tellus varius sit
           neque erat velit.
         <img src="/images/parameo-project-scope-01.png" alt="project scope slide" />
+        <strong>Our partner</strong>
+        <li><a href="https://bitbetter.de/">BITBETTER</a></li>, Software Development
+        <li><a href="https://www.inmachines.net/">INMACHINES</a></li>, Open Source Hardware Testing
         </p>
         <h2>Get involved</h2>
         <p>
