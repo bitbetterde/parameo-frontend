@@ -162,7 +162,7 @@ const App = () => {
           <AboutPage
             title="About parameo"
             subtitle="Project Background"
-            description="Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend egestas fringilla sapien."
+            description="Parameo is an open online tool for the configuration of parametric product designs from sheet goods, for the generation of production data for CNC machines as well as the calculation of material costs and emissions."
           />
         </Route>
         <Route path="/imprint">
