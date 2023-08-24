@@ -45,9 +45,19 @@ const AboutPage: React.FC<Props> = ({
           Maslow CNC router at regenholz
         </figcaption>
         <p>
-          The project proposal states:
+        <h2>Motivation</h2>
         <blockquote>
-          “The Build Assistant Tool is a freely accessible online tool for generating parametric designs and production data for CNC machines and laser     cutters. The online tool is used, for example, to design objects such as tables, shelves, lampshades, etc. according to individual dimensions. The special feature: The additional, automated calculation and provision of the machine code and material requirements enables the local production of one-offs and small series of individual designs for end users and local production facilities. On the one hand, the Build Assistant Tool acts as a digital assistant for the user during design and generates the respective machine code for production on common CNC machines from the design. Through data-based design and production, CO2 emissions and material costs are calculated automatically in addition to the machine code and material requirements. The Build Assistant Tool opens up new opportunities in local value creation for Hamburg citizens, open workshops and production companies.”
+          “As a small company the effort for the custom design of the products and the creation of milling / laser files before production, is usually too high for consumers with average purchasing power. Economical production is a major challenge, especially for one-off items.
+
+Another development that we are experiencing is that more and more people are becoming interested in building their own furnishings. The DIY sector is booming, and almost everything can now be learned via free video tutorials and knowledge platforms. But getting started with digital machine manufacturing in the craft sector is difficult or impossible for most private individuals. In addition to learning the hardware and control software, basic knowledge of operational safety, materials science and - most importantly - design and/or CAD software skills are required to turn one's idea into a milling/laser file. The learning of manual know-how, the handling of digital tools and the direct contact of citizens to local production sites are especially in demand now.
+
+We address these challenges with "parameo".
+
+The configurator offers the design of 3D models according to individual dimensions and requirements. The self-configured model file can be downloaded, further processed in CAD programs (e.g. Free-CAD) or go directly into production as finished machine code (milling/printing/laser file). Consumers thus have the choice of either having access to a production facility themselves, using a local Fab Lab / Makerspace, or contacting a nearby artisanal business for local production.
+
+The automatic creation of a machine code from individual designs saves time, enables more economical production and offers citizens and craftspeople / manufacturers an immediate benefit and entry into the world of digital manufacturing. In addition, the workflow can be used to evaluate practical experience with data-based collaboration between consumers, designers, craftspeople and manufacturers in the Hamburg metropolitan region.
+
+Last but not least: The way any product is manufactured has an impact on climate change. With parameo, we want to contribute to making production as climate-friendly and resource-conserving as possible. In the first step, the configurator is used to calculate emissions for the production. The long-term goal is to establish the recyclability of products ("from cradle to cradle") and to win citizens over to increased local value creation and sustainable production through personal participation in the manufacturing process.”
         </blockquote>
         </p>
         <h2>Development toolstack</h2>
