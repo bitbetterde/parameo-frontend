@@ -40,6 +40,10 @@ const AboutPage: React.FC<Props> = ({
           <li>Emission and cost transparency: Material price calculation and emission calculator for the ratio of material, machine and transport.</li>
           <li>Freely accessible system: The developed tool is based on open source software and generates machine code for open source hardware.</li>
         </ul>
+           <img src="/images/proj-maslow-title.jpg" alt="Image of a man with a laptop infront of the maslow cnc router" />
+        <figcaption>
+          Maslow CNC router at regenholz
+        </figcaption>
         <p>
           The project proposal states:
         <blockquote>
