@@ -45,14 +45,18 @@ const AboutPage: React.FC<Props> = ({
           “The Build Assistant Tool is a freely accessible online tool for generating parametric designs and production data for CNC machines and laser     cutters. The online tool is used, for example, to design objects such as tables, shelves, lampshades, etc. according to individual dimensions. The special feature: The additional, automated calculation and provision of the machine code and material requirements enables the local production of one-offs and small series of individual designs for end users and local production facilities. On the one hand, the Build Assistant Tool acts as a digital assistant for the user during design and generates the respective machine code for production on common CNC machines from the design. Through data-based design and production, CO2 emissions and material costs are calculated automatically in addition to the machine code and material requirements. The Build Assistant Tool opens up new opportunities in local value creation for Hamburg citizens, open workshops and production companies.”
         </blockquote>
         </p>
-        <h2>From beginner to expert in 30 days</h2>
-        <p>
-          Id orci tellus laoreet id ac. Dolor, aenean leo, ac etiam consequat
-          in. Convallis arcu ipsum urna nibh. Pharetra, euismod vitae interdum
-          mauris enim, consequat vulputate nibh. Maecenas pellentesque id sed
-          tellus mauris, ultrices mauris. Tincidunt enim cursus ridiculus mi.
-          Pellentesque nam sed nullam sed diam turpis ipsum eu a sed convallis
-          diam.
+        <h2>Development Toolstack</h2>
+        <p> <strong>Backend</strong>
+          <li>Python</li>
+          <li>SQL Database + shareable JSON files for material and machine knowledgebase</li>
+          <li>Django REST API</li>
+          <li>Headless (patched) FreeCAD automation</li>
+          <li>Machine runtime estimation</li>
+          <li>Nesting algorithms</li>
+          <li>Headless Blender</li>
+          <li>Admin dashboard</li>
+          <li>Wireguard VPN layer for administration</li>
+          <li>Order modules: Email & Shopify integration</li>
         </p>
         <p>
           Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
