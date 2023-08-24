@@ -67,31 +67,25 @@ const AboutPage: React.FC<Props> = ({
           <li>Tailwind CSS</li>
           <li>Tailwind UI</li>
         </p>
+        <h2>Project scope</h2>
         <p>
           Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
           enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor
           praesent donec est. Odio penatibus risus viverra tellus varius sit
           neque erat velit.
         </p>
-        <img src="/images/forrest.jpg" alt="Image of a forrest" />
-        <figcaption>
-          Sagittis scelerisque nulla cursus in enim consectetur quam.
-        </figcaption>
-        <h2>Everything you need to get up and running</h2>
-        <p>
-          Purus morbi dignissim senectus mattis <a href="#">adipiscing</a>.
-          Amet, massa quam varius orci dapibus volutpat cras. In amet eu
-          ridiculus leo sodales cursus tristique. Tincidunt sed tempus ut
-          viverra ridiculus non molestie. Gravida quis fringilla amet eget dui
-          tempor dignissim. Facilisis auctor venenatis varius nunc, congue erat
-          ac. Cras fermentum convallis quam.
+        <img src="/images/parameo-project-scope-01.png" alt="project scope slide" />
         </p>
+        <h2>Get involved</h2>
         <p>
           Faucibus commodo massa rhoncus, volutpat. <strong>Dignissim</strong>{" "}
           sed <strong>eget risus enim</strong>. Mattis mauris semper sed amet
           vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus
           viverra tellus varius sit neque erat velit. Faucibus commodo massa
           rhoncus, volutpat. Dignissim sed eget risus enim.{" "}
+          <li><a href="https://stage.parameo.regenholz.de/faq/designer-collaboration">FAQ for Designers</a></li>
+          <li><a href="https://stage.parameo.regenholz.de/faq/maufacturer-collaboration">FAQ for Manufabturer</a></li>
+          <li><a href="https://stage.parameo.regenholz.de/faq/developer-collaboration">FAQ for Developer</a></li>
         </p>
       </div>
       <ContactForm />
