@@ -31,17 +31,13 @@ const AboutPage: React.FC<Props> = ({
       )}
       <div className="pt-6 max-w-none prose prose-h2:text-[30px] prose-h2:leading-10 prose-lg prose-p:leading-8 prose-a:text-indigo-600 text-gray-500">
         <p>
-          Faucibus commodo massa rhoncus, volutpat. <strong>Dignissim</strong>{" "}
-          sed <strong>eget risus enim</strong>. Mattis mauris semper sed amet
-          vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus
-          viverra tellus varius sit neque erat velit. Faucibus commodo massa
-          rhoncus, volutpat. Dignissim sed eget risus enim.{" "}
-          <a href="#">Mattis mauris semper</a> sed amet vitae sed turpis id.
+          The project is initiated and designed by <a href="https://regenholz.de/">regenholz</a> and funded by <a href="https://www.ifbhh.de/presse/meldung/updatehamburg-2022-1-5-millionen-euro-fuer-soziale-innovationen">'UpdateHamburg 2022'</a> of the Hamburg Authority for Economy and Innovation (BWI). The innovation core of the tool is the combination of:
         </p>
         <ul>
-          <li>Quis elit egestas venenatis mattis dignissim.</li>
-          <li>Cras cras lobortis vitae vivamus ultricies facilisis tempus.</li>
-          <li>Orci in sit morbi dignissim metus diam arcu pretium.</li>
+          <li>Machine code generator: laser cutter and CNC router Production data from parametric product designs.</li>
+          <li>Networking of consumers and local producers: 'build or buy' option after configuration with local production capabilities</li>
+          <li>Emission and cost transparency: Material price calculation and emission calculator for the ratio of material, machine and transport.</li>
+          <li>Freely accessible system: The developed tool is based on open source software and generates machine code for open source hardware.</li>
         </ul>
         <p>
           Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
@@ -83,10 +79,11 @@ const AboutPage: React.FC<Props> = ({
           ac. Cras fermentum convallis quam.
         </p>
         <p>
-          Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
-          enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor
-          praesent donec est. Odio penatibus risus viverra tellus varius sit
-          neque erat velit.
+          Faucibus commodo massa rhoncus, volutpat. <strong>Dignissim</strong>{" "}
+          sed <strong>eget risus enim</strong>. Mattis mauris semper sed amet
+          vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus
+          viverra tellus varius sit neque erat velit. Faucibus commodo massa
+          rhoncus, volutpat. Dignissim sed eget risus enim.{" "}
         </p>
       </div>
       <ContactForm />
