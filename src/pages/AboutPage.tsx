@@ -31,6 +31,7 @@ const AboutPage: React.FC<Props> = ({
       )}
       <div className="pt-6 max-w-none prose prose-h2:text-[30px] prose-h2:leading-10 prose-lg prose-p:leading-8 prose-a:text-indigo-600 text-gray-500">
         <p>
+        <h2>Project background</h2>
           The project is initiated and designed by <a href="https://regenholz.de/">regenholz</a> and funded by <a href="https://www.ifbhh.de/presse/meldung/updatehamburg-2022-1-5-millionen-euro-fuer-soziale-innovationen">'UpdateHamburg 2022'</a> of the Hamburg Authority for Economy and Innovation (BWI). The innovation core of the tool is the combination of:
         </p>
         <ul>
@@ -45,7 +46,7 @@ const AboutPage: React.FC<Props> = ({
           “The Build Assistant Tool is a freely accessible online tool for generating parametric designs and production data for CNC machines and laser     cutters. The online tool is used, for example, to design objects such as tables, shelves, lampshades, etc. according to individual dimensions. The special feature: The additional, automated calculation and provision of the machine code and material requirements enables the local production of one-offs and small series of individual designs for end users and local production facilities. On the one hand, the Build Assistant Tool acts as a digital assistant for the user during design and generates the respective machine code for production on common CNC machines from the design. Through data-based design and production, CO2 emissions and material costs are calculated automatically in addition to the machine code and material requirements. The Build Assistant Tool opens up new opportunities in local value creation for Hamburg citizens, open workshops and production companies.”
         </blockquote>
         </p>
-        <h2>Development Toolstack</h2>
+        <h2>Development toolstack</h2>
         <p> <strong>Backend</strong>
           <li>Python</li>
           <li>SQL Database + shareable JSON files for material and machine knowledgebase</li>
@@ -57,6 +58,10 @@ const AboutPage: React.FC<Props> = ({
           <li>Admin dashboard</li>
           <li>Wireguard VPN layer for administration</li>
           <li>Order modules: Email & Shopify integration</li>
+          <strong>Frontend</strong>
+          <li>React</li>
+          <li>Tailwind CSS</li>
+          <li>Tailwind UI</li>
         </p>
         <p>
           Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
