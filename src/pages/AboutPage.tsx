@@ -73,7 +73,6 @@ const AboutPage: React.FC<Props> = ({
           enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor
           praesent donec est. Odio penatibus risus viverra tellus varius sit
           neque erat velit.
-        </p>
         <img src="/images/parameo-project-scope-01.png" alt="project scope slide" />
         </p>
         <h2>Get involved</h2>
