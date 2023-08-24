@@ -32,13 +32,13 @@ const AboutPage: React.FC<Props> = ({
       <div className="pt-6 max-w-none prose prose-h2:text-[30px] prose-h2:leading-10 prose-lg prose-p:leading-8 prose-a:text-indigo-600 text-gray-500">
         <p>
         <h2>Project background</h2>
-          The project is initiated and designed by <a href="https://regenholz.de/">regenholz</a> and funded by <a href="https://www.ifbhh.de/presse/meldung/updatehamburg-2022-1-5-millionen-euro-fuer-soziale-innovationen">'UpdateHamburg 2022'</a> of the Hamburg Authority for Economy and Innovation (BWI). The innovation core of the tool is the combination of:
+          The project is initiated by <a href="https://regenholz.de/">regenholz</a> and funded by <a href="https://www.ifbhh.de/presse/meldung/updatehamburg-2022-1-5-millionen-euro-fuer-soziale-innovationen">'UpdateHamburg 2022'</a> of the Hamburg Authority for Economy and Innovation (BWI). The innovation core of the tool is the combination of:
         </p>
         <ul>
-          <li>Machine code generator: laser cutter and CNC router Production data from parametric product designs.</li>
-          <li>Networking of consumers and local producers: 'build or buy' option after configuration with local production capabilities</li>
-          <li>Emission and cost transparency: Material price calculation and emission calculator for the ratio of material, machine and transport.</li>
-          <li>Freely accessible system: The developed tool is based on open source software and generates machine code for open source hardware.</li>
+          <li><strong>Machine code generator</strong> – Laser cutter and CNC router Production data from parametric product designs.</li>
+          <li><strong>Networking of consumers and local producers</strong> – 'Build or buy' option after configuration with local production capabilities</li>
+          <li><strong>Emission and cost transparency</strong> – Material price calculation and emission calculator for the ratio of material, machine and transport.</li>
+          <li><strong>Freely accessible system</strong> – The developed tool is based on open source software and generates machine code for open source hardware.</li>
         </ul>
            <img src="/images/proj-maslow-title.jpg" alt="Image of a man with a laptop infront of the maslow cnc router" />
         <figcaption>
