@@ -19,11 +19,6 @@ export interface IProductPartParameter {
   maximum: number;
 }
 
-export interface IProductPartParameterValue {
-  id: number;
-  value: number;
-}
-
 export interface IProductPartMaterial {
   id: number;
   type: string;

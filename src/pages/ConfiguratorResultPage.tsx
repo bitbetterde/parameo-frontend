@@ -2,13 +2,14 @@ import {
   Accordion,
   ButtonLink,
   CardSlider,
-  ImageSlider,
-  FeaturedImageGallery,
-  DownloadListItem,
   DoughnutChart,
+  DownloadListItem,
+  FeaturedImageGallery,
+  ImageSlider,
   Spinner,
 } from "@components";
-import useProducers from "@hooks/useProducers";
+import { useEffect, useState } from "react";
+import producerService from "../services/producer.service.ts";
 
 interface Props {
   className?: string;
@@ -78,7 +79,13 @@ const ConfiguratorResultPage: React.FC<Props> = ({
   subtitle,
   description,
 }) => {
-  const { producers, isLoading } = useProducers();
+  const [producers, setProducers] = useState<any[]>();
+
+  useEffect(() => {
+    producerService.getProducers().then((producers) => {
+      setProducers(producers);
+    });
+  }, []);
 
   return (
     <div className={`bg-white pt-6 md:pt-12 ${className || ""}`}>
@@ -157,7 +164,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({
         <h2 className="text-base font-semibold text-indigo-600 uppercase pt-7 text-center">
           Local Manufacturing
         </h2>
-        {isLoading ? (
+        {!producers ? (
           <div className="w-full h-32 flex items-center justify-center">
             <Spinner />
           </div>
@@ -170,7 +177,8 @@ const ConfiguratorResultPage: React.FC<Props> = ({
                 externalHref: producer?.website_url,
                 subtitle: producer?.location_name || "City",
                 cardImage: producer?.pictures?.[0]?.image_url,
-                description: producer?.description || "No description available",
+                description:
+                  producer?.description || "No description available",
               }))
             }
           />

@@ -1,17 +1,15 @@
 import { Accordion, Select, RangeSlider } from "@components";
 import { Link } from "wouter";
-import type {
-  IProductPart,
-  IProductPartParameterValue,
-} from "@interfaces/IProduct";
+import type { IProductPart } from "@interfaces/IProduct";
 import { useEffect, useState } from "react";
 import type React from "react";
+import { IConfiguredParameter } from "../services/session.service.ts";
 
 interface Props {
   part: IProductPart;
   onChange: (a: {
     material: string;
-    parametersValues: IProductPartParameterValue[];
+    parametersValues: IConfiguredParameter[];
   }) => void;
 }
 
@@ -20,10 +18,10 @@ const ProductPartConfigurator: React.FC<Props> = ({ part, onChange }) => {
     part?.materials?.[0]?.title_en
   );
   const [parametersValues, setParametersValues] = useState<
-    IProductPartParameterValue[]
+    IConfiguredParameter[]
   >(
     part.parameters.map((parameter) => ({
-      id: parameter.id,
+      parameter_id: parameter.id,
       value: parameter.default_value,
     }))
   );
@@ -76,7 +74,7 @@ const ProductPartConfigurator: React.FC<Props> = ({ part, onChange }) => {
                   const currentValue = event.currentTarget.value;
                   setParametersValues((prevParametersValues) =>
                     prevParametersValues.map((prevParameterValue) =>
-                      prevParameterValue.id === parameter.id
+                      prevParameterValue.parameter_id === parameter.id
                         ? {
                             ...prevParameterValue,
                             value: parseInt(currentValue),
@@ -88,7 +86,8 @@ const ProductPartConfigurator: React.FC<Props> = ({ part, onChange }) => {
                 id={"parameter " + parameter.id}
                 value={
                   parametersValues.find(
-                    (parameterValue) => parameterValue.id === parameter.id
+                    (parameterValue) =>
+                      parameterValue.parameter_id === parameter.id
                   )?.value
                 }
               />
