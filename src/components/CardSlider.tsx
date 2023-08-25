@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import { Card } from "@components";
 import { ICard } from "@interfaces/ICard";
@@ -49,6 +49,10 @@ const CardSlider: React.FC<Props> = ({
   const isMobileViewport = width && width < BREAKPOINT_TABLET;
   const isDesktopViewport = width && width > BREAKPOINT_DESKTOP;
 
+  useEffect(() => {
+    instanceRef?.current?.update();
+  }, [cardsData]);
+
   return cardsData ? (
     <div
       className={`relative mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-12 ${
@@ -78,8 +82,8 @@ const CardSlider: React.FC<Props> = ({
         ref={ref}
         className="overflow-hidden flex relative w-[calc(100%+32px)] rounded-lg pb-6 -mx-4"
       >
-        {cardsData?.map((card) => (
-          <div className="keen-slider__slide px-4" key={card.title}>
+        {cardsData?.map((card, i) => (
+          <div className="keen-slider__slide px-4" key={card.title ?? i}>
             <Card data={card} className="shadow-lg h-full" />
           </div>
         ))}
