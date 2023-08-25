@@ -142,7 +142,7 @@ const HomePage = () => {
             products?.map((product) => ({
               title: product?.title,
               href: `/configurator/${product?.id}/parameters`,
-              subtitle: product?.machine,
+              subtitle: product?.machine_type,
               description: product?.description || "No description available",
               licence: product?.subtitle || "licence type",
               cardImage: product?.pictures?.[0]?.image_url,
