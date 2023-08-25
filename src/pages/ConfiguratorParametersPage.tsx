@@ -1,19 +1,24 @@
 import {
-  TextInput,
-  Toggle,
   Checkbox,
-  Select,
-  ButtonLink,
   ModelViewer,
   ProductPartConfigurator,
+  Select,
+  TextInput,
+  Toggle,
 } from "@components";
 import { Link } from "wouter";
+import type React from "react";
 import { useEffect, useState } from "react";
-import { IProductPartParameterValue } from "@interfaces/IProduct.ts";
 import { useForm } from "react-hook-form";
 import { ReactComponent as ExclamationIcon } from "@assets/icons/exclamation-triangle.svg";
-import useProduct from "@hooks/useProduct.ts";
-import type React from "react";
+import sessionService, {
+  PartConfiguration,
+} from "../services/session.service.ts";
+import { ISession } from "@interfaces/ISession.ts";
+import Button from "@components/Button.tsx";
+import Spinner from "@components/Spinner.tsx";
+import { IProduct } from "@interfaces/IProduct.ts";
+import productService from "../services/product.service.ts";
 
 interface Props {
   productId: number;
@@ -23,7 +28,7 @@ interface Props {
   description?: string;
 }
 
-interface GenerateFormatsData extends FormInput {
+export interface GenerateFormatsData extends FormInput {
   parts: Array<PartConfiguration>;
 }
 
@@ -37,39 +42,83 @@ interface FormInput {
   localManufacturers: boolean;
 }
 
-interface PartConfiguration {
-  id: number;
-  material: string;
-  parametersValues: IProductPartParameterValue[];
-}
-
 const ConfiguratorParametersPage: React.FC<Props> = ({
   className,
   productId,
 }) => {
-  const product = useProduct(productId)?.product;
-  const [partsValues, setPartsValues] = useState<PartConfiguration[]>(
-    product?.parts.map((part) => ({
-      id: part.id,
-      material: part?.materials?.[0]?.title_en,
-      parametersValues: [],
-    }))
-  );
+  const [product, setProduct] = useState<IProduct>();
+  const [partsValues, setPartsValues] = useState<PartConfiguration[]>([]);
+  const [session, setSession] = useState<ISession>();
+  const [previewURL, setPreviewURL] = useState<string>();
+  const [currentlyGenerating, setCurrentlyGenerating] = useState<
+    "preview" | "formats"
+  >();
 
-  const { register, handleSubmit, formState } = useForm<FormInput>({
+  const { register, watch, formState } = useForm<FormInput>({
     mode: "onBlur",
   });
   const { isValid, isDirty, errors } = formState;
+  const machine = watch("machine");
 
   useEffect(() => {
-    setPartsValues(
-      product?.parts.map((part) => ({
-        id: part.id,
-        material: part?.materials?.[0]?.title_en,
-        parametersValues: [],
-      }))
-    );
-  }, [product]);
+    productService.getProduct(productId).then((product) => {
+      setProduct(product);
+      setPartsValues(
+        product?.parts.map((part) => ({
+          part_id: part.id,
+          material_id: part?.materials?.[0]?.id,
+          parameters: [],
+        }))
+      );
+    });
+  }, [productId]);
+
+  const regeneratePreview = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setCurrentlyGenerating("preview");
+    e.preventDefault();
+    createOrUpdateSession().then((sessionId) => {
+      sessionService.regeneratePreview(sessionId).then((preview_url) => {
+        setPreviewURL(preview_url.url);
+        setCurrentlyGenerating(undefined);
+      });
+    });
+  };
+
+  const regenerateFormats = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setCurrentlyGenerating("formats");
+    e.preventDefault();
+    createOrUpdateSession().then((sessionId) => {
+      sessionService.regenerateFormats(sessionId).then(() => {
+        setCurrentlyGenerating(undefined);
+      });
+    });
+  };
+
+  const createOrUpdateSession = async (): Promise<string> => {
+    let sessionId;
+    if (!session) {
+      sessionId = (
+        await sessionService
+          .getSession({ product_id: product?.id ?? 0, machine_id: 1 }) //TODO machine_id
+          .then((newSession) => {
+            setSession(newSession);
+            return newSession;
+          })
+      ).uuid;
+    } else {
+      sessionId = session.uuid;
+    }
+    await sessionService
+      .updateSession(sessionId, {
+        session: {},
+        parts: partsValues,
+      })
+      .then((res) => {
+        setSession(res);
+      });
+
+    return sessionId;
+  };
 
   return product ? (
     <form className={`bg-white pt-6 pb-12 md:py-12 ${className || ""}`}>
@@ -122,7 +171,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                   onChange={(partValues) => {
                     setPartsValues((prevPartValues) =>
                       prevPartValues?.map((prevPartValue) =>
-                        prevPartValue.id === part.id
+                        prevPartValue.part_id === part.id
                           ? { ...prevPartValue, ...partValues }
                           : prevPartValue
                       )
@@ -190,22 +239,18 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                 <span>Please follow tooltips to continue</span>
               </div>
             )}
-            <button
-              disabled={!isValid}
-              className="bg-indigo-600 text-white hover:bg-indigo-700 w-full py-3 text-center text-base font-medium rounded-md disabled:bg-gray-200"
-              onClick={(e) => {
-                e.preventDefault();
-                handleSubmit((formInputs) => {
-                  const result: GenerateFormatsData = {
-                    ...formInputs,
-                    parts: partsValues,
-                  };
-                  console.log(result);
-                })();
-              }}
+            <Button
+              disabled={!isValid || Boolean(currentlyGenerating)}
+              variant={"primary"}
+              className="w-full py-3 flex items-center justify-center"
+              onClick={regenerateFormats}
             >
-              Generate Formats
-            </button>
+              {currentlyGenerating === "formats" ? (
+                <Spinner className={"!w-[1.5rem] !h-[1.5rem]"} />
+              ) : (
+                <>Generate Formats</>
+              )}
+            </Button>
           </div>
           <div className="lg:w-[40%] flex flex-col gap-4">
             <div className="flex justify-between pb-2">
@@ -220,20 +265,28 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               </div>
             </div>
             <ModelViewer
-              modelSrc="https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
+              modelSrc={
+                previewURL ??
+                "https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
+              }
               modelAlt="A 3D model"
             />
-            <ButtonLink
-              target="#"
-              variant="primary"
-              caption="Generate Preview"
-              className="w-full py-3 text-center text-base font-medium"
-            />
+            <Button
+              disabled={!isValid || Boolean(currentlyGenerating)}
+              variant={"primary"}
+              className="w-full py-3 flex items-center justify-center"
+              onClick={regeneratePreview}
+            >
+              {currentlyGenerating === "preview" ? (
+                <Spinner className={"!w-[1.5rem] !h-[1.5rem]"} />
+              ) : (
+                <>Generate Preview</>
+              )}
+            </Button>
           </div>
         </div>
       </div>
     </form>
   ) : null;
 };
-
 export default ConfiguratorParametersPage;
