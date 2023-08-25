@@ -19,6 +19,7 @@ import Button from "@components/Button.tsx";
 import Spinner from "@components/Spinner.tsx";
 import { IProduct } from "@interfaces/IProduct.ts";
 import productService from "../services/product.service.ts";
+import machineService from "../services/machine.service.ts";
 
 interface Props {
   productId: number;
@@ -54,7 +55,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     "preview" | "formats"
   >();
 
-  const { register, watch, formState } = useForm<FormInput>({
+  const [machines, setMachines] = useState<any[]>([]);
+
+  const { register, watch, formState, setValue } = useForm<FormInput>({
     mode: "onBlur",
   });
   const { isValid, isDirty, errors } = formState;
@@ -62,6 +65,12 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
 
   useEffect(() => {
     productService.getProduct(productId).then((product) => {
+      machineService.getMachines().then((machines) => {
+        setMachines(
+          machines.filter((mach) => mach.type === product?.machine_type)
+        );
+        setValue("machine", machines[0].title_en);
+      });
       setProduct(product);
       setPartsValues(
         product?.parts.map((part) => ({
@@ -99,7 +108,10 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     if (!session) {
       sessionId = (
         await sessionService
-          .getSession({ product_id: product?.id ?? 0, machine_id: 1 }) //TODO machine_id
+          .getSession({
+            product_id: product?.id ?? 0,
+            machine_id: machines.find((mac) => mac.title_en === machine)?.id,
+          })
           .then((newSession) => {
             setSession(newSession);
             return newSession;
@@ -196,7 +208,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                 </div>
                 <Select
                   {...register("machine")}
-                  options={[product.machine]}
+                  options={machines.map((machine) => machine.title_en)}
                   error={Boolean(errors?.machine)}
                 />
               </div>

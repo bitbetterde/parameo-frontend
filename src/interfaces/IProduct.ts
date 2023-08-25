@@ -38,7 +38,7 @@ export interface IProductPartMaterial {
 export interface IProduct {
   id: number;
   title: string;
-  machine: string;
+  machine_type: string;
   description: string;
   pictures: [
     {
