@@ -1,21 +1,21 @@
 import { Accordion, Select, RangeSlider } from "@components";
 import { Link } from "wouter";
-import type { IProductPart } from "@interfaces/IProduct";
+import type { IProductPart, IProductPartMaterial } from "@interfaces/IProduct";
 import { useEffect, useState } from "react";
 import type React from "react";
-import { IConfiguredParameter } from "../services/session.service.ts";
+import {
+  IConfiguredParameter,
+  PartConfiguration,
+} from "@services/session.service.ts";
 
 interface Props {
   part: IProductPart;
-  onChange: (a: {
-    material: string;
-    parametersValues: IConfiguredParameter[];
-  }) => void;
+  onChange: (a: PartConfiguration) => void;
 }
 
 const ProductPartConfigurator: React.FC<Props> = ({ part, onChange }) => {
-  const [material, setMaterial] = useState<string>(
-    part?.materials?.[0]?.title_en
+  const [material, setMaterial] = useState<IProductPartMaterial>(
+    part?.materials?.[0]
   );
   const [parametersValues, setParametersValues] = useState<
     IConfiguredParameter[]
@@ -27,7 +27,11 @@ const ProductPartConfigurator: React.FC<Props> = ({ part, onChange }) => {
   );
 
   useEffect(() => {
-    onChange({ material, parametersValues });
+    onChange({
+      part_id: part.id,
+      material_id: material.id,
+      parameters: parametersValues,
+    });
   }, [material, parametersValues]);
 
   return (
@@ -47,12 +51,15 @@ const ProductPartConfigurator: React.FC<Props> = ({ part, onChange }) => {
               </Link>
             </div>
             <Select
-              onChange={(e) => {
-                setMaterial(e.currentTarget.value);
+              onChange={(val) => {
+                setMaterial(val);
               }}
               name="material"
               value={material}
-              options={part.materials.map((material) => material.title_en)}
+              options={part.materials.map((material) => ({
+                label: material.title_en,
+                value: material,
+              }))}
             />
           </div>
           <div className="w-full lg:w-1/2">
