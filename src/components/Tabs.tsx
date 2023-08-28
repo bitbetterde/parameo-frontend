@@ -13,9 +13,9 @@ const Tabs: React.FC<Props> = ({ className, tabs, activeTab, onClickTab }) => {
     <>
       <div className="sm:hidden px-6 pt-2.5">
         <Select
-          options={tabs?.map((tab) => tab.label)}
+          options={tabs?.map((tab) => ({ label: tab.label, value: tab.label }))}
           value={activeTab}
-          onChange={(e) => onClickTab(e.currentTarget.value)}
+          onChange={(val) => onClickTab(val)}
           name="tabs"
           label="Select an option"
         />

@@ -9,7 +9,7 @@ import {
 import { Link } from "wouter";
 import type React from "react";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { ReactComponent as ExclamationIcon } from "@assets/icons/exclamation-triangle.svg";
 import sessionService, {
   PartConfiguration,
@@ -19,7 +19,7 @@ import Button from "@components/Button.tsx";
 import Spinner from "@components/Spinner.tsx";
 import { IProduct } from "@interfaces/IProduct.ts";
 import productService from "../services/product.service.ts";
-import machineService from "../services/machine.service.ts";
+import machineService, { IMachine } from "@services/machine.service.ts";
 
 interface Props {
   productId: number;
@@ -29,13 +29,9 @@ interface Props {
   description?: string;
 }
 
-export interface GenerateFormatsData extends FormInput {
-  parts: Array<PartConfiguration>;
-}
-
 interface FormInput {
   projectName: string;
-  machine: string;
+  machine: IMachine;
   co2Footprint: boolean;
   billOfMaterials: boolean;
   approximateMaterialPrice: boolean;
@@ -55,9 +51,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     "preview" | "formats"
   >();
 
-  const [machines, setMachines] = useState<any[]>([]);
+  const [machines, setMachines] = useState<IMachine[]>([]);
 
-  const { register, watch, formState, setValue } = useForm<FormInput>({
+  const { register, watch, control, formState, setValue } = useForm<FormInput>({
     mode: "onBlur",
   });
   const { isValid, isDirty, errors } = formState;
@@ -69,14 +65,17 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
         setMachines(
           machines.filter((mach) => mach.type === product?.machine_type)
         );
-        setValue("machine", machines[0].title_en);
+        setValue("machine", machines[0]);
       });
       setProduct(product);
       setPartsValues(
         product?.parts.map((part) => ({
           part_id: part.id,
           material_id: part?.materials?.[0]?.id,
-          parameters: [],
+          parameters: part.parameters.map((parameter) => ({
+            parameter_id: parameter.id,
+            value: parameter.default_value,
+          })),
         }))
       );
     });
@@ -110,7 +109,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
         await sessionService
           .getSession({
             product_id: product?.id ?? 0,
-            machine_id: machines.find((mac) => mac.title_en === machine)?.id,
+            machine_id: machine.id,
           })
           .then((newSession) => {
             setSession(newSession);
@@ -184,7 +183,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                     setPartsValues((prevPartValues) =>
                       prevPartValues?.map((prevPartValue) =>
                         prevPartValue.part_id === part.id
-                          ? { ...prevPartValue, ...partValues }
+                          ? partValues
                           : prevPartValue
                       )
                     );
@@ -206,10 +205,23 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                     Info
                   </Link>
                 </div>
-                <Select
-                  {...register("machine")}
-                  options={machines.map((machine) => machine.title_en)}
-                  error={Boolean(errors?.machine)}
+                <Controller
+                  name={"machine"}
+                  control={control}
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <Select
+                      value={value}
+                      onChange={(val) => {
+                        onChange(val);
+                        onBlur();
+                      }}
+                      options={machines.map((machine) => ({
+                        label: machine.title_en,
+                        value: machine,
+                      }))}
+                      error={Boolean(errors?.machine)}
+                    />
+                  )}
                 />
               </div>
               <div className="w-full lg:w-1/2">
