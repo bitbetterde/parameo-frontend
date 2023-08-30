@@ -100,7 +100,7 @@ const FaqPage: React.FC<Props> = ({
               title={faq.title}
               onClickLinkIcon={onClickLinkIcon}
               children={faq.body}
-              open={itemFromPath === faq.id}
+              isOpen={itemFromPath === faq.id}
             />
           ))}
       </div>
