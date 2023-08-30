@@ -48,9 +48,10 @@ export interface IProduct {
   designer_url: string;
   product_url: string;
   project_file_path: string;
-  preview_file?: null;
   designer_image_file: string;
   designer_name: string;
   subtitle: string;
   parts: IProductPart[];
+  preview_file_2d?: string;
+  preview_file_3d?: string;
 }

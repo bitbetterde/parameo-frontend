@@ -131,6 +131,8 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     return sessionId;
   };
 
+  const [is3DPreviewEnabled, setIs3DPreviewEnabled] = useState<boolean>(true);
+
   return product ? (
     <form className={`bg-white pt-6 pb-12 md:py-12 ${className || ""}`}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -282,20 +284,36 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               <h2 className="text-base font-semibold text-indigo-600 uppercase">
                 Preview
               </h2>
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-gray-900 font-normal">
-                  3D- / Sketch-view
-                </span>
-                <Toggle />
-              </div>
+              {product?.preview_file_2d && (
+                <div className="flex items-center gap-4">
+                  <span className="text-sm text-gray-900 font-normal">
+                    3D- / Sketch-view
+                  </span>
+                  <Toggle
+                    checked={is3DPreviewEnabled}
+                    onChange={() => {
+                      setIs3DPreviewEnabled((prevValue) => !prevValue);
+                    }}
+                  />
+                </div>
+              )}
             </div>
-            <ModelViewer
-              modelSrc={
-                previewURL ??
-                "https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
-              }
-              modelAlt="A 3D model"
-            />
+            {is3DPreviewEnabled ? (
+              <ModelViewer
+                modelSrc={
+                  previewURL ??
+                  product?.preview_file_3d ??
+                  "https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
+                }
+                modelAlt="A 3D model"
+              />
+            ) : (
+              <img
+                src={product?.preview_file_2d}
+                alt="2D Preview"
+                className="h-[540px] object-cover"
+              />
+            )}
             <Button
               disabled={!isValid || Boolean(currentlyGenerating)}
               variant={"primary"}
