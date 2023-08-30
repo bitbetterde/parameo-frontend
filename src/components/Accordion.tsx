@@ -29,7 +29,7 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
   ) => {
     return (
       <details
-        className={`mx-auto max-w-7xl border-b border-gray-200 p-6 group text-gray-400 open:text-indigo-600 ${
+        className={`mx-auto max-w-7xl border-b border-gray-200 p-6 group text-gray-400 open:text-black ${
           className || ""
         } hover:text-black`}
         open={open}
