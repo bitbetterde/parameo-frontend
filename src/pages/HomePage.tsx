@@ -11,7 +11,7 @@ import rawFaqs from "@faqs";
 import { useEffect, useState } from "react";
 import { IProduct } from "@interfaces/IProduct.ts";
 import productService from "../services/product.service.ts";
-import machineService from "../services/machine.service.ts";
+import machineService, { IMachine } from "../services/machine.service.ts";
 
 const heroButtons = [
   {
@@ -171,7 +171,7 @@ const HomePage = () => {
           description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
           cardsData={
             machines &&
-            machines?.map((machine: any) => ({
+            machines?.map((machine: IMachine) => ({
               title: machine?.title_en,
               href: "#",
               subtitle: machine.type,
