@@ -11,9 +11,14 @@ import {
 interface Props {
   part: IProductPart;
   onChange: (a: PartConfiguration) => void;
+  isOpen: boolean;
 }
 
-const ProductPartConfigurator: React.FC<Props> = ({ part, onChange }) => {
+const ProductPartConfigurator: React.FC<Props> = ({
+  part,
+  onChange,
+  isOpen,
+}) => {
   const [material, setMaterial] = useState<IProductPartMaterial>(
     part?.materials?.[0]
   );
@@ -40,6 +45,7 @@ const ProductPartConfigurator: React.FC<Props> = ({ part, onChange }) => {
         key={part.id}
         title={part.label}
         icon={"AdjustmentsVerticalIcon"}
+        isOpen={isOpen}
       >
         <div className="flex flex-col gap-6 lg:flex-row lg:justify-between lg:gap-16">
           <div className="w-full lg:w-1/2">

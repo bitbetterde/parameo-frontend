@@ -5,7 +5,7 @@ import { Icon } from "@components";
 interface AccordionProps {
   className?: string;
   title: string;
-  open?: boolean;
+  isOpen?: boolean;
   children?: React.ReactNode;
   onClickLinkIcon?: (id?: string) => void;
   id?: string;
@@ -19,7 +19,7 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
       className,
       children,
       title,
-      open = false,
+      isOpen = false,
       onClickLinkIcon,
       id,
       icon,
@@ -32,7 +32,7 @@ const Accordion = forwardRef<HTMLDetailsElement, AccordionProps>(
         className={`mx-auto max-w-7xl border-b border-gray-200 p-6 group text-gray-400 open:text-black ${
           className || ""
         } hover:text-black`}
-        open={open}
+        open={isOpen}
         ref={ref}
       >
         <summary className="flex justify-between items-center cursor-pointer">

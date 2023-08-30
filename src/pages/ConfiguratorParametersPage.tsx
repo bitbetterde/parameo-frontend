@@ -175,7 +175,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
             </h2>
             <div className="w-full">
               <div className="border-b border-gray-200 mx-auto max-w-7xl w-full" />
-              {product.parts?.map((part) => (
+              {product.parts?.map((part, index) => (
                 <ProductPartConfigurator
                   key={part.id}
                   part={part}
@@ -188,6 +188,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                       )
                     );
                   }}
+                  isOpen={index === 0}
                 />
               ))}
             </div>
