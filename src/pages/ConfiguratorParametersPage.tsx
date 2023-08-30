@@ -24,9 +24,6 @@ import machineService, { IMachine } from "@services/machine.service.ts";
 interface Props {
   productId: number;
   className?: string;
-  title: string;
-  subtitle?: string;
-  description?: string;
 }
 
 interface FormInput {
