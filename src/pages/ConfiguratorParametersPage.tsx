@@ -68,6 +68,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
         setValue("machine", machines[0]);
       });
       setProduct(product);
+      setValue("projectName", "My " + product.title, { shouldValidate: true });
       setPartsValues(
         product?.parts.map((part) => ({
           part_id: part.id,
