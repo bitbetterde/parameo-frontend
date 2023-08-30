@@ -36,7 +36,7 @@ const AboutPage: React.FC<Props> = ({
           <a target="_blank" href="https://regenholz.de/">
             regenholz
           </a>{" "}
-          and funded by
+          and funded by{" "}
           <a
             target="_blank"
             href="https://www.ifbhh.de/presse/meldung/updatehamburg-2022-1-5-millionen-euro-fuer-soziale-innovationen"
