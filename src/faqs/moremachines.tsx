@@ -22,8 +22,8 @@ const body = (
 );
 
 export default {
-  title: "Fabulaser MINI",
-  id: "fabulaser",
+  title: "Add more machines",
+  id: "moremachines",
   tags: ["Machinery"],
   body,
   teaser:
