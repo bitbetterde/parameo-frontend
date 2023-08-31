@@ -24,7 +24,7 @@ const body = (
 export default {
   title: "Maslow CNC",
   id: "maslowcnc",
-  tags: ["Machinery", "Manufacturing"],
+  tags: ["Machinery"],
   body,
   teaser:
     " The Maslow CNC is a large, affordable and space-saving open-source CNC milling machine.",
