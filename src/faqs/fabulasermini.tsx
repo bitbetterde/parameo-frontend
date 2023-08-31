@@ -6,11 +6,9 @@ const body = (
       Developed with the aim to lower the boundaries of accessing laser cutting technology, Fabulaser Mini represents an ideal compromise between performance and cost. The optimized 40W CO2 laser has a cutting area of 600x400mm, a compact machine size of 870x810x380mm and weight under 60kg.
     </p>
     <p>
-    <b> Work area max height:</b> 40cm 
-    </p>
+    <b> Work area max height:</b> 40cm </p>
     <p>
-    <b> Work area max width:</b> 60cm
-    </p>
+    <b> Work area max width:</b> 60cm </p>
     <p>
     <a href="https://www.inmachines.net/Fabulasermini" target="_blank">Project URL</a></p>
     <p>
