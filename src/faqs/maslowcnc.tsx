@@ -9,15 +9,16 @@ const body = (
     <img src="/images/forrest.jpg" alt="" />
     <h3>Specs</h3>
     <p>
-    <b> Work area max height:</b> 100cm<br>
+    <b> Work area max height:</b> 100cm <br>
     <b> Work area max width:</b> 180cm
     </p>
     <h3>Links:</h3>
     <p>
-      <b>Project URL:</b> https://www.maslowcnc.com/ <br>
-      <b>Documentation URL:</b> https://gitlab.fabcity.hamburg/hardware/maslowcnc <br>
-      <b>Repository URL:</b> https://github.com/makermadecnc <br>
-    </p>
+    <a href="https://www.maslowcnc.com/" target="_blank">Project URL</a></p>
+    <p>
+    <a href="https://gitlab.fabcity.hamburg/hardware/maslowcnc" target="_blank">Documentation URL</a></p>
+    <p>
+    <a href="https://github.com/makermadecnc" target="_blank">Repository URL</a></p>
   </>
 );
 
