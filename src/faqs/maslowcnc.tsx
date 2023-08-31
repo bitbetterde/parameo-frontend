@@ -27,7 +27,7 @@ export default {
   tags: ["Machinery", "Manufacturing"],
   body,
   teaser:
-    " The Maslow CNC is a large, affordable and space-saving open-source CNC milling machine",
+    " The Maslow CNC is a large, affordable and space-saving open-source CNC milling machine.",
   showOnHomePage: true,
   order: 3,
 } as IFaqFile;
