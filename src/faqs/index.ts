@@ -1,4 +1,4 @@
-import fabulaser from "./fabulaser";
+import fabulaser from "./fabulasermini";
 import maslowcnc from "./maslowcnc";
 import example from "./example";
 import designerCollaboration from "./designer-collaboration";
