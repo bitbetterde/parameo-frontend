@@ -9,7 +9,8 @@ const body = (
     <img src="/images/forrest.jpg" alt="" />
     <h3>Specs</h3>
     <p>
-    <b> Work area max height:</b> 100cm <br>
+    <b> Work area max height:</b> 100cm </p>
+    <p>
     <b> Work area max width:</b> 180cm
     </p>
     <h3>Links:</h3>
