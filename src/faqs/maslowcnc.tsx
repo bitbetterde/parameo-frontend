@@ -2,25 +2,21 @@ import { IFaqFile } from "@interfaces/IFaq";
 
 const body = (
   <>
-    <h2>Origin</h2>
+    <h2>Description</h2>
     <p>
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec
-      est. Odio penatibus risus viverra tellus varius sit neque erat velit.
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id.
+      The Maslow CNC is a large, affordable and space-saving open-source CNC milling machine that mills useful things out of wood and other sheet materials. Since 2017, craftspeople and makers around the world have been working with the Maslow CNC. The growing community shares designs, data and experiences.
     </p>
     <img src="/images/forrest.jpg" alt="" />
     <h2>Specs</h2>
     <ol>
-      <li>Integer varius imperdiet sed interdum felis cras in nec nunc.</li>
-      <li>Quam malesuada odio ut sit egestas. Elementum at porta vitae.</li>
+      <li><b> Work area max height:</b> 100cm</li>
+      <li><b> Work area max width:</b> 180cm</li>
     </ol>
+    <h2>Links</h2>
     <p>
-      Erat pellentesque dictumst ligula porttitor risus eget et eget. Ultricies
-      tellus felis id dignissim eget. Est augue maecenas risus nulla ultrices
-      congue nunc tortor. Eu leo risus porta integer suspendisse sed sit ligula
-      elit.
+      Project URL: https://www.maslowcnc.com/
+      Documentation URL: https://gitlab.fabcity.hamburg/hardware/maslowcnc
+      Repository URL: https://github.com/makermadecnc
     </p>
   </>
 );
@@ -31,7 +27,7 @@ export default {
   tags: ["Machinery", "Manufacturing"],
   body,
   teaser:
-    "Ipsum voluptates quia doloremque culpa qui eius. Id qui id officia molestias quaerat deleniti. Qui facere numquam autem libero quae cupiditate asperiores vitae cupiditate. Cumque id deleniti explicabo.",
+    " The Maslow CNC is a large, affordable and space-saving open-source CNC milling machine",
   showOnHomePage: true,
   order: 3,
 } as IFaqFile;
