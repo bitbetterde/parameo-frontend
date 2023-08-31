@@ -120,12 +120,7 @@ const App = () => {
       <Switch>
         <Route path="/configurator/:id/parameters">
           {(params) => (
-            <ConfiguratorParametersPage
-              productId={Number(params.id)}
-              title="Stand desk"
-              subtitle="Design"
-              description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
-            />
+            <ConfiguratorParametersPage productId={Number(params.id)} />
           )}
         </Route>
         <Route path="/configurator/products">
