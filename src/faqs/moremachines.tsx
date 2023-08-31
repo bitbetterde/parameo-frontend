@@ -20,6 +20,6 @@ export default {
   body,
   teaser:
     "To add another open-source CNC machine, please contact us directly via the contact form. Happy to connect.",
-  showOnHomePage: true,
+  showOnHomePage: false,
   order: 3
 } as IFaqFile;
