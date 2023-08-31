@@ -8,10 +8,8 @@ const body = (
     </p>
     <img src="/images/forrest.jpg" alt="" />
     <h2>Specs</h2>
-    <ol>
-      <li><b> Work area max height:</b> 100cm</li>
-      <li><b> Work area max width:</b> 180cm</li>
-    </ol>
+    <b> Work area max height:</b> 100cm
+    <b> Work area max width:</b> 180cm
     <h2>Links</h2>
     <p>
       Project URL: https://www.maslowcnc.com/
