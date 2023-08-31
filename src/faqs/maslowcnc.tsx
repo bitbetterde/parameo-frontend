@@ -17,7 +17,7 @@ const body = (
     <p>
     <a href="https://github.com/makermadecnc" target="_blank">Repository URL</a></p>
 
-    <img src="/images/forrest.jpg" alt="" />
+    <img src="https://gitlab.fabcity.hamburg/hardware/interfacer-osh-build-workshops/maslow-cnc-bau/-/raw/main/res/assets/media/img/maslow-cnc-assembly-titelimg.jpg" alt="maslow cnc sketch" />
 
   </>
 );
