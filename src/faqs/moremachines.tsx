@@ -3,18 +3,10 @@ import { IFaqFile } from "@interfaces/IFaq";
 const body = (
   <>
     <p>
-      Developed with the aim to lower the boundaries of accessing laser cutting technology, Fabulaser Mini represents an ideal compromise between performance and cost. The optimized 40W CO2 laser has a cutting area of 600x400mm, a compact machine size of 870x810x380mm and weight under 60kg.
+      We are constantly expanding our machine library and are happy about every additional machine that can create products via parameo. To add another open-source CNC machine, please contact us directly via the contact form. Together we will integrate and document the process. Happy to connect.
     </p>
     <p>
-    <b> Work area max height:</b> 40cm </p>
-    <p>
-    <b> Work area max width:</b> 60cm </p>
-    <p>
-    <a href="https://www.inmachines.net/Fabulasermini" target="_blank">Project URL</a></p>
-    <p>
-    <a href="http://fabulaser.net/" target="_blank">Documentation URL</a></p>
-    <p>
-    <a href="https://github.com/fab-machines/Fabulaser-Mini" target="_blank">Repository URL</a></p>
+    <a href="https://www.parameo.de/contact" target="_self">Connect Here</a></p>
 
     <img src="/images/forrest.jpg" alt="" />
     
@@ -22,12 +14,12 @@ const body = (
 );
 
 export default {
-  title: "Add more machines",
+  title: "Add More Machines",
   id: "moremachines",
   tags: ["Machinery"],
   body,
   teaser:
-    "The Fabulaser MINI is an open-source 40W C02 laser cutter representing an ideal compromise between performance and cost.",
+    "To add another open-source CNC machine, please contact us directly via the contact form. Happy to connect.",
   showOnHomePage: true,
-  order: 2
+  order: 3
 } as IFaqFile;
