@@ -30,5 +30,5 @@ export default {
   teaser:
     " The Maslow CNC is a large, affordable and space-saving open-source CNC milling machine.",
   showOnHomePage: true,
-  order: 3,
+  order: 1,
 } as IFaqFile;
