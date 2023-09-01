@@ -61,8 +61,8 @@ const sessionService = {
           method: "GET",
           headers: commonHeaderJson,
         }
-      ).then((res) => res.json())
-    );
+      )
+    ).then((res) => res?.json());
   },
 
   regenerateFormats: (uuid: string): Promise<ISession[]> => {

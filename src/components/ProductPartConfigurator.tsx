@@ -14,6 +14,8 @@ interface Props {
   isOpen: boolean;
 }
 
+const CONVERSION_FACTOR_TO_MM = 10; //all parameters have the unit 'mm/10' for the conversation with the backend, we display mm
+
 const ProductPartConfigurator: React.FC<Props> = ({
   part,
   onChange,
@@ -81,16 +83,19 @@ const ProductPartConfigurator: React.FC<Props> = ({
                 key={parameter.id}
                 className="pb-4"
                 label={parameter.label ?? parameter.alias}
-                rangeMin={parameter.minimum}
-                rangeMax={parameter.maximum}
-                onChange={(event) => {
-                  const currentValue = event.currentTarget.value;
+                rangeMin={Math.round(
+                  parameter.minimum / CONVERSION_FACTOR_TO_MM
+                )}
+                rangeMax={Math.round(
+                  parameter.maximum / CONVERSION_FACTOR_TO_MM
+                )}
+                onChange={(value) => {
                   setParametersValues((prevParametersValues) =>
                     prevParametersValues.map((prevParameterValue) =>
                       prevParameterValue.parameter_id === parameter.id
                         ? {
                             ...prevParameterValue,
-                            value: parseInt(currentValue),
+                            value: value * CONVERSION_FACTOR_TO_MM,
                           }
                         : prevParameterValue
                     )
@@ -98,10 +103,12 @@ const ProductPartConfigurator: React.FC<Props> = ({
                 }}
                 id={"parameter " + parameter.id}
                 value={
-                  parametersValues.find(
-                    (parameterValue) =>
-                      parameterValue.parameter_id === parameter.id
-                  )?.value
+                  Math.round(
+                    (parametersValues.find(
+                      (parameterValue) =>
+                        parameterValue.parameter_id === parameter.id
+                    )?.value as number) / CONVERSION_FACTOR_TO_MM
+                  ) || 0
                 }
               />
             ))}
