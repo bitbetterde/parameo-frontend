@@ -18,7 +18,7 @@ const body = (
 );
 
 export default {
-  title: "co2emission",
+  title: "CO2 Emission",
   id: "co2",
   tags: ["Manufacturing"],
   body,
