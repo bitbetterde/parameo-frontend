@@ -55,7 +55,7 @@ const features = [
     icon: "globe" as const,
   },
   {
-    name: "Material price",
+    name: "GCode generation",
     description:
       "Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.",
     icon: "lightning" as const,
@@ -67,7 +67,7 @@ const features = [
     icon: "scale" as const,
   },
   {
-    name: "DYI or BUY",
+    name: "DIY or BUY",
     description:
       "Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.",
     icon: "annotation" as const,
