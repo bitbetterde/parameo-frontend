@@ -1,5 +1,5 @@
 import { FaqEntry } from "@components";
-import { IFaqFile } from "@interfaces/IFaq";
+import type { IFaqFile } from "@interfaces";
 import type React from "react";
 
 interface Props {

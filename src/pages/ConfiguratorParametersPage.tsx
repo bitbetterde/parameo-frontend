@@ -1,3 +1,4 @@
+import { ReactComponent as ExclamationIcon } from "@assets/icons/exclamation-triangle.svg";
 import {
   Checkbox,
   ModelViewer,
@@ -5,21 +6,18 @@ import {
   Select,
   TextInput,
   Toggle,
+  Button,
+  Spinner,
 } from "@components";
-import { Link } from "wouter";
+import type { IProduct } from "@interfaces/IProduct";
+import type { ISession } from "@interfaces/ISession";
+import type { IPartConfiguration } from "@services";
+import type { IMachine } from "@services";
+import { productService, sessionService, machineService } from "@services";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { ReactComponent as ExclamationIcon } from "@assets/icons/exclamation-triangle.svg";
-import sessionService, {
-  PartConfiguration,
-} from "../services/session.service.ts";
-import { ISession } from "@interfaces/ISession.ts";
-import Button from "@components/Button.tsx";
-import Spinner from "@components/Spinner.tsx";
-import { IProduct } from "@interfaces/IProduct.ts";
-import productService from "../services/product.service.ts";
-import machineService, { IMachine } from "@services/machine.service.ts";
+import { Link } from "wouter";
 
 interface Props {
   productId: number;
@@ -41,7 +39,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   productId,
 }) => {
   const [product, setProduct] = useState<IProduct>();
-  const [partsValues, setPartsValues] = useState<PartConfiguration[]>([]);
+  const [partsValues, setPartsValues] = useState<IPartConfiguration[]>([]);
   const [session, setSession] = useState<ISession>();
   const [previewURL, setPreviewURL] = useState<string>();
   const [currentlyGenerating, setCurrentlyGenerating] = useState<

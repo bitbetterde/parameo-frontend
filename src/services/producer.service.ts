@@ -1,4 +1,4 @@
-import { catchAndPrintFetchError, commonHeaderJson } from "./util.ts";
+import { catchAndPrintFetchError, commonHeaderJson } from "./util";
 
 const producerService = {
   getProducers: (): Promise<any[]> => {

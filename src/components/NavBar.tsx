@@ -1,9 +1,9 @@
 import { ReactComponent as ParameoLogo } from "@assets/logos/parameo-icon.svg";
 import { ButtonLink } from "@components";
-import { Link } from "wouter";
-import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import type React from "react";
+import { useState } from "react";
+import { Link } from "wouter";
 
 interface Props {
   className?: string;

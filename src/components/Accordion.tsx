@@ -1,6 +1,6 @@
+import { Icon } from "@components";
 import { LinkIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { forwardRef } from "react";
-import { Icon } from "@components";
 
 interface AccordionProps {
   className?: string;

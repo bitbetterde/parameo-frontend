@@ -143,7 +143,7 @@ const AboutPage: React.FC<Props> = ({
             <li>Tailwind UI</li>
           </ul>
         </p>
-        
+
         <h2>Project scope</h2>
         <p>
           Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
@@ -157,12 +157,16 @@ const AboutPage: React.FC<Props> = ({
           <strong>Our partners</strong>
           <ul>
             <li>
-              <a target="_blank" href="https://bitbetter.de/">bitbetter</a>, Software
-              Development
+              <a target="_blank" href="https://bitbetter.de/">
+                bitbetter
+              </a>
+              , Software Development
             </li>
             <li>
-              <a target="_blank" href="https://www.inmachines.net/">INMACHINES</a>, Open Source
-              Hardware
+              <a target="_blank" href="https://www.inmachines.net/">
+                INMACHINES
+              </a>
+              , Open Source Hardware
             </li>
           </ul>
         </p>
@@ -175,19 +179,13 @@ const AboutPage: React.FC<Props> = ({
           rhoncus, volutpat. Dignissim sed eget risus enim.{" "}
           <ul>
             <li>
-              <a href="/faq/designer-collaboration">
-                FAQ for Designers
-              </a>
+              <a href="/faq/designer-collaboration">FAQ for Designers</a>
             </li>
             <li>
-              <a href="/faq/maufacturer-collaboration">
-                FAQ for Manufacturers
-              </a>
+              <a href="/faq/maufacturer-collaboration">FAQ for Manufacturers</a>
             </li>
             <li>
-              <a href="/faq/developer-collaboration">
-                FAQ for Developers
-              </a>
+              <a href="/faq/developer-collaboration">FAQ for Developers</a>
             </li>
           </ul>
         </p>

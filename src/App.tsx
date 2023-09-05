@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   NavBar,
   LogoGrid,
@@ -6,6 +5,7 @@ import {
   Notification,
   ScrollToTop,
 } from "@components";
+import type { INotification } from "@interfaces";
 import {
   HomePage,
   FaqPage,
@@ -16,8 +16,9 @@ import {
   ImprintPage,
   PrivacyPage,
 } from "@pages";
+import type React from "react";
+import { useState } from "react";
 import { Switch, Route } from "wouter";
-import { INotification } from "@interfaces/INotification";
 
 const footerMenu = [
   { name: "Home", href: "/" },
@@ -93,7 +94,7 @@ const logos = [
   },
 ];
 
-const App = () => {
+const App: React.FC = () => {
   const [notificationData, setNotificationData] = useState<INotification>();
   const [showNotification, setShowNotification] = useState(false);
 

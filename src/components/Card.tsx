@@ -1,7 +1,7 @@
-import React from "react";
-import type { ICard } from "@interfaces/ICard";
-import { Link } from "wouter";
 import { PhotoIcon } from "@heroicons/react/20/solid";
+import type { ICard } from "@interfaces";
+import React from "react";
+import { Link } from "wouter";
 
 interface Props {
   className?: string;

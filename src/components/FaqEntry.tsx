@@ -1,7 +1,7 @@
-import type { IFaqFile } from "@interfaces/IFaq";
-import { Link } from "wouter";
+import type { IFaqFile } from "@interfaces";
 import { FAQ_ENTRY_READ_MORE } from "@translations/en.json";
 import type React from "react";
+import { Link } from "wouter";
 
 interface Props {
   className?: string;

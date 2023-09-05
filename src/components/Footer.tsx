@@ -1,11 +1,11 @@
-import { IMenuItem, ISocialMediaItem } from "@interfaces/IFooter";
-import InstagramLogo from "@assets/logos/instagram.svg";
-import TwitterLogo from "@assets/logos/twitter.svg";
+import DribbleLogo from "@assets/logos/dribble.svg";
 import GitHubLogo from "@assets/logos/github.svg";
 import GitLabLogo from "@assets/logos/gitlab.svg";
-import DribbleLogo from "@assets/logos/dribble.svg";
-import { Link } from "wouter";
+import InstagramLogo from "@assets/logos/instagram.svg";
+import TwitterLogo from "@assets/logos/twitter.svg";
+import type { IMenuItem, ISocialMediaItem } from "@interfaces";
 import type React from "react";
+import { Link } from "wouter";
 
 interface Props {
   className?: string;

@@ -8,10 +8,11 @@ import {
   Spinner,
 } from "@components";
 import rawFaqs from "@faqs";
+import type { IProduct } from "@interfaces/IProduct";
+import { productService, machineService } from "@services";
+import type { IMachine } from "@services/machine.service";
+import type React from "react";
 import { useEffect, useState } from "react";
-import { IProduct } from "@interfaces/IProduct.ts";
-import productService from "../services/product.service.ts";
-import machineService, { IMachine } from "../services/machine.service.ts";
 
 const heroButtons = [
   {
@@ -104,7 +105,7 @@ const images = [
   },
 ];
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   const visibleFaqItems = rawFaqs
     .sort((a, b) => (a.order || 0) - (b.order || 0))
     .filter((faq) => faq.showOnHomePage);

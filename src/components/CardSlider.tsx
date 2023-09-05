@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useKeenSlider } from "keen-slider/react";
 import { Card } from "@components";
-import { ICard } from "@interfaces/ICard";
+import type { ICard } from "@interfaces";
+import { useKeenSlider } from "keen-slider/react";
+import type React from "react";
+import { useEffect, useState } from "react";
 import { useWindowSize } from "usehooks-ts";
 
 interface Props {

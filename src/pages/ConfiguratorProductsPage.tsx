@@ -1,7 +1,7 @@
 import { CardSlider, HeroSection, ImageSlider, Spinner } from "@components";
+import type { IProduct } from "@interfaces/IProduct";
+import { productService } from "@services";
 import { useEffect, useState } from "react";
-import { IProduct } from "@interfaces/IProduct.ts";
-import productService from "../services/product.service.ts";
 
 const images = [
   {
