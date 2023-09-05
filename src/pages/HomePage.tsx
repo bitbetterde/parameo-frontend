@@ -51,25 +51,25 @@ const features = [
   {
     name: "CO2 footprint",
     description:
-      "Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.",
+      "parameo provides the calculation of C02 emissions indicated by material consumption and manufacturing resources.",
     icon: "globe" as const,
   },
   {
     name: "GCode generation",
     description:
-      "Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.",
+      "G-code is a programming language for CNC (Computer Numerical Control) machines. parameo provides the uniquely configured .nc-data file.",
     icon: "lightning" as const,
   },
   {
     name: "Bill of materials",
     description:
-      "Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.",
+      "parameo provides a 'bom.csv' with a list of needed materials based on the individually configured product dimensions.",
     icon: "scale" as const,
   },
   {
     name: "DIY or BUY",
     description:
-      "Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.",
+      "parameo provides contacts for local production as well as material and manufacturing data for self-production",
     icon: "annotation" as const,
   },
 ];
