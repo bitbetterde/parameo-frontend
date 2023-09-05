@@ -3,7 +3,7 @@ import { IFaqFile } from "@interfaces/IFaq";
 const body = (
   <>
     <p>
-      A BOM.csv is providing a list of needed resources for custom production like materials and tools, complementing product specific assembly necessities. 
+      A BOM.csv provides a list of needed resources for custom production like materials and tools, complementing product specific assembly necessities. 
     </p>
 
     <img src="/images/forrest.jpg" alt="" />
