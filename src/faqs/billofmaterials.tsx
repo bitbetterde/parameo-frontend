@@ -3,8 +3,8 @@ import { IFaqFile } from "@interfaces/IFaq";
 const body = (
   <>
     <p>
-      A BOM is generated in .csv format listing needed ressources for custom production like material & machine run time, complementing product specific assembly necessities. 
-    Source links are obligatory accessible and unconditionally adaptive via the admin panel. 
+      A BOM.csv is providing a list of needed resources for custom production like materials and tools, complementing product specific assembly necessities. 
+    Source links are obligatory accessible and unconditionally adaptable via the admin panel.
     </p>
     <p>
     
