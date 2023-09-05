@@ -8,7 +8,6 @@ const body = (
       adaptable via the admin panel, logged by a timestamp.
     </p>
 
-    <img src="/images/forrest.jpg" alt="" />
   </>
 );
 
