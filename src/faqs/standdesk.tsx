@@ -24,7 +24,7 @@ const body = (
 export default {
   title: "StandDesk",
   id: "standdesk",
-  tags: ["Design"]["Manufacturing"],
+  tags: ["Design","Manufacturing"],
   body,
   teaser:
     "Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.",
