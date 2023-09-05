@@ -76,27 +76,27 @@ const features = [
 const images = [
   {
     image: "/images/regenholz-parameo-MultiFrame_0521-art.webp",
-    imageAlt: "parameo production",
+    imageAlt: "regenholz MultiFrame",
   },
   {
-    image: "/images/pregenholz-parameo_OpenBox_pic-02.webp",
-    imageAlt: "parameo production",
+    image: "/images/regenholz-parameo_OpenBox_pic-02.webp",
+    imageAlt: "regenholz OpenBox",
   },
   {
     image: "/images/regenholz-parameo_StandDesk_0149.webp",
-    imageAlt: "parameo production",
+    imageAlt: "regenholz StandDesk",
   },
   {
     image: "/images/regenholz-parameo-MultiFrame_1262.webp",
-    imageAlt: "parameo production",
+    imageAlt: "regenholz MultiFrame",
   },
   {
     image: "/images/regenholz-parameo_OpenBox_pic-01.webp",
-    imageAlt: "parameo production",
+    imageAlt: "regenholz OpenBox",
   },
   {
     image: "/images/regenholz-parameo_StandDesk_unsplash-hZcmnLfJfv0.webp",
-    imageAlt: "parameo production",
+    imageAlt: "regenholz StandDesk",
   },
 ];
 
