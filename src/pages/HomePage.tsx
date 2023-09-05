@@ -79,19 +79,23 @@ const images = [
     imageAlt: "parameo production",
   },
   {
-    image: "/images/parameo-mood_production-02.jpg",
+    image: "/images/pregenholz-parameo_OpenBox_pic-02.webp",
     imageAlt: "parameo production",
   },
   {
-    image: "/images/parameo-mood_production-03.jpg",
+    image: "/images/regenholz-parameo_StandDesk_0149.webp",
     imageAlt: "parameo production",
   },
   {
-    image: "/images/parameo-mood_production-04.jpg",
+    image: "/images/regenholz-parameo-MultiFrame_1262.webp",
     imageAlt: "parameo production",
   },
   {
-    image: "/images/parameo-mood_production-05.jpg",
+    image: "/images/regenholz-parameo_OpenBox_pic-01.webp",
+    imageAlt: "parameo production",
+  },
+  {
+    image: "/images/regenholz-parameo_StandDesk_unsplash-hZcmnLfJfv0.webp",
     imageAlt: "parameo production",
   },
 ];
