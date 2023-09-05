@@ -2,13 +2,9 @@ import { IFaqFile } from "@interfaces/IFaq";
 
 const body = (
   <>
-    <h2>Origin</h2>
+    <h2>Flexibly organize, transport and store.</h2>
     <p>
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec
-      est. Odio penatibus risus viverra tellus varius sit neque erat velit.
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id.
+      The "OpenBox" by regenholz was designed as a simple, stable, portable and stackable box for use in the workshop.  As a whole or with simple divider inserts, the box can be used for storage and transport of different things.
     </p>
     <img src="/images/regenholz-parameo_OpenBox_pic-02.webp" alt="" />
     <h2>Specs</h2>
