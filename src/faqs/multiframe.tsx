@@ -2,26 +2,16 @@ import { IFaqFile } from "@interfaces/IFaq";
 
 const body = (
   <>
-    <h2>Origin</h2>
+    <h2>Saves resources , loves variety!</h2>
     <p>
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec
-      est. Odio penatibus risus viverra tellus varius sit neque erat velit.
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id.
+      The MultiFrame is a wooden picture frame designed for material-saving production with a laser cutter. It can be produced optionally with or without a plexiglass pane.  Several thin layers of wood create an insertion: the frame can be filled with changing motifs from above.
     </p>
     <img src="/images/regenholz-parameo-MultiFrame_0521-blank.webp" alt="" />
-    <h2>Specs</h2>
+    <h2>Specs / Links</h2>
     <ol>
-      <li>Integer varius imperdiet sed interdum felis cras in nec nunc.</li>
-      <li>Quam malesuada odio ut sit egestas. Elementum at porta vitae.</li>
+      <li>...</li>
+      <li>...</li>
     </ol>
-    <p>
-      Erat pellentesque dictumst ligula porttitor risus eget et eget. Ultricies
-      tellus felis id dignissim eget. Est augue maecenas risus nulla ultrices
-      congue nunc tortor. Eu leo risus porta integer suspendisse sed sit ligula
-      elit.
-    </p>
   </>
 );
 
