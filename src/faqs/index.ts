@@ -8,6 +8,9 @@ import manufacturerCollaboration from "./manufacturer-collaboration";
 import maslowcnc from "./maslowcnc";
 import material from "./materialprice";
 import moremachines from "./moremachines";
+import multiframe from "./multiframe";
+import standdesk from "./standdesk";
+import openbox from "./openbox";
 
 export default [
   maslowcnc,
@@ -20,4 +23,7 @@ export default [
   developerCollaboration,
   manufacturerCollaboration,
   makerCollaboration,
+  multiframe,
+  standdesk,
+  openbox,
 ];
