@@ -3,13 +3,12 @@ import { IFaqFile } from "@interfaces/IFaq";
 const body = (
   <>
     <p>
-      A BOM is provided based on main production needs and individiual dimensions.
-      ...
-      Technical Solution:
-      Handcraft Product:
+      A BOM is generated in .csv format listing needed ressources for custom production by material choice & machine run time complementing  product specific assembly necessities. 
+      The Input of values like raw material price in €/m3 must be updated manually atm via the admin panel logged by a timestamp.  
+    Source links are accessible and unconditionally adaptive via the admin panel. 
     </p>
     <p>
-    <a href="https://www.parameo.de/contact" target="_self">Connect Here</a></p>
+    
 
     <img src="/images/forrest.jpg" alt="" />
     
@@ -17,12 +16,12 @@ const body = (
 );
 
 export default {
-  title: "Add More Machines",
-  id: "moremachines",
-  tags: ["Machinery"],
+  title: "Bill of Materials",
+  id: "bom",
+  tags: ["Manufacturing"],
   body,
   teaser:
-    "To add another open-source CNC machine, please contact us directly via the contact form. Happy to connect.",
+    "Your bill of materials.",
   showOnHomePage: false,
   order: 3
 } as IFaqFile;
