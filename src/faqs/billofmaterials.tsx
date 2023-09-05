@@ -1,12 +1,12 @@
-import { IFaqFile } from "@interfaces/IFaq";
+import type { IFaqFile } from "@interfaces";
 
 const body = (
   <>
     <p>
-      A BOM.csv provides a list of needed resources based on configured product dimensions for custom production like
-      materials and tools, complementing product specific assembly necessities.
+      A BOM.csv provides a list of needed resources based on configured product
+      dimensions for custom production like materials and tools, complementing
+      product specific assembly necessities.
     </p>
-    
   </>
 );
 
