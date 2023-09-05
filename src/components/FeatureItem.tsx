@@ -1,5 +1,5 @@
-import { ReactComponent as GlobeIcon } from "@assets/icons/globe.svg";
 import { ReactComponent as AnnotationIcon } from "@assets/icons/annotation.svg";
+import { ReactComponent as GlobeIcon } from "@assets/icons/globe.svg";
 import { ReactComponent as LightningIcon } from "@assets/icons/lightning-bolt.svg";
 import { ReactComponent as ScaleIcon } from "@assets/icons/scale.svg";
 import React from "react";

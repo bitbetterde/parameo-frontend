@@ -1,16 +1,13 @@
 import { Accordion, Select, RangeSlider } from "@components";
-import { Link } from "wouter";
 import type { IProductPart, IProductPartMaterial } from "@interfaces/IProduct";
-import { useEffect, useState } from "react";
+import type { IConfiguredParameter, IPartConfiguration } from "@services";
 import type React from "react";
-import {
-  IConfiguredParameter,
-  PartConfiguration,
-} from "@services/session.service.ts";
+import { useEffect, useState } from "react";
+import { Link } from "wouter";
 
 interface Props {
   part: IProductPart;
-  onChange: (a: PartConfiguration) => void;
+  onChange: (a: IPartConfiguration) => void;
   isOpen: boolean;
 }
 

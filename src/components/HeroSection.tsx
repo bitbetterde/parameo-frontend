@@ -1,5 +1,5 @@
 import { ButtonLink } from "@components";
-import type { IButton } from "@interfaces/IButton";
+import type { IButton } from "@interfaces";
 import type React from "react";
 
 interface Props {

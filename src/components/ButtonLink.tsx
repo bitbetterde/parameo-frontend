@@ -1,6 +1,6 @@
-import type { IButton } from "@interfaces/IButton";
-import { Link } from "wouter";
+import type { IButton } from "@interfaces";
 import type React from "react";
+import { Link } from "wouter";
 
 interface Props extends IButton {
   className?: string;

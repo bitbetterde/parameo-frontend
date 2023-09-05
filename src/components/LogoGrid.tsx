@@ -1,10 +1,10 @@
-import { ILogo } from "@interfaces/IFooter";
 import BitBetterLogo from "@assets/logos/bitbetter.svg";
 import FreeCadLogo from "@assets/logos/freecad.svg";
-import StatamicLogo from "@assets/logos/statamic.svg";
+import IFBLogo from "@assets/logos/ifb-hamburg.svg";
 import InMachinesLogo from "@assets/logos/inmachines.svg";
 import RegenholzLogo from "@assets/logos/regenholz.svg";
-import IFBLogo from "@assets/logos/ifb-hamburg.svg";
+import StatamicLogo from "@assets/logos/statamic.svg";
+import { ILogo } from "@interfaces";
 import type React from "react";
 
 interface Props {

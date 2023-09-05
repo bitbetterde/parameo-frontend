@@ -22,8 +22,8 @@
       "@translations": ["src/translations"],
       "@styles/*": ["src/styles/*"],
       "@styles": ["src/styles"],
-      "@services" : ["src/services"],
-      "@services/*" : ["src/services/*"]
+      "@services": ["src/services"],
+      "@services/*": ["src/services/*"]
     },
 
     /* Bundler mode */

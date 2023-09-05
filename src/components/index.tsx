@@ -1,33 +1,34 @@
-import NavBar from "./NavBar";
-import AvatarSection from "./AvatarSection";
-import HeroSection from "./HeroSection";
-import ButtonLink from "./ButtonLink";
-import FeatureSection from "./FeatureSection";
-import FeatureItem from "./FeatureItem";
-import Icon from "./Icon";
-import FaqSection from "./FaqSection";
-import FaqEntry from "./FaqEntry";
-import LogoGrid from "./LogoGrid";
-import CardSlider from "./CardSlider";
-import Card from "./Card";
-import ImageSlider from "./ImageSlider";
-import Footer from "./Footer";
-import Tabs from "./Tabs";
 import Accordion from "./Accordion";
-import Notification from "./Notification";
-import Spinner from "./Spinner";
-import RangeSlider from "./RangeSlider";
-import Select from "./Select";
-import Toggle from "./Toggle";
-import TextInput from "./TextInput";
+import AvatarSection from "./AvatarSection";
+import Button from "./Button";
+import ButtonLink from "./ButtonLink";
+import Card from "./Card";
+import CardSlider from "./CardSlider";
 import Checkbox from "./Checkbox";
 import ContactForm from "./ContactForm";
-import FeaturedImageGallery from "./FeaturedImageGallery";
-import DownloadListItem from "./DownloadListItem";
 import DoughnutChart from "./DoughnutChart";
-import ScrollToTop from "./ScrollToTop";
+import DownloadListItem from "./DownloadListItem";
+import FaqEntry from "./FaqEntry";
+import FaqSection from "./FaqSection";
+import FeatureItem from "./FeatureItem";
+import FeatureSection from "./FeatureSection";
+import FeaturedImageGallery from "./FeaturedImageGallery";
+import Footer from "./Footer";
+import HeroSection from "./HeroSection";
+import Icon from "./Icon";
+import ImageSlider from "./ImageSlider";
+import LogoGrid from "./LogoGrid";
 import ModelViewer from "./ModelViewer";
+import NavBar from "./NavBar";
+import Notification from "./Notification";
 import ProductPartConfigurator from "./ProductPartConfigurator";
+import RangeSlider from "./RangeSlider";
+import ScrollToTop from "./ScrollToTop";
+import Select from "./Select";
+import Spinner from "./Spinner";
+import Tabs from "./Tabs";
+import TextInput from "./TextInput";
+import Toggle from "./Toggle";
 
 export {
   NavBar,
@@ -37,6 +38,7 @@ export {
   AvatarSection,
   HeroSection,
   ButtonLink,
+  Button,
   FaqSection,
   FaqEntry,
   LogoGrid,
@@ -59,5 +61,5 @@ export {
   DoughnutChart,
   ScrollToTop,
   ModelViewer,
-  ProductPartConfigurator
+  ProductPartConfigurator,
 };

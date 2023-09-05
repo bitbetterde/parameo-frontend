@@ -1,12 +1,23 @@
-import fabulaser from "./fabulasermini";
-import maslowcnc from "./maslowcnc";
+import bom from "./billofmaterials";
+import co2 from "./co2emission";
 import designerCollaboration from "./designer-collaboration";
 import developerCollaboration from "./developer-collaboration";
-import manufacturerCollaboration from "./manufacturer-collaboration";
+import fabulaser from "./fabulasermini";
 import makerCollaboration from "./maker-collaboration";
-import moremachines from "./moremachines";
-import bom from "./billofmaterials";
+import manufacturerCollaboration from "./manufacturer-collaboration";
+import maslowcnc from "./maslowcnc";
 import material from "./materialprice";
-import co2 from"./co2emission";
+import moremachines from "./moremachines";
 
-export default [maslowcnc, fabulaser, moremachines, bom, material, co2, designerCollaboration, developerCollaboration, manufacturerCollaboration, makerCollaboration];
+export default [
+  maslowcnc,
+  fabulaser,
+  moremachines,
+  bom,
+  material,
+  co2,
+  designerCollaboration,
+  developerCollaboration,
+  manufacturerCollaboration,
+  makerCollaboration,
+];

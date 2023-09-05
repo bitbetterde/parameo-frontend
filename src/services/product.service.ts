@@ -1,5 +1,5 @@
-import { IProduct } from "@interfaces/IProduct.ts";
-import { catchAndPrintFetchError, commonHeaderJson } from "./util.ts";
+import { catchAndPrintFetchError, commonHeaderJson } from "./util";
+import type { IProduct } from "@interfaces/IProduct";
 
 const productService = {
   getProducts: (): Promise<IProduct[]> => {

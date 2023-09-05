@@ -8,8 +8,8 @@ import {
   ImageSlider,
   Spinner,
 } from "@components";
+import { producerService } from "@services";
 import { useEffect, useState } from "react";
-import producerService from "../services/producer.service.ts";
 
 interface Props {
   className?: string;

@@ -1,12 +1,12 @@
-import { ISession } from "@interfaces/ISession.ts";
-import { catchAndPrintFetchError, commonHeaderJson } from "./util.ts";
+import { catchAndPrintFetchError, commonHeaderJson } from "./util";
+import type { ISession } from "@interfaces/ISession";
 
 interface ICreateSessionData {
   product_id: number;
   machine_id: number;
 }
 
-export interface PartConfiguration {
+export interface IPartConfiguration {
   part_id: number;
   material_id: number;
   parameters: IConfiguredParameter[];
@@ -21,7 +21,7 @@ export interface IUpdateSessionData {
   session: {
     name?: string;
   };
-  parts: PartConfiguration[];
+  parts: IPartConfiguration[];
 }
 
 const sessionService = {

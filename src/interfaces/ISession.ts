@@ -1,5 +1,5 @@
-import { IProduct } from "@interfaces/IProduct.ts";
-import { IConfiguredParameter } from "../services/session.service.ts";
+import type { IProduct } from "./IProduct";
+import type { IConfiguredParameter } from "@services";
 
 export interface ISession {
   uuid: string;
