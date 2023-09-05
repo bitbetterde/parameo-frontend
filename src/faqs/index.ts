@@ -7,5 +7,6 @@ import makerCollaboration from "./maker-collaboration";
 import moremachines from "./moremachines";
 import bom from "./billofmaterials";
 import material from "./materialprice";
+import co2 from"./co2emission";
 
-export default [maslowcnc, fabulaser, moremachines, bom, material, designerCollaboration, developerCollaboration, manufacturerCollaboration, makerCollaboration];
+export default [maslowcnc, fabulaser, moremachines, bom, material, co2, designerCollaboration, developerCollaboration, manufacturerCollaboration, makerCollaboration];
