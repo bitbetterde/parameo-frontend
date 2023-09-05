@@ -98,6 +98,10 @@ const images = [
     image: "/images/regenholz-parameo_StandDesk_unsplash-hZcmnLfJfv0.webp",
     imageAlt: "regenholz StandDesk",
   },
+  {
+    image: "/images/regenholz-parameo-MultiFrame_1269.webp",
+    imageAlt: "regenholz StandDesk",
+  },
 ];
 
 const HomePage = () => {
