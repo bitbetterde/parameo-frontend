@@ -6,8 +6,7 @@ const body = (
       A BOM.csv provides a list of needed resources based on configured product dimensions for custom production like
       materials and tools, complementing product specific assembly necessities.
     </p>
-
-    <img src="/images/forrest.jpg" alt="" />
+    
   </>
 );
 
