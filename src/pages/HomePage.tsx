@@ -55,7 +55,7 @@ const features = [
     icon: "globe" as const,
   },
   {
-    name: "GCode generation",
+    name: "G-code generation",
     description:
       "G-code is a programming language for CNC (Computer Numerical Control) machines. parameo provides the uniquely configured .nc-data file.",
     icon: "lightning" as const,
@@ -177,7 +177,7 @@ const HomePage: React.FC = () => {
       ) : (
         <CardSlider
           title="Featured machinery"
-          description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
+          description="The tool is based on open source software and primarily targets for open source hardware."
           cardsData={
             machines &&
             machines?.map((machine: IMachine) => ({
