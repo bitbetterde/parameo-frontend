@@ -4,7 +4,7 @@ const body = (
   <>
     <h2>Sit less, move more!</h2>
     <p>
-      A simple wooden desk attachment that can be assembled from at least three parts. The plug-in connections work without screws, one or more shelves can be flexibly sized and varied in height. The StandDesk turns any desk, kitchen table, workbench or mobile home into a pleasant working place in a standing position. In individual parts, the StandDesk is flat transportable and almost indestructible.
+      A simple wooden desk attachment that can be easily assembled from at least three parts. The plug-in connections work without screws. One or more shelves can be flexibly sized and varied in height. It turns any desk, kitchen table or workbench into a pleasant working place in a standing position. Taken apart, the StandDesk is flat transportable and almost indestructible.
     </p>
     <img src="/images/regenholz-parameo_StandDesk_0149.webp" alt="" />
     <h2>Specs / Links</h2>
