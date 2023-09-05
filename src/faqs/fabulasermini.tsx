@@ -30,7 +30,7 @@ const body = (
       </a>
     </p>
 
-    <img src="/images/forrest.jpg" alt="" />
+    <img src="/images/faq-fabulasermini.webp" alt="fabulaser mini open source lasercutter" />
   </>
 );
 
