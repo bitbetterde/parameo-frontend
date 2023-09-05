@@ -5,7 +5,7 @@ const body = (
     <p>
       The material impact is valued in kg/m3 co2 emissions ecologically and in
       €/m3 sheet pricing monetary. Source links are obligatory accessible and manually
-      adaptable via the admin panel, logged by a timestamp.
+      adaptable via the admin panel, logged by a timestamp. Indicators are visualized on individual result page. 
     </p>
 
   </>
