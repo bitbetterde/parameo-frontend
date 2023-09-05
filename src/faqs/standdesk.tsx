@@ -2,13 +2,9 @@ import { IFaqFile } from "@interfaces/IFaq";
 
 const body = (
   <>
-    <h2>Origin</h2>
+    <h2>From a sitting position to a standing workstation</h2>
     <p>
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec
-      est. Odio penatibus risus viverra tellus varius sit neque erat velit.
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id.
+      A simple wooden desk attachment that can be assembled from at least three parts. The plug-in connections work without screws, one or more shelves can be flexibly sized and varied in height. The StandDesk turns any desk, kitchen table, workbench or mobile home into a pleasant working place in a standing position. In individual parts, the StandDesk is flat transportable and almost indestructible.
     </p>
     <img src="/images/regenholz-parameo_StandDesk_0149.webp" alt="" />
     <h2>Specs</h2>
