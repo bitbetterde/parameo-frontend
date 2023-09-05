@@ -5,5 +5,7 @@ import developerCollaboration from "./developer-collaboration";
 import manufacturerCollaboration from "./manufacturer-collaboration";
 import makerCollaboration from "./maker-collaboration";
 import moremachines from "./moremachines";
+import bom from "./billofmaterials";
+import material from "./materialprice";
 
-export default [fabulaser, maslowcnc, designerCollaboration, developerCollaboration, manufacturerCollaboration, makerCollaboration, moremachines];
+export default [maslowcnc, fabulaser, moremachines, bom, material, designerCollaboration, developerCollaboration, manufacturerCollaboration, makerCollaboration];
