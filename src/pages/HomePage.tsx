@@ -144,8 +144,8 @@ const HomePage: React.FC = () => {
         </div>
       ) : (
         <CardSlider
-          title="Customize designs"
-          description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
+          title="parameo products"
+          description="Adjust the dimensions according to your needs. Then buy it or build it yourself."
           cardsData={
             products &&
             products?.map((product) => ({
