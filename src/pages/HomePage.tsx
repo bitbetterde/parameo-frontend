@@ -137,7 +137,7 @@ const HomePage: React.FC = () => {
         description="The tool offers a machine code generator, a 'build or buy' option to support local production, Emission and cost transparency and an over all freely accessible system using open source software for open source hardware."
         features={features}
       />
-      <AvatarSection people={people} title="parameo is for" />
+      <AvatarSection people={people} title="A tool for you:" />
       {!products ? (
         <div className="w-full h-32 flex items-center justify-center">
           <Spinner />
