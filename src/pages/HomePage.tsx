@@ -134,7 +134,7 @@ const HomePage: React.FC = () => {
       <FeatureSection
         title="Leave the math to parameo"
         subtitle="automagic Features"
-        description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
+        description="The tool offers a machine code generator, a 'build or buy' option to support local production, Emission and cost transparency and an over all freely accessible system using open source software for open source hardware."
         features={features}
       />
       <AvatarSection people={people} title="Connecting" />
