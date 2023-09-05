@@ -6,7 +6,7 @@ const body = (
       We are constantly expanding our machine library and are happy about every
       additional machine that can create products via parameo. To add another
       open-source CNC machine, please contact us directly via the contact form.
-      Together we will integrate and document the process. Happy to connect.
+      Together we will integrate and document the process.
     </p>
     <p>
       <a href="https://www.parameo.de/contact" target="_self">
@@ -14,7 +14,7 @@ const body = (
       </a>
     </p>
 
-    <img src="/images/forrest.jpg" alt="" />
+    <img src="/images/faq-addmoremachines.webp" alt="cnc machines" />
   </>
 );
 
