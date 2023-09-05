@@ -28,7 +28,7 @@ const body = (
 export default {
   title: "MultiFrame",
   id: "multiframe",
-  tags: ["Design"]["Manufacturing"],
+  tags: ["Design", "Manufacturing"],
   body,
   teaser:
     "Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.",
