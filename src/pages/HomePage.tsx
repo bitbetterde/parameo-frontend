@@ -75,7 +75,7 @@ const features = [
 
 const images = [
   {
-    image: "/images/parameo-mood_production-01.jpg",
+    image: "/images/regenholz-parameo-MultiFrame_0521-art.webp",
     imageAlt: "parameo production",
   },
   {
