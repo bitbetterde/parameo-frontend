@@ -133,7 +133,7 @@ const HomePage: React.FC = () => {
       />
       <FeatureSection
         title="Leave the math to parameo"
-        subtitle="automagic Features"
+        subtitle=""
         description="The tool offers a machine code generator, a 'build or buy' option to support local production, Emission and cost transparency and an over all freely accessible system using open source software for open source hardware."
         features={features}
       />
