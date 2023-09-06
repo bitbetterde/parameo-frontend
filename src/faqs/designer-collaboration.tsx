@@ -1,4 +1,4 @@
-import type { IFaqFile } from "@interfaces";
+import { IFaqFile } from "@interfaces/IFaq";
 
 const body = (
   <>
