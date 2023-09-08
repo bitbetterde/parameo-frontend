@@ -3,7 +3,7 @@ import co2 from "./co2emission";
 import designerCollaboration from "./designer-collaboration";
 import developerCollaboration from "./developer-collaboration";
 import fabulaser from "./fabulasermini";
-import makerCollaboration from "./maker-collaboration";
+import makerCollaboration from "./maker";
 import manufacturerCollaboration from "./manufacturer-collaboration";
 import maslowcnc from "./maslowcnc";
 import material from "./materialprice";
@@ -22,7 +22,7 @@ export default [
   designerCollaboration,
   developerCollaboration,
   manufacturerCollaboration,
-  makerCollaboration,
+  maker,
   multiframe,
   standdesk,
   openbox,
