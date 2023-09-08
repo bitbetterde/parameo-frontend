@@ -6,6 +6,7 @@ import type {
   IPartConfiguration,
   IConfiguredParameter,
   IUpdateSessionData,
+  IGenerateFormatsResultData,
 } from "./session.service";
 import sessionService from "./session.service";
 
@@ -16,4 +17,5 @@ export type {
   IPartConfiguration,
   IConfiguredParameter,
   IUpdateSessionData,
+  IGenerateFormatsResultData,
 };

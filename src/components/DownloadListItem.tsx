@@ -7,7 +7,7 @@ interface Props {
 }
 
 const ListItem: React.FC<Props> = ({ title, description, filePath }) => {
-  return (
+  return description || filePath ? (
     <>
       <dt className="text-sm font-medium text-gray-500">{title}</dt>
       {filePath ? (
@@ -22,7 +22,7 @@ const ListItem: React.FC<Props> = ({ title, description, filePath }) => {
         </dd>
       )}
     </>
-  );
+  ) : null;
 };
 
 export default ListItem;

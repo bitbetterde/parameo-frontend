@@ -13,9 +13,18 @@ import { useEffect, useState } from "react";
 
 interface Props {
   className?: string;
+  sessionId?: string;
   title: string;
   subtitle?: string;
   description?: string;
+  chartData?: [number, number, number];
+  allFilesUrl?: string;
+  dxfFileUrl?: string;
+  gcodeFileUrl?: string;
+  materialPrice?: number;
+  co2Emissions?: { label: string; value: number }[];
+  machineTime?: number;
+  images?: [{ image_url: string }];
 }
 
 const instructionsAccordion = [
@@ -25,7 +34,7 @@ const instructionsAccordion = [
   "Machine hint from the Machine File",
 ];
 
-const images = [
+const producerImages = [
   { image: "/images/forrest.jpg", imageAlt: "Forrest photo" },
   {
     image: "https://picsum.photos/800/500?random=2",
@@ -52,40 +61,55 @@ const buttons = [
   { caption: "Copy link", href: "#" },
 ];
 
-const descriptionList = [
-  { title: "Material price", description: "min. €360,00" },
-  { title: "Emissions", description: "approx. 1.000 xyz" },
-  { title: "Machine runtime", description: "min. 6.5 hrs" },
-  { title: "Bill of materials (.csv)", filePath: "#" },
-  { title: "Machine code (.nc)", filePath: "#" },
-  { title: "Nested parts (.svg)", filePath: "#" },
-];
-
-const chartData = {
-  labels: ["Material", "Machines", "Logistic"],
-  datasets: [
-    {
-      data: [47, 15, 38],
-      backgroundColor: ["#4F46E5", "#059669", "#DB2777"],
-      borderWidth: 5,
-      borderColor: "#F3F4F6",
-    },
-  ],
-};
-
 const ConfiguratorResultPage: React.FC<Props> = ({
   className,
   title,
   subtitle,
   description,
+  allFilesUrl,
+  dxfFileUrl,
+  gcodeFileUrl,
+  materialPrice,
+  co2Emissions,
+  machineTime,
+  images,
 }) => {
   const [producers, setProducers] = useState<any[]>();
+
+  const chartData = co2Emissions?.length && {
+    labels: co2Emissions?.map((emission) => emission.label) || ["Emissions"],
+    datasets: [
+      {
+        data: co2Emissions?.map((emission) => emission.value) || [0],
+        backgroundColor: ["#4F46E5", "#059669", "#DB2777"],
+        borderWidth: 5,
+        borderColor: "#F3F4F6",
+      },
+    ],
+  };
 
   useEffect(() => {
     producerService.getProducers().then((producers) => {
       setProducers(producers);
     });
   }, []);
+
+  const descriptionList = [
+    {
+      title: "Material price",
+      description: materialPrice ? `${materialPrice?.toLocaleString()} €` : "",
+    },
+    // {
+    //   title: "Emissions",
+    //   description: co2Emissions ? `${co2Emissions?.toLocaleString()} kg` : "",
+    // },
+    {
+      title: "Machine runtime",
+      description: machineTime ? `${machineTime?.toLocaleString()} h` : "",
+    },
+    { title: "Machine Code (.nc)", filePath: gcodeFileUrl || "" },
+    { title: "3D Model (.dxf)", filePath: dxfFileUrl || "" },
+  ];
 
   return (
     <div className={`bg-white pt-6 md:pt-12 ${className || ""}`}>
@@ -107,34 +131,47 @@ const ConfiguratorResultPage: React.FC<Props> = ({
         </div>
         <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-24 lg:pt-4 pb-12">
           <div className="lg:w-1/3 flex flex-col gap-10">
-            <DoughnutChart
-              className="h-60 bg-gray-100 rounded-lg"
-              data={chartData}
-            />
+            {chartData && (
+              <DoughnutChart
+                className="h-60 bg-gray-100 rounded-lg"
+                data={chartData}
+              />
+            )}
             {descriptionList && (
               <dl className="divide-y divide-gray-200">
-                {descriptionList?.map((item, i) => (
-                  <div
-                    key={i}
-                    className="px-4 py-6 grid grid-cols-2 gap-12 lg:gap-16 sm:px-0"
-                  >
-                    <DownloadListItem
-                      title={item.title}
-                      description={item.description}
-                      filePath={item.filePath}
-                    />
-                  </div>
-                ))}
+                {descriptionList?.map(
+                  (item, i) =>
+                    (item.description || item.filePath) && (
+                      <div
+                        key={i}
+                        className="px-4 py-6 grid grid-cols-2 gap-12 lg:gap-16 sm:px-0"
+                      >
+                        <DownloadListItem
+                          title={item.title}
+                          description={item.description}
+                          filePath={item.filePath}
+                        />
+                      </div>
+                    )
+                )}
               </dl>
             )}
-            <ButtonLink
-              caption="Download all files"
-              target="#"
-              className="py-[13px] text-center text-base w-full"
-            />
+            {allFilesUrl && (
+              <ButtonLink
+                caption="Download all files (.zip)"
+                target={allFilesUrl}
+                className="py-[13px] text-center text-base w-full"
+                download
+                newTab
+              />
+            )}
           </div>
           <div className="lg:w-2/3">
-            <FeaturedImageGallery images={images} />
+            {images?.length && (
+              <FeaturedImageGallery
+                images={images?.map((image) => ({ image: image.image_url }))}
+              />
+            )}
           </div>
         </div>
         <div className="mx-auto max-w-3xl flex flex-col justify-center items-center gap-12">
@@ -183,7 +220,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({
             }
           />
         )}
-        <ImageSlider items={images} />
+        <ImageSlider items={producerImages} />
       </div>
     </div>
   );

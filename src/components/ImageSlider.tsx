@@ -20,7 +20,7 @@ const ImageSlider: React.FC<Props> = ({ className = "", items }) => {
       setLoaded(true);
     },
   });
-  return (
+  return items ? (
     <div
       className={`mx-auto max-w-7xl px-6 lg:px-8 lg:py-12 ${className || ""}`}
     >
@@ -62,7 +62,7 @@ const ImageSlider: React.FC<Props> = ({ className = "", items }) => {
         )}
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default ImageSlider;

@@ -1,4 +1,4 @@
-import { catchAndPrintFetchError, commonHeaderJson } from "./util";
+import { fetchAndHandleErrors, commonHeaderJson } from "./util";
 
 export interface IMachine {
   id: number;
@@ -22,23 +22,26 @@ export interface IMachine {
 
 const machineService = {
   getMachines: (): Promise<IMachine[]> => {
-    return catchAndPrintFetchError(
-      fetch(`https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/machines/`, {
-        method: "GET",
-        headers: commonHeaderJson,
-      })
-    ).then((res) => res?.json());
+    return fetchAndHandleErrors(
+      new Request(
+        `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/machines/`,
+        {
+          method: "GET",
+          headers: commonHeaderJson,
+        }
+      )
+    );
   },
   getMachine: (id: number): Promise<IMachine> => {
-    return catchAndPrintFetchError(
-      fetch(
+    return fetchAndHandleErrors(
+      new Request(
         `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/machines/${id}/`,
         {
           method: "GET",
           headers: commonHeaderJson,
         }
       )
-    ).then((res) => res?.json());
+    );
   },
 };
 export default machineService;

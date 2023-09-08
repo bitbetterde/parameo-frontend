@@ -1,4 +1,4 @@
-import { catchAndPrintFetchError, commonHeaderJson } from "./util";
+import { fetchAndHandleErrors, commonHeaderJson } from "./util";
 import type { ISession } from "@interfaces/ISession";
 
 interface ICreateSessionData {
@@ -24,23 +24,35 @@ export interface IUpdateSessionData {
   parts: IPartConfiguration[];
 }
 
+export interface IGenerateFormatsResultData {
+  all_files_zip_url: string;
+  dxf_file_url: string;
+  gcode_file_url: string;
+  co2_emissions: number;
+  material_price: number;
+  machine_time: number;
+}
+
 const sessionService = {
   getSession: (data: ICreateSessionData): Promise<ISession> => {
-    return catchAndPrintFetchError(
-      fetch(`https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/sessions/`, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: commonHeaderJson,
-      })
-    ).then((res) => res?.json());
+    return fetchAndHandleErrors(
+      new Request(
+        `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/sessions/`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: commonHeaderJson,
+        }
+      )
+    );
   },
 
   updateSession: (
     uuid: string,
     data: IUpdateSessionData
   ): Promise<ISession> => {
-    return catchAndPrintFetchError(
-      fetch(
+    return fetchAndHandleErrors(
+      new Request(
         `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/sessions/${uuid}/`,
         {
           method: "PUT",
@@ -48,12 +60,13 @@ const sessionService = {
           headers: commonHeaderJson,
         }
       )
-    ).then((res) => res?.json());
+    );
   },
 
+  // TODO: Add response type
   regeneratePreview: (uuid: string): Promise<any> => {
-    return catchAndPrintFetchError(
-      fetch(
+    return fetchAndHandleErrors(
+      new Request(
         `https://${
           import.meta.env.VITE_PARAMEO_BACKEND_URL
         }/sessions/${uuid}/preview/`,
@@ -62,21 +75,25 @@ const sessionService = {
           headers: commonHeaderJson,
         }
       )
-    ).then((res) => res?.json());
+    );
   },
 
-  regenerateFormats: (uuid: string): Promise<ISession[]> => {
-    return catchAndPrintFetchError(
-      fetch(
+  regenerateFormats: (
+    uuid: string,
+    data: string[]
+  ): Promise<IGenerateFormatsResultData> => {
+    return fetchAndHandleErrors(
+      new Request(
         `https://${
           import.meta.env.VITE_PARAMEO_BACKEND_URL
         }/sessions/${uuid}/regenerate/`,
         {
-          method: "GET",
+          method: "POST",
           headers: commonHeaderJson,
+          body: JSON.stringify({ user_interests: data }),
         }
       )
-    ).then((res) => res?.json());
+    );
   },
 };
 export default sessionService;
