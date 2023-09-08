@@ -56,7 +56,7 @@ const ConfiguratorProductsPage = () => {
             products &&
             products?.map((product) => ({
               title: product?.title,
-              href: `/configurator/${product.id}/parameters`,
+              href: `/configurator/product/${product.id}`,
               subtitle: product?.machine_type,
               description: product?.description || "No description available",
               licence: "licence type",

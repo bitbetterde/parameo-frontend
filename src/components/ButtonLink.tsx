@@ -4,6 +4,8 @@ import { Link } from "wouter";
 
 interface Props extends IButton {
   className?: string;
+  download?: boolean;
+  newTab?: boolean;
 }
 
 const ButtonLink: React.FC<Props> = ({
@@ -11,6 +13,8 @@ const ButtonLink: React.FC<Props> = ({
   target,
   caption,
   variant = "primary",
+  download,
+  newTab,
 }: Props) => {
   const classes = {
     white: "bg-white text-indigo-700 hover:bg-indigo-50",
@@ -24,6 +28,8 @@ const ButtonLink: React.FC<Props> = ({
       className={`rounded-md border border-transparent text-base font-medium shadow-sm ${
         classes[variant]
       } ${className || ""}`}
+      {...(download ? { download: true } : {})}
+      {...(newTab ? { target: "_blank" } : {})}
     >
       {caption}
     </Link>

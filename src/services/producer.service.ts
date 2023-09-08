@@ -1,24 +1,29 @@
-import { catchAndPrintFetchError, commonHeaderJson } from "./util";
+import { fetchAndHandleErrors, commonHeaderJson } from "./util";
 
 const producerService = {
+  // TODO: Better return type
   getProducers: (): Promise<any[]> => {
-    return catchAndPrintFetchError(
-      fetch(`https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/producers/`, {
-        method: "GET",
-        headers: commonHeaderJson,
-      })
-    ).then((res) => res?.json());
+    return fetchAndHandleErrors(
+      new Request(
+        `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/producers/`,
+        {
+          method: "GET",
+          headers: commonHeaderJson,
+        }
+      )
+    );
   },
+  // TODO: Better return type
   getProducer: (id: number): Promise<any> => {
-    return catchAndPrintFetchError(
-      fetch(
+    return fetchAndHandleErrors(
+      new Request(
         `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/producers/${id}/`,
         {
           method: "GET",
           headers: commonHeaderJson,
         }
       )
-    ).then((res) => res?.json());
+    );
   },
 };
 export default producerService;

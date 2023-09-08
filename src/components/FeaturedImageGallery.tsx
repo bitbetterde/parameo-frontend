@@ -7,12 +7,13 @@ interface Props {
 }
 
 const FeaturedImageGallery: React.FC<Props> = ({ className, images }) => {
-  const [featuredImage, setFeaturedImage] = useState(images[0].image);
+  const [featuredImage, setFeaturedImage] = useState(images?.[0].image);
 
   const handleImageClick = (image: string) => {
     setFeaturedImage(image);
   };
-  return (
+
+  return images?.length ? (
     <div className={`grid gap-4 ${className || ""}`}>
       <div>
         <img
@@ -22,7 +23,7 @@ const FeaturedImageGallery: React.FC<Props> = ({ className, images }) => {
         />
       </div>
       <div className="grid grid-cols-5 gap-4 cursor-pointer">
-        {images.map((item, index) => (
+        {images?.map((item, index) => (
           <div key={index} onClick={() => handleImageClick(item.image)}>
             <img
               className="rounded-lg object-cover aspect-square w-full"
@@ -33,7 +34,7 @@ const FeaturedImageGallery: React.FC<Props> = ({ className, images }) => {
         ))}
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default FeaturedImageGallery;

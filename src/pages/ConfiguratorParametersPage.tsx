@@ -1,3 +1,9 @@
+import type React from "react";
+import type { IProduct } from "@interfaces/IProduct";
+import type { ISession } from "@interfaces/ISession";
+import type { IPartConfiguration, IGenerateFormatsResultData } from "@services";
+import type { IMachine } from "@services";
+
 import { ReactComponent as ExclamationIcon } from "@assets/icons/exclamation-triangle.svg";
 import {
   Checkbox,
@@ -9,53 +15,57 @@ import {
   Button,
   Spinner,
 } from "@components";
-import type { IProduct } from "@interfaces/IProduct";
-import type { ISession } from "@interfaces/ISession";
-import type { IPartConfiguration } from "@services";
-import type { IMachine } from "@services";
 import { productService, sessionService, machineService } from "@services";
-import type React from "react";
+import { Link, useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Link } from "wouter";
 
 interface Props {
   productId: number;
   className?: string;
+  setResultData?: (data: IGenerateFormatsResultData) => void;
+  setConfiguredProduct?: (product: IProduct) => void;
 }
 
 interface FormInput {
   projectName: string;
   machine: IMachine;
-  co2Footprint: boolean;
-  billOfMaterials: boolean;
-  approximateMaterialPrice: boolean;
-  technicalDrawing: boolean;
-  localManufacturers: boolean;
+  userInterests: {
+    co2Footprint: boolean;
+    billOfMaterials: boolean;
+    approximateMaterialPrice: boolean;
+    technicalDrawing: boolean;
+    localManufacturers: boolean;
+  };
 }
 
 const ConfiguratorParametersPage: React.FC<Props> = ({
   className,
   productId,
+  setResultData,
+  setConfiguredProduct,
 }) => {
   const [product, setProduct] = useState<IProduct>();
   const [partsValues, setPartsValues] = useState<IPartConfiguration[]>([]);
   const [session, setSession] = useState<ISession>();
-  const [previewURL, setPreviewURL] = useState<string>();
+  const [previewUrl, setPreviewUrl] = useState<string>();
   const [currentlyGenerating, setCurrentlyGenerating] = useState<
     "preview" | "formats"
   >();
+  const [, setLocation] = useLocation();
 
   const [machines, setMachines] = useState<IMachine[]>([]);
 
-  const { register, watch, control, formState, setValue } = useForm<FormInput>({
-    mode: "onBlur",
-  });
+  const { register, watch, control, formState, setValue, getValues } =
+    useForm<FormInput>({
+      mode: "onBlur",
+    });
   const { isValid, isDirty, errors } = formState;
   const machine = watch("machine");
 
   useEffect(() => {
     productService.getProduct(productId).then((product) => {
+      setConfiguredProduct && setConfiguredProduct(product);
       machineService.getMachines().then((machines) => {
         setMachines(
           machines.filter((mach) => mach.type === product?.machine_type)
@@ -75,26 +85,38 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
         }))
       );
     });
-  }, [productId]);
+  }, [productId, setValue]);
 
   const regeneratePreview = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCurrentlyGenerating("preview");
     e.preventDefault();
     createOrUpdateSession().then((sessionId) => {
       sessionService.regeneratePreview(sessionId).then((preview_url) => {
-        setPreviewURL(preview_url.url);
+        if (preview_url) {
+          preview_url?.url && setPreviewUrl(preview_url?.url);
+          setIs3DPreviewEnabled(true);
+        }
         setCurrentlyGenerating(undefined);
       });
     });
   };
 
   const regenerateFormats = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const userInterests = getValues().userInterests;
+    const userInterestsArray = Object.entries(userInterests)
+      .map(([key, value]) => value && key)
+      .filter(Boolean) as string[];
+
     setCurrentlyGenerating("formats");
     e.preventDefault();
     createOrUpdateSession().then((sessionId) => {
-      sessionService.regenerateFormats(sessionId).then(() => {
-        setCurrentlyGenerating(undefined);
-      });
+      sessionService
+        .regenerateFormats(sessionId, userInterestsArray)
+        .then((result) => {
+          setResultData && setResultData(result);
+          setCurrentlyGenerating(undefined);
+          result && setLocation("/configurator/result");
+        });
     });
   };
 
@@ -105,7 +127,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
         await sessionService
           .getSession({
             product_id: product?.id ?? 0,
-            machine_id: machine.id,
+            machine_id: machine?.id ?? 0,
           })
           .then((newSession) => {
             setSession(newSession);
@@ -234,23 +256,23 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
 
                 <div className="flex flex-col gap-4">
                   <Checkbox
-                    {...register("co2Footprint")}
+                    {...register("userInterests.co2Footprint")}
                     label={"CO2 Footprint"}
                   />
                   <Checkbox
-                    {...register("billOfMaterials")}
+                    {...register("userInterests.billOfMaterials")}
                     label={"Bill of Materials"}
                   />
                   <Checkbox
-                    {...register("approximateMaterialPrice")}
+                    {...register("userInterests.approximateMaterialPrice")}
                     label={"Approximate material price"}
                   />
                   <Checkbox
-                    {...register("technicalDrawing")}
+                    {...register("userInterests.technicalDrawing")}
                     label={"Technical drawing"}
                   />
                   <Checkbox
-                    {...register("localManufacturers")}
+                    {...register("userInterests.localManufacturers")}
                     label={"Local manufacturers"}
                   />
                 </div>
@@ -283,7 +305,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               {product?.preview_file_2d && (
                 <div className="flex items-center gap-4">
                   <span className="text-sm text-gray-900 font-normal">
-                    3D- / Sketch-view
+                    Sketch/3D view
                   </span>
                   <Toggle
                     checked={is3DPreviewEnabled}
@@ -297,7 +319,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
             {is3DPreviewEnabled ? (
               <ModelViewer
                 modelSrc={
-                  previewURL ??
+                  previewUrl ??
                   product?.preview_file_3d ??
                   "https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
                 }
@@ -307,7 +329,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               <img
                 src={product?.preview_file_2d}
                 alt="2D Preview"
-                className="h-[540px] object-cover"
+                className={`h-[540px] object-cover rounded-md`}
               />
             )}
             <Button
