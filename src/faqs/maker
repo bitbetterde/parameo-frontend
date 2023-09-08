@@ -26,8 +26,8 @@ const body = (
 );
 
 export default {
-  title: "Maker Collaboration",
-  id: "maker-collaboration",
+  title: "Maker",
+  id: "maker",
   tags: ["Manufacturing"],
   body,
   teaser:
