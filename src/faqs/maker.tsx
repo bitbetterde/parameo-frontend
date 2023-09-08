@@ -28,7 +28,7 @@ const body = (
 export default {
   title: "Maker",
   id: "maker",
-  tags: "Manufacturing",
+  tags: ["Manufacturing"],
   body,
   teaser:
     "Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.",

@@ -22,7 +22,7 @@ export default [
   designerCollaboration,
   developerCollaboration,
   manufacturerCollaboration,
-  maker,
+  makerCollaboration,
   multiframe,
   standdesk,
   openbox,
