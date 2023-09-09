@@ -1,4 +1,4 @@
-import { fetchAndHandleErrors, commonHeaderJson } from "./util";
+import { fetchAndHandleErrors } from "./util";
 import type { ISession } from "@interfaces/ISession";
 
 interface ICreateSessionData {
@@ -41,7 +41,6 @@ const sessionService = {
         {
           method: "POST",
           body: JSON.stringify(data),
-          headers: commonHeaderJson,
         }
       )
     );
@@ -57,7 +56,6 @@ const sessionService = {
         {
           method: "PUT",
           body: JSON.stringify(data),
-          headers: commonHeaderJson,
         }
       )
     );
@@ -72,7 +70,6 @@ const sessionService = {
         }/sessions/${uuid}/preview/`,
         {
           method: "GET",
-          headers: commonHeaderJson,
         }
       )
     );
@@ -89,7 +86,6 @@ const sessionService = {
         }/sessions/${uuid}/regenerate/`,
         {
           method: "POST",
-          headers: commonHeaderJson,
           body: JSON.stringify({ user_interests: data }),
         }
       )

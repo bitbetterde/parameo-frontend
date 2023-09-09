@@ -1,4 +1,4 @@
-import { fetchAndHandleErrors, commonHeaderJson } from "./util";
+import { fetchAndHandleErrors } from "./util";
 
 export interface IMachine {
   id: number;
@@ -27,7 +27,6 @@ const machineService = {
         `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/machines/`,
         {
           method: "GET",
-          headers: commonHeaderJson,
         }
       )
     );
@@ -38,7 +37,6 @@ const machineService = {
         `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/machines/${id}/`,
         {
           method: "GET",
-          headers: commonHeaderJson,
         }
       )
     );

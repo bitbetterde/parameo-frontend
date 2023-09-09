@@ -1,4 +1,4 @@
-import { fetchAndHandleErrors, commonHeaderJson } from "./util";
+import { fetchAndHandleErrors } from "./util";
 import type { IProduct } from "@interfaces/IProduct";
 
 const productService = {
@@ -8,7 +8,6 @@ const productService = {
         `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/products/`,
         {
           method: "GET",
-          headers: commonHeaderJson,
         }
       )
     );
@@ -19,7 +18,6 @@ const productService = {
         `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/products/${id}/`,
         {
           method: "GET",
-          headers: commonHeaderJson,
         }
       )
     );
