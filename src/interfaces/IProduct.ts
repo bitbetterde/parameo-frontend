@@ -43,7 +43,7 @@ export interface IProduct {
   pictures: [
     {
       image_url: string;
-    }
+    },
   ];
   designer_url: string;
   product_url: string;

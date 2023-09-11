@@ -16,7 +16,7 @@ export interface IMachine {
   pictures: [
     {
       image_url: string;
-    }
+    },
   ];
 }
 

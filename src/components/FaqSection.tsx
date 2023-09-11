@@ -29,9 +29,7 @@ const FaqSection: React.FC<Props> = ({ title, className, data }) => {
           />
         </div>
         <div className="mt-6 grid gap-16 pt-10 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12 ">
-          {data?.map((data, i) => (
-            <FaqEntry data={data} key={i} />
-          ))}
+          {data?.map((data, i) => <FaqEntry data={data} key={i} />)}
         </div>
       </div>
     </div>

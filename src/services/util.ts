@@ -3,7 +3,7 @@ export const commonHeaders: HeadersInit = {
 };
 
 export const fetchAndHandleErrors = async <T>(
-  request: RequestInfo,
+  request: RequestInfo
 ): Promise<T> => {
   const response = await fetch(request, {
     headers: {

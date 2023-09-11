@@ -30,6 +30,6 @@ export interface ISession {
         width: number;
       };
       configured_parameters: IConfiguredParameter[];
-    }
+    },
   ];
 }
