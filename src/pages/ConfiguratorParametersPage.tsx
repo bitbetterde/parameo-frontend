@@ -151,7 +151,11 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
 
   const [is3DPreviewEnabled, setIs3DPreviewEnabled] = useState<boolean>(true);
 
-  return product ? (
+  return !product ? (
+    <div className="w-full h-screen flex items-center justify-center">
+      <Spinner />
+    </div>
+  ) : (
     <form className={`bg-white pt-6 pb-12 md:py-12 ${className || ""}`}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center pb-10">
@@ -348,6 +352,6 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
         </div>
       </div>
     </form>
-  ) : null;
+  );
 };
 export default ConfiguratorParametersPage;

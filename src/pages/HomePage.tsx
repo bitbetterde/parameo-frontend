@@ -139,7 +139,7 @@ const HomePage: React.FC = () => {
       />
       <AvatarSection people={people} title="A tool for you:" />
       {!products ? (
-        <div className="w-full h-32 flex items-center justify-center">
+        <div className="w-full h-96 flex items-center justify-center">
           <Spinner />
         </div>
       ) : (
@@ -171,7 +171,7 @@ const HomePage: React.FC = () => {
         data={visibleFaqItems}
       />
       {!machines ? (
-        <div className="w-full h-32 flex items-center justify-center">
+        <div className="w-full h-96 flex items-center justify-center">
           <Spinner />
         </div>
       ) : (
