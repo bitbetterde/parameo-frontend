@@ -202,7 +202,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({
           Local Manufacturing
         </h2>
         {!producers ? (
-          <div className="w-full h-32 flex items-center justify-center">
+          <div className="w-full h-96 flex items-center justify-center">
             <Spinner />
           </div>
         ) : (
