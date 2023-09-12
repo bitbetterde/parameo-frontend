@@ -38,8 +38,8 @@ const ConfiguratorProductsPage = () => {
   return (
     <>
       <HeroSection
-        title="Explore & customize parameo products"
-        subtitle="Open Source Configurator for Open Source Machines"
+        title="Open Source Configurator for Open Source Machines"
+        subtitle="explore & customize parameo products"
         heroImage="/images/parameo-hero-img_configurator.jpg"
         heroImageAlt="carpenter working on a laptop"
       />
