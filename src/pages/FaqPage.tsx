@@ -70,8 +70,8 @@ const FaqPage: React.FC<Props> = ({
   return (
     <>
       <HeroSection
-        title="From bits to atoms – learn more about parameo"
-        subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+        title="Learn more about open production"
+        subtitle="From bits to atoms with parameo"
         heroImage="/images/parameo-hero-img_faq.jpg"
         heroImageAlt="cnc mill in action"
       />
