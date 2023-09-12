@@ -2,25 +2,8 @@ import type { IFaqFile } from "@interfaces";
 
 const body = (
   <>
-    <h2>Origin</h2>
     <p>
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec
-      est. Odio penatibus risus viverra tellus varius sit neque erat velit.
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id.
-    </p>
-    <img src="/images/forrest.jpg" alt="" />
-    <h2>Specs</h2>
-    <ol>
-      <li>Integer varius imperdiet sed interdum felis cras in nec nunc.</li>
-      <li>Quam malesuada odio ut sit egestas. Elementum at porta vitae.</li>
-    </ol>
-    <p>
-      Erat pellentesque dictumst ligula porttitor risus eget et eget. Ultricies
-      tellus felis id dignissim eget. Est augue maecenas risus nulla ultrices
-      congue nunc tortor. Eu leo risus porta integer suspendisse sed sit ligula
-      elit.
+It's great that you decided to use parameo to build or have new products built for you. Either way, you support us in promoting local production. If you encounter any problems during configuration, assembly or anything else, please let us know via the contact form. If you have found any bugs or have suggestions for improvement, please let us know! Of course, we are most happy about parameo products that have been successfully built - feel free to send a picture or tag us!
     </p>
   </>
 );
@@ -31,7 +14,7 @@ export default {
   tags: ["Manufacturing"],
   body,
   teaser:
-    "Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.",
+    "Makers empowering makers",
   showOnHomePage: false,
   order: 5,
 } as IFaqFile;
