@@ -2,7 +2,15 @@ import type { IFaqFile } from "@interfaces";
 
 const body = (
   <>
-    <h2>Origin</h2>
+    <h2>How to contribute a 3D modell design to parameo?</h2>
+    <ol>
+      <li>follow FreeCAD Spreadsheet template</li>
+      <li>use FreeCAD to model parametric designs</li>
+      <li>test your parametric model on different sizes</li>
+      <li>specify minimum and maximum sizes</li>
+      <li>write a short construction manual</li>
+      <li>write a BOM</li>
+    </ol>
     <p>
       Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
       Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec
@@ -12,10 +20,6 @@ const body = (
     </p>
     <img src="/images/forrest.jpg" alt="" />
     <h2>Specs</h2>
-    <ol>
-      <li>Integer varius imperdiet sed interdum felis cras in nec nunc.</li>
-      <li>Quam malesuada odio ut sit egestas. Elementum at porta vitae.</li>
-    </ol>
     <p>
       Erat pellentesque dictumst ligula porttitor risus eget et eget. Ultricies
       tellus felis id dignissim eget. Est augue maecenas risus nulla ultrices
