@@ -3,6 +3,9 @@ import type { IFaqFile } from "@interfaces";
 const body = (
   <>
     <h2>How to contribute a 3D modell design to parameo?</h2>
+    <p>
+      To offer adding new product designs to parameo we provide a collection of conventions which were set in order to agree on e.g. certain formats of FreeCAD project file structures etc. <a target="_blank" href="https://gitlab.regenholz.de/bat/bat-dev/-/blob/develop/documentation/CONVENTIONS.md?ref_type=heads"> Find the conventions here.</a> there is also a standardized workflow for designers:
+    </p>
     <ol>
       <li>follow FreeCAD Spreadsheet template</li>
       <li>use FreeCAD to model parametric designs</li>
@@ -11,14 +14,8 @@ const body = (
       <li>write a short construction manual</li>
       <li>write a BOM</li>
     </ol>
-    <p>
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec
-      est. Odio penatibus risus viverra tellus varius sit neque erat velit.
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id.
-    </p>
-    <img src="/images/forrest.jpg" alt="" />
+    <img src="/images/regenholz-parameo_faq-design.gif" alt="FreeCAD Spreadsheet" />
+    
     <h2>Specs</h2>
     <p>
       Erat pellentesque dictumst ligula porttitor risus eget et eget. Ultricies
