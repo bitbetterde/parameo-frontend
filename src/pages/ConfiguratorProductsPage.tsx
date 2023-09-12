@@ -38,8 +38,8 @@ const ConfiguratorProductsPage = () => {
   return (
     <>
       <HeroSection
-        title="Configurator headline here ..."
-        subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+        title="Explore & customize parameo products"
+        subtitle="Open Source Configurator for Open Source Machines"
         heroImage="/images/parameo-hero-img_configurator.jpg"
         heroImageAlt="carpenter working on a laptop"
       />
@@ -51,7 +51,7 @@ const ConfiguratorProductsPage = () => {
         <CardSlider
           title="Explore & customize parameo products"
           subtitle="Configurator"
-          description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus sed."
+          description="Individual products for individual needs"
           cardsData={
             products &&
             products?.map((product) => ({
