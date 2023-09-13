@@ -33,6 +33,11 @@ export interface IGenerateFormatsResultData {
   machine_time: number;
 }
 
+interface IPreviewFile {
+  url: string;
+  hash: string;
+}
+
 const sessionService = {
   getSession: (data: ICreateSessionData): Promise<ISession> => {
     return fetchAndHandleErrors(
@@ -61,8 +66,7 @@ const sessionService = {
     );
   },
 
-  // TODO: Add response type
-  regeneratePreview: (uuid: string): Promise<unknown> => {
+  regeneratePreview: (uuid: string): Promise<IPreviewFile> => {
     return fetchAndHandleErrors(
       new Request(
         `https://${
