@@ -8,7 +8,7 @@ interface ICreateSessionData {
 
 export interface IPartConfiguration {
   part_id: number;
-  material_id: number;
+  material_id?: number;
   parameters: IConfiguredParameter[];
 }
 
@@ -62,7 +62,7 @@ const sessionService = {
   },
 
   // TODO: Add response type
-  regeneratePreview: (uuid: string): Promise<any> => {
+  regeneratePreview: (uuid: string): Promise<unknown> => {
     return fetchAndHandleErrors(
       new Request(
         `https://${

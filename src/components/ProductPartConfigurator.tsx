@@ -24,7 +24,7 @@ const ProductPartConfigurator: React.FC<Props> = ({
   const [parametersValues, setParametersValues] = useState<
     IConfiguredParameter[]
   >(
-    part.parameters.map((parameter) => ({
+    part?.parameters?.map((parameter) => ({
       parameter_id: parameter.id,
       value: parameter.default_value,
     }))
@@ -32,8 +32,8 @@ const ProductPartConfigurator: React.FC<Props> = ({
 
   useEffect(() => {
     onChange({
-      part_id: part.id,
-      material_id: material.id,
+      part_id: part?.id,
+      material_id: material?.id,
       parameters: parametersValues,
     });
   }, [material, parametersValues]);
@@ -47,26 +47,31 @@ const ProductPartConfigurator: React.FC<Props> = ({
         isOpen={isOpen}
       >
         <div className="flex flex-col gap-6 lg:flex-row lg:justify-between lg:gap-16">
-          <div className="w-full lg:w-1/2">
-            <h3 className="text-xl font-semibold leading-8 pb-2">Materials</h3>
-            <div className="flex justify-between items-center text-sm font-normal pb-6">
-              <p>Choose material specs</p>
-              <Link href="#" className="text-indigo-600 font-medium">
-                Info
-              </Link>
+          {Boolean(part?.materials?.length) && (
+            <div className="w-full lg:w-1/2">
+              <h3 className="text-xl font-semibold leading-8 pb-2">
+                Materials
+              </h3>
+              <div className="flex justify-between items-center text-sm font-normal pb-6">
+                <p>Choose material specs</p>
+                <Link href="#" className="text-indigo-600 font-medium">
+                  Info
+                </Link>
+              </div>
+
+              <Select
+                onChange={(val) => {
+                  setMaterial(val);
+                }}
+                name="material"
+                value={material}
+                options={part?.materials?.map((material) => ({
+                  label: material.title_en,
+                  value: material,
+                }))}
+              />
             </div>
-            <Select
-              onChange={(val) => {
-                setMaterial(val);
-              }}
-              name="material"
-              value={material}
-              options={part.materials.map((material) => ({
-                label: material.title_en,
-                value: material,
-              }))}
-            />
-          </div>
+          )}
           <div className="w-full lg:w-1/2">
             <h3 className="text-xl font-semibold leading-8 pb-2">Dimensions</h3>
             <div className="flex justify-between items-center text-sm font-normal pb-6">
@@ -75,7 +80,7 @@ const ProductPartConfigurator: React.FC<Props> = ({
                 Info
               </Link>
             </div>
-            {part.parameters.map((parameter) => (
+            {part?.parameters?.map((parameter) => (
               <RangeSlider
                 key={parameter.id}
                 className="pb-4"
