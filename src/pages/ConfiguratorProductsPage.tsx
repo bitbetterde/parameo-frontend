@@ -49,9 +49,9 @@ const ConfiguratorProductsPage = () => {
         </div>
       ) : (
         <CardSlider
-          title="Explore & customize parameo products"
+          title="individual products for individual needs"
           subtitle="Configurator"
-          description="Individual products for individual needs"
+          description="explore & customize parameo products"
           cardsData={
             products &&
             products?.map((product) => ({
