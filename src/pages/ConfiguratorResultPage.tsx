@@ -161,7 +161,6 @@ const ConfiguratorResultPage: React.FC<Props> = ({
                 caption="Download all files (.zip)"
                 target={allFilesUrl}
                 className="py-[13px] text-center text-base w-full"
-                download
                 newTab
               />
             )}
