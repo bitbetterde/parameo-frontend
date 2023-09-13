@@ -75,7 +75,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
       setProduct(product);
       setValue("projectName", "My " + product.title, { shouldValidate: true });
       setPartsValues(
-        product?.parts.map((part) => ({
+        product?.parts?.map((part) => ({
           part_id: part.id,
           material_id: part?.materials?.[0]?.id,
           parameters: part.parameters.map((parameter) => ({
@@ -199,17 +199,18 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
             </h2>
             <div className="w-full">
               <div className="border-b border-gray-200 mx-auto max-w-7xl w-full" />
-              {product.parts?.map((part, index) => (
+              {product?.parts?.map((part, index) => (
                 <ProductPartConfigurator
                   key={part.id}
                   part={part}
                   onChange={(partValues) => {
-                    setPartsValues((prevPartValues) =>
-                      prevPartValues?.map((prevPartValue) =>
-                        prevPartValue.part_id === part.id
-                          ? partValues
-                          : prevPartValue
-                      )
+                    setPartsValues(
+                      (prevPartValues) =>
+                        prevPartValues?.map((prevPartValue) =>
+                          prevPartValue.part_id === part.id
+                            ? partValues
+                            : prevPartValue
+                        )
                     );
                   }}
                   isOpen={index === 0}
