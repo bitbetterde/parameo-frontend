@@ -124,10 +124,15 @@ const App: React.FC = () => {
             <ConfiguratorParametersPage productId={Number(params.productId)} />
           )}
         </Route>
+        <Route path="/configurator/session/:sessionId">
+          {(params) => (
+            <ConfiguratorParametersPage sessionId={params.sessionId} />
+          )}
+        </Route>
         <Route path="/configurator/products">
           <ConfiguratorProductsPage />
         </Route>
-        <Route path="/configurator/result/:sessionId?">
+        <Route path="/configurator/result/:sessionId">
           {(params) => <ConfiguratorResultPage sessionId={params.sessionId} />}
         </Route>
         <Route path="/faq/:faqitem?">

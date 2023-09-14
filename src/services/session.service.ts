@@ -50,6 +50,12 @@ export interface IUpdateSessionData {
 }
 
 const sessionService = {
+  getSession: (id: string): Promise<ISessionBase> => {
+    return fetchAndHandleErrors<ISessionBase>(`/sessions/${id}`, {
+      method: "GET",
+    });
+  },
+
   createSession: async (data: ICreateSessionData): Promise<string> => {
     const sessionId = await fetchAndHandleErrors<ISessionId>("/sessions/", {
       method: "POST",

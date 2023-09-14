@@ -31,21 +31,25 @@ interface IPreviewFile {
 interface SessionStore {
   session: ISessionBase | null;
   previewFile: IPreviewFile | null;
+  loadSession: (id: string) => Promise<void>;
   regeneratePreview: (
     productId: number,
     machineId: number,
-    partsData: IPartConfiguration[]
+    partsData: IPartConfiguration[],
+    projectName?: string
   ) => Promise<void>;
   regenerateFormats: (
     productId: number,
     machineId: number,
     partsData: IPartConfiguration[],
-    data: string[]
-  ) => Promise<void>;
+    data: string[],
+    projectName?: string
+  ) => Promise<string>;
   createOrUpdateSession: (
     productId: number,
     machineId: number,
-    partsData: IPartConfiguration[]
+    partsData: IPartConfiguration[],
+    projectName?: string
   ) => Promise<void>;
 }
 
@@ -59,7 +63,20 @@ const useSessionStore = create<SessionStore>()(
   devtools((set, get) => ({
     previewFile: null,
     session: null,
-    createOrUpdateSession: async (productId, machineId, partsData) => {
+    loadSession: async (id) => {
+      const session = await sessionService.getSession(id);
+      set((state) => ({ ...state, session }));
+      set((state) => ({
+        ...state,
+        previewFile: { url: session.preview_file_3d_url, hash: "" },
+      }));
+    },
+    createOrUpdateSession: async (
+      productId,
+      machineId,
+      partsData,
+      projectName?
+    ) => {
       let sessionId = get().session?.uuid;
 
       if (!sessionId) {
@@ -71,27 +88,44 @@ const useSessionStore = create<SessionStore>()(
 
       const session = await sessionService.updateSession(sessionId, {
         // This can be used to update the session name/email – currently not used
-        session: {},
+        session: { name: projectName },
         parts: partsData,
       });
 
       set((state) => ({ ...state, session }));
     },
-    regeneratePreview: async (productId, machineId, partsData) => {
-      await get().createOrUpdateSession(productId, machineId, partsData);
+    regeneratePreview: async (productId, machineId, partsData, projectName) => {
+      await get().createOrUpdateSession(
+        productId,
+        machineId,
+        partsData,
+        projectName
+      );
       const sessionId = get().session?.uuid;
       if (sessionId) {
         const previewFile = await sessionService.regeneratePreview(sessionId);
         set((state) => ({ ...state, previewFile }));
       }
     },
-    regenerateFormats: async (productId, machineId, partsData, data) => {
-      await get().createOrUpdateSession(productId, machineId, partsData);
+    regenerateFormats: async (
+      productId,
+      machineId,
+      partsData,
+      data,
+      projectName
+    ) => {
+      await get().createOrUpdateSession(
+        productId,
+        machineId,
+        partsData,
+        projectName
+      );
       const sessionId = get().session?.uuid;
       if (sessionId) {
         const session = await sessionService.regenerateFormats(sessionId, data);
         set((state) => ({ ...state, session }));
       }
+      return sessionId as string;
     },
   }))
 );
