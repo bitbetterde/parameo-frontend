@@ -19,8 +19,6 @@ import {
 import type React from "react";
 import { useState } from "react";
 import { Switch, Route } from "wouter";
-import type { IGenerateFormatsResultData } from "@services";
-import { IProduct } from "@interfaces/IProduct";
 
 const footerMenu = [
   { name: "Home", href: "/" },
@@ -99,11 +97,6 @@ const logos = [
 const App: React.FC = () => {
   const [notificationData, setNotificationData] = useState<INotification>();
   const [showNotification, setShowNotification] = useState(false);
-  const [resultData, setResultData] =
-    useState<IGenerateFormatsResultData | null>(null);
-  const [configuredProduct, setConfiguredProduct] = useState<IProduct | null>(
-    null
-  );
 
   return (
     <>
@@ -128,38 +121,14 @@ const App: React.FC = () => {
       <Switch>
         <Route path="/configurator/product/:productId">
           {(params) => (
-            <ConfiguratorParametersPage
-              productId={Number(params.productId)}
-              setResultData={(data) => {
-                setResultData(data);
-              }}
-              setConfiguredProduct={(product) => {
-                setConfiguredProduct(product);
-              }}
-            />
+            <ConfiguratorParametersPage productId={Number(params.productId)} />
           )}
         </Route>
         <Route path="/configurator/products">
           <ConfiguratorProductsPage />
         </Route>
         <Route path="/configurator/result/:sessionId?">
-          {(params) => (
-            <ConfiguratorResultPage
-              sessionId={params.sessionId}
-              title={configuredProduct?.title || "Default Desk"}
-              subtitle={configuredProduct?.subtitle || "Default Subtitle"}
-              description={
-                configuredProduct?.description || "Default Description"
-              }
-              dxfFileUrl={resultData?.dxf_file_url}
-              gcodeFileUrl={resultData?.gcode_file_url}
-              allFilesUrl={resultData?.all_files_zip_url}
-              co2Emissions={resultData?.co2_emissions}
-              materialPrice={resultData?.material_price}
-              machineTime={resultData?.machine_time}
-              images={configuredProduct?.pictures}
-            />
-          )}
+          {(params) => <ConfiguratorResultPage sessionId={params.sessionId} />}
         </Route>
         <Route path="/faq/:faqitem?">
           {(params) => (

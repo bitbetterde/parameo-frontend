@@ -1,6 +1,6 @@
 import { Accordion, Select, RangeSlider } from "@components";
 import type { IProductPart, IProductPartMaterial } from "@interfaces/IProduct";
-import type { IConfiguredParameter, IPartConfiguration } from "@services";
+import type { IConfiguredParameter, IPartConfiguration } from "@stores/session.store";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";

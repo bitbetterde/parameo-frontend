@@ -1,20 +1,23 @@
 import type { IProduct } from "./IProduct";
-import type { IConfiguredParameter } from "@services";
+import type { IConfiguredParameter } from "@stores/session.store";
 
-export interface ISession {
+export interface ISessionBase {
   uuid: string;
   created: string;
   name: string;
   user_email_address: string;
-  product: IProduct;
   machine: number;
   last_updated: string;
-  preview_file_url: string;
-  gcode_file_url: string;
+  preview_file_3d_url: string;
+  gcode_files_zip_url: string;
+  all_files_zip_url: string;
   dxf_file_url: string;
-  material_price: null;
-  machine_time: null;
-  co2_emissions: null;
+  material_price: string;
+  machine_time: string;
+}
+export interface ISession extends ISessionBase {
+  product: IProduct;
+  co2_emissions: { label: string; value: number }[];
   user_interests: [];
   configured_parts: [
     {

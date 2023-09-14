@@ -8,11 +8,10 @@ import {
   Spinner,
 } from "@components";
 import rawFaqs from "@faqs";
-import type { IProduct } from "@interfaces/IProduct";
-import { productService, machineService } from "@services";
 import type { IMachine } from "@services/machine.service";
 import type React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useMachineStore, useProductStore } from "@stores";
 
 const heroButtons = [
   {
@@ -25,7 +24,7 @@ const heroButtons = [
 
 const people = [
   {
-    name: "Makers",
+    name: "Users & Makers",
     image: "/images/parameo-portrait-illustration_user.png",
     imageAlt: "",
     href: "/faq/maker-collaboration",
@@ -110,16 +109,14 @@ const HomePage: React.FC = () => {
     .sort((a, b) => (a.order || 0) - (b.order || 0))
     .filter((faq) => faq.showOnHomePage);
 
-  const [products, setProducts] = useState<IProduct[]>();
-  const [machines, setMachines] = useState<any>();
+  const products = useProductStore((state) => state.allProducts);
+  const loadAllProducts = useProductStore((state) => state.loadAllProducts);
+  const machines = useMachineStore((state) => state.allMachines);
+  const loadAllMachines = useMachineStore((state) => state.loadAllMachines);
 
   useEffect(() => {
-    productService.getProducts().then((products) => {
-      setProducts(products);
-    });
-    machineService.getMachines().then((machines) => {
-      setMachines(machines);
-    });
+    loadAllProducts();
+    loadAllMachines();
   }, []);
 
   return (
@@ -134,12 +131,12 @@ const HomePage: React.FC = () => {
       <FeatureSection
         title="Leave the math to parameo"
         subtitle=""
-        description="The tool offers a machine code generator, a 'build or buy' option to support local production, Emission and cost transparency and an over all freely accessible system using open source software for open source hardware."
+        description="The tool offers a machine code generator, a 'build or buy' option to support local production, Emission and cost transparency and an over all freely accessible system using open source software for open source hardware."
         features={features}
       />
       <AvatarSection people={people} title="A tool for you:" />
       {!products ? (
-        <div className="w-full h-96 flex items-center justify-center">
+        <div className="w-full h-32 flex items-center justify-center">
           <Spinner />
         </div>
       ) : (
@@ -171,7 +168,7 @@ const HomePage: React.FC = () => {
         data={visibleFaqItems}
       />
       {!machines ? (
-        <div className="w-full h-96 flex items-center justify-center">
+        <div className="w-full h-32 flex items-center justify-center">
           <Spinner />
         </div>
       ) : (

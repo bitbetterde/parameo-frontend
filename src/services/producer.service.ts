@@ -1,27 +1,30 @@
 import { fetchAndHandleErrors } from "./util";
 
+export interface IProducer {
+  id?: number;
+  name: string;
+  website_url: string;
+  pictures: [
+    {
+      image_url: string;
+    },
+  ];
+  location_lat: string;
+  location_long: string;
+  location_name: string;
+  description: string;
+  email: string;
+  phone: string;
+}
+
 const producerService = {
-  // TODO: Better return type
-  getProducers: (): Promise<any[]> => {
-    return fetchAndHandleErrors(
-      new Request(
-        `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/producers/`,
-        {
-          method: "GET",
-        }
-      )
-    );
+  getProducers: (): Promise<IProducer[]> => {
+    return fetchAndHandleErrors("/producers/", {
+      method: "GET",
+    });
   },
-  // TODO: Better return type
-  getProducer: (id: number): Promise<any> => {
-    return fetchAndHandleErrors(
-      new Request(
-        `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/producers/${id}/`,
-        {
-          method: "GET",
-        }
-      )
-    );
+  getProducer: (id: number): Promise<IProducer> => {
+    return fetchAndHandleErrors<IProducer>(`/producers/${id}/`);
   },
 };
 export default producerService;

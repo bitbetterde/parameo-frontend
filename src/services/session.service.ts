@@ -1,5 +1,5 @@
 import { fetchAndHandleErrors } from "./util";
-import type { ISession } from "@interfaces/ISession";
+import type { ISession, ISessionBase } from "@interfaces/ISession";
 
 interface ICreateSessionData {
   product_id: number;
@@ -38,62 +38,63 @@ interface IPreviewFile {
   hash: string;
 }
 
+interface ISessionId {
+  uuid: string;
+}
+
+export interface IUpdateSessionData {
+  session: {
+    name?: string;
+  };
+  parts: IPartConfiguration[];
+}
+
 const sessionService = {
-  getSession: (data: ICreateSessionData): Promise<ISession> => {
-    return fetchAndHandleErrors(
-      new Request(
-        `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/sessions/`,
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-        }
-      )
-    );
+  createSession: async (data: ICreateSessionData): Promise<string> => {
+    const sessionId = await fetchAndHandleErrors<ISessionId>("/sessions/", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+
+    return sessionId.uuid;
   },
 
-  updateSession: (
+  updateSession: async (
     uuid: string,
     data: IUpdateSessionData
-  ): Promise<ISession> => {
-    return fetchAndHandleErrors(
-      new Request(
-        `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/sessions/${uuid}/`,
-        {
-          method: "PUT",
-          body: JSON.stringify(data),
-        }
-      )
+  ): Promise<ISessionBase> => {
+    const session = await fetchAndHandleErrors<ISessionBase>(
+      `/sessions/${uuid}/`,
+      {
+        method: "PUT",
+        body: JSON.stringify(data),
+      }
     );
+
+    return session;
   },
 
-  regeneratePreview: (uuid: string): Promise<IPreviewFile> => {
-    return fetchAndHandleErrors(
-      new Request(
-        `https://${
-          import.meta.env.VITE_PARAMEO_BACKEND_URL
-        }/sessions/${uuid}/preview/`,
-        {
-          method: "GET",
-        }
-      )
+  regeneratePreview: async (uuid: string): Promise<IPreviewFile> => {
+    const previewFile = await fetchAndHandleErrors<IPreviewFile>(
+      `/sessions/${uuid}/preview/`
     );
+
+    return previewFile;
   },
 
-  regenerateFormats: (
+  regenerateFormats: async (
     uuid: string,
     data: string[]
-  ): Promise<IGenerateFormatsResultData> => {
-    return fetchAndHandleErrors(
-      new Request(
-        `https://${
-          import.meta.env.VITE_PARAMEO_BACKEND_URL
-        }/sessions/${uuid}/regenerate/`,
-        {
-          method: "POST",
-          body: JSON.stringify({ user_interests: data }),
-        }
-      )
+  ): Promise<ISession> => {
+    const formats = await fetchAndHandleErrors<ISession>(
+      `/sessions/${uuid}/regenerate/`,
+      {
+        method: "POST",
+        body: JSON.stringify({ user_interests: data }),
+      }
     );
+
+    return formats;
   },
 };
 export default sessionService;
