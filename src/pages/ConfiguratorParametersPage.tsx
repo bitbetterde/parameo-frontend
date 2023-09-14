@@ -1,8 +1,11 @@
 import type React from "react";
 import type { IProduct } from "@interfaces/IProduct";
-import type { ISession } from "@interfaces/ISession";
-import type { IPartConfiguration, IGenerateFormatsResultData } from "@services";
-import type { IMachine } from "@services";
+
+import type {
+  IPartConfiguration,
+  IGenerateFormatsResultData,
+} from "@stores/session.store";
+import type { IMachine } from "@services/machine.service";
 
 import { ReactComponent as ExclamationIcon } from "@assets/icons/exclamation-triangle.svg";
 import {
@@ -15,9 +18,10 @@ import {
   Button,
   Spinner,
 } from "@components";
-import { productService, sessionService, machineService } from "@services";
+
+import { useProductStore, useSessionStore, useMachineStore } from "@stores";
 import { Link, useLocation } from "wouter";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 interface Props {
@@ -42,19 +46,24 @@ interface FormInput {
 const ConfiguratorParametersPage: React.FC<Props> = ({
   className,
   productId,
-  setResultData,
-  setConfiguredProduct,
 }) => {
-  const [product, setProduct] = useState<IProduct>();
+  const product = useProductStore((state) => state.selectedProduct);
+  const fetchProduct = useProductStore((state) => state.loadProduct);
+  const fetchAllMachines = useMachineStore((state) => state.loadAllMachines);
+  const machines = useMachineStore((state) => state.allMachines);
+  const sessionStore = useSessionStore();
+
   const [partsValues, setPartsValues] = useState<IPartConfiguration[]>([]);
-  const [session, setSession] = useState<ISession>();
-  const [previewUrl, setPreviewUrl] = useState<string>();
+  const [is3DPreviewEnabled, setIs3DPreviewEnabled] = useState<boolean>(true);
   const [currentlyGenerating, setCurrentlyGenerating] = useState<
     "preview" | "formats"
   >();
+
   const [, setLocation] = useLocation();
 
-  const [machines, setMachines] = useState<IMachine[]>([]);
+  const machinesForProduct = useMemo(() => {
+    return machines.filter((mach) => mach.type === product?.machine_type);
+  }, [JSON.stringify(machines), JSON.stringify(product)]);
 
   const { register, watch, control, formState, setValue, getValues } =
     useForm<FormInput>({
@@ -64,16 +73,17 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   const machine = watch("machine");
 
   useEffect(() => {
-    productService.getProduct(productId).then((product) => {
-      setConfiguredProduct && setConfiguredProduct(product);
-      machineService.getMachines().then((machines) => {
-        setMachines(
-          machines.filter((mach) => mach.type === product?.machine_type)
-        );
-        setValue("machine", machines[0]);
+    if (productId) {
+      fetchProduct(productId);
+      fetchAllMachines();
+    }
+  }, [productId]);
+
+  useEffect(() => {
+    if (product) {
+      setValue("projectName", "My " + product.title, {
+        shouldValidate: true,
       });
-      setProduct(product);
-      setValue("projectName", "My " + product.title, { shouldValidate: true });
       setPartsValues(
         product?.parts?.map((part) => ({
           part_id: part.id,
@@ -84,21 +94,24 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
           })),
         }))
       );
-    });
-  }, [productId, setValue]);
+    }
+  }, [JSON.stringify(product)]);
+
+  useEffect(() => {
+    if (machinesForProduct.length) {
+      setValue("machine", machinesForProduct[0]);
+    }
+  }, [JSON.stringify(machinesForProduct)]);
 
   const regeneratePreview = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCurrentlyGenerating("preview");
     e.preventDefault();
-    createOrUpdateSession().then((sessionId) => {
-      sessionService.regeneratePreview(sessionId).then((preview_url) => {
-        if (preview_url) {
-          preview_url?.url && setPreviewUrl(preview_url?.url);
-          setIs3DPreviewEnabled(true);
-        }
+    sessionStore
+      .regeneratePreview((product as IProduct).id, machine.id, partsValues)
+      .then(() => {
+        setIs3DPreviewEnabled(true);
         setCurrentlyGenerating(undefined);
       });
-    });
   };
 
   const regenerateFormats = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -109,47 +122,19 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
 
     setCurrentlyGenerating("formats");
     e.preventDefault();
-    createOrUpdateSession().then((sessionId) => {
-      sessionService
-        .regenerateFormats(sessionId, userInterestsArray)
-        .then((result) => {
-          setResultData && setResultData(result);
-          setCurrentlyGenerating(undefined);
-          result && setLocation("/configurator/result");
-        });
-    });
-  };
 
-  const createOrUpdateSession = async (): Promise<string> => {
-    let sessionId;
-    if (!session) {
-      sessionId = (
-        await sessionService
-          .getSession({
-            product_id: product?.id ?? 0,
-            machine_id: machine?.id ?? 0,
-          })
-          .then((newSession) => {
-            setSession(newSession);
-            return newSession;
-          })
-      ).uuid;
-    } else {
-      sessionId = session.uuid;
-    }
-    await sessionService
-      .updateSession(sessionId, {
-        session: {},
-        parts: partsValues,
-      })
-      .then((res) => {
-        setSession(res);
+    sessionStore
+      .regenerateFormats(
+        (product as IProduct).id,
+        machine.id,
+        partsValues,
+        userInterestsArray
+      )
+      .then(() => {
+        setCurrentlyGenerating(undefined);
+        setLocation("/configurator/result");
       });
-
-    return sessionId;
   };
-
-  const [is3DPreviewEnabled, setIs3DPreviewEnabled] = useState<boolean>(true);
 
   return !product ? (
     <div className="w-full h-screen flex items-center justify-center">
@@ -241,7 +226,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                         onChange(val);
                         onBlur();
                       }}
-                      options={machines.map((machine) => ({
+                      options={machinesForProduct.map((machine) => ({
                         label: machine.title_en,
                         value: machine,
                       }))}
@@ -324,7 +309,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
             {is3DPreviewEnabled ? (
               <ModelViewer
                 modelSrc={
-                  previewUrl ??
+                  sessionStore.previewFile?.url ??
                   product?.preview_file_3d ??
                   "https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
                 }

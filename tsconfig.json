@@ -22,6 +22,8 @@
       "@translations": ["src/translations"],
       "@styles/*": ["src/styles/*"],
       "@styles": ["src/styles"],
+      "@stores": ["src/stores"],
+      "@stores/*": ["src/stores/*"],
       "@services": ["src/services"],
       "@services/*": ["src/services/*"]
     },

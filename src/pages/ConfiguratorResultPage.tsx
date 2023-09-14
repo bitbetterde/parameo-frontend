@@ -8,23 +8,14 @@ import {
   ImageSlider,
   Spinner,
 } from "@components";
-import { producerService } from "@services";
-import { useEffect, useState } from "react";
+import { ISession } from "@interfaces/ISession";
+import { useProducerStore, useSessionStore } from "@stores";
+import { isISession } from "@stores/session.store";
+import { useEffect } from "react";
 
 interface Props {
   className?: string;
   sessionId?: string;
-  title: string;
-  subtitle?: string;
-  description?: string;
-  chartData?: [number, number, number];
-  allFilesUrl?: string;
-  dxfFileUrl?: string;
-  gcodeFileUrl?: string;
-  materialPrice?: number;
-  co2Emissions?: { label: string; value: number }[];
-  machineTime?: number;
-  images?: [{ image_url: string }];
 }
 
 const instructionsAccordion = [
@@ -61,43 +52,42 @@ const buttons = [
   { caption: "Copy link", href: "#" },
 ];
 
-const ConfiguratorResultPage: React.FC<Props> = ({
-  className,
-  title,
-  subtitle,
-  description,
-  allFilesUrl,
-  dxfFileUrl,
-  gcodeFileUrl,
-  materialPrice,
-  co2Emissions,
-  machineTime,
-  images,
-}) => {
-  const [producers, setProducers] = useState<any[]>();
-
-  const chartData = co2Emissions?.length && {
-    labels: co2Emissions?.map((emission) => emission.label) || ["Emissions"],
+const ConfiguratorResultPage: React.FC<Props> = ({ className }) => {
+  const producers = useProducerStore((state) => state.allProducers);
+  const fetchProducers = useProducerStore((state) => state.loadAllProducers);
+  const session = useSessionStore((state) => state.session);
+  const typedSession: ISession | undefined =
+    session && isISession(session) ? session : undefined;
+  const chartData = {
+    labels: ["Emissions"],
     datasets: [
       {
-        data: co2Emissions?.map((emission) => emission.value) || [0],
+        data: [0],
         backgroundColor: ["#4F46E5", "#059669", "#DB2777"],
         borderWidth: 5,
         borderColor: "#F3F4F6",
       },
     ],
   };
+  if (typedSession) {
+    chartData.labels = typedSession.co2_emissions?.map(
+      (emission) => emission.label
+    );
+    chartData.datasets[0].data = typedSession.co2_emissions?.map(
+      (emission) => emission.value
+    );
+  }
 
   useEffect(() => {
-    producerService.getProducers().then((producers) => {
-      setProducers(producers);
-    });
+    fetchProducers();
   }, []);
 
   const descriptionList = [
     {
       title: "Material price",
-      description: materialPrice ? `${materialPrice?.toLocaleString()} €` : "",
+      description: typedSession?.material_price
+        ? `${typedSession?.material_price?.toLocaleString()} €`
+        : "",
     },
     // {
     //   title: "Emissions",
@@ -105,27 +95,32 @@ const ConfiguratorResultPage: React.FC<Props> = ({
     // },
     {
       title: "Machine runtime",
-      description: machineTime ? `${machineTime?.toLocaleString()} h` : "",
+      description: typedSession?.machine_time
+        ? `${typedSession?.machine_time?.toLocaleString()} h`
+        : "",
     },
-    { title: "Machine Code (.nc)", filePath: gcodeFileUrl || "" },
-    { title: "3D Model (.dxf)", filePath: dxfFileUrl || "" },
+    {
+      title: "Machine Code (.nc)",
+      filePath: typedSession?.gcode_files_zip_url || "",
+    },
+    { title: "3D Model (.dxf)", filePath: typedSession?.dxf_file_url || "" },
   ];
 
   return (
     <div className={`bg-white pt-6 md:pt-12 ${className || ""}`}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center pb-10">
-          {subtitle && (
+          {typedSession?.product.subtitle && (
             <h2 className="text-base font-semibold text-indigo-600 uppercase">
-              {subtitle}
+              {typedSession?.product.subtitle}
             </h2>
           )}
           <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            {title}
+            {typedSession?.product.title}
           </h1>
-          {description && (
+          {typedSession?.product.description && (
             <p className="mt-4 text-[20px] leading-7 text-gray-500">
-              {description}
+              {typedSession?.product.description}
             </p>
           )}
         </div>
@@ -156,19 +151,21 @@ const ConfiguratorResultPage: React.FC<Props> = ({
                 )}
               </dl>
             )}
-            {allFilesUrl && (
+            {typedSession?.all_files_zip_url && (
               <ButtonLink
                 caption="Download all files (.zip)"
-                target={allFilesUrl}
+                target={typedSession?.all_files_zip_url}
                 className="py-[13px] text-center text-base w-full"
                 newTab
               />
             )}
           </div>
           <div className="lg:w-2/3">
-            {images?.length && (
+            {typedSession?.product.pictures?.length && (
               <FeaturedImageGallery
-                images={images?.map((image) => ({ image: image.image_url }))}
+                images={typedSession?.product.pictures?.map((image) => ({
+                  image: image.image_url,
+                }))}
               />
             )}
           </div>
@@ -208,7 +205,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({
           <CardSlider
             cardsData={
               producers &&
-              producers?.map((producer: any) => ({
+              producers?.map((producer) => ({
                 title: producer?.name,
                 externalHref: producer?.website_url,
                 subtitle: producer?.location_name || "City",

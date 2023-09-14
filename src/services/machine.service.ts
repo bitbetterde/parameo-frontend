@@ -22,24 +22,14 @@ export interface IMachine {
 
 const machineService = {
   getMachines: (): Promise<IMachine[]> => {
-    return fetchAndHandleErrors(
-      new Request(
-        `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/machines/`,
-        {
-          method: "GET",
-        }
-      )
-    );
+    return fetchAndHandleErrors("/machines/", {
+      method: "GET",
+    });
   },
   getMachine: (id: number): Promise<IMachine> => {
-    return fetchAndHandleErrors(
-      new Request(
-        `https://${import.meta.env.VITE_PARAMEO_BACKEND_URL}/machines/${id}/`,
-        {
-          method: "GET",
-        }
-      )
-    );
+    return fetchAndHandleErrors(`/machines/${id}/`, {
+      method: "GET",
+    });
   },
 };
 export default machineService;
