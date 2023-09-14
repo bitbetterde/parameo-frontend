@@ -10,6 +10,7 @@ interface Props {
   className?: string;
   value?: number;
   onChange?: (value: number) => void;
+  onValidChange?: (valid: boolean) => void;
   placeholder?: number | string;
 }
 
@@ -22,6 +23,7 @@ const RangeSlider: React.FC<Props> = ({
   value: propsValue,
   onChange,
   placeholder,
+  onValidChange,
 }) => {
   const [value, setValue] = useState(propsValue?.toString());
   const [prevPropsValue, setPrevPropsValue] = useState(propsValue);
@@ -51,6 +53,7 @@ const RangeSlider: React.FC<Props> = ({
           className="w-full appearance-none"
           onChange={(e) => {
             onChange && onChange(parseInt(e.currentTarget.value));
+            onValidChange && onValidChange(true);
           }}
         />
         <input
@@ -68,20 +71,25 @@ const RangeSlider: React.FC<Props> = ({
           maxLength={rangeMax.toString().length}
           value={value}
           onBlur={() => {
-            if (parseInt(value || "0") > rangeMax) {
+            if (parseInt(value || "0") >= rangeMax) {
               setValue(rangeMax.toString());
               onChange && onChange(rangeMax);
-            } else if (parseInt(value || "0") < rangeMin) {
+              onValidChange && onValidChange(true);
+            } else if (parseInt(value || "0") <= rangeMin) {
               setValue(rangeMin.toString());
               onChange && onChange(rangeMin);
+              onValidChange && onValidChange(true);
             }
           }}
           onChange={(e) => {
             if (
-              parseInt(e.currentTarget.value) < rangeMax &&
-              parseInt(e.currentTarget.value) > rangeMin
+              parseInt(e.currentTarget.value) <= rangeMax &&
+              parseInt(e.currentTarget.value) >= rangeMin
             ) {
               onChange && onChange(parseInt(e.currentTarget.value));
+              onValidChange && onValidChange(true);
+            } else {
+              onValidChange && onValidChange(false);
             }
             setValue(e.currentTarget.value);
           }}
