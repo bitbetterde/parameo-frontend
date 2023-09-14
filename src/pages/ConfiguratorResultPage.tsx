@@ -45,17 +45,11 @@ const producerImages = [
   },
 ];
 
-const buttons = [
-  { caption: "Edit design", href: "#" },
-  { caption: "Local manufacturing", href: "#" },
-  { caption: "Feedback", href: "#" },
-  { caption: "Copy link", href: "#" },
-];
-
-const ConfiguratorResultPage: React.FC<Props> = ({ className }) => {
+const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
   const producers = useProducerStore((state) => state.allProducers);
   const fetchProducers = useProducerStore((state) => state.loadAllProducers);
   const session = useSessionStore((state) => state.session);
+  const loadSession = useSessionStore((state) => state.loadSession);
   const typedSession: ISession | undefined =
     session && isISession(session) ? session : undefined;
   const chartData = {
@@ -78,8 +72,21 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className }) => {
     );
   }
 
+  const buttons = [
+    {
+      caption: "Edit design",
+      href: `/configurator/session/${typedSession?.uuid}`,
+    },
+    { caption: "Local manufacturing", href: "#" },
+    { caption: "Feedback", href: "#" },
+    { caption: "Copy link", href: "#" },
+  ];
+
   useEffect(() => {
     fetchProducers();
+    if (sessionId && !typedSession) {
+      loadSession(sessionId);
+    }
   }, []);
 
   const descriptionList = [

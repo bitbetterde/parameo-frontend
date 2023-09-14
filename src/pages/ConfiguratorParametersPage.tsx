@@ -1,34 +1,31 @@
 import type React from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { IProduct } from "@interfaces/IProduct";
-
-import type {
-  IPartConfiguration,
-  IGenerateFormatsResultData,
-} from "@stores/session.store";
+import type { ISession } from "@interfaces/ISession.ts";
+import type { IPartConfiguration } from "@stores/session.store";
 import type { IMachine } from "@services/machine.service";
 
 import { ReactComponent as ExclamationIcon } from "@assets/icons/exclamation-triangle.svg";
 import {
+  Button,
   Checkbox,
   ModelViewer,
   ProductPartConfigurator,
   Select,
+  Spinner,
   TextInput,
   Toggle,
-  Button,
-  Spinner,
 } from "@components";
 
-import { useProductStore, useSessionStore, useMachineStore } from "@stores";
+import { useMachineStore, useProductStore, useSessionStore } from "@stores";
 import { Link, useLocation } from "wouter";
-import { useEffect, useMemo, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { isISession } from "@stores/session.store";
 
 interface Props {
-  productId: number;
+  productId?: number;
+  sessionId?: string;
   className?: string;
-  setResultData?: (data: IGenerateFormatsResultData) => void;
-  setConfiguredProduct?: (product: IProduct) => void;
 }
 
 interface FormInput {
@@ -46,11 +43,12 @@ interface FormInput {
 const ConfiguratorParametersPage: React.FC<Props> = ({
   className,
   productId,
+  sessionId,
 }) => {
   const product = useProductStore((state) => state.selectedProduct);
-  const fetchProduct = useProductStore((state) => state.loadProduct);
-  const fetchAllMachines = useMachineStore((state) => state.loadAllMachines);
-  const machines = useMachineStore((state) => state.allMachines);
+  const loadProduct = useProductStore((state) => state.loadProduct);
+  const loadAllMachines = useMachineStore((state) => state.loadAllMachines);
+  const allMachines = useMachineStore((state) => state.allMachines);
   const sessionStore = useSessionStore();
 
   const [partsValues, setPartsValues] = useState<IPartConfiguration[]>([]);
@@ -58,12 +56,15 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   const [currentlyGenerating, setCurrentlyGenerating] = useState<
     "preview" | "formats"
   >();
+  const [firstRenderSessionLoad, setFirstRenderSessionLoad] = useState(
+    Boolean(sessionId)
+  );
 
   const [, setLocation] = useLocation();
 
   const machinesForProduct = useMemo(() => {
-    return machines.filter((mach) => mach.type === product?.machine_type);
-  }, [JSON.stringify(machines), JSON.stringify(product)]);
+    return allMachines.filter((mach) => mach.type === product?.machine_type);
+  }, [JSON.stringify(allMachines), JSON.stringify(product)]);
 
   const { register, watch, control, formState, setValue, getValues } =
     useForm<FormInput>({
@@ -74,32 +75,73 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
 
   useEffect(() => {
     if (productId) {
-      fetchProduct(productId);
-      fetchAllMachines();
+      loadProduct(productId);
     }
-  }, [productId]);
+    if (
+      sessionId &&
+      (!sessionStore.session || sessionStore.session.uuid !== sessionId)
+    ) {
+      sessionStore.loadSession(sessionId);
+    }
+    loadAllMachines();
+  }, [productId, sessionId]);
+
+  useEffect(() => {
+    if (
+      firstRenderSessionLoad &&
+      sessionStore.session &&
+      isISession(sessionStore.session)
+    ) {
+      loadProduct(sessionStore.session.product.id);
+      setValue("projectName", sessionStore.session.name, {
+        shouldValidate: true,
+      });
+      setFirstRenderSessionLoad(false);
+    } else if (sessionStore.session && !sessionId) {
+      setLocation(`/configurator/session/${sessionStore.session.uuid}`);
+    }
+  }, [sessionStore.session?.uuid]);
 
   useEffect(() => {
     if (product) {
-      setValue("projectName", "My " + product.title, {
-        shouldValidate: true,
-      });
-      setPartsValues(
-        product?.parts?.map((part) => ({
-          part_id: part.id,
-          material_id: part?.materials?.[0]?.id,
-          parameters: part.parameters.map((parameter) => ({
-            parameter_id: parameter.id,
-            value: parameter.default_value,
-          })),
-        }))
-      );
+      if (sessionStore.session && isISession(sessionStore.session)) {
+        setPartsValues(
+          sessionStore.session.configured_parts.map((configuredPart) => ({
+            part_id: configuredPart.part.id,
+            parameters: configuredPart.configured_parameters,
+            material_id: configuredPart.selected_material.id,
+          }))
+        );
+      } else {
+        setValue("projectName", "My " + product.title, {
+          shouldValidate: true,
+        });
+        setPartsValues(
+          product?.parts?.map((part) => ({
+            part_id: part.id,
+            material_id: part?.materials?.[0]?.id,
+            parameters: part.parameters.map((parameter) => ({
+              parameter_id: parameter.id,
+              value: parameter.default_value,
+            })),
+          }))
+        );
+      }
     }
-  }, [JSON.stringify(product)]);
+  }, [product?.id]);
 
   useEffect(() => {
     if (machinesForProduct.length) {
-      setValue("machine", machinesForProduct[0]);
+      if (sessionStore.session && isISession(sessionStore.session)) {
+        setValue(
+          "machine",
+          machinesForProduct.find(
+            (m) => m.id === (sessionStore.session as ISession).machine
+          ) ?? machinesForProduct[0]
+        );
+      } else {
+        setValue("machine", machinesForProduct[0]);
+      }
     }
   }, [JSON.stringify(machinesForProduct)]);
 
@@ -107,7 +149,12 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     setCurrentlyGenerating("preview");
     e.preventDefault();
     sessionStore
-      .regeneratePreview((product as IProduct).id, machine.id, partsValues)
+      .regeneratePreview(
+        (product as IProduct).id,
+        machine.id,
+        partsValues,
+        getValues("projectName")
+      )
       .then(() => {
         setIs3DPreviewEnabled(true);
         setCurrentlyGenerating(undefined);
@@ -128,11 +175,12 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
         (product as IProduct).id,
         machine.id,
         partsValues,
-        userInterestsArray
+        userInterestsArray,
+        getValues("projectName")
       )
-      .then(() => {
+      .then((sessionId) => {
         setCurrentlyGenerating(undefined);
-        setLocation("/configurator/result");
+        setLocation(`/configurator/result/${sessionId}`);
       });
   };
 
@@ -184,23 +232,27 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
             </h2>
             <div className="w-full">
               <div className="border-b border-gray-200 mx-auto max-w-7xl w-full" />
-              {product?.parts?.map((part, index) => (
-                <ProductPartConfigurator
-                  key={part.id}
-                  part={part}
-                  onChange={(partValues) => {
-                    setPartsValues(
-                      (prevPartValues) =>
-                        prevPartValues?.map((prevPartValue) =>
-                          prevPartValue.part_id === part.id
-                            ? partValues
-                            : prevPartValue
-                        )
-                    );
-                  }}
-                  isOpen={index === 0}
-                />
-              ))}
+              {Boolean(partsValues.length) &&
+                product?.parts?.map((part, index) => (
+                  <ProductPartConfigurator
+                    key={part.id}
+                    defaultValue={partsValues.find(
+                      (partValues) => partValues.part_id === part.id
+                    )}
+                    part={part}
+                    onChange={(partValues) => {
+                      setPartsValues(
+                        (prevPartValues) =>
+                          prevPartValues?.map((prevPartValue) =>
+                            prevPartValue.part_id === part.id
+                              ? partValues
+                              : prevPartValue
+                          )
+                      );
+                    }}
+                    isOpen={index === 0}
+                  />
+                ))}
             </div>
             <h2 className="text-base font-semibold text-indigo-600 uppercase pt-16 pb-2">
               Generate

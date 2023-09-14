@@ -1,12 +1,16 @@
 import { Accordion, Select, RangeSlider } from "@components";
 import type { IProductPart, IProductPartMaterial } from "@interfaces/IProduct";
-import type { IConfiguredParameter, IPartConfiguration } from "@stores/session.store";
+import type {
+  IConfiguredParameter,
+  IPartConfiguration,
+} from "@stores/session.store";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 
 interface Props {
   part: IProductPart;
+  defaultValue?: IPartConfiguration;
   onChange: (a: IPartConfiguration) => void;
   isOpen: boolean;
 }
@@ -15,19 +19,23 @@ const CONVERSION_FACTOR_TO_MM = 10; //all parameters have the unit 'mm/10' for t
 
 const ProductPartConfigurator: React.FC<Props> = ({
   part,
+  defaultValue,
   onChange,
   isOpen,
 }) => {
   const [material, setMaterial] = useState<IProductPartMaterial>(
-    part?.materials?.[0]
+    part?.materials.find(
+      (material) => material.id === defaultValue?.material_id
+    ) ?? part?.materials?.[0]
   );
   const [parametersValues, setParametersValues] = useState<
     IConfiguredParameter[]
   >(
-    part?.parameters?.map((parameter) => ({
-      parameter_id: parameter.id,
-      value: parameter.default_value,
-    }))
+    defaultValue?.parameters ??
+      part?.parameters?.map((parameter) => ({
+        parameter_id: parameter.id,
+        value: parameter.default_value,
+      }))
   );
 
   useEffect(() => {
