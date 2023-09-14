@@ -59,6 +59,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   const [firstRenderSessionLoad, setFirstRenderSessionLoad] = useState(
     Boolean(sessionId)
   );
+  const [sliderInvalid, setSliderInvalid] = useState(false);
 
   const [, setLocation] = useLocation();
 
@@ -240,6 +241,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                       (partValues) => partValues.part_id === part.id
                     )}
                     part={part}
+                    onValidChange={(valid) => {
+                      setSliderInvalid(!valid);
+                    }}
                     onChange={(partValues) => {
                       setPartsValues(
                         (prevPartValues) =>
@@ -327,7 +331,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               </div>
             )}
             <Button
-              disabled={!isValid || Boolean(currentlyGenerating)}
+              disabled={
+                !isValid || Boolean(currentlyGenerating) || sliderInvalid
+              }
               variant={"primary"}
               className="w-full py-3 flex items-center justify-center"
               onClick={regenerateFormats}
@@ -375,7 +381,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               />
             )}
             <Button
-              disabled={!isValid || Boolean(currentlyGenerating)}
+              disabled={
+                !isValid || Boolean(currentlyGenerating) || sliderInvalid
+              }
               variant={"primary"}
               className="w-full py-3 flex items-center justify-center"
               onClick={regeneratePreview}
