@@ -73,23 +73,13 @@ const logos = [
   },
   {
     href: "#",
-    alt: "InMachines",
-    type: "inmachines" as const,
-  },
-  {
-    href: "#",
-    alt: "bitbetter",
-    type: "bitbetter" as const,
-  },
-  {
-    href: "#",
     alt: "FreeCad",
     type: "freecad" as const,
   },
   {
     href: "#",
-    alt: "Statamic",
-    type: "statamic" as const,
+    alt: "bitbetter",
+    type: "bitbetter" as const,
   },
 ];
 

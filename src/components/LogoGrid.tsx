@@ -1,9 +1,7 @@
 import BitBetterLogo from "@assets/logos/bitbetter.svg";
 import FreeCadLogo from "@assets/logos/freecad.svg";
 import IFBLogo from "@assets/logos/ifb-hamburg.svg";
-import InMachinesLogo from "@assets/logos/inmachines.svg";
 import RegenholzLogo from "@assets/logos/regenholz.svg";
-import StatamicLogo from "@assets/logos/statamic.svg";
 import { ILogo } from "@interfaces";
 import type React from "react";
 
@@ -16,8 +14,6 @@ interface Props {
 const logoMapping = {
   bitbetter: BitBetterLogo,
   freecad: FreeCadLogo,
-  statamic: StatamicLogo,
-  inmachines: InMachinesLogo,
   regenholz: RegenholzLogo,
   ifbhamburg: IFBLogo,
 };
@@ -31,7 +27,7 @@ const LogoGrid: React.FC<Props> = ({ className, title, logos }) => {
             {title}
           </h2>
         </div>
-        <div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3 px-6">
+        <div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 p-4 sm:p-0">
           {logos?.map((logo, i) => (
             <div
               className="bg-gray-400/5 p-8 sm:p-10 flex justify-center items-center"
