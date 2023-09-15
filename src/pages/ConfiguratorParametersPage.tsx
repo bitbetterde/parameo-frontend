@@ -22,6 +22,7 @@ import { Link, useLocation } from "wouter";
 import { Controller, useForm } from "react-hook-form";
 import { isISession } from "@stores/session.store";
 import useNotificationStore from "@stores/notification.store.ts";
+import { useUtilStore } from "@stores";
 
 interface Props {
   productId?: number;
@@ -53,6 +54,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   const sessionStore = useSessionStore();
   const setNotificationData = useNotificationStore(
     (state) => state.setNotificationData
+  );
+  const setSkipNextScrollToTop = useUtilStore(
+    (state) => state.setSkipNextScrollToTop
   );
 
   const [partsValues, setPartsValues] = useState<IPartConfiguration[]>([]);
@@ -117,6 +121,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
       });
       setFirstRenderSessionLoad(false);
     } else if (sessionStore.session && !sessionId) {
+      setSkipNextScrollToTop(true);
       setLocation(`/configurator/session/${sessionStore.session.uuid}`);
     }
   }, [sessionStore.session?.uuid]);
