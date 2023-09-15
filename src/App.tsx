@@ -100,9 +100,9 @@ const App: React.FC = () => {
         onClickClose={() => {
           notificationStore.closeNotification();
         }}
-        title={notificationStore?.notificationData?.title}
-        text={notificationStore?.notificationData?.text}
-        variant={notificationStore?.notificationData?.variant}
+        title={notificationStore.notificationData?.title}
+        text={notificationStore.notificationData?.text}
+        variant={notificationStore.notificationData?.variant}
       />
       <Switch>
         <Route path="/configurator/product/:productId">
