@@ -13,11 +13,5 @@ export interface ISocialMediaItem {
 export interface ILogo {
   alt?: string;
   href?: string;
-  type:
-    | "bitbetter"
-    | "freecad"
-    | "statamic"
-    | "inmachines"
-    | "regenholz"
-    | "ifbhamburg";
+  type: "bitbetter" | "freecad" | "regenholz" | "ifbhamburg";
 }
