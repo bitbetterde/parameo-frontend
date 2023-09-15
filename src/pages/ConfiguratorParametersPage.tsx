@@ -358,7 +358,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                 !isValid || Boolean(currentlyGenerating) || sliderInvalid
               }
               variant={"primary"}
-              className="w-full py-3 flex items-center justify-center"
+              className="w-full"
               onClick={regenerateFormats}
             >
               {currentlyGenerating === "formats" ? (
@@ -408,7 +408,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                 !isValid || Boolean(currentlyGenerating) || sliderInvalid
               }
               variant={"primary"}
-              className="w-full py-3 flex items-center justify-center"
+              className="w-full"
               onClick={regeneratePreview}
             >
               {currentlyGenerating === "preview" ? (
