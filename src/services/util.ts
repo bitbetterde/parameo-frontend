@@ -17,7 +17,9 @@ export const fetchAndHandleErrors = async <T>(
   });
 
   if (!response.ok) {
-    throw new Error("Server returned Error: " + (await response.text()));
+    const text = await response.text();
+    console.error("Server returned Error: " + text);
+    throw new Error("Server returned Error: " + text);
   }
 
   return response.json();
