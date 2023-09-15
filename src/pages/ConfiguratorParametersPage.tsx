@@ -207,8 +207,8 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
             </p>
           )}
         </div>
-        <div className="flex flex-col lg:flex-row justify-between gap-8 pt-2 lg:pt-7">
-          <div className="lg:w-[60%] flex flex-col gap-4">
+        <div className="grid grid-cols-1 grid-flow-row lg:grid-rows-1 lg:grid-cols-5 justify-between gap-8 pt-2 lg:pt-7">
+          <div className="row-start-1 lg:col-span-3 flex flex-col gap-4">
             <h2 className="text-base font-semibold text-indigo-600 uppercase pb-2">
               Name
             </h2>
@@ -228,7 +228,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                 </span>
               </div>
             )}
-            <h2 className="text-base font-semibold text-indigo-600 uppercase pt-16 pb-2">
+            <h2 className="text-base font-semibold text-indigo-600 uppercase pt-10 pb-2">
               Configure
             </h2>
             <div className="w-full">
@@ -258,7 +258,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                   />
                 ))}
             </div>
-            <h2 className="text-base font-semibold text-indigo-600 uppercase pt-16 pb-2">
+          </div>
+          <div className="lg:col-span-3 flex flex-col gap-4">
+            <h2 className="text-base font-semibold text-indigo-600 uppercase pt-10 pb-2">
               Generate
             </h2>
             <div className="flex flex-col gap-6 lg:flex-row lg:justify-between lg:gap-16">
@@ -345,7 +347,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               )}
             </Button>
           </div>
-          <div className="lg:w-[40%] flex flex-col gap-4">
+          <div className="row-start-2 lg:row-start-1 lg:col-start-4 lg:col-span-2 flex flex-col gap-4 pt-10 lg:p-0">
             <div className="flex justify-between pb-2">
               <h2 className="text-base font-semibold text-indigo-600 uppercase">
                 Preview
