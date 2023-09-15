@@ -12,6 +12,8 @@ import { ISession } from "@interfaces/ISession";
 import { useProducerStore, useSessionStore } from "@stores";
 import { isISession } from "@stores/session.store";
 import { useEffect } from "react";
+import { useLocation } from "wouter";
+import useNotificationStore from "@stores/notification.store.ts";
 
 interface Props {
   className?: string;
@@ -50,8 +52,14 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
   const fetchProducers = useProducerStore((state) => state.loadAllProducers);
   const session = useSessionStore((state) => state.session);
   const loadSession = useSessionStore((state) => state.loadSession);
+  const setNotificationData = useNotificationStore(
+    (state) => state.setNotificationData
+  );
   const typedSession: ISession | undefined =
     session && isISession(session) ? session : undefined;
+
+  const [, setLocation] = useLocation();
+
   const chartData = {
     labels: ["Emissions"],
     datasets: [
@@ -85,7 +93,14 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
   useEffect(() => {
     fetchProducers();
     if (sessionId && !typedSession) {
-      loadSession(sessionId);
+      loadSession(sessionId).catch(() => {
+        setNotificationData({
+          title: "Error!",
+          variant: "error",
+          text: "Product doesn't exist!",
+        });
+        setLocation("/");
+      });
     }
   }, []);
 

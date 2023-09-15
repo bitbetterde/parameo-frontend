@@ -21,6 +21,7 @@ import { useMachineStore, useProductStore, useSessionStore } from "@stores";
 import { Link, useLocation } from "wouter";
 import { Controller, useForm } from "react-hook-form";
 import { isISession } from "@stores/session.store";
+import useNotificationStore from "@stores/notification.store.ts";
 
 interface Props {
   productId?: number;
@@ -50,6 +51,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   const loadAllMachines = useMachineStore((state) => state.loadAllMachines);
   const allMachines = useMachineStore((state) => state.allMachines);
   const sessionStore = useSessionStore();
+  const setNotificationData = useNotificationStore(
+    (state) => state.setNotificationData
+  );
 
   const [partsValues, setPartsValues] = useState<IPartConfiguration[]>([]);
   const [is3DPreviewEnabled, setIs3DPreviewEnabled] = useState<boolean>(true);
@@ -76,13 +80,27 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
 
   useEffect(() => {
     if (productId) {
-      loadProduct(productId);
+      loadProduct(productId).catch(() => {
+        setNotificationData({
+          title: "Error!",
+          variant: "error",
+          text: "Product doesn't exist!",
+        });
+        setLocation("/");
+      });
     }
     if (
       sessionId &&
       (!sessionStore.session || sessionStore.session.uuid !== sessionId)
     ) {
-      sessionStore.loadSession(sessionId);
+      sessionStore.loadSession(sessionId).catch(() => {
+        setNotificationData({
+          title: "Error!",
+          variant: "error",
+          text: "Session doesn't exist!",
+        });
+        setLocation("/");
+      });
     }
     loadAllMachines();
   }, [productId, sessionId]);

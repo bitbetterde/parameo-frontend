@@ -1,24 +1,23 @@
 import {
-  NavBar,
-  LogoGrid,
   Footer,
+  LogoGrid,
+  NavBar,
   Notification,
   ScrollToTop,
 } from "@components";
-import type { INotification } from "@interfaces";
 import {
-  HomePage,
-  FaqPage,
-  ConfiguratorProductsPage,
-  ConfiguratorParametersPage,
   AboutPage,
+  ConfiguratorParametersPage,
+  ConfiguratorProductsPage,
   ConfiguratorResultPage,
+  FaqPage,
+  HomePage,
   ImprintPage,
   PrivacyPage,
 } from "@pages";
 import type React from "react";
-import { useState } from "react";
-import { Switch, Route } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
+import { useNotificationStore } from "@stores";
 
 const footerMenu = [
   { name: "Home", href: "/" },
@@ -95,8 +94,8 @@ const logos = [
 ];
 
 const App: React.FC = () => {
-  const [notificationData, setNotificationData] = useState<INotification>();
-  const [showNotification, setShowNotification] = useState(false);
+  const notificationStore = useNotificationStore();
+  const [, setLocation] = useLocation();
 
   return (
     <>
@@ -107,22 +106,32 @@ const App: React.FC = () => {
         buttonLinkVariant={"primary" as const}
       />
       <Notification
-        show={showNotification}
+        show={notificationStore.showNotification}
         onClickClose={() => {
-          setShowNotification(false);
-          setTimeout(() => {
-            setNotificationData(undefined);
-          }, 300);
+          notificationStore.closeNotification();
         }}
-        title={notificationData && notificationData.title}
-        text={notificationData && notificationData.text}
-        variant={notificationData && notificationData.variant}
+        title={notificationStore?.notificationData?.title}
+        text={notificationStore?.notificationData?.text}
+        variant={notificationStore?.notificationData?.variant}
       />
       <Switch>
         <Route path="/configurator/product/:productId">
-          {(params) => (
-            <ConfiguratorParametersPage productId={Number(params.productId)} />
-          )}
+          {(params) => {
+            if (isNaN(Number(params.productId))) {
+              setLocation("/");
+              notificationStore.setNotificationData({
+                title: "Error!",
+                variant: "error",
+                text: "Product doesn't exist!",
+              });
+            } else {
+              return (
+                <ConfiguratorParametersPage
+                  productId={Number(params.productId)}
+                />
+              );
+            }
+          }}
         </Route>
         <Route path="/configurator/session/:sessionId">
           {(params) => (
@@ -142,12 +151,11 @@ const App: React.FC = () => {
               title="Frequently Asked Questions"
               subtitle="FAQ"
               onClickLinkIcon={(id) => {
-                setShowNotification(true);
                 id &&
                   navigator.clipboard.writeText(
                     window.location.origin + "/faq/" + id
                   );
-                setNotificationData({
+                notificationStore.setNotificationData({
                   title: "Link copied to clipboard",
                   variant: "success",
                 });
