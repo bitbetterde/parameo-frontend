@@ -4,7 +4,7 @@ const body = (
   <>
     <p>Environmental, social and economic impact valuation.</p>
 
-    <h4>Methodology:</h4>
+    <h4>Approach:</h4>
     <ul>
       <li>
         <a
@@ -82,8 +82,8 @@ const body = (
     <h4>Publications:</h4>
     <ul>
       <li>
-        <a href="https://www.bmel.de/EN/Home/home_node.html" target="_blank">
-          Federal Ministry of Food and Agriculture
+        <a href="https://commission.europa.eu/system/files/2023-09/BR%20toolbox%20-%20Jul%202023%20-%20FINAL.pdf" target="_blank">
+          "Better Regulation TOOLBOX 2023" European Commission
         </a>
       </li>
       <li>
