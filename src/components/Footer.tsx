@@ -1,5 +1,8 @@
 import GitLabLogo from "@assets/logos/gitlab.svg";
 import InstagramLogo from "@assets/logos/instagram.svg";
+import TwitterLogo from "@assets/logos/twitter.svg";
+import GitHubLogo from "@assets/logos/github.svg";
+import DribbleLogo from "@assets/logos/dribble.svg";
 import type { IMenuItem, ISocialMediaItem } from "@interfaces";
 import type React from "react";
 import { Link } from "wouter";
@@ -13,7 +16,10 @@ interface Props {
 
 const socialMediaIconMapping = {
   instagram: InstagramLogo,
+  twitter: TwitterLogo,
+  github: GitHubLogo,
   gitlab: GitLabLogo,
+  dribble: DribbleLogo,
 };
 
 const Footer: React.FC<Props> = ({ className, menu, links, copyright }) => {

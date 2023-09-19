@@ -35,28 +35,10 @@ const footerSocial = [
     type: "instagram" as const,
   },
   {
-    name: "Twitter",
-    href: "#",
-    alt: "Twitter",
-    type: "twitter" as const,
-  },
-  {
-    name: "GitHub",
-    href: "#",
-    alt: "GitHub",
-    type: "github" as const,
-  },
-  {
     name: "GitLab",
     href: "#",
     alt: "GitLab",
     type: "gitlab" as const,
-  },
-  {
-    name: "Dribble",
-    href: "#",
-    alt: "Dribble",
-    type: "dribble" as const,
   },
 ];
 
