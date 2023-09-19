@@ -24,7 +24,7 @@ const heroButtons = [
 
 const people = [
   {
-    name: "Users & Makers",
+    name: "Makers",
     image: "/images/parameo-portrait-illustration_user.png",
     imageAlt: "",
     href: "/faq/maker-collaboration",
