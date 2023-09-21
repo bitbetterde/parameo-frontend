@@ -1,4 +1,4 @@
-import bom from "./billofmaterials";
+import bom from "./materials";
 import co2 from "./co2emission";
 import designerCollaboration from "./designer-collaboration";
 import developerCollaboration from "./developer-collaboration";
@@ -6,7 +6,6 @@ import fabulaser from "./fabulasermini";
 import makerCollaboration from "./maker";
 import manufacturerCollaboration from "./manufacturer-collaboration";
 import maslowcnc from "./maslowcnc";
-import material from "./materialprice";
 import moremachines from "./moremachines";
 import multiframe from "./multiframe";
 import standdesk from "./standdesk";
@@ -16,8 +15,7 @@ export default [
   maslowcnc,
   fabulaser,
   moremachines,
-  bom,
-  material,
+  materials,
   co2,
   designerCollaboration,
   developerCollaboration,
