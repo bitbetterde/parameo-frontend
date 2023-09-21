@@ -6,7 +6,7 @@ const body = (
       We are happy about your feedback – please use our user feedback form:
     </p>
     <p>
-      <a href="https://www.parameo.de/contact" target="_blank">
+      <a href="https://forms.gle/Dqtny9GH5sgbXrkU7" target="_blank">
         Feedback form
       </a>
     </p>
