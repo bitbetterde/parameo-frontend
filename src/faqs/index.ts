@@ -10,6 +10,7 @@ import moremachines from "./moremachines";
 import multiframe from "./multiframe";
 import standdesk from "./standdesk";
 import openbox from "./openbox";
+import feedback from "./feedback";
 
 export default [
   maslowcnc,
@@ -24,4 +25,5 @@ export default [
   multiframe,
   standdesk,
   openbox,
+  feedback,
 ];
