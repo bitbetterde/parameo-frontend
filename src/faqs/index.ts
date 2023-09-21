@@ -1,4 +1,4 @@
-import bom from "./materials";
+import materials from "./materials";
 import co2 from "./co2emission";
 import designerCollaboration from "./designer-collaboration";
 import developerCollaboration from "./developer-collaboration";
