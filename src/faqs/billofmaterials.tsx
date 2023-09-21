@@ -24,10 +24,10 @@ const body = (
 
 export default {
   title: "Materials",
-  id: "bom",
+  id: "materials",
   tags: ["Manufacturing"],
   body,
-  teaser: "Your bill of materials.",
+  teaser: "Material database",
   showOnHomePage: false,
   order: 3,
 } as IFaqFile;
