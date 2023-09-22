@@ -18,7 +18,7 @@ import {
 } from "@components";
 
 import { useMachineStore, useProductStore, useSessionStore } from "@stores";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { Controller, useForm } from "react-hook-form";
 import { isISession } from "@stores/session.store";
 import useNotificationStore from "@stores/notification.store.ts";
@@ -260,6 +260,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                 product?.parts?.map((part, index) => (
                   <ProductPartConfigurator
                     key={part.id}
+                    productTitle={product.title.toLowerCase()}
                     defaultValue={partsValues.find(
                       (partValues) => partValues.part_id === part.id
                     )}
@@ -293,9 +294,14 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                 </h3>
                 <div className="flex justify-between text-sm font-normal pb-6">
                   <p>Choose machine</p>
-                  <Link href="#" className="text-indigo-600 font-medium">
+                  <a
+                    href="/faq/moremachines"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-indigo-600 font-medium no-underline"
+                  >
                     Info
-                  </Link>
+                  </a>
                 </div>
                 <Controller
                   name={"machine"}
@@ -320,9 +326,6 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                 <h3 className="text-xl font-semibold leading-8 pb-2">Output</h3>
                 <div className="flex justify-between text-sm font-normal pb-6">
                   <p>What formats do you need?</p>
-                  <Link href="#" className="text-indigo-600 font-medium">
-                    Info
-                  </Link>
                 </div>
 
                 <div className="flex flex-col gap-4">
