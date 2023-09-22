@@ -33,7 +33,7 @@ const AboutPage: React.FC<Props> = ({
         <h2>Project background</h2>
         <p>
           The project is initiated by
-          <a target="_blank" href="https://regenholz.de/">
+          <a target="_blank" href="https://regenholz.de/"> 
             regenholz
           </a>{" "}
           and funded by{" "}
@@ -43,7 +43,7 @@ const AboutPage: React.FC<Props> = ({
           >
             'UpdateHamburg 2022'
           </a>{" "}
-          of the Hamburg Authority for Economy and Innovation (BWI). The
+          of the Hamburg Authority for Economy and Innovation (BWI). <br> The
           innovation core of the tool is the combination of:
         </p>
         <ul>
