@@ -131,9 +131,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
       if (sessionStore.session && isISession(sessionStore.session)) {
         setPartsValues(
           sessionStore.session.configured_parts.map((configuredPart) => ({
-            part_id: configuredPart.part.id,
-            parameters: configuredPart.configured_parameters,
-            material_id: configuredPart.selected_material.id,
+            part_id: configuredPart?.part?.id,
+            parameters: configuredPart?.configured_parameters,
+            material_id: configuredPart?.selected_material?.id,
           }))
         );
       } else {
