@@ -30,13 +30,13 @@ const footerMenu = [
 const footerSocial = [
   {
     name: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/regenholz.de",
     alt: "Instagram",
     type: "instagram" as const,
   },
   {
     name: "GitLab",
-    href: "#",
+    href: "https://gitlab.regenholz.de/",
     alt: "GitLab",
     type: "gitlab" as const,
   },
