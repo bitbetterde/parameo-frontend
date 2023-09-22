@@ -6,9 +6,9 @@ import type {
 } from "@stores/session.store";
 import type React from "react";
 import { useEffect, useState } from "react";
-import { Link } from "wouter";
 
 interface Props {
+  productTitle?: string;
   part: IProductPart;
   defaultValue?: IPartConfiguration;
   onChange: (a: IPartConfiguration) => void;
@@ -19,6 +19,7 @@ interface Props {
 const CONVERSION_FACTOR_TO_MM = 10; //all parameters have the unit 'mm/10' for the conversation with the backend, we display mm
 
 const ProductPartConfigurator: React.FC<Props> = ({
+  productTitle,
   part,
   defaultValue,
   onChange,
@@ -62,9 +63,14 @@ const ProductPartConfigurator: React.FC<Props> = ({
             <h3 className="text-xl font-semibold leading-8 pb-2">Materials</h3>
             <div className="flex justify-between items-center text-sm font-normal pb-6">
               <p>Choose material specs</p>
-              <Link href="#" className="text-indigo-600 font-medium">
+              <a
+                href="/faq/materials"
+                target="_blank"
+                rel="noreferrer"
+                className="text-indigo-600 font-medium no-underline"
+              >
                 Info
-              </Link>
+              </a>
             </div>
 
             <Select
@@ -85,9 +91,16 @@ const ProductPartConfigurator: React.FC<Props> = ({
             <h3 className="text-xl font-semibold leading-8 pb-2">Dimensions</h3>
             <div className="flex justify-between items-center text-sm font-normal pb-6">
               <p>Adjust dimensions</p>
-              <Link href="#" className="text-indigo-600 font-medium">
-                Info
-              </Link>
+              {productTitle && (
+                <a
+                  href={`/faq/${productTitle}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-indigo-600 font-medium no-underline"
+                >
+                  Info
+                </a>
+              )}
             </div>
             {part?.parameters?.map((parameter) => (
               <RangeSlider
