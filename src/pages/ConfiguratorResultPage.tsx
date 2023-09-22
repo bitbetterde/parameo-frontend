@@ -20,6 +20,22 @@ interface Props {
   sessionId?: string;
 }
 
+// Don't output 0, null, undefined or NaN values
+const getDurationString = (
+  hours?: number,
+  minutes?: number,
+  seconds?: number
+) => {
+  let formattedHours, formattedMinutes, formattedSeconds;
+  if (hours) formattedHours = hours > 0 ? `${hours} h` : ``;
+  if (minutes) formattedMinutes = minutes > 0 ? `${minutes} m` : ``;
+  if (seconds) formattedSeconds = seconds > 0 ? `${seconds} s` : ``;
+
+  return [formattedHours, formattedMinutes, formattedSeconds]
+    .filter(Boolean)
+    .join(" ");
+};
+
 const instructionsAccordion = [
   "Milling head choice",
   "Machine hint from the Machine File",
@@ -108,7 +124,10 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
     {
       title: "Material price",
       description: typedSession?.material_price
-        ? `${typedSession?.material_price?.toLocaleString()} €`
+        ? new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "EUR",
+          }).format(typedSession?.material_price)
         : "",
     },
     // {
@@ -118,7 +137,11 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
     {
       title: "Machine runtime",
       description: typedSession?.machine_time
-        ? `${typedSession?.machine_time?.toLocaleString()} h`
+        ? getDurationString(
+            typedSession?.machine_time.hours,
+            typedSession?.machine_time.minutes,
+            typedSession?.machine_time.seconds
+          )
         : "",
     },
     {

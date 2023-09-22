@@ -20,7 +20,7 @@ export interface IGenerateFormatsResultData {
   gcode_files_zip_url: string;
   co2_emissions: { label: string; value: number }[];
   material_price: number;
-  machine_time: number;
+  machine_time: { hours: number; minutes: number; seconds: number };
 }
 
 interface IPreviewFile {
