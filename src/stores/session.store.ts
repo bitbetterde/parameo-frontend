@@ -51,6 +51,7 @@ interface SessionStore {
     partsData: IPartConfiguration[],
     projectName?: string
   ) => Promise<void>;
+  resetSession: () => void;
 }
 
 export function isISession(
@@ -63,6 +64,9 @@ const useSessionStore = create<SessionStore>()(
   devtools((set, get) => ({
     previewFile: null,
     session: null,
+    resetSession: () => {
+      set(() => ({ previewFile: null, session: null }));
+    },
     loadSession: async (id) => {
       const session = await sessionService.getSession(id);
       set((state) => ({ ...state, session }));

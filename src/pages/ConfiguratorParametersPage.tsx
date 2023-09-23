@@ -67,6 +67,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   const [firstRenderSessionLoad, setFirstRenderSessionLoad] = useState(
     Boolean(sessionId)
   );
+  const [firstRenderProductLoad, setFirstRenderProductLoad] = useState(
+    Boolean(productId)
+  );
   const [sliderInvalid, setSliderInvalid] = useState(false);
 
   const [, setLocation] = useLocation();
@@ -84,6 +87,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
 
   useEffect(() => {
     if (productId) {
+      sessionStore.resetSession();
       loadProduct(productId).catch(() => {
         setNotificationData({
           title: "Error!",
@@ -120,15 +124,20 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
         shouldValidate: true,
       });
       setFirstRenderSessionLoad(false);
-    } else if (sessionStore.session && !sessionId) {
+    } else if (sessionStore.session && !sessionId && !firstRenderProductLoad) {
       setSkipNextScrollToTop(true);
       setLocation(`/configurator/session/${sessionStore.session.uuid}`);
     }
+    setFirstRenderProductLoad(false);
   }, [sessionStore.session?.uuid]);
 
   useEffect(() => {
     if (product) {
-      if (sessionStore.session && isISession(sessionStore.session)) {
+      if (
+        sessionStore.session &&
+        isISession(sessionStore.session) &&
+        sessionStore.session.product.id === product.id
+      ) {
         setPartsValues(
           sessionStore.session.configured_parts.map((configuredPart) => ({
             part_id: configuredPart?.part?.id,
