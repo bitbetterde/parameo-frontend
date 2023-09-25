@@ -6,7 +6,7 @@ export interface ISessionBase {
   created: string;
   name: string;
   user_email_address: string;
-  machine: number;
+  machine_id: number;
   last_updated: string;
   preview_file_3d_url: string;
   gcode_files_zip_url: string;
