@@ -7,6 +7,7 @@ import {
   FeaturedImageGallery,
   ImageSlider,
   Spinner,
+  EmailResultHint,
 } from "@components";
 import { ISession } from "@interfaces/ISession";
 import { useMachineStore, useProducerStore, useSessionStore } from "@stores";
@@ -198,10 +199,12 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
               <ButtonLink
                 caption="Download all files (.zip)"
                 target={typedSession?.all_files_zip_url}
-                className="py-[13px] text-center text-base w-full"
+                className="p-[13px] justify-center text-base w-full"
+                icon="FolderArrowDownIcon"
                 newTab
               />
             )}
+            <EmailResultHint sessionId={typedSession?.uuid} />
           </div>
           <div className="lg:w-2/3">
             {typedSession?.product.pictures?.length && (
