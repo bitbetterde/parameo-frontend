@@ -29,6 +29,7 @@ import Spinner from "./Spinner";
 import Tabs from "./Tabs";
 import TextInput from "./TextInput";
 import Toggle from "./Toggle";
+import EmailResultHint from "./EmailResultHint";
 
 export {
   NavBar,
@@ -62,4 +63,5 @@ export {
   ScrollToTop,
   ModelViewer,
   ProductPartConfigurator,
+  EmailResultHint,
 };

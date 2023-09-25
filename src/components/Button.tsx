@@ -4,6 +4,7 @@ import { Icon } from "@components";
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "white" | "primary" | "transparent" | "secondary" | "success";
   iconRight?: string;
+  icon?: string;
 }
 
 const Button: React.FC<Props> = ({
@@ -11,6 +12,7 @@ const Button: React.FC<Props> = ({
   variant = "primary",
   children,
   iconRight,
+  icon,
   ...rest
 }: Props) => {
   const classes = {
@@ -29,6 +31,7 @@ const Button: React.FC<Props> = ({
         classes[variant]
       } ${className || ""}`}
     >
+      {icon && <Icon size={20} name={icon} className="w-5 h-5 mr-2" />}
       {children}
       {iconRight && (
         <Icon size={20} name={iconRight} className="w-5 h-5 ml-2" />

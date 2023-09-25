@@ -1,11 +1,13 @@
 import type { IButton } from "@interfaces";
 import type React from "react";
 import { Link } from "wouter";
+import { Icon } from "@components";
 
 interface Props extends IButton {
   className?: string;
   download?: boolean;
   newTab?: boolean;
+  icon?: string;
 }
 
 const ButtonLink: React.FC<Props> = ({
@@ -15,6 +17,7 @@ const ButtonLink: React.FC<Props> = ({
   variant = "primary",
   download,
   newTab,
+  icon,
 }: Props) => {
   const dynamicClasses = {
     white: "bg-white text-indigo-700 hover:bg-indigo-50",
@@ -23,18 +26,19 @@ const ButtonLink: React.FC<Props> = ({
     secondary: "bg-indigo-100 text-indigo-700 hover:bg-indigo-200",
   };
   const baseClasses =
-    "rounded-md border border-transparent text-base font-medium shadow-sm";
+    "rounded-md border border-transparent text-base font-medium shadow-sm flex items-center";
   const commonProps = {
     href: target,
     className: `${baseClasses} ${dynamicClasses[variant]} ${className || ""}`,
     download,
   };
-  return Boolean(newTab) ? (
+  return newTab ? (
     <a
       {...commonProps}
       target="_blank"
       {...(download ? { download: true } : {})}
     >
+      {icon && <Icon size={20} name={icon} className="w-5 h-5 mr-2" />}
       {caption}
     </a>
   ) : (
