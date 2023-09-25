@@ -43,6 +43,7 @@ const ButtonLink: React.FC<Props> = ({
     </a>
   ) : (
     <Link {...commonProps} {...(download ? { download: true } : {})}>
+      {icon && <Icon size={20} name={icon} className="w-5 h-5 mr-2" />}
       {caption}
     </Link>
   );
