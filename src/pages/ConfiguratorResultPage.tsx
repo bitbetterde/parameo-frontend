@@ -9,7 +9,7 @@ import {
   Spinner,
 } from "@components";
 import { ISession } from "@interfaces/ISession";
-import { useProducerStore, useSessionStore } from "@stores";
+import { useMachineStore, useProducerStore, useSessionStore } from "@stores";
 import { isISession } from "@stores/session.store";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
@@ -35,13 +35,6 @@ const getDurationString = (
     .filter(Boolean)
     .join(" ");
 };
-
-const instructionsAccordion = [
-  "Milling head choice",
-  "Machine hint from the Machine File",
-  "Product hint from the Product File",
-  "Machine hint from the Machine File",
-];
 
 const producerImages = [
   { image: "/images/forrest.jpg", imageAlt: "Forrest photo" },
@@ -71,6 +64,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
   const setNotificationData = useNotificationStore(
     (state) => state.setNotificationData
   );
+  const machineStore = useMachineStore();
   const typedSession: ISession | undefined =
     session && isISession(session) ? session : undefined;
 
@@ -108,6 +102,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
 
   useEffect(() => {
     fetchProducers();
+    machineStore.loadAllMachines();
     if (sessionId && !typedSession) {
       loadSession(sessionId).catch(() => {
         setNotificationData({
@@ -151,6 +146,9 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
     { title: "3D Model (.dxf)", filePath: typedSession?.dxf_file_url || "" },
   ];
 
+  const selectedMachine = machineStore.allMachines.find(
+    (machine) => machine.id === typedSession?.machine_id
+  );
   return (
     <div className={`bg-white pt-6 md:pt-12 ${className || ""}`}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -229,15 +227,21 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
               ))}
             </div>
           )}
-          <h2 className="text-base font-semibold text-indigo-600 uppercase">
-            Instructions for Manufacturers
-          </h2>
-          <div className="w-full pb-9">
-            <div className="border-b border-gray-200 mx-auto max-w-3xl w-full" />
-            {instructionsAccordion?.map((instruction, i) => (
-              <Accordion key={i} title={instruction} />
-            ))}
-          </div>
+          {Boolean(selectedMachine) && (
+            <>
+              <h2 className="text-base font-semibold text-indigo-600 uppercase">
+                Instructions for Manufacturers
+              </h2>
+              <div className="w-full pb-9">
+                <div className="border-b border-gray-200 mx-auto max-w-3xl w-full" />
+                {selectedMachine?.production_hints?.map((hint, i) => (
+                  <Accordion key={i} title={hint.topic}>
+                    {hint.text}
+                  </Accordion>
+                ))}
+              </div>
+            </>
+          )}
         </div>
         <h2 className="text-base font-semibold text-indigo-600 uppercase pt-7 text-center">
           Local Manufacturing

@@ -12,7 +12,7 @@ export interface IMachine {
   description_en: string;
   manufacturer_subtitle: string;
   manufacturer_image_file: string;
-  production_hints: string[];
+  production_hints: { language: string; topic: string; text: string }[];
   pictures: [
     {
       image_url: string;

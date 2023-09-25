@@ -169,7 +169,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
         setValue(
           "machine",
           machinesForProduct.find(
-            (m) => m.id === (sessionStore.session as ISession).machine
+            (m) => m.id === (sessionStore.session as ISession).machine_id
           ) ?? machinesForProduct[0]
         );
       } else {
