@@ -10,20 +10,17 @@ interface Props {
   buttonLinkTarget: string;
   buttonLinkCaption: string;
   buttonLinkVariant?: "primary" | "white" | "transparent";
+  buttonLinkIcon?: string;
+  navigation: { name: string; href: string }[];
 }
 
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Configurator", href: "/configurator/products" },
-  { name: "FAQ", href: "/faq" },
-  { name: "About", href: "/about" },
-];
-
 const NavBar: React.FC<Props> = ({
+  navigation,
   className,
   buttonLinkTarget,
   buttonLinkCaption,
   buttonLinkVariant,
+  buttonLinkIcon,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -57,6 +54,8 @@ const NavBar: React.FC<Props> = ({
             target={buttonLinkTarget}
             caption={buttonLinkCaption}
             variant={buttonLinkVariant}
+            icon={buttonLinkIcon}
+            newTab
           />
         </div>
         <div className="md:hidden flex items-center -mr-2">

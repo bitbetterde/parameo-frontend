@@ -44,25 +44,32 @@ const footerSocial = [
 
 const logos = [
   {
-    href: "#",
+    href: "https://www.ifbhh.de/",
     alt: "IFB-Hamburg",
     type: "ifbhamburg" as const,
   },
   {
-    href: "#",
+    href: "https://regenholz.de/",
     alt: "regenholz",
     type: "regenholz" as const,
   },
   {
-    href: "#",
+    href: "https://www.freecad.org/",
     alt: "FreeCad",
     type: "freecad" as const,
   },
   {
-    href: "#",
+    href: "https://www.bitbetter.de/",
     alt: "bitbetter",
     type: "bitbetter" as const,
   },
+];
+
+const navigation = [
+  { name: "Home", href: "/" },
+  { name: "Configurator", href: "/configurator/products" },
+  { name: "FAQ", href: "/faq" },
+  { name: "About", href: "/about" },
 ];
 
 const App: React.FC = () => {
@@ -73,8 +80,9 @@ const App: React.FC = () => {
     <>
       <ScrollToTop />
       <NavBar
-        buttonLinkTarget="#"
-        buttonLinkCaption="TRY IT"
+        navigation={navigation}
+        buttonLinkTarget="https://www.buymeacoffee.com/parameo"
+        buttonLinkCaption="BUY ME A COFFEE"
         buttonLinkVariant={"primary" as const}
       />
       <Notification
