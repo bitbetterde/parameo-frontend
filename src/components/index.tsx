@@ -6,7 +6,6 @@ import Card from "./Card";
 import CardSlider from "./CardSlider";
 import Checkbox from "./Checkbox";
 import ContactForm from "./ContactForm";
-import DoughnutChart from "./DoughnutChart";
 import DownloadListItem from "./DownloadListItem";
 import FaqEntry from "./FaqEntry";
 import FaqSection from "./FaqSection";
@@ -29,6 +28,7 @@ import Spinner from "./Spinner";
 import Tabs from "./Tabs";
 import TextInput from "./TextInput";
 import Toggle from "./Toggle";
+import ImpactSection from "./ImpactSection";
 import EmailResultHint from "./EmailResultHint";
 
 export {
@@ -59,9 +59,9 @@ export {
   ContactForm,
   FeaturedImageGallery,
   DownloadListItem,
-  DoughnutChart,
   ScrollToTop,
   ModelViewer,
   ProductPartConfigurator,
+  ImpactSection,
   EmailResultHint,
 };
