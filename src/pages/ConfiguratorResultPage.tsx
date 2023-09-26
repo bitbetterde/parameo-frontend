@@ -4,7 +4,6 @@ import {
   CardSlider,
   DownloadListItem,
   FeaturedImageGallery,
-  ImageSlider,
   Spinner,
   ImpactSection,
   EmailResultHint,
@@ -36,26 +35,6 @@ const getDurationString = (
     .filter(Boolean)
     .join(" ");
 };
-
-const producerImages = [
-  { image: "/images/forrest.jpg", imageAlt: "Forrest photo" },
-  {
-    image: "https://picsum.photos/800/500?random=2",
-    imageAlt: "Photo from Picsum",
-  },
-  {
-    image: "https://picsum.photos/1200/300?random=3",
-    imageAlt: "Photo from Picsum",
-  },
-  {
-    image: "https://picsum.photos/600/500?random=4",
-    imageAlt: "Photo from Picsum",
-  },
-  {
-    image: "https://picsum.photos/800/1200?random=5",
-    imageAlt: "Photo from Picsum",
-  },
-];
 
 const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
   const producers = useProducerStore((state) => state.allProducers);
@@ -123,7 +102,9 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
     {
       title: "Material",
       description: typedSession?.material_needed
-        ? `${typedSession?.material_needed} m3`
+        ? `${typedSession?.material_needed
+            ?.map((need) => need.cubic_meters)
+            .reduce((a, b) => a + b, 0)} m3`
         : "",
       detailData: [
         {
@@ -298,7 +279,6 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
             }
           />
         )}
-        <ImageSlider items={producerImages} />
       </div>
     </div>
   );

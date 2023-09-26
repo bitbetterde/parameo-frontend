@@ -1,4 +1,4 @@
-import { HeroSection, ImageSlider, Tabs, Accordion } from "@components";
+import { HeroSection, Tabs, Accordion } from "@components";
 import rawFaqs from "@faqs";
 import { groupBy } from "lodash-es";
 import type React from "react";
@@ -10,29 +10,6 @@ interface Props {
   title?: string;
   onClickLinkIcon?: (id?: string) => void;
 }
-
-const images = [
-  {
-    image: "/images/parameo-mood_production-01.jpg",
-    imageAlt: "parameo production",
-  },
-  {
-    image: "/images/parameo-mood_production-02.jpg",
-    imageAlt: "parameo production",
-  },
-  {
-    image: "/images/parameo-mood_production-03.jpg",
-    imageAlt: "parameo production",
-  },
-  {
-    image: "/images/parameo-mood_production-04.jpg",
-    imageAlt: "parameo production",
-  },
-  {
-    image: "/images/parameo-mood_production-05.jpg",
-    imageAlt: "parameo production",
-  },
-];
 
 const FaqPage: React.FC<Props> = ({
   itemFromPath,
@@ -104,7 +81,6 @@ const FaqPage: React.FC<Props> = ({
             />
           ))}
       </div>
-      <ImageSlider items={images} />
     </>
   );
 };
