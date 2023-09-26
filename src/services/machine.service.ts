@@ -13,6 +13,7 @@ export interface IMachine {
   manufacturer_subtitle: string;
   manufacturer_image_file: string;
   production_hints: { language: string; topic: string; text: string }[];
+  selectable: boolean;
   pictures: [
     {
       image_url: string;
