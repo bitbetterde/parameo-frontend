@@ -2,11 +2,11 @@ import {
   Accordion,
   ButtonLink,
   CardSlider,
-  DoughnutChart,
   DownloadListItem,
   FeaturedImageGallery,
   ImageSlider,
   Spinner,
+  ImpactSection,
   EmailResultHint,
 } from "@components";
 import { ISession } from "@interfaces/ISession";
@@ -71,31 +71,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
 
   const [, setLocation] = useLocation();
 
-  const chartData = {
-    labels: ["Emissions"],
-    datasets: [
-      {
-        data: [0],
-        backgroundColor: ["#4F46E5", "#059669", "#DB2777"],
-        borderWidth: 5,
-        borderColor: "#F3F4F6",
-      },
-    ],
-  };
-  if (typedSession) {
-    chartData.labels = typedSession.co2_emissions?.map(
-      (emission) => emission.label
-    );
-    chartData.datasets[0].data = typedSession.co2_emissions?.map(
-      (emission) => emission.value
-    );
-  }
-
   const buttons = [
-    {
-      caption: "Edit design",
-      href: `/configurator/session/${typedSession?.uuid}`,
-    },
     { caption: "Local manufacturing", href: "#" },
     { caption: "Feedback", href: "#" },
     { caption: "Copy link", href: "#" },
@@ -118,33 +94,82 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
 
   const descriptionList = [
     {
-      title: "Material price",
-      description: typedSession?.material_price
-        ? new Intl.NumberFormat("de-DE", {
-            style: "currency",
-            currency: "EUR",
-          }).format(typedSession?.material_price)
-        : "",
+      title: "Bill of materials (.csv)",
+      filePath: typedSession?.bom_file_url || "",
     },
-    // {
-    //   title: "Emissions",
-    //   description: co2Emissions ? `${co2Emissions?.toLocaleString()} kg` : "",
-    // },
     {
-      title: "Machine runtime",
+      title: "Machine Code (.nc) zipped",
+      filePath: typedSession?.gcode_files_zip_url || "",
+    },
+    {
+      title: "Part designs (.dxf) zipped",
+      filePath: typedSession?.dxf_file_url || "",
+    },
+  ];
+
+  const materialEmissions = typedSession?.co2_emissions?.find(
+    (item) => item.label === "Material"
+  );
+  const machineEmissions = typedSession?.co2_emissions?.find(
+    (item) => item.label === "Machine"
+  );
+
+  const totalEmissions = typedSession?.co2_emissions?.reduce(
+    (sum, emission) => sum + (emission.value || 0),
+    0
+  );
+
+  const impactValuesData = [
+    {
+      title: "Material",
+      description: typedSession?.material_needed
+        ? `${typedSession?.material_needed} m3`
+        : "",
+      detailData: [
+        {
+          subtitle: "Monetary",
+          icon: "CurrencyEuroIcon",
+          value: typedSession?.material_price
+            ? new Intl.NumberFormat("de-DE", {
+                style: "currency",
+                currency: "EUR",
+              }).format(typedSession?.material_price)
+            : "",
+        },
+        {
+          subtitle: "CO2 Emissions",
+          icon: "GlobeAltIcon",
+          value: materialEmissions
+            ? `${materialEmissions?.value.toFixed(2)} kg`
+            : "",
+        },
+      ],
+    },
+    {
+      title: "Machine",
       description: typedSession?.machine_time
         ? getDurationString(
             typedSession?.machine_time.hours,
-            typedSession?.machine_time.minutes,
-            typedSession?.machine_time.seconds
+            typedSession?.machine_time.minutes
           )
         : "",
+      detailData: [
+        {
+          subtitle: "Electricity",
+          icon: "BoltIcon",
+          value: typedSession?.machine_kwh
+            ? `${typedSession?.machine_kwh} kW`
+            : "",
+        },
+        {
+          subtitle: "CO2 Emissions",
+          icon: "GlobeAltIcon",
+          value: machineEmissions
+            ? `${machineEmissions?.value.toFixed(2)} kg`
+            : "",
+        },
+      ],
     },
-    {
-      title: "Machine Code (.nc)",
-      filePath: typedSession?.gcode_files_zip_url || "",
-    },
-    { title: "3D Model (.dxf)", filePath: typedSession?.dxf_file_url || "" },
   ];
 
   const selectedMachine = machineStore.allMachines.find(
@@ -169,25 +194,30 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
           )}
         </div>
         <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-24 lg:pt-4 pb-12">
-          <div className="lg:w-1/3 flex flex-col gap-10">
-            {chartData && (
-              <DoughnutChart
-                className="h-60 bg-gray-100 rounded-lg"
-                data={chartData}
+          <div className="lg:w-1/3 flex flex-col gap-5">
+            {typedSession?.all_files_zip_url && (
+              <ButtonLink
+                caption="Edit design"
+                target={`/configurator/session/${typedSession?.uuid}`}
+                className="py-[13px] justify-center text-base w-full"
+                newTab
               />
             )}
+            <ImpactSection
+              data={impactValuesData}
+              totalEmissions={totalEmissions}
+            />
             {descriptionList && (
               <dl className="divide-y divide-gray-200">
                 {descriptionList?.map(
                   (item, i) =>
-                    (item.description || item.filePath) && (
+                    item.filePath && (
                       <div
                         key={i}
-                        className="px-4 py-6 grid grid-cols-2 gap-12 lg:gap-16 sm:px-0"
+                        className="px-4 py-6 flex justify-between items-center gap-12 lg:gap-16 sm:px-0"
                       >
                         <DownloadListItem
                           title={item.title}
-                          description={item.description}
                           filePath={item.filePath}
                         />
                       </div>
@@ -214,22 +244,22 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
                 }))}
               />
             )}
+            {buttons && (
+              <div className="flex flex-col lg:flex-row gap-4 justify-start items-center w-full pt-6 lg:pb-12">
+                {buttons?.map((button, i) => (
+                  <ButtonLink
+                    key={i}
+                    caption={button.caption}
+                    target={button.href}
+                    variant="secondary"
+                    className="w-full lg:w-auto px-5 py-3 text-center text-base font-medium"
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
         <div className="mx-auto max-w-3xl flex flex-col justify-center items-center gap-12">
-          {buttons && (
-            <div className="flex flex-col lg:flex-row gap-4 justify-center items-center w-full pt-4 lg:pb-12">
-              {buttons?.map((button, i) => (
-                <ButtonLink
-                  key={i}
-                  caption={button.caption}
-                  target={button.href}
-                  variant="secondary"
-                  className="w-full lg:w-auto px-5 py-3 text-center text-base font-medium"
-                />
-              ))}
-            </div>
-          )}
           {Boolean(selectedMachine) && (
             <>
               <h2 className="text-base font-semibold text-indigo-600 uppercase">

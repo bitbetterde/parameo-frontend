@@ -12,8 +12,10 @@ export interface ISessionBase {
   gcode_files_zip_url: string;
   all_files_zip_url: string;
   dxf_file_url: string;
-  material_price: number;
+  bom_file_url: string;
   machine_time: { hours: number; minutes: number; seconds: number };
+  material_needed: string;
+  material_price: number;
   machine_kwh: number;
 }
 export interface ISession extends ISessionBase {
