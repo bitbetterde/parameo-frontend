@@ -19,8 +19,8 @@ const body = (
 );
 
 export default {
-  title: "OpenBox",
-  id: "openbox",
+  title: "Product: OpenBox",
+  id: "product-openbox",
   tags: ["Design", "Manufacturing"],
   body,
   teaser:
