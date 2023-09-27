@@ -1,5 +1,5 @@
 import materials from "./materials";
-import co2 from "./co2emission";
+import impactValuation from "./impact-valuation";
 import forDesigners from "./for-designers";
 import forDevelopers from "./for-developers";
 import fabulaser from "./fabulasermini";
@@ -13,17 +13,17 @@ import productOpenbox from "./product-openbox";
 import feedback from "./feedback";
 
 export default [
-  maslowcnc,
   fabulaser,
-  moremachines,
-  materials,
-  co2,
+  feedback,
   forDesigners,
   forDevelopers,
   forManufacturers,
   makers,
+  materials,
+  moremachines,
   productMultiframe,
-  productStanddesk,
   productOpenbox,
-  feedback,
+  productStanddesk,
+  maslowcnc,
+  impactValuation,
 ];
