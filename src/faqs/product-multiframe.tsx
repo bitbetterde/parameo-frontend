@@ -19,8 +19,8 @@ const body = (
 );
 
 export default {
-  title: "MultiFrame",
-  id: "multiframe",
+  title: "Product: MultiFrame",
+  id: "product-multiframe",
   tags: ["Design", "Manufacturing"],
   body,
   teaser:
