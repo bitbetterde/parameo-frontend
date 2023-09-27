@@ -3,7 +3,7 @@ import co2 from "./co2emission";
 import forDesigners from "./for-designers";
 import forDevelopers from "./for-developers";
 import fabulaser from "./fabulasermini";
-import maker from "./maker";
+import makers from "./makers";
 import forManufacturers from "./for-manufacturers";
 import maslowcnc from "./maslowcnc";
 import moremachines from "./moremachines";
@@ -21,7 +21,7 @@ export default [
   forDesigners,
   forDevelopers,
   forManufacturers,
-  maker,
+  makers,
   productMultiframe,
   productStanddesk,
   productOpenbox,
