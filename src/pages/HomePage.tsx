@@ -48,28 +48,28 @@ const people = [
 
 const features = [
   {
-    name: "CO2 footprint",
+    name: "Impact valuation",
     description:
-      "parameo provides the calculation of C02 emissions indicated by material consumption and manufacturing resources.",
-    icon: "globe" as const,
+      "parameo calculates the individual impact value indicated by material data and machine runtime.",
+    icon: "scale" as const,
   },
   {
     name: "G-code generation",
     description:
       "G-code is a programming language for CNC (Computer Numerical Control) machines. parameo provides the uniquely configured .nc-data file.",
-    icon: "lightning" as const,
+    icon: "arrow-path" as const,
   },
   {
     name: "Bill of materials",
     description:
       "parameo provides a 'bom.csv' with a list of needed materials based on the individually configured product dimensions.",
-    icon: "scale" as const,
+    icon: "table-cells" as const,
   },
   {
     name: "DIY or BUY",
     description:
       "parameo provides contacts for local production as well as material and manufacturing data for self-production",
-    icon: "annotation" as const,
+    icon: "building-storefront" as const,
   },
 ];
 
