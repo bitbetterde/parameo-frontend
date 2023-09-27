@@ -114,11 +114,11 @@ const body = (
 );
 
 export default {
-  title: "CO2 Emission",
-  id: "co2",
+  title: "Impact valuation",
+  id: "impact-valuation",
   tags: ["Manufacturing"],
   body,
-  teaser: "Your environmental footprint",
+  teaser: "Calculating your environmental footprint",
   showOnHomePage: false,
   order: 3,
 } as IFaqFile;
