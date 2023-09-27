@@ -123,7 +123,7 @@ const HomePage: React.FC = () => {
     <>
       <HeroSection
         title="Customize, calculate and manufacture with ease"
-        subtitle="parameo is an open tool for customizing parametric product designs, calculating costs and emissions and generating individual production data for CNC machines."
+        subtitle="parameo is an open tool for customizing parametric product designs, calculating impact values and generating individual production data for CNC machines."
         heroImage="/images/parameo-hero-img_home-bw.jpg"
         heroImageAlt="wood plate goods"
         buttons={heroButtons}
@@ -131,7 +131,7 @@ const HomePage: React.FC = () => {
       <FeatureSection
         title="Leave the math to parameo"
         subtitle=""
-        description="The tool offers a machine code generator, a 'build or buy' option to support local production, Emission and cost transparency and an over all freely accessible system using open source software for open source hardware."
+        description="The tool offers a machine code generator, a 'build or buy' option to support local production, impact valuation and an over all freely accessible system using open source software for open source hardware."
         features={features}
       />
       <AvatarSection people={people} title="A tool for you:" />
@@ -142,7 +142,7 @@ const HomePage: React.FC = () => {
       ) : (
         <CardSlider
           title="parameo products"
-          description="Adjust the dimensions according to your needs. Then buy it or build it yourself."
+          description="Adjust the dimensions according to your needs. Then build it yourself or buy it."
           cardsData={
             products &&
             products?.map((product) => ({
