@@ -8,10 +8,7 @@ const body = (
     <p>
       <a href="https://forms.gle/Dqtny9GH5sgbXrkU7" target="_blank">
         Feedback form
-      </a>
     </p>
-
-    <img src="/images/faq-addmoremachines.webp" alt="cnc machines" />
   </>
 );
 
