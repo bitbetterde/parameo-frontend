@@ -51,25 +51,25 @@ const features = [
     name: "Impact valuation",
     description:
       "parameo calculates the individual impact value indicated by material data and machine runtime.",
-    icon: "scale" as const,
+    icon: "ScaleIcon",
   },
   {
     name: "G-code generation",
     description:
       "G-code is a programming language for CNC (Computer Numerical Control) machines. parameo provides the uniquely configured .nc-data file.",
-    icon: "arrowPath" as const,
+    icon: "ArrowPathIcon",
   },
   {
     name: "Bill of materials",
     description:
       "parameo provides a 'bom.csv' with a list of needed materials based on the individually configured product dimensions.",
-    icon: "tableCells" as const,
+    icon: "TableCellsIcon",
   },
   {
     name: "DIY or BUY",
     description:
       "parameo provides contacts for local production as well as material and manufacturing data for self-production",
-    icon: "buildingStorefront" as const,
+    icon: "BuildingStorefrontIcon",
   },
 ];
 

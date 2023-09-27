@@ -1,23 +1,12 @@
-import { ReactComponent as AnnotationIcon } from "@assets/icons/annotation.svg";
-import { ReactComponent as GlobeIcon } from "@assets/icons/globe.svg";
-import { ReactComponent as LightningIcon } from "@assets/icons/lightning-bolt.svg";
-import { ReactComponent as ScaleIcon } from "@assets/icons/scale.svg";
 import React from "react";
+import { Icon } from "@components";
 
 interface Props {
   name: string;
   description: string;
-  icon?: "globe" | "annotation" | "lightning" | "scale";
+  icon?: string;
   className?: string;
 }
-
-const iconMapping: Record<string, any> = {
-  globe: GlobeIcon,
-  annotation: AnnotationIcon,
-  lightning: LightningIcon,
-  scale: ScaleIcon,
-  default: React.Fragment,
-};
 
 const FeatureItem: React.FC<Props> = ({
   name,
@@ -25,8 +14,6 @@ const FeatureItem: React.FC<Props> = ({
   icon,
   className,
 }) => {
-  const IconComponent = iconMapping?.[icon || "default"];
-
   return (
     <>
       <dt
@@ -35,7 +22,7 @@ const FeatureItem: React.FC<Props> = ({
         }`}
       >
         <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-          {IconComponent && <IconComponent className="w-[18px] text-white" />}
+          {icon && <Icon name={icon} className="w-[18px] text-white" />}
         </div>
         {name}
       </dt>

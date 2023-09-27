@@ -9,7 +9,7 @@ interface Props {
   features: Array<{
     name: string;
     description: string;
-    icon: "globe" | "annotation" | "lightning" | "scale";
+    icon?: string;
   }>;
 }
 
