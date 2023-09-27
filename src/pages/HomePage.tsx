@@ -68,7 +68,7 @@ const features = [
   {
     name: "DIY or BUY",
     description:
-      "parameo provides material and manufacturing data for self-production as well as contacts for local manufacturing",
+      "parameo provides material and manufacturing data for self-production as well as contacts to local manufacturers.",
     icon: "BuildingStorefrontIcon",
   },
 ];
@@ -142,7 +142,7 @@ const HomePage: React.FC = () => {
       ) : (
         <CardSlider
           title="parameo products"
-          description="Adjust the dimensions according to your needs. Then build it yourself or buy it."
+          description="Adjust the dimensions according to your needs. <br/> Then build it yourself or buy it."
           cardsData={
             products &&
             products?.map((product) => ({
@@ -174,7 +174,7 @@ const HomePage: React.FC = () => {
       ) : (
         <CardSlider
           title="Featured machinery"
-          description="The tool is based on open source software and primarily targets for open source hardware."
+          description="The tool is based on open source software and primarily targets open source hardware."
           cardsData={
             machines &&
             machines?.map((machine: IMachine) => ({
