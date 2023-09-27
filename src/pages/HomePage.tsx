@@ -142,7 +142,8 @@ const HomePage: React.FC = () => {
       ) : (
         <CardSlider
           title="parameo products"
-          description="Adjust the dimensions according to your needs. <br/> Then build it yourself or buy it."
+          description="Adjust the dimensions according to your individual needs.
+          Then build it yourself or buy it from local manufacturers."
           cardsData={
             products &&
             products?.map((product) => ({
