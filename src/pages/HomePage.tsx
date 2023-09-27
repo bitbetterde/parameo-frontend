@@ -68,7 +68,7 @@ const features = [
   {
     name: "DIY or BUY",
     description:
-      "parameo provides contacts for local production as well as material and manufacturing data for self-production",
+      "parameo provides material and manufacturing data for self-production as well as contacts for local manufacturing",
     icon: "BuildingStorefrontIcon",
   },
 ];
