@@ -26,8 +26,8 @@ const body = (
 );
 
 export default {
-  title: "Manufacturer Collaboration",
-  id: "maufacturer-collaboration",
+  title: "For manufacturer",
+  id: "for-maufacturers",
   tags: ["Manufacturing"],
   body,
   teaser:
