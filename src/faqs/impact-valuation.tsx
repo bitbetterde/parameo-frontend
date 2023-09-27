@@ -2,7 +2,7 @@ import type { IFaqFile } from "@interfaces";
 
 const body = (
   <>
-    <p>Environmental, social and economic impact valuation.</p>
+    <p>parameo calculates the individual impact value indicated by material (origin, type, processing, quantity) and machine runtime (electricity consumption).</p>
 
     <h4>Approach:</h4>
     <ul>
