@@ -5,6 +5,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "white" | "primary" | "transparent" | "secondary" | "success";
   iconRight?: string;
   icon?: string;
+  iconVariant?: "solid" | "outline";
 }
 
 const Button: React.FC<Props> = ({
@@ -13,6 +14,7 @@ const Button: React.FC<Props> = ({
   children,
   iconRight,
   icon,
+  iconVariant,
   ...rest
 }: Props) => {
   const classes = {
@@ -34,7 +36,12 @@ const Button: React.FC<Props> = ({
       {icon && <Icon size={20} name={icon} className="w-5 h-5 mr-2" />}
       {children}
       {iconRight && (
-        <Icon size={20} name={iconRight} className="w-5 h-5 ml-2" />
+        <Icon
+          size={20}
+          variant={iconVariant}
+          name={iconRight}
+          className="w-5 h-5 ml-2"
+        />
       )}
     </button>
   );

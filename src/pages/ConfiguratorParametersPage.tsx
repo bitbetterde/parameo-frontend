@@ -37,8 +37,9 @@ interface FormInput {
     co2Footprint: boolean;
     billOfMaterials: boolean;
     approximateMaterialPrice: boolean;
-    technicalDrawing: boolean;
+    machineCode: boolean;
     localManufacturers: boolean;
+    partDesigns: boolean;
   };
 }
 
@@ -353,8 +354,12 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                     label={"Approximate material price"}
                   />
                   <Checkbox
-                    {...register("userInterests.technicalDrawing")}
-                    label={"Technical drawing"}
+                    {...register("userInterests.machineCode")}
+                    label={"Machine code"}
+                  />
+                  <Checkbox
+                    {...register("userInterests.partDesigns")}
+                    label={"Part designs"}
                   />
                   <Checkbox
                     {...register("userInterests.localManufacturers")}

@@ -46,10 +46,11 @@ const HeroSection: React.FC<Props> = ({
                       <ButtonLink
                         key={i}
                         className="flex items-center justify-center px-4 py-3 sm:px-[55px]"
-                        caption={button.caption}
                         target={button.target}
                         variant={button.variant}
-                      />
+                      >
+                        {button.children}
+                      </ButtonLink>
                     ))}
                 </div>
               </div>

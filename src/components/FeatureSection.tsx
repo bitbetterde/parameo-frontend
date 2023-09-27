@@ -41,7 +41,7 @@ const FeatureSection: React.FC<Props> = ({
           )}
         </div>
         <div className="mx-auto">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2">
+          <dl className="grid max-w-xl mx-auto grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2">
             {features?.map((feature) => (
               <div key={feature.name} className="relative pl-16">
                 <FeatureItem

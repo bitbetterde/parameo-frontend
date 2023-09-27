@@ -90,7 +90,7 @@ const ProductPartConfigurator: React.FC<Props> = ({
           <div className="w-full lg:w-1/2">
             <h3 className="text-xl font-semibold leading-8 pb-2">Dimensions</h3>
             <div className="flex justify-between items-center text-sm font-normal pb-6">
-              <p>Adjust dimensions</p>
+              <p>Adjust dimensions (mm)</p>
               {productTitle && (
                 <a
                   href={`/faq/${productTitle}`}
