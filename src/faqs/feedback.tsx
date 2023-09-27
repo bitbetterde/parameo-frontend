@@ -7,7 +7,7 @@ const body = (
     </p>
     <p>
       <a href="https://forms.gle/Dqtny9GH5sgbXrkU7" target="_blank">
-        Feedback form
+        Feedback form</a>
     </p>
   </>
 );
