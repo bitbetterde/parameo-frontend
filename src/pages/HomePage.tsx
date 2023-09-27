@@ -57,19 +57,19 @@ const features = [
     name: "G-code generation",
     description:
       "G-code is a programming language for CNC (Computer Numerical Control) machines. parameo provides the uniquely configured .nc-data file.",
-    icon: "arrow-path" as const,
+    icon: "arrowPath" as const,
   },
   {
     name: "Bill of materials",
     description:
       "parameo provides a 'bom.csv' with a list of needed materials based on the individually configured product dimensions.",
-    icon: "table-cells" as const,
+    icon: "tableCells" as const,
   },
   {
     name: "DIY or BUY",
     description:
       "parameo provides contacts for local production as well as material and manufacturing data for self-production",
-    icon: "building-storefront" as const,
+    icon: "buildingStorefront" as const,
   },
 ];
 
