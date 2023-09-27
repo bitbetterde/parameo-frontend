@@ -130,8 +130,8 @@ const HomePage: React.FC = () => {
       />
       <FeatureSection
         title="Leave the math to parameo"
-        subtitle=""
-        description="The tool offers a machine code generator, a 'build or buy' option to support local production, impact valuation and an over all freely accessible system using open source software for open source hardware."
+        subtitle="The tool offers a machine code generator, a 'build or buy' option to support local production, impact valuation and an over all freely accessible system using open source software for open source hardware."
+        description=""
         features={features}
       />
       <AvatarSection people={people} title="A tool for you:" />
