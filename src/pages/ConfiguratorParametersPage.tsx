@@ -75,7 +75,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
   const [, setLocation] = useLocation();
 
   const machinesForProduct = useMemo(() => {
-    return allMachines.filter((mach) => mach.type === product?.machine_type);
+    return allMachines.filter(
+      (mach) => mach.type === product?.machine_type && mach.selectable
+    );
   }, [JSON.stringify(allMachines), JSON.stringify(product)]);
 
   const { register, watch, control, formState, setValue, getValues } =
