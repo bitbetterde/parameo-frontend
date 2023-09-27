@@ -1,15 +1,15 @@
 import materials from "./materials";
 import co2 from "./co2emission";
-import designerCollaboration from "./designer-collaboration";
-import developerCollaboration from "./developer-collaboration";
+import forDesigners from "./for-designers";
+import forDevelopers from "./for-developers";
 import fabulaser from "./fabulasermini";
-import makerCollaboration from "./maker";
-import manufacturerCollaboration from "./manufacturer-collaboration";
+import maker from "./maker";
+import forManufacturers from "./for-manufacturers";
 import maslowcnc from "./maslowcnc";
 import moremachines from "./moremachines";
-import multiframe from "./multiframe";
-import standdesk from "./standdesk";
-import openbox from "./openbox";
+import productMultiframe from "./product-multiframe";
+import productStanddesk from "./product-standdesk";
+import productOpenbox from "./product-openbox";
 import feedback from "./feedback";
 
 export default [
@@ -18,12 +18,12 @@ export default [
   moremachines,
   materials,
   co2,
-  designerCollaboration,
-  developerCollaboration,
-  manufacturerCollaboration,
-  makerCollaboration,
-  multiframe,
-  standdesk,
-  openbox,
+  forDesigners,
+  forDevelopers,
+  forManufacturers,
+  maker,
+  productMultiframe,
+  productStanddesk,
+  productOpenbox,
   feedback,
 ];
