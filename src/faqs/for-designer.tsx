@@ -23,8 +23,8 @@ const body = (
 );
 
 export default {
-  title: "Designer collaboration",
-  id: "designer-collaboration",
+  title: "For designers",
+  id: "for-designers",
   tags: ["Design"],
   body,
   teaser:
