@@ -15,11 +15,11 @@ import { useMachineStore, useProductStore } from "@stores";
 
 const heroButtons = [
   {
-    caption: "Try it!",
+    children: "Try it!",
     target: "/configurator/products",
     variant: "white" as const,
   },
-  { caption: "FAQ", target: "/faq", variant: "transparent" as const },
+  { children: "FAQ", target: "/faq", variant: "transparent" as const },
 ];
 
 const people = [
@@ -183,12 +183,12 @@ const HomePage: React.FC = () => {
               subtitle: machine.type,
               description:
                 machine?.description_en || "No description available",
-              licence: "OSH - License type",
+              licence: machine.manufacturer_subtitle,
               cardImage: machine?.pictures?.[0]?.image_url,
               author: {
                 name: machine?.manufacturer,
                 href: "#",
-                authorImage: "",
+                authorImage: machine.manufacturer_image_file,
               },
             }))
           }

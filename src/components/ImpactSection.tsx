@@ -51,12 +51,13 @@ const ImpactSection: React.FC<Props> = ({
       </div>
       {totalEmissions && (
         <ButtonLink
-          caption="Translate CO2 into..."
           target={`https://translator.ecochain.com/?amount=${totalEmissions}&unit=kg`}
           variant="secondary"
           className="w-full lg:w-auto px-5 py-3 justify-center text-base font-medium"
           newTab
-        />
+        >
+          Translate CO2 into...
+        </ButtonLink>
       )}
     </div>
   );

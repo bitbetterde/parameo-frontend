@@ -7,6 +7,7 @@ import {
   Spinner,
   ImpactSection,
   EmailResultHint,
+  Button,
 } from "@components";
 import { ISession } from "@interfaces/ISession";
 import { useMachineStore, useProducerStore, useSessionStore } from "@stores";
@@ -49,12 +50,6 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
     session && isISession(session) ? session : undefined;
 
   const [, setLocation] = useLocation();
-
-  const buttons = [
-    { caption: "Local manufacturing", href: "#" },
-    { caption: "Feedback", href: "#" },
-    { caption: "Copy link", href: "#" },
-  ];
 
   useEffect(() => {
     fetchProducers();
@@ -104,7 +99,8 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
       description: typedSession?.material_needed
         ? `${typedSession?.material_needed
             ?.map((need) => need.cubic_meters)
-            .reduce((a, b) => a + b, 0)} m3`
+            .reduce((a, b) => a + b, 0)
+            .toFixed(2)} m³`
         : "",
       detailData: [
         {
@@ -139,7 +135,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
           subtitle: "Electricity",
           icon: "BoltIcon",
           value: typedSession?.machine_kwh
-            ? `${typedSession?.machine_kwh} kW`
+            ? `${typedSession?.machine_kwh} kWh`
             : "",
         },
         {
@@ -178,11 +174,12 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
           <div className="lg:w-1/3 flex flex-col gap-5">
             {typedSession?.all_files_zip_url && (
               <ButtonLink
-                caption="Edit design"
                 target={`/configurator/session/${typedSession?.uuid}`}
                 className="py-[13px] justify-center text-base w-full"
-                newTab
-              />
+                icon="ArrowPathIcon"
+              >
+                Edit design
+              </ButtonLink>
             )}
             <ImpactSection
               data={impactValuesData}
@@ -208,12 +205,13 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
             )}
             {typedSession?.all_files_zip_url && (
               <ButtonLink
-                caption="Download all files (.zip)"
                 target={typedSession?.all_files_zip_url}
                 className="p-[13px] justify-center text-base w-full"
                 icon="FolderArrowDownIcon"
                 newTab
-              />
+              >
+                Download all files (.zip)
+              </ButtonLink>
             )}
             <EmailResultHint sessionId={typedSession?.uuid} />
           </div>
@@ -225,19 +223,45 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
                 }))}
               />
             )}
-            {buttons && (
-              <div className="flex flex-col lg:flex-row gap-4 justify-start items-center w-full pt-6 lg:pb-12">
-                {buttons?.map((button, i) => (
-                  <ButtonLink
-                    key={i}
-                    caption={button.caption}
-                    target={button.href}
-                    variant="secondary"
-                    className="w-full lg:w-auto px-5 py-3 text-center text-base font-medium"
-                  />
-                ))}
-              </div>
-            )}
+
+            <div className="flex flex-col lg:flex-row gap-4 justify-start items-center w-full pt-6 lg:pb-12">
+              <ButtonLink
+                key={"localmanufacturing"}
+                target={"#manufacturing"}
+                variant="secondary"
+                className="w-full lg:w-auto px-5 py-3 text-center text-base font-medium"
+                icon="HomeIcon"
+                iconVariant="solid"
+              >
+                Local manufacturing
+              </ButtonLink>
+              <ButtonLink
+                key={"feedback"}
+                target={"https://forms.gle/KDoZBCmJRBaCakXx8"}
+                variant="secondary"
+                className="w-full lg:w-auto px-5 py-3 text-center text-base font-medium"
+                icon="PencilSquareIcon"
+                iconVariant="solid"
+                newTab
+              >
+                Feedback
+              </ButtonLink>
+              <Button
+                key={"copylink"}
+                variant="secondary"
+                className="w-full lg:w-auto px-5 py-3 text-center text-base font-medium"
+                icon="LinkIcon"
+                onClick={() => {
+                  navigator.clipboard.writeText(window.location.href);
+                  setNotificationData({
+                    title: "Link copied to clipboard",
+                    variant: "success",
+                  });
+                }}
+              >
+                Copy link
+              </Button>
+            </div>
           </div>
         </div>
         <div className="mx-auto max-w-3xl flex flex-col justify-center items-center gap-12">
@@ -257,7 +281,10 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
             </>
           )}
         </div>
-        <h2 className="text-base font-semibold text-indigo-600 uppercase pt-7 text-center">
+        <h2
+          className="text-base font-semibold text-indigo-600 uppercase pt-7 text-center"
+          id="manufacturing"
+        >
           Local Manufacturing
         </h2>
         {!producers ? (

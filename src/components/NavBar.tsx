@@ -52,11 +52,12 @@ const NavBar: React.FC<Props> = ({
           <ButtonLink
             className="ml-8 inline-flex items-center justify-center whitespace-nowrap px-4 py-2"
             target={buttonLinkTarget}
-            caption={buttonLinkCaption}
             variant={buttonLinkVariant}
             icon={buttonLinkIcon}
             newTab
-          />
+          >
+            {buttonLinkCaption}
+          </ButtonLink>
         </div>
         <div className="md:hidden flex items-center -mr-2">
           <button
@@ -90,9 +91,10 @@ const NavBar: React.FC<Props> = ({
             <ButtonLink
               className="mx-auto md:ml-auto inline-flex items-center justify-center w-full py-[9px]"
               target={buttonLinkTarget}
-              caption={buttonLinkCaption}
               variant={buttonLinkVariant}
-            />
+            >
+              {buttonLinkCaption}
+            </ButtonLink>
           </div>
         </div>
       </div>
