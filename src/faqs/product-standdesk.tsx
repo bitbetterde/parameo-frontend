@@ -21,8 +21,8 @@ const body = (
 );
 
 export default {
-  title: "StandDesk",
-  id: "standdesk",
+  title: "Product: StandDesk",
+  id: "product-standdesk",
   tags: ["Design", "Manufacturing"],
   body,
   teaser:
