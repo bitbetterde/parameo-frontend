@@ -14,7 +14,7 @@ export interface ISessionBase {
   dxf_file_url: string;
   bom_file_url: string;
   machine_time: { hours: number; minutes: number; seconds: number };
-  material_needed: string;
+  material_needed: { material_id: number; cubic_meters: number }[];
   material_price: number;
   machine_kwh: number;
 }
