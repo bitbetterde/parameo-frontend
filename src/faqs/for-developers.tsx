@@ -20,8 +20,7 @@ Your passion, creativity, and commitment can drive this project to new heights. 
 </p>
 <p>
 <b> Embrace the open-source spirit and be a part of our journey!</b>
-    </p>
-    </p>
+</p>
   </>
 );
 
