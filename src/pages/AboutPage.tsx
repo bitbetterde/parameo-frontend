@@ -43,8 +43,8 @@ const AboutPage: React.FC<Props> = ({
           >
             'UpdateHamburg 2022'
           </a>{" "}
-          of the Hamburg Authority for Economy and Innovation (BWI). <br/> The
-          <b> innovation core </b> of the tool is the combination of:
+          of the Hamburg Authority for Economy and Innovation (BWI).</p>
+          <p> <b> The innovation core of the tool is the combination of: </b>
         </p>
         <ul>
          <li>
