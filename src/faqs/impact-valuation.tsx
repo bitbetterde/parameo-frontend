@@ -115,6 +115,12 @@ const body = (
         "Impact Valuation" World Economic Forum
       </a>
       </li>
+            <li>
+      <a href="https://www.europarl.europa.eu/RegData/etudes/BRIE/2017/599401/EPRS_BRI(2017)599401_EN.pdf"
+      target="_blank" >
+        "Development Effectiveness" European Parliament
+      </a>
+      </li>
     </ul>
   </>
 );
