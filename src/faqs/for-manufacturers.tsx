@@ -2,36 +2,26 @@ import type { IFaqFile } from "@interfaces";
 
 const body = (
   <>
-    <h2>Origin</h2>
+    <h2>Local demands meet local manufacturers</h2>
     <p>
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec
-      est. Odio penatibus risus viverra tellus varius sit neque erat velit.
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id.
-    </p>
-    <img src="/images/forrest.jpg" alt="" />
-    <h2>Specs</h2>
-    <ol>
-      <li>Integer varius imperdiet sed interdum felis cras in nec nunc.</li>
-      <li>Quam malesuada odio ut sit egestas. Elementum at porta vitae.</li>
-    </ol>
-    <p>
-      Erat pellentesque dictumst ligula porttitor risus eget et eget. Ultricies
-      tellus felis id dignissim eget. Est augue maecenas risus nulla ultrices
-      congue nunc tortor. Eu leo risus porta integer suspendisse sed sit ligula
-      elit.
+    We aim to match individual production demands with local manufacturers to avoid transportation around the world.<br/> Our approach is to connect the production data, created by the customers themselves, with the nearest manufacturers to meet the demand at the closest level possible.
+</p>
+<p>
+Therefore we want to involve more manufacturers from different regions, integrate their cnc machines and production capacities here, to <b>enable lean production and local making</b>.
+</p>
+<p>
+<b>Feel free to hit us up via the contact form to join our journey!</b>
     </p>
   </>
 );
 
 export default {
-  title: "For manufacturer",
-  id: "for-maufacturers",
+  title: "For manufacturers",
+  id: "for-manufacturers",
   tags: ["Manufacturing"],
   body,
   teaser:
-    "Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.",
+    "Local Making in the making",
   showOnHomePage: false,
   order: 4,
 } as IFaqFile;
