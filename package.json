@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@google/model-viewer": "^3.2.1",
+    "@google/model-viewer-effects": "^1.0.0",
     "@headlessui/react": "^1.7.17",
     "@types/lodash-es": "^4.17.9",
     "lodash-es": "^4.17.21",
