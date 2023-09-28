@@ -79,7 +79,7 @@ const body = (
       </li>
     </ul>
 
-    <h4>Publications:</h4>
+    <h4>Articles:</h4>
     <ul>
       <li>
         <a href="https://commission.europa.eu/system/files/2023-09/BR%20toolbox%20-%20Jul%202023%20-%20FINAL.pdf" target="_blank">
@@ -108,6 +108,12 @@ const body = (
         >
           "Nachhaltige Waldwirtschaft" Umweltbundesamt
         </a>
+      </li>
+            <li>
+      <a href="https://www.weforum.org/agenda/2022/10/impact-valuation-measure-social-environmental-efforts/"
+      target="_blank" >
+        "Impact Valuation" World Economic Forum
+      </a>
       </li>
     </ul>
   </>
