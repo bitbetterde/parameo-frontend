@@ -43,28 +43,31 @@ const AboutPage: React.FC<Props> = ({
           >
             'UpdateHamburg 2022'
           </a>{" "}
-          of the Hamburg Authority for Economy and Innovation (BWI). <br /> The
-          innovation core of the tool is the combination of:
+          of the Hamburg Authority for Economy and Innovation (BWI). <br/> The
+          <b> innovation core </b> of the tool is the combination of:
         </p>
         <ul>
+         <li>
+            <strong>Freely accessible system</strong> – The developed tool is
+            based on open source software and generates machine code for open
+            source hardware.
+          </li>
+
           <li>
             <strong>Machine code generator</strong> – Laser cutter and CNC
-            router Production data from parametric product designs.
+            router production data from parametric product designs.
           </li>
-          <li>
-            <strong>Networking of consumers and local producers</strong> –
-            'Build or buy' option after configuration with local production
-            capabilities
-          </li>
+
           <li>
             <strong>Emission and cost transparency</strong> – Material price
             calculation and emission calculator for the ratio of material,
             machine and transport.
           </li>
+
           <li>
-            <strong>Freely accessible system</strong> – The developed tool is
-            based on open source software and generates machine code for open
-            source hardware.
+            <strong>Networking of consumers and local producers</strong> –
+            'Build or buy' option after configuration with local production
+            capabilities
           </li>
         </ul>
         <figure>
@@ -129,11 +132,10 @@ const AboutPage: React.FC<Props> = ({
           <li>Django REST API</li>
           <li>Headless (patched) FreeCAD automation</li>
           <li>Machine runtime estimation</li>
-          <li>Nesting algorithms</li>
           <li>Headless Blender</li>
           <li>Admin dashboard</li>
           <li>Wireguard VPN layer for administration</li>
-          <li>Order modules: Email & Shopify integration</li>
+          <li>Order module: Shopify handover</li>
         </ul>
         <strong>Frontend</strong>
         <ul>
@@ -143,51 +145,29 @@ const AboutPage: React.FC<Props> = ({
         </ul>
 
         <h2>Project scope</h2>
-        <p>
-          Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
-          enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor
-          praesent donec est. Odio penatibus risus viverra tellus varius sit
-          neque erat velit.
-        </p>
+
         <img
           src="/images/parameo-project-scope-01.png"
           alt="Project Scope Slide"
         />
-        <strong>Our partners</strong>
-        <ul>
-          <li>
-            <a target="_blank" href="https://bitbetter.de/">
-              bitbetter
-            </a>
-            , Software Development
-          </li>
-          <li>
-            <a target="_blank" href="https://www.inmachines.net/">
-              INMACHINES
-            </a>
-            , Open Source Hardware
-          </li>
-        </ul>
 
         <h2>Get involved</h2>
-        <p>
-          Faucibus commodo massa rhoncus, volutpat. <strong>Dignissim</strong>{" "}
-          sed <strong>eget risus enim</strong>. Mattis mauris semper sed amet
-          vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus
-          viverra tellus varius sit neque erat velit. Faucibus commodo massa
-          rhoncus, volutpat. Dignissim sed eget risus enim.
-        </p>
+
         <ul>
           <li>
-            <a href="/faq/designer-collaboration">FAQ for Designers</a>
+            <a href="/faq/for-developers">FAQ for Developers</a>
           </li>
           <li>
-            <a href="/faq/maufacturer-collaboration">FAQ for Manufacturers</a>
+            <a href="/faq/for-designers">FAQ for Designers</a>
           </li>
           <li>
-            <a href="/faq/developer-collaboration">FAQ for Developers</a>
+            <a href="/faq/for-maufacturers">FAQ for Manufacturers</a>
+          </li>
+          <li>
+            <a href="/faq/for-makers">FAQ for Makers</a>
           </li>
         </ul>
+        
       </div>
       <ContactForm />
     </div>
