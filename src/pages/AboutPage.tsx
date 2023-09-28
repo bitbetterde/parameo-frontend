@@ -81,10 +81,10 @@ const AboutPage: React.FC<Props> = ({
         <h2>Motivation</h2>
         <blockquote>
           “For customers with average purchasing power, small companies efforts to create custom design and machine code are usually too high.
-          <b>Economical production is a major challenge, especially for one-off items.<b/><br/>
+          Economical production is a major challenge, especially for one-off items.
           Another development that we are experiencing is that more and
           more people are becoming interested in building their own furnishings.
-          <b>The DIY sector is booming</b> and almost everything can now be learned
+          The DIY sector is booming and almost everything can now be learned
           via free video tutorials and open knowledge platforms. But getting started
           with digital machine manufacturing in the craft sector is difficult or
           impossible for most private individuals. In addition to learning the
@@ -93,7 +93,7 @@ const AboutPage: React.FC<Props> = ({
           skills are required to turn one's idea into a milling/laser file. The
           learning of manual know-how, the handling of digital tools and the
           direct contact of citizens to local production sites are especially in
-          demand now.<br/> We address these challenges with "parameo". The
+          demand now. We address these challenges with "parameo". The
           configurator offers the design of 3D models according to individual
           dimensions and requirements. The self-configured model file can be
           downloaded, further processed in CAD programs (e.g. Free-CAD) or go
