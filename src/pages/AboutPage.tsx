@@ -80,14 +80,12 @@ const AboutPage: React.FC<Props> = ({
 
         <h2>Motivation</h2>
         <blockquote>
-          “As a small company the effort for the custom design of the products
-          and the creation of milling / laser files before production, is
-          usually too high for consumers with average purchasing power.
-          Economical production is a major challenge, especially for one-off
-          items. Another development that we are experiencing is that more and
+          “For customers with average purchasing power, small companies efforts to create custom design and machine code are usually too high.
+          <b>Economical production is a major challenge, especially for one-off items.<b/><br/>
+          Another development that we are experiencing is that more and
           more people are becoming interested in building their own furnishings.
-          The DIY sector is booming, and almost everything can now be learned
-          via free video tutorials and knowledge platforms. But getting started
+          <b>The DIY sector is booming</b> and almost everything can now be learned
+          via free video tutorials and open knowledge platforms. But getting started
           with digital machine manufacturing in the craft sector is difficult or
           impossible for most private individuals. In addition to learning the
           hardware and control software, basic knowledge of operational safety,
@@ -95,7 +93,7 @@ const AboutPage: React.FC<Props> = ({
           skills are required to turn one's idea into a milling/laser file. The
           learning of manual know-how, the handling of digital tools and the
           direct contact of citizens to local production sites are especially in
-          demand now. We address these challenges with "parameo". The
+          demand now.<br/> We address these challenges with "parameo". The
           configurator offers the design of 3D models according to individual
           dimensions and requirements. The self-configured model file can be
           downloaded, further processed in CAD programs (e.g. Free-CAD) or go
@@ -131,11 +129,11 @@ const AboutPage: React.FC<Props> = ({
           </li>
           <li>Django REST API</li>
           <li>Headless (patched) FreeCAD automation</li>
-          <li>Machine runtime estimation</li>
           <li>Headless Blender</li>
           <li>Admin dashboard</li>
-          <li>Wireguard VPN layer for administration</li>
-          <li>Order module: Shopify handover</li>
+          <li>Wireguard VPN layer</li>
+          <li>Order modules: Email & Shopify handover</li>
+          <li>Dynamic impact valuation</li>
         </ul>
         <strong>Frontend</strong>
         <ul>
@@ -151,7 +149,7 @@ const AboutPage: React.FC<Props> = ({
           alt="Project Scope Slide"
         />
 
-        <h2>Get involved</h2>
+        <h2>Get involved via the contact form down here</h2>
 
         <ul>
           <li>
