@@ -3,7 +3,7 @@ import impactValuation from "./impact-valuation";
 import forDesigners from "./for-designers";
 import forDevelopers from "./for-developers";
 import fabulaser from "./fabulasermini";
-import makers from "./makers";
+import forMakers from "./makers";
 import forManufacturers from "./for-manufacturers";
 import maslowcnc from "./maslowcnc";
 import moremachines from "./moremachines";
@@ -18,7 +18,7 @@ export default [
   forDesigners,
   forDevelopers,
   forManufacturers,
-  makers,
+  forMakers,
   materials,
   moremachines,
   productMultiframe,
