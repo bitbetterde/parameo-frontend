@@ -9,8 +9,8 @@ It's great that you decided to use parameo to build or have new products built f
 );
 
 export default {
-  title: "Makers",
-  id: "makers",
+  title: "For makers",
+  id: "for-makers",
   tags: ["Manufacturing"],
   body,
   teaser:
