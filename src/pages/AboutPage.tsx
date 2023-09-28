@@ -132,7 +132,7 @@ const AboutPage: React.FC<Props> = ({
           <li>Headless Blender</li>
           <li>Admin dashboard</li>
           <li>Wireguard VPN layer</li>
-          <li>Order modules: Email & Shopify handover</li>
+          <li>Order modules: Email and Shopify handover</li>
           <li>Dynamic impact valuation</li>
         </ul>
         <strong>Frontend</strong>
