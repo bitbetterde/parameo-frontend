@@ -2,25 +2,22 @@ import type { IFaqFile } from "@interfaces";
 
 const body = (
   <>
-    <h2>Origin</h2>
+    <h2>Are you ready to be part of something remarkable?</h2>
     <p>
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id. Id dolor praesent donec
-      est. Odio penatibus risus viverra tellus varius sit neque erat velit.
-      Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-      Mattis mauris semper sed amet vitae sed turpis id.
+    <b> Join the Revolution: </b> <br/>
+    Open source is the future of technology. Be at the forefront of the movement, shaping the way software is developed and shared.
     </p>
-    <img src="/images/forrest.jpg" alt="" />
-    <h2>Specs</h2>
-    <ol>
-      <li>Integer varius imperdiet sed interdum felis cras in nec nunc.</li>
-      <li>Quam malesuada odio ut sit egestas. Elementum at porta vitae.</li>
-    </ol>
     <p>
-      Erat pellentesque dictumst ligula porttitor risus eget et eget. Ultricies
-      tellus felis id dignissim eget. Est augue maecenas risus nulla ultrices
-      congue nunc tortor. Eu leo risus porta integer suspendisse sed sit ligula
-      elit.
+<b> Give Back: </b> <br/>
+Open source is about giving back to the community. Your contribution helps others, fostering a culture of mutual support and innovation.
+</p>
+<p>
+<b> Make Your Mark: </b> <br/>
+Your code, your ideas, your expertise – they all count. By contributing, you leave a lasting imprint on a project that could reshape industries or improve lives.
+</p>
+<p>
+Your passion, creativity, and commitment can drive this project to new heights. Join us on GitLab and let's build something amazing together. 
+<b> Embrace the open-source spirit and be a part of our journey!</b>
     </p>
   </>
 );
