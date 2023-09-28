@@ -17,9 +17,10 @@ Your code, your ideas, your expertise – they all count. By contributing, you l
 </p>
 <p>
 Your passion, creativity, and commitment can drive this project to new heights. <br/> Join us on GitLab and let's build something amazing together.
-<p/>
+</p>
 <p>
 <b> Embrace the open-source spirit and be a part of our journey!</b>
+    </p>
     </p>
   </>
 );
