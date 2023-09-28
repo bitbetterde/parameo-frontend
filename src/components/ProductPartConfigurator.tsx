@@ -1,4 +1,4 @@
-import { Accordion, Select, RangeSlider } from "@components";
+import { Accordion, Select, RangeSliderInput } from "@components";
 import type { IProductPart, IProductPartMaterial } from "@interfaces/IProduct";
 import type {
   IConfiguredParameter,
@@ -103,7 +103,7 @@ const ProductPartConfigurator: React.FC<Props> = ({
               )}
             </div>
             {part?.parameters?.map((parameter) => (
-              <RangeSlider
+              <RangeSliderInput
                 key={parameter.id}
                 className="pb-4"
                 label={parameter.label ?? parameter.alias}
