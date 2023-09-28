@@ -50,7 +50,7 @@ const RangeSlider: React.FC<Props> = ({
           value={parseInt(value || "0")}
           min={rangeMin}
           max={rangeMax}
-          className="w-full appearance-none"
+          className="w-full appearance-none text-indigo-700"
           onChange={(e) => {
             onChange && onChange(parseInt(e.currentTarget.value));
             onValidChange && onValidChange(true);

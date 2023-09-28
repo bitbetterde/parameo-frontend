@@ -21,7 +21,7 @@ import ModelViewer from "./ModelViewer";
 import NavBar from "./NavBar";
 import Notification from "./Notification";
 import ProductPartConfigurator from "./ProductPartConfigurator";
-import RangeSlider from "./RangeSlider";
+import RangeSliderInput from "./RangeSliderInput";
 import ScrollToTop from "./ScrollToTop";
 import Select from "./Select";
 import Spinner from "./Spinner";
@@ -51,7 +51,7 @@ export {
   Accordion,
   Notification,
   Spinner,
-  RangeSlider,
+  RangeSliderInput,
   Select,
   Toggle,
   TextInput,
