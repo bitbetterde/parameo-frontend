@@ -16,7 +16,7 @@ Open source is about giving back to the community. Your contribution helps other
 Your code, your ideas, your expertise – they all count. By contributing, you leave a lasting imprint on a project that could reshape industries or improve lives.
 </p>
 <p>
-Your passion, creativity, and commitment can drive this project to new heights. Join us on GitLab and let's build something amazing together. 
+Your passion, creativity, and commitment can drive this project to new heights. Join us on GitLab and let's build something amazing together.<br/> 
 <b> Embrace the open-source spirit and be a part of our journey!</b>
     </p>
   </>
