@@ -1,4 +1,4 @@
-import { Icon, ButtonLink } from "@components";
+import { Icon, ButtonLink, Spinner } from "@components";
 
 interface Props {
   className?: string;
@@ -33,7 +33,13 @@ const ImpactSection: React.FC<Props> = ({
                   <div className="uppercase tracking-[0.35px]">
                     {item.title}
                   </div>
-                  <div>~{item.description}</div>
+                  <div>
+                    {item.description ? (
+                      `~${item.description}`
+                    ) : (
+                      <Spinner className={"h-4"} />
+                    )}
+                  </div>
                 </div>
               </div>
               <div>
@@ -49,16 +55,15 @@ const ImpactSection: React.FC<Props> = ({
             </div>
           ))}
       </div>
-      {totalEmissions && (
-        <ButtonLink
-          target={`https://translator.ecochain.com/?amount=${totalEmissions}&unit=kg`}
-          variant="secondary"
-          className="w-full lg:w-auto px-5 py-3 justify-center text-base font-medium"
-          newTab
-        >
-          Translate CO2 into...
-        </ButtonLink>
-      )}
+      <ButtonLink
+        disabled={!totalEmissions}
+        target={`https://translator.ecochain.com/?amount=${totalEmissions}&unit=kg`}
+        variant="secondary"
+        className="w-full lg:w-auto px-5 py-3 justify-center text-base font-medium"
+        newTab
+      >
+        Translate CO2 into...
+      </ButtonLink>
     </div>
   );
 };
@@ -88,7 +93,9 @@ export const ImpactSectionItem: React.FC<ImpactSectionItemProps> = ({
         {icon && <Icon className="w-6 text-indigo-600" name={icon} />}
         <div>{subtitle}</div>
       </dt>
-      <dd className="font-normal">{value}</dd>
+      <dd className="font-normal">
+        {value ? value : <Spinner className={"h-4"} />}
+      </dd>
     </dl>
   );
 };

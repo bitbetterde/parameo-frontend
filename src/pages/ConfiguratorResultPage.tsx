@@ -42,24 +42,24 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
   const fetchProducers = useProducerStore((state) => state.loadAllProducers);
   const session = useSessionStore((state) => state.session);
   const loadSession = useSessionStore((state) => state.loadSession);
+  const isRegenerating = useSessionStore((state) => state.isRegenerating);
   const setNotificationData = useNotificationStore(
     (state) => state.setNotificationData
   );
   const machineStore = useMachineStore();
   const typedSession: ISession | undefined =
     session && isISession(session) ? session : undefined;
-
   const [, setLocation] = useLocation();
 
   useEffect(() => {
     fetchProducers();
     machineStore.loadAllMachines();
-    if (sessionId && !typedSession) {
+    if (sessionId && !session) {
       loadSession(sessionId).catch(() => {
         setNotificationData({
           title: "Error!",
           variant: "error",
-          text: "Product doesn't exist!",
+          text: "Session doesn't exist!",
         });
         setLocation("/");
       });
@@ -96,54 +96,60 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
   const impactValuesData = [
     {
       title: "Material",
-      description: typedSession?.material_needed
-        ? `${typedSession?.material_needed
-            ?.map((need) => need.cubic_meters)
-            .reduce((a, b) => a + b, 0)
-            .toFixed(2)} m³`
-        : "",
+      description:
+        typedSession?.material_needed && !isRegenerating
+          ? `${typedSession?.material_needed
+              ?.map((need) => need.cubic_meters)
+              .reduce((a, b) => a + b, 0)
+              .toFixed(2)} m³`
+          : "",
       detailData: [
         {
           subtitle: "Monetary",
           icon: "CurrencyEuroIcon",
-          value: typedSession?.material_price
-            ? new Intl.NumberFormat("de-DE", {
-                style: "currency",
-                currency: "EUR",
-              }).format(typedSession?.material_price)
-            : "",
+          value:
+            typedSession?.material_price && !isRegenerating
+              ? new Intl.NumberFormat("de-DE", {
+                  style: "currency",
+                  currency: "EUR",
+                }).format(typedSession?.material_price)
+              : "",
         },
         {
           subtitle: "CO2 Emissions",
           icon: "GlobeAltIcon",
-          value: materialEmissions
-            ? `${materialEmissions?.value.toFixed(2)} kg`
-            : "",
+          value:
+            materialEmissions && !isRegenerating
+              ? `${materialEmissions?.value.toFixed(2)} kg`
+              : "",
         },
       ],
     },
     {
       title: "Machine",
-      description: typedSession?.machine_time
-        ? getDurationString(
-            typedSession?.machine_time.hours,
-            typedSession?.machine_time.minutes
-          )
-        : "",
+      description:
+        typedSession?.machine_time && !isRegenerating
+          ? getDurationString(
+              typedSession?.machine_time.hours,
+              typedSession?.machine_time.minutes
+            )
+          : "",
       detailData: [
         {
           subtitle: "Electricity",
           icon: "BoltIcon",
-          value: typedSession?.machine_kwh
-            ? `${typedSession?.machine_kwh} kWh`
-            : "",
+          value:
+            typedSession?.machine_kwh && !isRegenerating
+              ? `${typedSession?.machine_kwh} kWh`
+              : "",
         },
         {
           subtitle: "CO2 Emissions",
           icon: "GlobeAltIcon",
-          value: machineEmissions
-            ? `${machineEmissions?.value.toFixed(2)} kg`
-            : "",
+          value:
+            machineEmissions && !isRegenerating
+              ? `${machineEmissions?.value.toFixed(2)} kg`
+              : "",
         },
       ],
     },
@@ -156,31 +162,30 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
     <div className={`bg-white pt-6 md:pt-12 ${className || ""}`}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center pb-10">
-          {typedSession?.product.subtitle && (
+          {session?.product?.subtitle && (
             <h2 className="text-base font-semibold text-indigo-600 uppercase">
-              {typedSession?.product.subtitle}
+              {session?.product?.subtitle}
             </h2>
           )}
           <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            {typedSession?.product.title}
+            {session?.product?.title}
           </h1>
-          {typedSession?.product.description && (
+          {session?.product?.description && (
             <p className="mt-4 text-[20px] leading-7 text-gray-500">
-              {typedSession?.product.description}
+              {session?.product?.description}
             </p>
           )}
         </div>
         <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-24 lg:pt-4 pb-12">
           <div className="lg:w-1/3 flex flex-col gap-5">
-            {typedSession?.all_files_zip_url && (
-              <ButtonLink
-                target={`/configurator/session/${typedSession?.uuid}`}
-                className="py-[13px] justify-center text-base w-full"
-                icon="ArrowPathIcon"
-              >
-                Edit design
-              </ButtonLink>
-            )}
+            <ButtonLink
+              disabled={isRegenerating}
+              target={`/configurator/session/${session?.uuid}`}
+              className="py-[13px] justify-center text-base w-full"
+              icon="ArrowPathIcon"
+            >
+              Edit design
+            </ButtonLink>
             <ImpactSection
               data={impactValuesData}
               totalEmissions={totalEmissions}
@@ -197,28 +202,28 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
                         <DownloadListItem
                           title={item.title}
                           filePath={item.filePath}
+                          spinner={isRegenerating}
                         />
                       </div>
                     )
                 )}
               </dl>
             )}
-            {typedSession?.all_files_zip_url && (
-              <ButtonLink
-                target={typedSession?.all_files_zip_url}
-                className="p-[13px] justify-center text-base w-full"
-                icon="FolderArrowDownIcon"
-                newTab
-              >
-                Download all files (.zip)
-              </ButtonLink>
-            )}
-            <EmailResultHint sessionId={typedSession?.uuid} />
+            <ButtonLink
+              target={typedSession?.all_files_zip_url ?? ""}
+              disabled={isRegenerating}
+              className="p-[13px] justify-center text-base w-full"
+              icon="FolderArrowDownIcon"
+              newTab
+            >
+              Download all files (.zip)
+            </ButtonLink>
+            <EmailResultHint sessionId={session?.uuid} />
           </div>
           <div className="lg:w-2/3">
-            {typedSession?.product.pictures?.length && (
+            {session?.product.pictures?.length && (
               <FeaturedImageGallery
-                images={typedSession?.product.pictures?.map((image) => ({
+                images={session?.product.pictures?.map((image) => ({
                   image: image.image_url,
                 }))}
               />

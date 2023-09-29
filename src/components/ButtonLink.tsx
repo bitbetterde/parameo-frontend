@@ -20,16 +20,22 @@ const ButtonLink: React.FC<Props> = ({
   icon,
   iconVariant,
   children,
+  disabled,
 }: Props) => {
   const dynamicClasses = {
     white: "bg-white text-indigo-700 hover:bg-indigo-50 shadow-sm",
-    primary: "bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm",
+    primary: `${
+      disabled ? "bg-gray-200" : "bg-indigo-600"
+    } text-white hover:bg-indigo-700 shadow-sm`,
     transparent:
       "bg-indigo-500 bg-opacity-60 text-white hover:bg-opacity-70 shadow-sm",
-    secondary: "bg-indigo-100 text-indigo-700 hover:bg-indigo-200",
+    secondary: `${
+      disabled ? "bg-gray-200 text-white" : "bg-indigo-100 text-indigo-700"
+    } hover:bg-indigo-200`,
   };
-  const baseClasses =
-    "rounded-md border border-transparent text-base font-medium flex items-center justify-center";
+  const baseClasses = `rounded-md border border-transparent text-base font-medium flex items-center justify-center ${
+    disabled ? "pointer-events-none " : ""
+  }`;
   const commonProps = {
     href: target,
     className: `${baseClasses} ${dynamicClasses[variant]} ${className || ""}`,
