@@ -15,7 +15,7 @@ const body = (
 export default {
   title: "Feedback",
   id: "feedback",
-  tags: [""],
+  tags: ["Design", "Manufacturing"],
   body,
   teaser:
     "User feedback",
