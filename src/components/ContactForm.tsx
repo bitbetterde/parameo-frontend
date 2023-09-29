@@ -17,7 +17,7 @@ const ContactForm: React.FC<Props> = ({ className }) => {
   const onSubmit = async (data: IEmailData) => {
     setIsBusy(true);
     try {
-      await emailService.sendEmail(data);
+      await emailService.sendEmail({ ...data, type: "contact" });
     } finally {
       setIsBusy(false);
     }

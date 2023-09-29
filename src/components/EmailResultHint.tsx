@@ -43,13 +43,12 @@ const EmailResultHint: React.FC<Props> = ({ className, sessionId }) => {
     e.preventDefault();
     setButtonState("busy" as const);
     try {
-      // TODO: Proper E-Mail endpoint is still missing
       await emailService.sendEmail({
-        content:
-          "You can find your session here: https://stage.parameo.regenholz.de/configurator/session/" +
-          sessionId,
-        sender_email: "test@bitbetter.de",
-        sender_name: "Michael Test",
+        type: "session_link",
+        session_id: sessionId,
+        content: "content",
+        sender_email: email,
+        sender_name: email,
       });
     } finally {
       setButtonState("default" as const);
