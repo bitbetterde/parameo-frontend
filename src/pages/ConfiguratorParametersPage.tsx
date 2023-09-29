@@ -186,7 +186,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     e.preventDefault();
     sessionStore
       .regeneratePreview(
-        (product as IProduct).id,
+        product as IProduct,
         machine.id,
         partsValues,
         getValues("projectName")
@@ -207,14 +207,14 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
     e.preventDefault();
 
     sessionStore
-      .regenerateFormats(
-        (product as IProduct).id,
+      .createOrUpdateSession(
+        product as IProduct,
         machine.id,
         partsValues,
-        userInterestsArray,
         getValues("projectName")
       )
       .then((sessionId) => {
+        sessionStore.regenerateFormats(userInterestsArray);
         setCurrentlyGenerating(undefined);
         setLocation(`/configurator/result/${sessionId}`);
       });

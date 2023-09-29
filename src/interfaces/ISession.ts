@@ -2,6 +2,7 @@ import type { IProduct } from "./IProduct";
 import type { IConfiguredParameter } from "@stores/session.store";
 
 export interface ISessionBase {
+  product: IProduct;
   uuid: string;
   created: string;
   name: string;
@@ -18,8 +19,8 @@ export interface ISessionBase {
   material_price: number;
   machine_kwh: number;
 }
+
 export interface ISession extends ISessionBase {
-  product: IProduct;
   co2_emissions: { label: string; value: number }[];
   user_interests: [];
   configured_parts: [

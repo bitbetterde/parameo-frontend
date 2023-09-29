@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import sessionService from "@services/session.service";
 import type { ISession, ISessionBase } from "@interfaces/ISession";
+import { IProduct } from "@interfaces/IProduct.ts";
 
 export interface IPartConfiguration {
   part_id: number;
@@ -31,26 +32,21 @@ interface IPreviewFile {
 interface SessionStore {
   session: ISessionBase | null;
   previewFile: IPreviewFile | null;
+  isRegenerating: boolean;
   loadSession: (id: string) => Promise<void>;
   regeneratePreview: (
-    productId: number,
+    product: IProduct,
     machineId: number,
     partsData: IPartConfiguration[],
     projectName?: string
   ) => Promise<void>;
-  regenerateFormats: (
-    productId: number,
+  regenerateFormats: (data: string[]) => Promise<string>;
+  createOrUpdateSession: (
+    product: IProduct,
     machineId: number,
     partsData: IPartConfiguration[],
-    data: string[],
     projectName?: string
   ) => Promise<string>;
-  createOrUpdateSession: (
-    productId: number,
-    machineId: number,
-    partsData: IPartConfiguration[],
-    projectName?: string
-  ) => Promise<void>;
   resetSession: () => void;
 }
 
@@ -64,6 +60,7 @@ const useSessionStore = create<SessionStore>()(
   devtools((set, get) => ({
     previewFile: null,
     session: null,
+    isRegenerating: false,
     resetSession: () => {
       set(() => ({ previewFile: null, session: null }));
     },
@@ -76,7 +73,7 @@ const useSessionStore = create<SessionStore>()(
       }));
     },
     createOrUpdateSession: async (
-      productId,
+      product,
       machineId,
       partsData,
       projectName?
@@ -85,7 +82,7 @@ const useSessionStore = create<SessionStore>()(
 
       if (!sessionId) {
         sessionId = await sessionService.createSession({
-          product_id: productId ?? 0,
+          product_id: product.id ?? 0,
           machine_id: machineId ?? 0,
         });
       }
@@ -96,7 +93,8 @@ const useSessionStore = create<SessionStore>()(
         parts: partsData,
       });
 
-      set((state) => ({ ...state, session }));
+      set((state) => ({ ...state, session: { ...session, product: product } }));
+      return sessionId as string;
     },
     regeneratePreview: async (productId, machineId, partsData, projectName) => {
       await get().createOrUpdateSession(
@@ -111,23 +109,12 @@ const useSessionStore = create<SessionStore>()(
         set((state) => ({ ...state, previewFile }));
       }
     },
-    regenerateFormats: async (
-      productId,
-      machineId,
-      partsData,
-      data,
-      projectName
-    ) => {
-      await get().createOrUpdateSession(
-        productId,
-        machineId,
-        partsData,
-        projectName
-      );
+    regenerateFormats: async (data) => {
+      set((state) => ({ ...state, isRegenerating: true }));
       const sessionId = get().session?.uuid;
       if (sessionId) {
         const session = await sessionService.regenerateFormats(sessionId, data);
-        set((state) => ({ ...state, session }));
+        set((state) => ({ ...state, session, isRegenerating: false }));
       }
       return sessionId as string;
     },
