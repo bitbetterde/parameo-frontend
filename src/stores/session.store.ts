@@ -15,15 +15,6 @@ export interface IConfiguredParameter {
   value: number;
 }
 
-export interface IGenerateFormatsResultData {
-  all_files_zip_url: string;
-  dxf_file_url: string;
-  gcode_files_zip_url: string;
-  co2_emissions: { label: string; value: number }[];
-  material_price: number;
-  machine_time: { hours: number; minutes: number; seconds: number };
-}
-
 interface IPreviewFile {
   url: string;
   hash: string;
