@@ -21,10 +21,10 @@ build-job:
     paths:
       - dist
 
-deploy-job:
+deploy-development-job:
   stage: deploy
   environment:
-    name: production
+    name: development
     url: https://$SFTP_HOST
   variables:
     GIT_STRATEGY: none
