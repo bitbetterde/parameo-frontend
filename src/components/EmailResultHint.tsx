@@ -2,6 +2,7 @@ import type React from "react";
 import { Button, Icon, Spinner, TextInput } from "@components";
 import { useState } from "react";
 import { emailService } from "@services";
+import { useSessionStore } from "@stores";
 
 interface Props {
   className?: string;
@@ -15,6 +16,8 @@ const EmailResultHint: React.FC<Props> = ({ className, sessionId }) => {
   const [buttonState, setButtonState] = useState<ButtonState>(
     "default" as const
   );
+
+  const updateMail = useSessionStore((state) => state.updateMailSession);
 
   const buttonContent = {
     busy: (
@@ -43,12 +46,13 @@ const EmailResultHint: React.FC<Props> = ({ className, sessionId }) => {
     e.preventDefault();
     setButtonState("busy" as const);
     try {
+      await updateMail(email);
       await emailService.sendEmail({
         type: "session_link",
         session_id: sessionId,
         content: "content",
-        sender_email: email,
-        sender_name: email,
+        user_email: email,
+        user_name: "name",
       });
     } finally {
       setButtonState("default" as const);

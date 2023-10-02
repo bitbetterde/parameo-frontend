@@ -38,13 +38,14 @@ interface SessionStore {
     partsData: IPartConfiguration[],
     projectName?: string
   ) => Promise<string>;
+  updateMailSession: (userMail: string) => Promise<void>;
   resetSession: () => void;
 }
 
 export function isISession(
   session: ISessionBase | ISession
 ): session is ISession {
-  return (session as ISession).dxf_file_url !== undefined;
+  return (session as ISession).dxf_zip_file_url !== undefined;
 }
 
 const useSessionStore = create<SessionStore>()(
@@ -86,6 +87,20 @@ const useSessionStore = create<SessionStore>()(
 
       set((state) => ({ ...state, session: { ...session, product: product } }));
       return sessionId as string;
+    },
+    updateMailSession: async (userMail) => {
+      const session = get().session;
+      if (session && isISession(session)) {
+        await sessionService.updateSession(session.uuid, {
+          // This can be used to update the session name/email – currently not used
+          session: { name: session.name, user_email_address: userMail },
+          parts: session.configured_parts.map((configured_part) => ({
+            part_id: configured_part.part.id,
+            material_id: configured_part.selected_material.id,
+            parameters: configured_part.configured_parameters,
+          })),
+        });
+      }
     },
     regeneratePreview: async (productId, machineId, partsData, projectName) => {
       await get().createOrUpdateSession(

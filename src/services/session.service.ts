@@ -20,6 +20,7 @@ export interface IConfiguredParameter {
 export interface IUpdateSessionData {
   session: {
     name?: string;
+    user_email_address?: string;
   };
   parts: IPartConfiguration[];
 }
@@ -31,13 +32,6 @@ interface IPreviewFile {
 
 interface ISessionId {
   uuid: string;
-}
-
-export interface IUpdateSessionData {
-  session: {
-    name?: string;
-  };
-  parts: IPartConfiguration[];
 }
 
 const sessionService = {
