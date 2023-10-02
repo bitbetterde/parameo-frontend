@@ -22,6 +22,8 @@ build-job:
       - dist
 
 deploy-development-job:
+  only:
+      - development
   stage: deploy
   environment:
     name: development
