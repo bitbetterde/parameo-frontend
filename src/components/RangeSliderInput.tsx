@@ -12,6 +12,7 @@ interface Props {
   onChange?: (value: number) => void;
   onValidChange?: (valid: boolean) => void;
   placeholder?: number | string;
+  step?: number;
 }
 
 const RangeSlider: React.FC<Props> = ({
@@ -24,6 +25,7 @@ const RangeSlider: React.FC<Props> = ({
   onChange,
   placeholder,
   onValidChange,
+  step = 1,
 }) => {
   const [value, setValue] = useState(propsValue?.toString());
   const [prevPropsValue, setPrevPropsValue] = useState(propsValue);
@@ -50,6 +52,7 @@ const RangeSlider: React.FC<Props> = ({
           value={parseInt(value || "0")}
           min={rangeMin}
           max={rangeMax}
+          step={step}
           className="w-full appearance-none text-indigo-700"
           onChange={(e) => {
             onChange && onChange(parseInt(e.currentTarget.value));

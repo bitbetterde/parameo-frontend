@@ -113,6 +113,7 @@ const ProductPartConfigurator: React.FC<Props> = ({
                 rangeMax={Math.round(
                   parameter.maximum / CONVERSION_FACTOR_TO_MM
                 )}
+                step={parameter.measure_step}
                 onValidChange={onValidChange}
                 onChange={(value) => {
                   setParametersValues((prevParametersValues) =>
