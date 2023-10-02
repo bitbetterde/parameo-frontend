@@ -93,15 +93,26 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
     0
   );
 
+  const numberFormat = new Intl.NumberFormat("en-US", {
+    style: "decimal",
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 2,
+  });
+
+  const material_need_overall = numberFormat.format(
+    typedSession?.material_needed
+      ?.map((need) => need.cubic_meters)
+      .reduce((a, b) => a + b, 0) ?? 0
+  );
   const impactValuesData = [
     {
       title: "Material",
       description:
         typedSession?.material_needed && !isRegenerating
-          ? `${typedSession?.material_needed
-              ?.map((need) => need.cubic_meters)
-              .reduce((a, b) => a + b, 0)
-              .toFixed(2)} m³`
+          ? //magic round up, because no material need is confusing for the user
+            `${
+              material_need_overall === "0.00" ? "0.01" : material_need_overall
+            } m³`
           : "",
       detailData: [
         {
@@ -109,10 +120,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
           icon: "CurrencyEuroIcon",
           value:
             typedSession?.material_price && !isRegenerating
-              ? new Intl.NumberFormat("de-DE", {
-                  style: "currency",
-                  currency: "EUR",
-                }).format(typedSession?.material_price)
+              ? `${numberFormat.format(typedSession?.material_price)} €`
               : "",
         },
         {
@@ -120,7 +128,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
           icon: "GlobeAltIcon",
           value:
             materialEmissions && !isRegenerating
-              ? `${materialEmissions?.value.toFixed(2)} kg`
+              ? `${numberFormat.format(materialEmissions?.value)} kg`
               : "",
         },
       ],
@@ -140,7 +148,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
           icon: "BoltIcon",
           value:
             typedSession?.machine_kwh && !isRegenerating
-              ? `${typedSession?.machine_kwh} kWh`
+              ? `${numberFormat.format(typedSession?.machine_kwh)} kWh`
               : "",
         },
         {
@@ -148,7 +156,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
           icon: "GlobeAltIcon",
           value:
             machineEmissions && !isRegenerating
-              ? `${machineEmissions?.value.toFixed(2)} kg`
+              ? `${numberFormat.format(machineEmissions?.value)} kg`
               : "",
         },
       ],
@@ -231,6 +239,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
 
             <div className="flex flex-col lg:flex-row gap-4 justify-start items-center w-full pt-6 lg:pb-12">
               <ButtonLink
+                nativeLink={true}
                 key={"localmanufacturing"}
                 target={"#manufacturing"}
                 variant="secondary"
