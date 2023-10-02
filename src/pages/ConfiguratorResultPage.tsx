@@ -77,7 +77,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
     },
     {
       title: "Part designs (.dxf) zipped",
-      filePath: typedSession?.dxf_file_url || "",
+      filePath: typedSession?.dxf_zip_file_url || "",
     },
   ];
 

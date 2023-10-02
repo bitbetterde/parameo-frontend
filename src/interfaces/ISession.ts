@@ -12,7 +12,8 @@ export interface ISessionBase {
   preview_file_3d_url: string;
   gcode_files_zip_url: string;
   all_files_zip_url: string;
-  dxf_file_url: string;
+  dxf_zip_file_url?: string;
+  main_dxf_file_ur: string;
   bom_file_url: string;
   machine_time: { hours: number; minutes: number; seconds: number };
   material_needed: { material_id: number; cubic_meters: number }[];

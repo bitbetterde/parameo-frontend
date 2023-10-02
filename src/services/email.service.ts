@@ -3,9 +3,9 @@ import { fetchAndHandleErrors } from "./util";
 export interface IEmailData {
   type: "session_link" | "contact" | "order";
   content?: string;
-  sender_email?: string;
-  sender_name?: string;
-  sender_phone?: string;
+  user_email?: string;
+  user_name?: string;
+  user_phone?: string;
   session_id?: string;
 }
 

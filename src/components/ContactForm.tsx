@@ -43,7 +43,7 @@ const ContactForm: React.FC<Props> = ({ className }) => {
       <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
         <TextInput
           placeholder="Full name *"
-          {...register("sender_name", { required: true })}
+          {...register("user_name", { required: true })}
           required
         />
         <input
@@ -51,7 +51,7 @@ const ContactForm: React.FC<Props> = ({ className }) => {
           id="sender_email"
           placeholder="Your Email *"
           className="block w-full rounded-md h-[50px] px-[21px] py-[13px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-gray-500 font-normal text-base"
-          {...register("sender_email", { required: true })}
+          {...register("user_email", { required: true })}
           required
         />
         <input
@@ -59,7 +59,7 @@ const ContactForm: React.FC<Props> = ({ className }) => {
           id="phone-number"
           placeholder="Phone number"
           className="block w-full rounded-md h-[50px] px-[21px] py-[13px] border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-gray-500 font-normal text-base"
-          {...register("sender_phone")}
+          {...register("user_phone")}
         />
         <textarea
           id="content"
