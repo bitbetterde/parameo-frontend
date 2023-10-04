@@ -24,8 +24,7 @@ build:
 
 deploy-dev-job:
   rules:
-    if:
-      - $CI_COMMIT_BRANCH == "development"
+    - if: $CI_COMMIT_BRANCH == "development"
   stage: deploy-dev
   environment:
     name: development
@@ -42,8 +41,7 @@ deploy-dev-job:
 
 deploy-prod-job:
   rules:
-    if:
-      - $CI_COMMIT_BRANCH == "development"
+    - if: $CI_COMMIT_BRANCH == "development"
   needs:
     - job: build
   stage: deploy-prod
