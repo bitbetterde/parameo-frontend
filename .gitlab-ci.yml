@@ -8,7 +8,7 @@ stages:
   - build
   - deploy
 
-build-job:
+build:
   stage: build
   script:
     - echo "Installing dependencies..."
@@ -22,10 +22,12 @@ build-job:
       - dist
 
 deploy-dev-job:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "development"
   stage: deploy
   environment:
-    name: $CI_COMMIT_BRANCH
-    url: https://$SFTP_HOST
+    name: development
+    url: https://stage.parameo.regenholz.de
   variables:
     GIT_STRATEGY: none
   before_script:
@@ -37,7 +39,8 @@ deploy-dev-job:
     - lftp -e "set sftp:auto-confirm yes; set ftp:list-options -a; set net:timeout 5; set net:max-retries 3; set net:reconnect-interval-base 5; open sftp://$SFTP_HOST; user $SFTP_USER $SFTP_PASSWORD; mirror --reverse --delete ./dist/ ./html/; bye"
 
 deploy-prod-job:
-  when: manual
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
   stage: deploy
   environment:
     name: production
