@@ -39,7 +39,9 @@ build-prod-job:
       - dist
 
 deploy-dev-job:
-  needs: ["build-dev-job"]
+  needs:
+    - job: build-dev-job
+      optional: true
   stage: deploy
   environment:
     name: development
@@ -55,7 +57,9 @@ deploy-dev-job:
     - lftp -e "set sftp:auto-confirm yes; set ftp:list-options -a; set net:timeout 5; set net:max-retries 3; set net:reconnect-interval-base 5; open sftp://$SFTP_HOST; user $SFTP_USER $SFTP_PASSWORD; mirror --reverse --delete ./dist/ ./html/; bye"
 
 deploy-prod-job:
-  needs: ["build-prod-job"]
+  needs:
+    - job: build-prod-job
+      optional: true
   stage: deploy
   environment:
     name: production
