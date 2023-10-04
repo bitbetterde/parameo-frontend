@@ -3,6 +3,12 @@ image: node:20.5-alpine
 workflow:
   rules:
     - if: $CI_COMMIT_BRANCH == "development" || $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "development"
+      variables:
+        ENVIRONMENT_NAME: "development"
+    - if: $CI_COMMIT_BRANCH == "main"
+      variables:
+        ENVIRONMENT_NAME: "production"
 
 stages:
   - build
@@ -10,6 +16,7 @@ stages:
 
 build:
   stage: build
+  environment: $ENVIRONMENT_NAME
   script:
     - echo "Installing dependencies..."
     - npm ci
