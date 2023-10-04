@@ -8,7 +8,24 @@ stages:
   - build
   - deploy
 
-build-job:
+build-dev-job:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "development"
+  stage: build
+  script:
+    - echo "Installing dependencies..."
+    - npm ci
+    - echo "Compiling the code..."
+    - npm run build
+  artifacts:
+    name: $CI_COMMIT_REF_SLUG
+    expire_in: 1 day
+    paths:
+      - dist
+
+build-prod-job:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
   stage: build
   script:
     - echo "Installing dependencies..."
@@ -22,6 +39,7 @@ build-job:
       - dist
 
 deploy-dev-job:
+  needs: build-dev-job
   stage: deploy
   environment:
     name: development
@@ -37,7 +55,7 @@ deploy-dev-job:
     - lftp -e "set sftp:auto-confirm yes; set ftp:list-options -a; set net:timeout 5; set net:max-retries 3; set net:reconnect-interval-base 5; open sftp://$SFTP_HOST; user $SFTP_USER $SFTP_PASSWORD; mirror --reverse --delete ./dist/ ./html/; bye"
 
 deploy-prod-job:
-  when: manual
+  needs: build-prod-job
   stage: deploy
   environment:
     name: production
