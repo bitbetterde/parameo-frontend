@@ -9,6 +9,7 @@ interface Props extends IButton {
   newTab?: boolean;
   icon?: string;
   iconVariant?: "solid" | "outline";
+  nativeLink?: boolean;
 }
 
 const ButtonLink: React.FC<Props> = ({
@@ -21,6 +22,7 @@ const ButtonLink: React.FC<Props> = ({
   iconVariant,
   children,
   disabled,
+  nativeLink,
 }: Props) => {
   const dynamicClasses = {
     white: "bg-white text-indigo-700 hover:bg-indigo-50 shadow-sm",
@@ -30,7 +32,7 @@ const ButtonLink: React.FC<Props> = ({
     transparent:
       "bg-indigo-500 bg-opacity-60 text-white hover:bg-opacity-70 shadow-sm",
     secondary: `${
-      disabled ? "bg-gray-200 text-white" : "bg-indigo-100 text-indigo-700"
+      disabled ? "bg-gray-300 text-gray-400" : "bg-indigo-100 text-indigo-700"
     } hover:bg-indigo-200`,
   };
   const baseClasses = `rounded-md border border-transparent text-base font-medium flex items-center justify-center ${
@@ -41,10 +43,10 @@ const ButtonLink: React.FC<Props> = ({
     className: `${baseClasses} ${dynamicClasses[variant]} ${className || ""}`,
     download,
   };
-  return newTab ? (
+  return newTab || nativeLink ? (
     <a
       {...commonProps}
-      target="_blank"
+      {...(newTab ? { target: "_blank" } : {})}
       {...(download ? { download: true } : {})}
     >
       {icon && <Icon size={20} name={icon} className="w-5 h-5 mr-2" />}
