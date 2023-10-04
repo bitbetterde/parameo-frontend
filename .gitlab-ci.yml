@@ -2,8 +2,7 @@ image: node:20.5-alpine
 
 workflow:
   rules:
-    - if: $CI_COMMIT_BRANCH == "development"
-    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "development" || $CI_COMMIT_BRANCH == "main"
 
 stages:
   - build
@@ -22,13 +21,27 @@ build-job:
     paths:
       - dist
 
-deploy-development-job:
-  only:
-      - development
+deploy-dev-job:
   stage: deploy
   environment:
     name: $CI_COMMIT_BRANCH
     url: https://$SFTP_HOST
+  variables:
+    GIT_STRATEGY: none
+  before_script:
+    - apk update
+    - apk add --no-cache lftp openssh
+    - mkdir -p ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+  script:
+    - lftp -e "set sftp:auto-confirm yes; set ftp:list-options -a; set net:timeout 5; set net:max-retries 3; set net:reconnect-interval-base 5; open sftp://$SFTP_HOST; user $SFTP_USER $SFTP_PASSWORD; mirror --reverse --delete ./dist/ ./html/; bye"
+
+deploy-prod-job:
+  when: manual
+  stage: deploy
+  environment:
+    name: production
+    url: https://parameo.de
   variables:
     GIT_STRATEGY: none
   before_script:
