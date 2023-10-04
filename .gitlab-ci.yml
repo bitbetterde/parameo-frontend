@@ -10,7 +10,10 @@ stages:
 
 build:
   stage: build
+  environment: $CI_COMMIT_BRANCH
   script:
+    - echo $CI_COMMIT_BRANCH
+    - echo $SFTP_USER
     - echo "Installing dependencies..."
     - npm ci
     - echo "Compiling the code..."
@@ -43,7 +46,7 @@ deploy-prod-job:
     - if: $CI_COMMIT_BRANCH == "main"
   stage: deploy
   environment:
-    name: production
+    name: main
     url: https://parameo.de
   variables:
     GIT_STRATEGY: none
