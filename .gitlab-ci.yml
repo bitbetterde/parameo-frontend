@@ -6,8 +6,7 @@ workflow:
 
 stages:
   - build
-  - deploy-dev
-  - deploy-prod
+  - deploy
 
 build:
   stage: build
@@ -25,7 +24,7 @@ build:
 deploy-dev-job:
   rules:
     - if: $CI_COMMIT_BRANCH == "development"
-  stage: deploy-dev
+  stage: deploy
   environment:
     name: development
     url: https://stage.parameo.regenholz.de
@@ -42,9 +41,7 @@ deploy-dev-job:
 deploy-prod-job:
   rules:
     - if: $CI_COMMIT_BRANCH == "development"
-  needs:
-    - job: build
-  stage: deploy-prod
+  stage: deploy
   environment:
     name: production
     url: https://parameo.de
