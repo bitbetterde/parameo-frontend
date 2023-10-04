@@ -12,6 +12,8 @@ build:
   stage: build
   environment: $CI_COMMIT_BRANCH
   script:
+    - echo $CI_COMMIT_BRANCH
+    - echo $SFTP_USER
     - echo "Installing dependencies..."
     - npm ci
     - echo "Compiling the code..."
