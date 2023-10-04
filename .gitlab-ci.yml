@@ -3,6 +3,7 @@ image: node:20.5-alpine
 workflow:
   rules:
     - if: $CI_COMMIT_BRANCH == "development"
+    - if: $CI_COMMIT_BRANCH == "main"
 
 stages:
   - build
@@ -24,7 +25,7 @@ build-job:
 deploy-development-job:
   stage: deploy
   environment:
-    name: development
+    name: $CI_COMMIT_BRANCH
     url: https://$SFTP_HOST
   variables:
     GIT_STRATEGY: none
