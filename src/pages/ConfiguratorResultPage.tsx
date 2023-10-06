@@ -99,7 +99,11 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
     minimumFractionDigits: 2,
   });
 
-  const material_need_overall = numberFormat.format(
+  const material_need_overall = new Intl.NumberFormat("en-US", {
+    style: "decimal",
+    maximumFractionDigits: 3,
+    minimumFractionDigits: 3,
+  }).format(
     typedSession?.material_needed
       ?.map((need) => need.cubic_meters)
       .reduce((a, b) => a + b, 0) ?? 0
@@ -111,7 +115,9 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
         typedSession?.material_needed && !isRegenerating
           ? //magic round up, because no material need is confusing for the user
             `${
-              material_need_overall === "0.00" ? "0.01" : material_need_overall
+              material_need_overall === "0.000"
+                ? "0.001"
+                : material_need_overall
             } m³`
           : "",
       detailData: [
