@@ -58,7 +58,7 @@ const ConfiguratorProductsPage = () => {
               href: `/configurator/product/${product.id}`,
               subtitle: product?.machine_type,
               description: product?.description || "No description available",
-              licence: "licence type",
+              licence: product?.subtitle || "licence type",
               cardImage: product?.pictures?.[0]?.image_url,
               author: {
                 name: product?.designer_name,

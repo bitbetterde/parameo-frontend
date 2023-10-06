@@ -378,6 +378,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               disabled={
                 !isValid || Boolean(currentlyGenerating) || sliderInvalid
               }
+              type={"button"}
               variant={"primary"}
               className="w-full"
               onClick={regenerateFormats}
@@ -428,6 +429,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               disabled={
                 !isValid || Boolean(currentlyGenerating) || sliderInvalid
               }
+              type={"submit"}
               variant={"primary"}
               className="w-full"
               onClick={regeneratePreview}
