@@ -38,7 +38,7 @@ const ConfiguratorProductsPage = () => {
     <>
       <HeroSection
         title="Open Production Configurator"
-        subtitle="customize and build with ease"
+        subtitle="customize and build your products with ease"
         heroImage="/images/parameo-hero-img_configurator.jpg"
         heroImageAlt="carpenter working on a laptop"
       />
