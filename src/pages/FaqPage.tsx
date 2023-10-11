@@ -47,8 +47,8 @@ const FaqPage: React.FC<Props> = ({
   return (
     <>
       <HeroSection
-        title="Learn more about open production"
-        subtitle="From bits to atoms with parameo"
+        title="learn more and get involved"
+        subtitle="it's open source"
         heroImage="/images/parameo-hero-img_faq.jpg"
         heroImageAlt="cnc mill in action"
       />
