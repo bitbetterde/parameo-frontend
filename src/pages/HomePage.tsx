@@ -142,7 +142,7 @@ const HomePage: React.FC = () => {
       ) : (
         <CardSlider
           title="Individual products for individual needs"
-          description=" "
+          description="customize and build with ease"
           cardsData={
             products &&
             products?.map((product) => ({
