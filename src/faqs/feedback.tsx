@@ -18,7 +18,7 @@ export default {
   tags: ["Design", "Manufacturing"],
   body,
   teaser:
-    "User feedback",
+    "Who are you? How much you know about parametric design? What did you achieve with parameo? Do you currently have any tool that does what parameo does? We'd be glad to get your feedback to improve this tool.",
   showOnHomePage: true,
   order: 3,
 } as IFaqFile;
