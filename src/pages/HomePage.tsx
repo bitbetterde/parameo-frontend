@@ -50,13 +50,13 @@ const features = [
   {
     name: "Impact valuation",
     description:
-      "parameo calculates the individual impact value indicated by material data and machine runtime.",
+      "parameo calculates impact indicators for individual production awareness based on material and machine data.",
     icon: "ScaleIcon",
   },
   {
     name: "G-code generation",
     description:
-      "G-code is a programming language for CNC (Computer Numerical Control) machines. parameo provides the uniquely configured .nc-data file.",
+      "parameo provides the maschine code (.nc format) to manufacture custom-made products based on individual configuration.",
     icon: "ArrowPathIcon",
   },
   {
@@ -131,7 +131,7 @@ const HomePage: React.FC = () => {
       <FeatureSection
         title="parameo in a nutshell"
         subtitle=""
-        description=" "
+        description="arising core features"
         features={features}
       />
       <AvatarSection people={people} title="A tool for" />
