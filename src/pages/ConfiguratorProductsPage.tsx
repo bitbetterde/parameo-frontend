@@ -38,7 +38,7 @@ const ConfiguratorProductsPage = () => {
     <>
       <HeroSection
         title="Open Production Configurator"
-        subtitle="customize and build individual products for individual needs"
+        subtitle="customize and build with ease"
         heroImage="/images/parameo-hero-img_configurator.jpg"
         heroImageAlt="carpenter working on a laptop"
       />
@@ -50,7 +50,7 @@ const ConfiguratorProductsPage = () => {
         <CardSlider
           title="Individual products for individual needs"
           subtitle=""
-          description=""
+          description="open parametric product designs"
           cardsData={
             products &&
             products?.map((product) => ({
