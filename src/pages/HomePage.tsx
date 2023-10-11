@@ -129,12 +129,12 @@ const HomePage: React.FC = () => {
         buttons={heroButtons}
       />
       <FeatureSection
-        title="customize, calculate and manufacture with ease"
+        title="customize and manufacture with ease"
         subtitle=""
         description=" "
         features={features}
       />
-      <AvatarSection people={people} title="A tool for:" />
+      <AvatarSection people={people} title="A tool for" />
       {!products ? (
         <div className="w-full h-32 flex items-center justify-center">
           <Spinner />
@@ -173,7 +173,7 @@ const HomePage: React.FC = () => {
         </div>
       ) : (
         <CardSlider
-          title="Featured machinery"
+          title="featured machinery"
           description="The tool is based on open source software and primarily targets open source hardware."
           cardsData={
             machines &&
