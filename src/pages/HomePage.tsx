@@ -129,21 +129,20 @@ const HomePage: React.FC = () => {
         buttons={heroButtons}
       />
       <FeatureSection
-        title="Leave the math to parameo"
+        title="customize, calculate and manufacture with ease"
         subtitle=""
-        description="The tool offers a machine code generator, impact valuation, a 'build or buy' option and an over all freely accessible system using open source software for open source hardware."
+        description=" "
         features={features}
       />
-      <AvatarSection people={people} title="A tool for you:" />
+      <AvatarSection people={people} title="A tool for:" />
       {!products ? (
         <div className="w-full h-32 flex items-center justify-center">
           <Spinner />
         </div>
       ) : (
         <CardSlider
-          title="parameo products"
-          description="Adjust the dimensions according to your individual needs.
-          Then build it yourself or buy it from local manufacturers."
+          title="individual products for individual needs"
+          description=" "
           cardsData={
             products &&
             products?.map((product) => ({
