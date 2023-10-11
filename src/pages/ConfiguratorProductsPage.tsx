@@ -49,7 +49,7 @@ const ConfiguratorProductsPage = () => {
       ) : (
         <CardSlider
           title="Individual Products for Individual Needs"
-          subtitle="Configurator"
+          subtitle=""
           description="explore & customize parameo products"
           cardsData={
             products &&
