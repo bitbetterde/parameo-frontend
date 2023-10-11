@@ -129,7 +129,7 @@ const HomePage: React.FC = () => {
         buttons={heroButtons}
       />
       <FeatureSection
-        title=" "
+        title="parameo core features"
         subtitle=""
         description=" "
         features={features}
