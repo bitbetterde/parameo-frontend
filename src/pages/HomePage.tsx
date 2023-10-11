@@ -129,9 +129,9 @@ const HomePage: React.FC = () => {
         buttons={heroButtons}
       />
       <FeatureSection
-        title="parameo in a nutshell"
+        title="parameo core features in a nutshell"
         subtitle=""
-        description="arising core features"
+        description=""
         features={features}
       />
       <AvatarSection people={people} title="A tool for" />
@@ -142,7 +142,7 @@ const HomePage: React.FC = () => {
       ) : (
         <CardSlider
           title="Individual products for individual needs"
-          description="customize and build with ease"
+          description="you customize and build with ease"
           cardsData={
             products &&
             products?.map((product) => ({
