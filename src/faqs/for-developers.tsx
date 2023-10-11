@@ -31,6 +31,6 @@ export default {
   body,
   teaser:
     "Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.",
-  showOnHomePage: false,
+  showOnHomePage: true,
   order: 3,
 } as IFaqFile;
