@@ -30,7 +30,7 @@ export default {
   tags: ["Code"],
   body,
   teaser:
-    "Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.",
+    "Your code, your ideas, your expertise – they all count. By contributing, you leave a lasting imprint on a project that could reshape industries or improve lives.",
   showOnHomePage: true,
   order: 3,
 } as IFaqFile;
