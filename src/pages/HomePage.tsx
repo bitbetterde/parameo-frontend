@@ -60,15 +60,15 @@ const features = [
     icon: "ArrowPathIcon",
   },
   {
-    name: "Bill of materials",
+    name: "Parametric configuration",
     description:
-      "parameo provides a 'bom.csv' with a list of needed materials based on the individually configured product dimensions.",
+      "parameo is an over all freely accessible system using open source software to build open parametric products primarily with open source machines.",
     icon: "TableCellsIcon",
   },
   {
     name: "DIY or BUY",
     description:
-      "parameo provides material and manufacturing data for self-production as well as contacts to local manufacturers.",
+      "parameo provides material and manufacturing data for self-production as well as contacts to request local manufacturers.",
     icon: "BuildingStorefrontIcon",
   },
 ];
