@@ -48,9 +48,9 @@ const ConfiguratorProductsPage = () => {
         </div>
       ) : (
         <CardSlider
-          title="open parametric product designs"
+          title="Individual products for individual needs"
           subtitle=""
-          description="individual products for individual needs"
+          description=""
           cardsData={
             products &&
             products?.map((product) => ({
