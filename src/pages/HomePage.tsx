@@ -48,10 +48,10 @@ const people = [
 
 const features = [
   {
-    name: "Impact valuation",
+    name: "Parametric configuration",
     description:
-      "parameo calculates impact indicators for individual production awareness based on material and machine data.",
-    icon: "ScaleIcon",
+      "parameo is an over all freely accessible system using open source software to build open parametric products primarily with open source machines.",
+    icon: "TableCellsIcon",
   },
   {
     name: "G-code generation",
@@ -60,10 +60,10 @@ const features = [
     icon: "ArrowPathIcon",
   },
   {
-    name: "Parametric configuration",
+    name: "Impact valuation",
     description:
-      "parameo is an over all freely accessible system using open source software to build open parametric products primarily with open source machines.",
-    icon: "TableCellsIcon",
+      "parameo calculates impact indicators for individual production awareness based on material and machine data.",
+    icon: "ScaleIcon",
   },
   {
     name: "DIY or BUY",
