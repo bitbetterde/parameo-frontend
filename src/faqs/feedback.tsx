@@ -19,6 +19,6 @@ export default {
   body,
   teaser:
     "User feedback",
-  showOnHomePage: false,
+  showOnHomePage: true,
   order: 3,
 } as IFaqFile;
