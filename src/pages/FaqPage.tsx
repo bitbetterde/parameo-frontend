@@ -47,7 +47,7 @@ const FaqPage: React.FC<Props> = ({
   return (
     <>
       <HeroSection
-        title="parameo Know How"
+        title="Open Know How"
         subtitle="learn more and get involved – it's open source"
         heroImage="/images/parameo-hero-img_faq.jpg"
         heroImageAlt="cnc mill in action"
