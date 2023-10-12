@@ -49,8 +49,8 @@ const FaqPage: React.FC<Props> = ({
       <HeroSection
         title="Open Know How"
         subtitle="learn more and get involved – it's open source"
-        heroImage="/images/parameo-hero-img_faq.jpg"
-        heroImageAlt="cnc mill in action"
+        heroImage="/images/parameo-hero-img_home-bw.jpg"
+        heroImageAlt="wood plate goods"
       />
       <div className="mx-auto max-w-2xl text-center p-6 md:pb-10 md:pt-[44px]">
         {subtitle && (
