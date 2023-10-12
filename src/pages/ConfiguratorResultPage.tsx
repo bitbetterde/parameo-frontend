@@ -373,7 +373,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
                     title: producer?.name,
                     externalHref: producer?.website_url,
                     subtitle: producer?.location_name || "City",
-                    cardImage: producer?.pictures?.[0]?.image_url,
+                    cardImages: producer?.pictures,
                     description:
                       producer?.description || "No description available",
                     onButtonClick: () => {
@@ -388,6 +388,31 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
             />
           )}
         </div>
+        <h2
+          className="text-base font-semibold text-indigo-600 uppercase pt-7 text-center"
+          id="manufacturing"
+        >
+          Local Manufacturing
+        </h2>
+        {!producers ? (
+          <div className="w-full h-96 flex items-center justify-center">
+            <Spinner />
+          </div>
+        ) : (
+          <CardSlider
+            cardsData={
+              producers &&
+              producers?.map((producer) => ({
+                title: producer?.name,
+                externalHref: producer?.website_url,
+                subtitle: producer?.location_name || "City",
+                cardImages: producer?.pictures,
+                description:
+                  producer?.description || "No description available",
+              }))
+            }
+          />
+        )}
       </div>
     </>
   );

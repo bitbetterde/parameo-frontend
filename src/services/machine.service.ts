@@ -14,11 +14,7 @@ export interface IMachine {
   manufacturer_image_file: string;
   production_hints: { language: string; topic: string; text: string }[];
   selectable: boolean;
-  pictures: [
-    {
-      image_url: string;
-    },
-  ];
+  pictures: { image_url: string }[];
 }
 
 const machineService = {
