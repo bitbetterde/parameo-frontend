@@ -124,8 +124,8 @@ const HomePage: React.FC = () => {
       <HeroSection
         title="Parametric Build Assistant"
         subtitle="parameo is an open tool for customizing parametric product designs, calculating impact values and generating individual production data for CNC machines."
-        heroImage="/images/parameo-hero-img_home-bw.jpg"
-        heroImageAlt="wood plate goods"
+        heroImage="/images/parameo-hero-img_faq.jpg"
+        heroImageAlt="cnc mill in action"
         buttons={heroButtons}
       />
       <FeatureSection
