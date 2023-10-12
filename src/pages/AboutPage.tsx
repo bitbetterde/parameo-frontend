@@ -145,11 +145,9 @@ const AboutPage: React.FC<Props> = ({
         <h2>Project scope</h2>
 
         <img
-          src="/images/parameo-project-scope-01.png"
+          src="/images/parameo-projectscope.png"
           alt="Project Scope Slide"
         />
-
-        <h2>Get involved via the contact form down here</h2>
 
         <ul>
           <li>
@@ -165,6 +163,8 @@ const AboutPage: React.FC<Props> = ({
             <a href="/faq/for-makers">FAQ for Makers</a>
           </li>
         </ul>
+
+        <h2>Get involved via the contact form down here</h2>
         
       </div>
       <ContactForm />
