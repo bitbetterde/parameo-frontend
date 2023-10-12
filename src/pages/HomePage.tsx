@@ -179,7 +179,7 @@ const HomePage: React.FC = () => {
             machines &&
             machines?.map((machine: IMachine) => ({
               title: machine?.title_en,
-              href: "#",
+              href: machine?.documentation_url,
               subtitle: machine.type,
               description:
                 machine?.description_en || "No description available",
@@ -187,7 +187,7 @@ const HomePage: React.FC = () => {
               cardImage: machine?.pictures?.[0]?.image_url,
               author: {
                 name: machine?.manufacturer,
-                href: "#",
+                href: "",
                 authorImage: machine.manufacturer_image_file,
               },
             }))

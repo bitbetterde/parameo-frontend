@@ -8,6 +8,9 @@ export interface ICard {
   licence?: string;
   author?: ICardAuthor;
   externalHref?: string;
+  buttonCaption?: string;
+  onButtonClick?: () => void;
+  buttonIcon?: string;
 }
 
 export interface ICardAuthor {

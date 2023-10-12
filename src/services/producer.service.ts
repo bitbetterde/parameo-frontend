@@ -4,6 +4,7 @@ export interface IProducer {
   id?: number;
   name: string;
   website_url: string;
+  order_type: "EMAIL" | "SHOPIFY";
   pictures: [
     {
       image_url: string;
