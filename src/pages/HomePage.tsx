@@ -176,12 +176,11 @@ const HomePage: React.FC = () => {
       ) : (
         <CardSlider
           title="Featured machinery"
-          description=" "
           cardsData={
             machines &&
             machines?.map((machine: IMachine) => ({
               title: machine?.title_en,
-              href: machine?.documentation_url,
+              externalHref: machine?.documentation_url,
               subtitle: machine.type,
               description:
                 machine?.description_en || "No description available",
