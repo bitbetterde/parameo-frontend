@@ -3,8 +3,7 @@ export interface ICard {
   href?: string;
   subtitle: string;
   description: string;
-  cardImage?: string;
-  cardImageAlt?: string;
+  cardImages?: { image_url: string; alt?: string }[];
   licence?: string;
   author?: ICardAuthor;
   externalHref?: string;

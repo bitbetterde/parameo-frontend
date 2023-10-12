@@ -2,12 +2,11 @@ import type { IFaqFile } from "@interfaces";
 
 const body = (
   <>
-    <p>
-      We are happy about your feedback – please use our user feedback form:
-    </p>
+    <p>We are happy about your feedback – please use our user feedback form:</p>
     <p>
       <a href="https://forms.gle/Dqtny9GH5sgbXrkU7" target="_blank">
-        Feedback form</a>
+        Feedback form
+      </a>
     </p>
   </>
 );

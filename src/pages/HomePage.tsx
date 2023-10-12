@@ -141,8 +141,10 @@ const HomePage: React.FC = () => {
         </div>
       ) : (
         <CardSlider
-          title="Individual products for individual needs"
-          description="you customize and build with ease"
+          title="parameo products"
+          description="Adjust the dimensions according to your individual needs.
+          Then build it yourself or buy it from local manufacturers."
+          autoplayImages
           cardsData={
             products &&
             products?.map((product) => ({
@@ -151,7 +153,7 @@ const HomePage: React.FC = () => {
               subtitle: product?.machine_type,
               description: product?.description || "No description available",
               licence: product?.subtitle || "licence type",
-              cardImage: product?.pictures?.[0]?.image_url,
+              cardImages: product?.pictures,
               author: {
                 name: product?.designer_name,
                 href: "#",
@@ -184,7 +186,7 @@ const HomePage: React.FC = () => {
               description:
                 machine?.description_en || "No description available",
               licence: machine.manufacturer_subtitle,
-              cardImage: machine?.pictures?.[0]?.image_url,
+              cardImages: machine?.pictures,
               author: {
                 name: machine?.manufacturer,
                 href: "",

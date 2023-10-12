@@ -49,8 +49,8 @@ const ConfiguratorProductsPage = () => {
       ) : (
         <CardSlider
           title="Individual products for individual needs"
-          subtitle=""
           description="open parametric product designs"
+          autoplayImages
           cardsData={
             products &&
             products?.map((product) => ({
@@ -59,7 +59,7 @@ const ConfiguratorProductsPage = () => {
               subtitle: product?.machine_type,
               description: product?.description || "No description available",
               licence: product?.subtitle || "licence type",
-              cardImage: product?.pictures?.[0]?.image_url,
+              cardImages: product?.pictures,
               author: {
                 name: product?.designer_name,
                 href: "#",

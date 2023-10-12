@@ -2,34 +2,44 @@ import { PhotoIcon } from "@heroicons/react/20/solid";
 import type { ICard } from "@interfaces";
 import React from "react";
 import { Link } from "wouter";
-import { Button } from "@components";
+import { CrossFadeImageSlider, Button } from "@components";
+import "keen-slider/keen-slider.min.css";
 
 interface Props {
   className?: string;
   data: ICard;
+  autoplay?: boolean;
 }
 
-const Card: React.FC<Props> = ({ className, data }) => {
+const Card: React.FC<Props> = ({ className, data, autoplay = false }) => {
+  const commonImageClasses = `h-48 object-cover !min-w-full w-full`;
   return (
     <div
       key={data?.title}
       className={`flex flex-col overflow-hidden rounded-lg ${className || ""}`}
     >
-      <div className="flex-shrink-0">
+      <div className="flex-shrink-0 relative h-48 w-full overflow-hidden">
         <ConditionalLinkWrapper
           isExternal={Boolean(data?.externalHref)}
           href={data?.externalHref || data?.href}
+          className="cursor-pointer"
         >
-          {data?.cardImage ? (
-            <img
-              className={`h-48 w-full object-cover ${
-                data?.externalHref || data?.href ? "cursor-pointer" : ""
-              }`}
-              src={data?.cardImage}
-              alt={data?.cardImageAlt}
-            />
+          {data?.cardImages?.length ? (
+            data?.cardImages?.length > 1 && autoplay ? (
+              <CrossFadeImageSlider
+                commonImageClasses={commonImageClasses}
+                images={data?.cardImages?.map((img) => ({
+                  src: img.image_url,
+                }))}
+              />
+            ) : (
+              <img
+                className={commonImageClasses}
+                src={data?.cardImages?.[0].image_url}
+              />
+            )
           ) : (
-            <PhotoIcon className="h-48 w-full text-gray-50 bg-gray-300 p-6" />
+            <PhotoIcon className={`h-48 w-full text-gray-50 bg-gray-300 p-6`} />
           )}
         </ConditionalLinkWrapper>
       </div>
@@ -41,14 +51,9 @@ const Card: React.FC<Props> = ({ className, data }) => {
           <ConditionalLinkWrapper
             isExternal={Boolean(data?.externalHref)}
             href={data?.externalHref || data.href}
+            className="cursor-pointer"
           >
-            <p
-              className={`text-xl font-semibold text-gray-900 ${
-                data?.externalHref || data?.href
-                  ? "cursor-pointer hover:underline"
-                  : ""
-              }`}
-            >
+            <p className={`text-xl font-semibold text-gray-900`}>
               {data?.title}
             </p>
           </ConditionalLinkWrapper>
@@ -77,6 +82,7 @@ const Card: React.FC<Props> = ({ className, data }) => {
                 <ConditionalLinkWrapper
                   isExternal={true}
                   href={data?.author?.href}
+                  className="cursor-pointer"
                 >
                   <p
                     className={`text-sm font-medium text-gray-900 ${
@@ -120,24 +126,35 @@ interface ConditionalLinkWrapperProps {
   href?: string;
   isExternal?: boolean;
   children: React.ReactElement;
+  className?: string;
 }
 
 const ConditionalLinkWrapper: React.FC<ConditionalLinkWrapperProps> = ({
   href,
   isExternal,
   children,
+  className,
 }) => {
   if (!href) {
     return <>{children}</>;
   } else {
     if (isExternal) {
       return (
-        <a href={href} target={"_blank"} rel={"noreferrer"}>
+        <a
+          href={href}
+          target={"_blank"}
+          rel={"noreferrer"}
+          className={className}
+        >
           {children}
         </a>
       );
     } else {
-      return <Link href={href}>{children}</Link>;
+      return (
+        <Link href={href}>
+          <a className={className}>{children}</a>
+        </Link>
+      );
     }
   }
 };
