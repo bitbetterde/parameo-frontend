@@ -7,8 +7,8 @@ import { Link } from "wouter";
 
 interface Props {
   className?: string;
-  buttonLinkTarget: string;
-  buttonLinkCaption: string;
+  buttonLinkTarget?: string;
+  buttonLinkCaption?: string;
   buttonLinkVariant?: "primary" | "white" | "transparent";
   buttonLinkIcon?: string;
   navigation: { name: string; href: string }[];
@@ -49,15 +49,17 @@ const NavBar: React.FC<Props> = ({
           ))}
         </div>
         <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-          <ButtonLink
-            className="ml-8 inline-flex items-center justify-center whitespace-nowrap px-4 py-2"
-            target={buttonLinkTarget}
-            variant={buttonLinkVariant}
-            icon={buttonLinkIcon}
-            newTab
-          >
-            {buttonLinkCaption}
-          </ButtonLink>
+          {buttonLinkTarget && buttonLinkCaption && (
+            <ButtonLink
+              className="ml-8 inline-flex items-center justify-center whitespace-nowrap px-4 py-2"
+              target={buttonLinkTarget}
+              variant={buttonLinkVariant}
+              icon={buttonLinkIcon}
+              newTab
+            >
+              {buttonLinkCaption}
+            </ButtonLink>
+          )}
         </div>
         <div className="md:hidden flex items-center -mr-2">
           <button
@@ -86,17 +88,19 @@ const NavBar: React.FC<Props> = ({
             {item.name}
           </Link>
         ))}
-        <div className="py-6 border-t border-gray-200">
-          <div className="flex items-center px-5">
-            <ButtonLink
-              className="mx-auto md:ml-auto inline-flex items-center justify-center w-full py-[9px]"
-              target={buttonLinkTarget}
-              variant={buttonLinkVariant}
-            >
-              {buttonLinkCaption}
-            </ButtonLink>
+        {buttonLinkTarget && buttonLinkCaption && (
+          <div className="py-6 border-t border-gray-200">
+            <div className="flex items-center px-5">
+              <ButtonLink
+                className="mx-auto md:ml-auto inline-flex items-center justify-center w-full py-[9px]"
+                target={buttonLinkTarget}
+                variant={buttonLinkVariant}
+              >
+                {buttonLinkCaption}
+              </ButtonLink>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
