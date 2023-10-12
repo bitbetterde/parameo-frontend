@@ -141,9 +141,8 @@ const HomePage: React.FC = () => {
         </div>
       ) : (
         <CardSlider
-          title="parameo products"
-          description="Adjust the dimensions according to your individual needs.
-          Then build it yourself or buy it from local manufacturers."
+          title="Individual products for individual needs"
+          description=" "
           autoplayImages
           cardsData={
             products &&
