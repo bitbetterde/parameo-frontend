@@ -24,7 +24,7 @@ const iconMapping = {
     <ExclamationTriangleIcon className={`${iconClasses || ""} text-red-500`} />
   ),
   info: (
-    <ExclamationCircleIcon className={`${iconClasses || ""} text-green-400`} />
+    <ExclamationCircleIcon className={`${iconClasses || ""} text-yellow-400`} />
   ),
 };
 

@@ -2,6 +2,7 @@ import { PhotoIcon } from "@heroicons/react/20/solid";
 import type { ICard } from "@interfaces";
 import React from "react";
 import { Link } from "wouter";
+import { Button } from "@components";
 
 interface Props {
   className?: string;
@@ -9,30 +10,48 @@ interface Props {
 }
 
 const Card: React.FC<Props> = ({ className, data }) => {
-  const content = (
+  return (
     <div
       key={data?.title}
-      className={`flex flex-col overflow-hidden rounded-lg ${
-        data?.href || data?.externalHref ? "cursor-pointer" : ""
-      } ${className || ""}`}
+      className={`flex flex-col overflow-hidden rounded-lg ${className || ""}`}
     >
       <div className="flex-shrink-0">
-        {data?.cardImage ? (
-          <img
-            className="h-48 w-full object-cover"
-            src={data?.cardImage}
-            alt={data?.cardImageAlt}
-          />
-        ) : (
-          <PhotoIcon className="h-48 w-full text-gray-50 bg-gray-300 p-6" />
-        )}
+        <ConditionalLinkWrapper
+          isExternal={Boolean(data?.externalHref)}
+          href={data?.externalHref || data?.href}
+        >
+          {data?.cardImage ? (
+            <img
+              className={`h-48 w-full object-cover ${
+                data?.externalHref || data?.href ? "cursor-pointer" : ""
+              }`}
+              src={data?.cardImage}
+              alt={data?.cardImageAlt}
+            />
+          ) : (
+            <PhotoIcon className="h-48 w-full text-gray-50 bg-gray-300 p-6" />
+          )}
+        </ConditionalLinkWrapper>
       </div>
       <div className="flex flex-1 flex-col justify-between bg-white p-6">
         <div className="flex-1">
-          <p className="text-sm font-medium text-indigo-600 hover:underline pb-2 uppercase">
+          <p className="text-sm font-medium text-indigo-600 pb-2 uppercase">
             {data?.subtitle}
           </p>
-          <p className="text-xl font-semibold text-gray-900">{data?.title}</p>
+          <ConditionalLinkWrapper
+            isExternal={Boolean(data?.externalHref)}
+            href={data?.externalHref || data.href}
+          >
+            <p
+              className={`text-xl font-semibold text-gray-900 ${
+                data?.externalHref || data?.href
+                  ? "cursor-pointer hover:underline"
+                  : ""
+              }`}
+            >
+              {data?.title}
+            </p>
+          </ConditionalLinkWrapper>
           <p className="mt-3 text-base font-normal text-gray-500">
             {data?.description}
           </p>
@@ -55,11 +74,18 @@ const Card: React.FC<Props> = ({ className, data }) => {
             </div>
             <div className="ml-3">
               {data?.author?.name && (
-                <p className="text-sm font-medium text-gray-900">
-                  <Link href={data?.author?.href} className="hover:underline">
+                <ConditionalLinkWrapper
+                  isExternal={true}
+                  href={data?.author?.href}
+                >
+                  <p
+                    className={`text-sm font-medium text-gray-900 ${
+                      data?.author?.href ? "hover:underline" : ""
+                    }`}
+                  >
                     {data?.author?.name}
-                  </Link>
-                </p>
+                  </p>
+                </ConditionalLinkWrapper>
               )}
               {data?.licence && (
                 <div className="flex space-x-1 text-sm text-gray-500">
@@ -69,20 +95,50 @@ const Card: React.FC<Props> = ({ className, data }) => {
             </div>
           </div>
         )}
+
+        {data.onButtonClick && data.buttonCaption && (
+          <div className="mt-6 flex items-center justify-center">
+            <Button
+              icon={data.buttonIcon}
+              variant={"secondary"}
+              className="w-full"
+              onClick={(e) => {
+                e.preventDefault();
+                data.onButtonClick && data.onButtonClick();
+              }}
+            >
+              {data.buttonCaption}
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
+};
 
-  if (data?.externalHref) {
-    return (
-      <a href={data?.externalHref} target={"_blank"} rel={"noreferrer"}>
-        {content}
-      </a>
-    );
-  } else if (data?.href) {
-    return <Link href={data?.href}>{content}</Link>;
+interface ConditionalLinkWrapperProps {
+  href?: string;
+  isExternal?: boolean;
+  children: React.ReactElement;
+}
+
+const ConditionalLinkWrapper: React.FC<ConditionalLinkWrapperProps> = ({
+  href,
+  isExternal,
+  children,
+}) => {
+  if (!href) {
+    return <>{children}</>;
   } else {
-    return <>{content}</>;
+    if (isExternal) {
+      return (
+        <a href={href} target={"_blank"} rel={"noreferrer"}>
+          {children}
+        </a>
+      );
+    } else {
+      return <Link href={href}>{children}</Link>;
+    }
   }
 };
 

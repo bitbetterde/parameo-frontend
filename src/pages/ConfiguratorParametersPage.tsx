@@ -122,6 +122,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
       sessionStore.session &&
       isISession(sessionStore.session)
     ) {
+      if (sessionStore.session.state === "LOCKED") {
+        setLocation(`/configurator/result/${sessionId}`);
+      }
       loadProduct(sessionStore.session.product.id);
       setValue("projectName", sessionStore.session.name, {
         shouldValidate: true,
