@@ -81,9 +81,9 @@ const App: React.FC = () => {
       <ScrollToTop />
       <NavBar
         navigation={navigation}
-        buttonLinkTarget="https://www.buymeacoffee.com/parameo"
-        buttonLinkCaption="BUY ME A COFFEE"
-        buttonLinkVariant={"primary" as const}
+        // buttonLinkTarget="https://www.buymeacoffee.com/parameo"
+        // buttonLinkCaption="BUY ME A COFFEE"
+        // buttonLinkVariant={"primary"}
       />
       <Notification
         show={notificationStore.showNotification}
