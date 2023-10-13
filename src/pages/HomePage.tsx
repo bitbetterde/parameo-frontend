@@ -181,13 +181,12 @@ const HomePage: React.FC = () => {
               title: machine?.title_en,
               externalHref: machine?.documentation_url,
               subtitle: machine.type,
-              description:
-                machine?.description_en || "No description available",
-              licence: machine.manufacturer_subtitle,
+              description: machine?.description_en,
+              licence: machine?.manufacturer_subtitle,
               cardImages: machine?.pictures,
               author: {
                 name: machine?.manufacturer,
-                href: "",
+                href: machine?.project_url,
                 authorImage: machine.manufacturer_image_file,
               },
             }))
