@@ -18,54 +18,37 @@ const AboutPage: React.FC<Props> = ({
     <>
       <HeroSection
         title="Open Action"
-        subtitle="parameo in a nutshell"
+        subtitle="Empowering Local Making"
         heroImage="/images/parameo-hero-img_faq.jpg"
         heroImageAlt="cnc mill in action"
       />
       <div className={`mx-auto max-w-3xl ${className || ""}`}>
         <ContentHeader title={title} subtitle={subtitle} teaser={description} />
         <div className="pt-6 max-w-none prose prose-h2:text-[30px] prose-h2:leading-10 prose-lg prose-p:leading-8 prose-a:text-indigo-600 text-gray-500">
-          <h2>project background</h2>
-          <p>
-            The project was initiated by{" "} <a target="_blank" href="https://regenholz.de/"> regenholz </a>
-            and funded by{" "}
-            <a
-              target="_blank"
-              href="https://www.ifbhh.de/presse/meldung/updatehamburg-2022-1-5-millionen-euro-fuer-soziale-innovationen"
-            >
-              'UpdateHamburg 2022'
-            </a>{" "}
-            of the Hamburg Authority for Economy and Innovation (BWI).
-          </p>
-          <p>
-            {" "}
-            <b> The innovation core of the tool is the combination of: </b>
-          </p>
+
+          <h2>Toolstack</h2>
+
+          <strong>Backend</strong>
           <ul>
+            <li>Python</li>
             <li>
-              <strong>Parametric product configuration</strong> – parameo is an over all freely accessible system using open source software to build open parametric products primarily with open source machines.
+              SQL Database + shareable JSON files for material and machine
+              knowledgebase
             </li>
-
-            <li>
-              <strong>Machine code generator</strong> – parameo provides the maschine code (.nc format) to manufacture custom-made products based on individual configuration.
-            </li>
-
-            <li>
-              <strong>Impact valuation</strong> – parameo calculates impact indicators for individual production awareness based on material and machine data.
-            </li>
-
-            <li>
-              <strong>Networking of consumers and local producers</strong> –
-              parameo provides a 'build or buy' option for local making including material and manufacturing data for self-production as well as contacts to request local manufacturers.
-            </li>
+            <li>Django REST API</li>
+            <li>Headless (patched) FreeCAD automation</li>
+            <li>Headless Blender</li>
+            <li>Admin dashboard</li>
+            <li>Wireguard VPN layer</li>
+            <li>Order modules: Email and Shopify handover</li>
+            <li>Dynamic impact valuation</li>
           </ul>
-          <figure>
-            <img
-              src="/images/proj-maslow-title.jpg"
-              alt="Image of a man with a laptop infront of a Maslow CNC router"
-            />
-            <figcaption>Maslow CNC router at regenholz</figcaption>
-          </figure>
+          <strong>Frontend</strong>
+          <ul>
+            <li>React</li>
+            <li>Tailwind CSS</li>
+            <li>Tailwind UI</li>
+          </ul>
 
           <h2>Motivation</h2>
           <blockquote>
@@ -106,36 +89,12 @@ const AboutPage: React.FC<Props> = ({
             and sustainable production through personal participation in the
             manufacturing process.”
           </blockquote>
-
-          <h2>Development toolstack</h2>
-
-          <strong>Backend</strong>
-          <ul>
-            <li>Python</li>
-            <li>
-              SQL Database + shareable JSON files for material and machine
-              knowledgebase
-            </li>
-            <li>Django REST API</li>
-            <li>Headless (patched) FreeCAD automation</li>
-            <li>Headless Blender</li>
-            <li>Admin dashboard</li>
-            <li>Wireguard VPN layer</li>
-            <li>Order modules: Email and Shopify handover</li>
-            <li>Dynamic impact valuation</li>
-          </ul>
-          <strong>Frontend</strong>
-          <ul>
-            <li>React</li>
-            <li>Tailwind CSS</li>
-            <li>Tailwind UI</li>
-          </ul>
-
-          <h2>Project scope</h2>
+          
+          <h2>Timeline</h2>
 
           <img
             src="/images/parameo-projectscope.png"
-            alt="Project Scope Slide"
+            alt="Project Timeline"
           />
 
           <ul>
@@ -153,7 +112,8 @@ const AboutPage: React.FC<Props> = ({
             </li>
           </ul>
 
-          <h2>Get involved via the contact form down here</h2>
+        <h2>Get involved via the contact form down here</h2>
+
         </div>
         <ContactForm />
       </div>
