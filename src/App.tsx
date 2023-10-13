@@ -147,7 +147,7 @@ const App: React.FC = () => {
           <AboutPage
             title="Parametric Build Assistant"
             subtitle="About"
-            description="Parameo is an open online tool for the configuration of parametric product designs from sheet goods, for the generation of production data for CNC machines as well as the calculation of material costs and emissions."
+            description="parameo is an open tool for customizing parametric product designs, calculating impact values and generating individual production data for CNC machines."
           />
         </Route>
         <Route path="/imprint">
