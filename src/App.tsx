@@ -147,15 +147,7 @@ const App: React.FC = () => {
           <AboutPage
             title="Parametric Build Assistant"
             subtitle="About"
-            description="parameo is an open tool for customizing parametric product designs, generating individual production data for CNC machines, calculating impact values and providing a 'build or buy' option for local making with material and manufacturing data for self-production as well as contacts to request local manufacturing capacities. The project was initiated by{" "} <a target="_blank" href="https://regenholz.de/"> regenholz </a>
-            and funded by{" "}
-            <a
-              target="_blank"
-              href="https://www.ifbhh.de/presse/meldung/updatehamburg-2022-1-5-millionen-euro-fuer-soziale-innovationen"
-            >
-              'UpdateHamburg 2022'
-            </a>{" "}
-            of the Hamburg Authority for Economy and Innovation.
+            description="parameo is an open tool for customizing parametric product designs, generating individual production data for CNC machines, calculating impact values and providing a 'build or buy' option for local making with material and manufacturing data for self-production as well as contacts to request local manufacturing capacities.
           />
         </Route>
         <Route path="/imprint">
