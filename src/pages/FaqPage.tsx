@@ -1,4 +1,4 @@
-import { HeroSection, Tabs, Accordion } from "@components";
+import { HeroSection, Tabs, Accordion, ContentHeader } from "@components";
 import rawFaqs from "@faqs";
 import { groupBy } from "lodash-es";
 import type React from "react";
@@ -52,18 +52,7 @@ const FaqPage: React.FC<Props> = ({
         heroImage="/images/parameo-hero-img_home-bw.jpg"
         heroImageAlt="wood plate goods"
       />
-      <div className="mx-auto max-w-2xl text-center p-6 md:pb-10 md:pt-[44px]">
-        {subtitle && (
-          <h2 className="text-base font-semibold text-indigo-600 uppercase">
-            {subtitle}
-          </h2>
-        )}
-        {title && (
-          <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            {title}
-          </h1>
-        )}
-      </div>
+      <ContentHeader title={title} subtitle={subtitle} />
       <Tabs tabs={uniqueTags} activeTab={activeTab} onClickTab={selectTags} />
       <div className="border-b-2 border-gray-200 mx-auto max-w-7xl hidden lg:w-[768px]" />
       <div className="pb-10 mx-auto lg:w-[768px]">
