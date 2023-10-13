@@ -25,9 +25,9 @@ const AboutPage: React.FC<Props> = ({
       <div className={`mx-auto max-w-3xl ${className || ""}`}>
         <ContentHeader title={title} subtitle={subtitle} teaser={description} />
         <div className="pt-6 max-w-none prose prose-h2:text-[30px] prose-h2:leading-10 prose-lg prose-p:leading-8 prose-a:text-indigo-600 text-gray-500">
-          <h2>Project background</h2>
+          <h2>project background</h2>
           <p>
-            The project is initiated by{" "} <a target="_blank" href="https://regenholz.de/"> regenholz</a>
+            The project was initiated by{" "} <a target="_blank" href="https://regenholz.de/"> regenholz </a>
             and funded by{" "}
             <a
               target="_blank"
@@ -43,26 +43,20 @@ const AboutPage: React.FC<Props> = ({
           </p>
           <ul>
             <li>
-              <strong>Freely accessible system</strong> – The developed tool is
-              based on open source software and generates machine code for open
-              source hardware.
+              <strong>Parametric product configuration</strong> – parameo is an over all freely accessible system using open source software to build open parametric products primarily with open source machines.
             </li>
 
             <li>
-              <strong>Machine code generator</strong> – Laser cutter and CNC
-              router production data from parametric product designs.
+              <strong>Machine code generator</strong> – parameo provides the maschine code (.nc format) to manufacture custom-made products based on individual configuration.
             </li>
 
             <li>
-              <strong>Emission and cost transparency</strong> – Material price
-              calculation and emission calculator for the ratio of material,
-              machine and transport.
+              <strong>Impact valuation</strong> – parameo calculates impact indicators for individual production awareness based on material and machine data.
             </li>
 
             <li>
               <strong>Networking of consumers and local producers</strong> –
-              'Build or buy' option after configuration with local production
-              capabilities
+              parameo provides a 'build or buy' option for local making including material and manufacturing data for self-production as well as contacts to request local manufacturers.
             </li>
           </ul>
           <figure>
@@ -78,16 +72,15 @@ const AboutPage: React.FC<Props> = ({
             “For customers with average purchasing power, small companies
             efforts to create custom design and machine code are usually too
             high. Economical production is a major challenge, especially for
-            one-off items. Another development that we are experiencing is that
-            more and more people are becoming interested in building their own
-            furnishings. The DIY sector is booming and almost everything can now
+            one-off items. Also more and more people are interested in building their own
+            furniture. The DIY sector is booming and nowadays almost everything can
             be learned via free video tutorials and open knowledge platforms.
             But getting started with digital machine manufacturing in the craft
             sector is difficult or impossible for most private individuals. In
             addition to learning the hardware and control software, basic
             knowledge of operational safety, materials science and - most
             importantly - design and/or CAD software skills are required to turn
-            one's idea into a milling/laser file. The learning of manual
+            one's idea into production data. The learning of manual
             know-how, the handling of digital tools and the direct contact of
             citizens to local production sites are especially in demand now. We
             address these challenges with "parameo". The configurator offers the
@@ -101,15 +94,14 @@ const AboutPage: React.FC<Props> = ({
             automatic creation of a machine code from individual designs saves
             time, enables more economical production and offers citizens and
             craftspeople / manufacturers an immediate benefit and entry into the
-            world of digital manufacturing. In addition, the workflow can be
+            world of digital manufacturing and local making. In addition, the workflow can be
             used to evaluate practical experience with data-based collaboration
             between consumers, designers, craftspeople and manufacturers in the
             Hamburg metropolitan region. Last but not least: The way any product
             is manufactured has an impact on climate change. With parameo, we
-            want to contribute to making production as climate-friendly and
-            resource-conserving as possible. In the first step, the configurator
-            is used to calculate emissions for the production. The long-term
-            goal is to establish the recyclability of products ("from cradle to
+            want to contribute to raise impact awareness. In the first step, the configurator
+            shows production impact indicators. The long-term
+            goal is to establish the circularity of products ("from cradle to
             cradle") and to win citizens over to increased local value creation
             and sustainable production through personal participation in the
             manufacturing process.”
