@@ -2,6 +2,30 @@ import type { IFaqFile } from "@interfaces";
 
 const body = (
   <>
+    <h2>Toolstack</h2>
+
+     <strong>Backend</strong>
+      <ul>
+            <li>Python</li>
+            <li>
+              SQL Database + shareable JSON files for material and machine
+              knowledgebase
+            </li>
+            <li>Django REST API</li>
+            <li>Headless (patched) FreeCAD automation</li>
+            <li>Headless Blender</li>
+            <li>Admin dashboard</li>
+            <li>Wireguard VPN layer</li>
+            <li>Order modules: Email and Shopify handover</li>
+            <li>Dynamic impact valuation</li>
+          </ul>
+          <strong>Frontend</strong>
+          <ul>
+            <li>React</li>
+            <li>Tailwind CSS</li>
+            <li>Tailwind UI</li>
+          </ul>
+
     <h2>Are you ready to be part of something remarkable?</h2>
     <p>
       <b> Join the Revolution: </b> <br />
@@ -21,7 +45,7 @@ const body = (
     </p>
     <p>
       Your passion, creativity, and commitment can drive this project to new
-      heights. <br /> Join us on GitLab and let's build something amazing
+      heights. <br /> Join us on <a href="https://gitlab.regenholz.de/bat">GitLab</a> and let's build something amazing
       together.
     </p>
     <p>
