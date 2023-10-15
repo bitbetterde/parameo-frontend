@@ -48,27 +48,27 @@ const people = [
 
 const features = [
   {
-    name: "Impact valuation",
+    name: "Parametric configuration",
     description:
-      "parameo calculates the individual impact value indicated by material data and machine runtime.",
-    icon: "ScaleIcon",
+      "parameo is an over all freely accessible system using open source software to build open parametric products primarily with open source machines.",
+    icon: "TableCellsIcon",
   },
   {
     name: "G-code generation",
     description:
-      "G-code is a programming language for CNC (Computer Numerical Control) machines. parameo provides the uniquely configured .nc-data file.",
+      "parameo provides the maschine code (.nc format) to manufacture custom-made products based on individual configuration.",
     icon: "ArrowPathIcon",
   },
   {
-    name: "Bill of materials",
+    name: "Impact valuation",
     description:
-      "parameo provides a 'bom.csv' with a list of needed materials based on the individually configured product dimensions.",
-    icon: "TableCellsIcon",
+      "parameo calculates impact indicators for individual production awareness based on material and machine data.",
+    icon: "ScaleIcon",
   },
   {
     name: "DIY or BUY",
     description:
-      "parameo provides material and manufacturing data for self-production as well as contacts to local manufacturers.",
+      "parameo provides material and manufacturing data for self-production as well as contacts to request local manufacturers.",
     icon: "BuildingStorefrontIcon",
   },
 ];
@@ -122,28 +122,28 @@ const HomePage: React.FC = () => {
   return (
     <>
       <HeroSection
-        title="Customize, calculate and manufacture with ease"
+        title="Parametric Build Assistant"
         subtitle="parameo is an open tool for customizing parametric product designs, calculating impact values and generating individual production data for CNC machines."
-        heroImage="/images/parameo-hero-img_home-bw.jpg"
-        heroImageAlt="wood plate goods"
+        heroImage="/images/parameo-hero-img_faq.jpg"
+        heroImageAlt="cnc mill in action"
         buttons={heroButtons}
       />
       <FeatureSection
-        title="Leave the math to parameo"
+        title="parameo core features in a nutshell"
         subtitle=""
-        description="The tool offers a machine code generator, impact valuation, a 'build or buy' option and an over all freely accessible system using open source software for open source hardware."
+        description=""
         features={features}
       />
-      <AvatarSection people={people} title="A tool for you:" />
+      <AvatarSection people={people} title="A tool for" />
       {!products ? (
         <div className="w-full h-32 flex items-center justify-center">
           <Spinner />
         </div>
       ) : (
         <CardSlider
-          title="parameo products"
-          description="Adjust the dimensions according to your individual needs.
-          Then build it yourself or buy it from local manufacturers."
+          title="Individual products for individual needs"
+          description=" "
+          autoplayImages
           cardsData={
             products &&
             products?.map((product) => ({
@@ -152,7 +152,7 @@ const HomePage: React.FC = () => {
               subtitle: product?.machine_type,
               description: product?.description || "No description available",
               licence: product?.subtitle || "licence type",
-              cardImage: product?.pictures?.[0]?.image_url,
+              cardImages: product?.pictures,
               author: {
                 name: product?.designer_name,
                 href: "#",
@@ -175,20 +175,18 @@ const HomePage: React.FC = () => {
       ) : (
         <CardSlider
           title="Featured machinery"
-          description="The tool is based on open source software and primarily targets open source hardware."
           cardsData={
             machines &&
             machines?.map((machine: IMachine) => ({
               title: machine?.title_en,
-              href: "#",
+              externalHref: machine?.documentation_url,
               subtitle: machine.type,
-              description:
-                machine?.description_en || "No description available",
-              licence: machine.manufacturer_subtitle,
-              cardImage: machine?.pictures?.[0]?.image_url,
+              description: machine?.description_en,
+              licence: machine?.manufacturer_subtitle,
+              cardImages: machine?.pictures,
               author: {
                 name: machine?.manufacturer,
-                href: "#",
+                href: machine?.project_url,
                 authorImage: machine.manufacturer_image_file,
               },
             }))

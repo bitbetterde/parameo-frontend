@@ -2,23 +2,22 @@ import type { IFaqFile } from "@interfaces";
 
 const body = (
   <>
-    <h2>Bill of materials</h2>
+    <h2>Material database</h2>
     <p>
-      A BOM.csv provides a list of needed resources based on configured product
-      dimensions for custom production like materials and tools, complementing
-      product specific assembly necessities.
+      Material dimensions may differ by availability and location-dependent merchants. <b>Please adapt sheet size for minimal offcuts.</b> Also the pricing may differ by market development and location-dependend sources. </p>
+      <p>
+To integrate additional materials, both the maximum working area and the power of the cnc machine are significant and should be adjusted via the admin panel to ensure correct calculations of product parts and machine paths. </p>
+<p>
+The offered materials are tested for manufacturing with featured CNC machinery. Provided options for materials and their sources are independent suggestions and are <b>easy to change via the admin panel.</b> 
     </p>
+    
     <h2>Material pricing</h2>
     <p>
       The material impact is valued in kg/m3 co2 emissions ecologically and in
-      €/m3 sheet pricing monetary. References are accessible and manually
-      adaptable via the admin panel, logged by a timestamp. Indicators are
-      visualized on individual result page.
+      €/m3 sheet pricing monetary. Indicators are visualized on individual result page. References are accessible, manually
+      adaptable via the admin panel and logged by a timestamp. 
     </p>
-    <h2>Material database</h2>
-    <p>
-      The offerd materials are tested in manufacturing for each spectific cnc-machine. For the integration of additional materials, both the maximum working area (and corresponding availability of plate material) and the power of the cnc milling machine used are relevant. only in this way can a correct calculation of the parts and machine paths be calculated. to add additional materials to the database, please contact:
-    </p>
+
   </>
 );
 

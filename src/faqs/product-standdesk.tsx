@@ -12,11 +12,7 @@ const body = (
       indestructible.
     </p>
     <img src="/images/regenholz-parameo_StandDesk_0149.webp" alt="" />
-    <h2>Specs / Links</h2>
-    <ol>
-      <li>...</li>
-      <li>...</li>
-    </ol>
+
   </>
 );
 

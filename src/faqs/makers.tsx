@@ -3,7 +3,17 @@ import type { IFaqFile } from "@interfaces";
 const body = (
   <>
     <p>
-It's great that you decided to use parameo to build or have new products built for you. Either way, you support us in promoting local production. If you encounter any problems during configuration, assembly or anything else, please let us know via the contact form. If you have found any bugs or have suggestions for improvement, please let us know! Of course, we are most happy about parameo products that have been successfully built - feel free to send a picture or tag us!
+<b>Local demand meet local makers!</b>
+</p>
+<p>
+We aim to match individual production demands with local makerspaces and FabLabs to empower DIY skills and local making.
+Therefore we want to involve more makerspaces and FabLabs from different regions and promote them here.
+</p>
+<p>
+Also you can use parameo to easily manufacture individual products for your makerspace and even offer your own product designs.  
+</p>
+<p>
+<b>Feel free to hit us up via the contact form to join our journey!</b>
     </p>
   </>
 );

@@ -22,11 +22,11 @@ const FaqSection: React.FC<Props> = ({ title, className, data }) => {
               {title}
             </h2>
           </div>
-          <SubscriptionBar
+          {/* <SubscriptionBar
             subscriptionCta="Drop us your email and get updates on parameo"
             label="Enter your email"
             buttonCta="Stay in touch"
-          />
+          /> */}
         </div>
         <div className="mt-6 grid gap-16 pt-10 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12 ">
           {data?.map((data, i) => <FaqEntry data={data} key={i} />)}
@@ -43,6 +43,8 @@ interface SuscriptionProps {
   buttonCta: string;
 }
 
+// @ts-expect-error Might be used in the future
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const SubscriptionBar: React.FC<SuscriptionProps> = ({
   className,
   subscriptionCta,

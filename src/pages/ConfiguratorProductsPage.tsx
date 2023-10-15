@@ -37,8 +37,8 @@ const ConfiguratorProductsPage = () => {
   return (
     <>
       <HeroSection
-        title="Open Source Configurator for Open Source Machines"
-        subtitle="explore & customize parameo products"
+        title="Open Production Configurator"
+        subtitle="customize and build your products with ease"
         heroImage="/images/parameo-hero-img_configurator.jpg"
         heroImageAlt="carpenter working on a laptop"
       />
@@ -48,9 +48,9 @@ const ConfiguratorProductsPage = () => {
         </div>
       ) : (
         <CardSlider
-          title="Individual Products for Individual Needs"
-          subtitle="Configurator"
-          description="explore & customize parameo products"
+          title="Individual products for individual needs"
+          description="open parametric product designs"
+          autoplayImages
           cardsData={
             products &&
             products?.map((product) => ({
@@ -58,8 +58,8 @@ const ConfiguratorProductsPage = () => {
               href: `/configurator/product/${product.id}`,
               subtitle: product?.machine_type,
               description: product?.description || "No description available",
-              licence: "licence type",
-              cardImage: product?.pictures?.[0]?.image_url,
+              licence: product?.subtitle || "licence type",
+              cardImages: product?.pictures,
               author: {
                 name: product?.designer_name,
                 href: "#",

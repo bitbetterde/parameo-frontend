@@ -6,6 +6,7 @@ export interface ISessionBase {
   uuid: string;
   created: string;
   name: string;
+  state: "CREATED" | "EDITED" | "LOCKED" | "NOTUSED";
   user_email_address: string;
   machine_id: number;
   last_updated: string;
