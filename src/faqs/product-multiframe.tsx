@@ -10,11 +10,7 @@ const body = (
       insertion: the frame can be filled with changing motifs from above.
     </p>
     <img src="/images/regenholz-parameo-MultiFrame_0521-blank.webp" alt="" />
-    <h2>Specs / Links</h2>
-    <ol>
-      <li>...</li>
-      <li>...</li>
-    </ol>
+
   </>
 );
 

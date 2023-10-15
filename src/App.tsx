@@ -81,9 +81,9 @@ const App: React.FC = () => {
       <ScrollToTop />
       <NavBar
         navigation={navigation}
-        buttonLinkTarget="https://www.buymeacoffee.com/parameo"
-        buttonLinkCaption="BUY ME A COFFEE"
-        buttonLinkVariant={"primary" as const}
+        // buttonLinkTarget="https://www.buymeacoffee.com/parameo"
+        // buttonLinkCaption="BUY ME A COFFEE"
+        // buttonLinkVariant={"primary"}
       />
       <Notification
         show={notificationStore.showNotification}
@@ -147,7 +147,7 @@ const App: React.FC = () => {
           <AboutPage
             title="Parametric Build Assistant"
             subtitle="About"
-            description="Parameo is an open online tool for the configuration of parametric product designs from sheet goods, for the generation of production data for CNC machines as well as the calculation of material costs and emissions."
+            description="parameo is an open tool for customizing parametric product designs, generating individual production data for CNC machines, calculating impact values and providing a 'build or buy' option for local making with material and manufacturing data for self-production as well as contacts to request local manufacturing capacities. The project was initiated by 'regenholz' and funded by ‘ProfiImpuls‘ from the Hamburg Authority for Economy and Innovation."
           />
         </Route>
         <Route path="/imprint">

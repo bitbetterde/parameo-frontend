@@ -44,6 +44,6 @@ export default {
   body,
   teaser:
     "The Fabulaser MINI is an open-source 40W C02 laser cutter representing an ideal compromise between performance and cost.",
-  showOnHomePage: true,
+  showOnHomePage: false,
   order: 2,
 } as IFaqFile;

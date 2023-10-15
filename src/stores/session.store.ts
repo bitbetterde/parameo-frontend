@@ -39,6 +39,7 @@ interface SessionStore {
     projectName?: string
   ) => Promise<string>;
   updateMailSession: (userMail: string) => Promise<void>;
+  lockSession: () => void;
   resetSession: () => void;
 }
 
@@ -100,6 +101,20 @@ const useSessionStore = create<SessionStore>()(
             parameters: configured_part.configured_parameters,
           })),
         });
+
+        set((state) => ({
+          ...state,
+          session: { ...session, user_email_address: userMail },
+        }));
+      }
+    },
+    lockSession: () => {
+      const session = get().session;
+      if (session && isISession(session)) {
+        set((state) => ({
+          ...state,
+          session: { ...session, state: "LOCKED" },
+        }));
       }
     },
     regeneratePreview: async (productId, machineId, partsData, projectName) => {

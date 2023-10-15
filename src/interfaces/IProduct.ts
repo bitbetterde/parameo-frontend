@@ -40,11 +40,7 @@ export interface IProduct {
   title: string;
   machine_type: string;
   description: string;
-  pictures: [
-    {
-      image_url: string;
-    },
-  ];
+  pictures: { image_url: string }[];
   designer_url: string;
   product_url: string;
   project_file_path: string;

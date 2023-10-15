@@ -11,6 +11,7 @@ interface Props {
   description?: string;
   cardsData?: Array<ICard>;
   subtitle?: string;
+  autoplayImages?: boolean;
 }
 
 const BREAKPOINT_TABLET = 640;
@@ -22,6 +23,7 @@ const CardSlider: React.FC<Props> = ({
   description,
   cardsData,
   subtitle,
+  autoplayImages,
 }) => {
   const [ref, instanceRef] = useKeenSlider<HTMLDivElement>({
     breakpoints: {
@@ -85,7 +87,11 @@ const CardSlider: React.FC<Props> = ({
       >
         {cardsData?.map((card, i) => (
           <div className="keen-slider__slide px-4" key={card.title ?? i}>
-            <Card data={card} className="shadow-lg h-full" />
+            <Card
+              data={card}
+              className="shadow-lg h-full"
+              autoplay={autoplayImages}
+            />
           </div>
         ))}
       </div>

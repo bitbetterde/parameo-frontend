@@ -30,6 +30,8 @@ import TextInput from "./TextInput";
 import Toggle from "./Toggle";
 import ImpactSection from "./ImpactSection";
 import EmailResultHint from "./EmailResultHint";
+import CrossFadeImageSlider from "./CrossFadeImageSlider";
+import ContentHeader from "./ContentHeader";
 
 export {
   NavBar,
@@ -64,4 +66,6 @@ export {
   ProductPartConfigurator,
   ImpactSection,
   EmailResultHint,
+  CrossFadeImageSlider,
+  ContentHeader,
 };

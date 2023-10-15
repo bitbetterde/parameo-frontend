@@ -122,6 +122,9 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
       sessionStore.session &&
       isISession(sessionStore.session)
     ) {
+      if (sessionStore.session.state === "LOCKED") {
+        setLocation(`/configurator/result/${sessionId}`);
+      }
       loadProduct(sessionStore.session.product.id);
       setValue("projectName", sessionStore.session.name, {
         shouldValidate: true,
@@ -378,6 +381,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               disabled={
                 !isValid || Boolean(currentlyGenerating) || sliderInvalid
               }
+              type={"button"}
               variant={"primary"}
               className="w-full"
               onClick={regenerateFormats}
@@ -428,6 +432,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
               disabled={
                 !isValid || Boolean(currentlyGenerating) || sliderInvalid
               }
+              type={"submit"}
               variant={"primary"}
               className="w-full"
               onClick={regeneratePreview}
