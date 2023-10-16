@@ -6,6 +6,7 @@ import DribbleLogo from "@assets/logos/dribble.svg";
 import type { IMenuItem, ISocialMediaItem } from "@interfaces";
 import type React from "react";
 import { Link } from "wouter";
+import { ReactComponent as CCIcon } from "@assets/icons/cc.svg";
 
 interface Props {
   className?: string;
@@ -28,8 +29,9 @@ const Footer: React.FC<Props> = ({ className, menu, links, copyright }) => {
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-10 sm:py-12 lg:px-8">
         <HorizontalMenu menu={menu} />
         <SocialMedia links={links} />
-        <p className="mt-8 text-center text-base font-normal text-gray-400">
-          &copy; {copyright}
+        <p className="mt-8 text-center text-base font-normal text-gray-400 flex flex-row justify-center items-center gap-1">
+          <CCIcon className={"h-4 w-4"} />
+          {copyright}
         </p>
       </div>
     </footer>

@@ -12,8 +12,8 @@ import {
   ConfiguratorResultPage,
   FaqPage,
   HomePage,
-  ImprintPage,
-  PrivacyPage,
+  // ImprintPage,
+  // PrivacyPage,
 } from "@pages";
 import type React from "react";
 import { Route, Switch, useLocation } from "wouter";
@@ -23,8 +23,8 @@ const footerMenu = [
   { name: "Home", href: "/" },
   { name: "Configurator", href: "/configurator/products" },
   { name: "About", href: "/about" },
-  { name: "Imprint", href: "/imprint" },
-  { name: "Privacy", href: "/privacy" },
+  // { name: "Imprint", href: "/imprint" },
+  // { name: "Privacy", href: "/privacy" },
 ];
 
 const footerSocial = [
@@ -150,20 +150,20 @@ const App: React.FC = () => {
             description="parameo is an open tool for customizing parametric product designs, generating individual production data for CNC machines, calculating impact values and providing a 'build or buy' option for local making with material and manufacturing data for self-production as well as contacts to request local manufacturing capacities. The project was initiated by 'regenholz' and funded by ‘ProfiImpuls‘ from the Hamburg Authority for Economy and Innovation."
           />
         </Route>
-        <Route path="/imprint">
-          <ImprintPage
-            title="Imprint"
-            subtitle="Felis eget velit"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id aliquet lectus proin nibh. Morbi tristique senectus et netus et malesuada."
-          />
-        </Route>
-        <Route path="/privacy">
-          <PrivacyPage
-            title="Privacy Notice"
-            subtitle="Lorem ipsum dolor sit amet"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          />
-        </Route>
+        {/*<Route path="/imprint">*/}
+        {/*  <ImprintPage*/}
+        {/*    title="Imprint"*/}
+        {/*    subtitle="Felis eget velit"*/}
+        {/*    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id aliquet lectus proin nibh. Morbi tristique senectus et netus et malesuada."*/}
+        {/*  />*/}
+        {/*</Route>*/}
+        {/*<Route path="/privacy">*/}
+        {/*  <PrivacyPage*/}
+        {/*    title="Privacy Notice"*/}
+        {/*    subtitle="Lorem ipsum dolor sit amet"*/}
+        {/*    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."*/}
+        {/*  />*/}
+        {/*</Route>*/}
         <Route>
           <HomePage />
         </Route>
@@ -172,7 +172,7 @@ const App: React.FC = () => {
       <Footer
         menu={footerMenu}
         links={footerSocial}
-        copyright={"2023 regenholz Gbr. All rights reserved."}
+        copyright={"2023 beta stage by regenholz."}
       />
     </>
   );
