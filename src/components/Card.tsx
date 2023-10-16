@@ -106,6 +106,7 @@ const Card: React.FC<Props> = ({ className, data, autoplay = false }) => {
           <div className="mt-6 flex items-center justify-center">
             <Button
               icon={data.buttonIcon}
+              disabled={data.buttonDisabled}
               variant={"secondary"}
               className="w-full"
               onClick={(e) => {
