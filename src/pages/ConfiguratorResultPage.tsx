@@ -382,6 +382,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
                     buttonCaption:
                       producer.order_type === "SHOPIFY" ? "Order" : "Request",
                     buttonIcon: "ShoppingCartIcon",
+                    buttonDisabled: isRegenerating || !typedSession,
                   })
                 )
               }

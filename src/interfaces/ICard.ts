@@ -10,6 +10,7 @@ export interface ICard {
   buttonCaption?: string;
   onButtonClick?: () => void;
   buttonIcon?: string;
+  buttonDisabled?: boolean;
 }
 
 export interface ICardAuthor {
