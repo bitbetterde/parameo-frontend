@@ -105,7 +105,7 @@ const AboutPage: React.FC<Props> = ({
               <a href="/faq/for-designers">FAQ for Designers</a>
             </li>
             <li>
-              <a href="/faq/for-maufacturers">FAQ for Manufacturers</a>
+              <a href="/faq/for-manufacturers">FAQ for Manufacturers</a>
             </li>
             <li>
               <a href="/faq/for-makers">FAQ for Makers</a>
