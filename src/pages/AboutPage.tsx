@@ -111,9 +111,6 @@ const AboutPage: React.FC<Props> = ({
               <a href="/faq/for-makers">FAQ for Makers</a>
             </li>
           </ul>
-
-        <h2>Get involved via the contact form down here</h2>
-
         </div>
         <ContactForm />
       </div>
