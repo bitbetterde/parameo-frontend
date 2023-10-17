@@ -17,8 +17,8 @@ const AboutPage: React.FC<Props> = ({
   return (
     <>
       <HeroSection
-        title="Open Action"
-        subtitle="Empowering Local Making"
+        title="parameo"
+        subtitle="Project background"
         heroImage="/images/parameo-hero-img_faq.jpg"
         heroImageAlt="cnc mill in action"
       />
