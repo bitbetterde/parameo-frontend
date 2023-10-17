@@ -11,6 +11,7 @@ interface Props {
   buttonLinkCaption?: string;
   buttonLinkVariant?: "primary" | "white" | "transparent";
   buttonLinkIcon?: string;
+  buttonLinkRightIcon?: string;
   navigation: { name: string; href: string }[];
 }
 
@@ -20,6 +21,7 @@ const NavBar: React.FC<Props> = ({
   buttonLinkTarget,
   buttonLinkCaption,
   buttonLinkVariant,
+  buttonLinkRightIcon,
   buttonLinkIcon,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -55,6 +57,7 @@ const NavBar: React.FC<Props> = ({
               target={buttonLinkTarget}
               variant={buttonLinkVariant}
               icon={buttonLinkIcon}
+              iconRight={buttonLinkRightIcon}
               newTab
             >
               {buttonLinkCaption}
@@ -95,6 +98,9 @@ const NavBar: React.FC<Props> = ({
                 className="mx-auto md:ml-auto inline-flex items-center justify-center w-full py-[9px]"
                 target={buttonLinkTarget}
                 variant={buttonLinkVariant}
+                icon={buttonLinkIcon}
+                iconRight={buttonLinkRightIcon}
+                newTab
               >
                 {buttonLinkCaption}
               </ButtonLink>
