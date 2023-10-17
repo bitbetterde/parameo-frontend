@@ -12,7 +12,7 @@ const body = (
     </p>
     <ol>
       <li>follow FreeCAD Spreadsheet template</li>
-      <li>use FreeCAD to model parametric designs</li>
+      <li>use <a target="_blank" href="https://www.freecad.org/downloads.php"> FreeCAD</a> to model parametric designs</li>
       <li>test your parametric model on different sizes</li>
       <li>specify minimum and maximum sizes</li>
       <li>write a short construction manual</li>
