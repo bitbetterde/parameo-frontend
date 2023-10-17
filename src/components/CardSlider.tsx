@@ -96,7 +96,7 @@ const CardSlider: React.FC<Props> = ({
         ))}
       </div>
 
-      {isMobileViewport && loaded && instanceRef.current && (
+      {isMobileViewport && loaded && instanceRef?.current?.track.details && (
         <div className="flex justify-center items-center py-4">
           {[
             ...Array(instanceRef.current.track.details.slides.length).keys(),

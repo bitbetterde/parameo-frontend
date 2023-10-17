@@ -22,7 +22,8 @@ const Button: React.FC<Props> = ({
     primary:
       "bg-indigo-600 text-white hover:bg-indigo-700 disabled:bg-gray-200",
     transparent: "bg-indigo-500 bg-opacity-60 text-white hover:bg-opacity-70",
-    secondary: "bg-indigo-100 text-indigo-700 hover:bg-indigo-200",
+    secondary:
+      "bg-indigo-100 text-indigo-700 hover:bg-indigo-200 disabled:bg-gray-300 disabled:text-gray-400",
     success:
       "text-white disabled:bg-emerald-500 bg-emerald-600 hover:bg-emerald-700",
   };

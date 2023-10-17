@@ -29,65 +29,68 @@ const ImprintPage: React.FC<Props> = ({
         </p>
       )}
       <div className="pt-6 max-w-none prose prose-h2:text-[30px] prose-h2:leading-10 prose-lg prose-p:leading-8 prose-a:text-indigo-600 text-gray-500">
+        <h2>Legal Notice</h2>
+        <p>[Company Name] [Address] [Phone Number] [Email Address]</p>
+        <p>Represented by: [Name of Person in Charge]</p>
+        <p>Responsible for Content: [Name of Person in Charge]</p>
+        <p>VAT ID: [VAT Number, if applicable]</p>
         <p>
-          Faucibus commodo massa rhoncus, volutpat. <strong>Dignissim</strong>{" "}
-          sed <strong>eget risus enim</strong>. Mattis mauris semper sed amet
-          vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus
-          viverra tellus varius sit neque erat velit. Faucibus commodo massa
-          rhoncus, volutpat. Dignissim sed eget risus enim.{" "}
-          <a href="#">Mattis mauris semper</a> sed amet vitae sed turpis id.
-        </p>
-        <ul>
-          <li>Quis elit egestas venenatis mattis dignissim.</li>
-          <li>Cras cras lobortis vitae vivamus ultricies facilisis tempus.</li>
-          <li>Orci in sit morbi dignissim metus diam arcu pretium.</li>
-        </ul>
-        <p>
-          Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
-          enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor
-          praesent donec est. Odio penatibus risus viverra tellus varius sit
-          neque erat velit. Faucibus commodo massa rhoncus, volutpat. Dignissim
-          sed eget risus enim. Mattis mauris semper sed amet vitae sed turpis
-          id.
-        </p>
-        <h2>From beginner to expert in 30 days</h2>
-        <p>
-          Id orci tellus laoreet id ac. Dolor, aenean leo, ac etiam consequat
-          in. Convallis arcu ipsum urna nibh. Pharetra, euismod vitae interdum
-          mauris enim, consequat vulputate nibh. Maecenas pellentesque id sed
-          tellus mauris, ultrices mauris. Tincidunt enim cursus ridiculus mi.
-          Pellentesque nam sed nullam sed diam turpis ipsum eu a sed convallis
-          diam.
-        </p>
-        <blockquote>
-          “Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum
-          urna sed consectetur neque tristique pellentesque. Blandit amet, sed
-          aenean erat arcu morbi.”
-        </blockquote>
-        <p>
-          Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
-          enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor
-          praesent donec est. Odio penatibus risus viverra tellus varius sit
-          neque erat velit.
-        </p>
-        <img src="/images/forrest.jpg" alt="Image of a forrest" />
-        <figcaption>
-          Sagittis scelerisque nulla cursus in enim consectetur quam.
-        </figcaption>
-        <h2>Everything you need to get up and running</h2>
-        <p>
-          Purus morbi dignissim senectus mattis <a href="#">adipiscing</a>.
-          Amet, massa quam varius orci dapibus volutpat cras. In amet eu
-          ridiculus leo sodales cursus tristique. Tincidunt sed tempus ut
-          viverra ridiculus non molestie. Gravida quis fringilla amet eget dui
-          tempor dignissim. Facilisis auctor venenatis varius nunc, congue erat
-          ac. Cras fermentum convallis quam.
+          Regulatory Authority: [Name of relevant regulatory authority, if
+          applicable]
         </p>
         <p>
-          Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus
-          enim. Mattis mauris semper sed amet vitae sed turpis id. Id dolor
-          praesent donec est. Odio penatibus risus viverra tellus varius sit
-          neque erat velit.
+          Online Dispute Resolution: [Link to the Online Dispute Resolution
+          platform, if applicable]
+        </p>
+        <p>
+          This Legal Notice complies with the German laws under § 5 TMG and § 55
+          RStV.
+        </p>
+
+        <h2>Liability for Content</h2>
+        <p>
+          The contents of our website have been created with the greatest
+          possible care. However, we cannot guarantee the contents' accuracy,
+          completeness, or topicality. According to Section 7, paragraph 1 of
+          the TMG (Telemediengesetz - German Telemedia Act), we as service
+          providers are liable for our content on these pages by general laws.
+          However, according to Sections 8 to 10 of the TMG, we service
+          providers are not obliged to monitor external information transmitted
+          or stored or investigate circumstances pointing to illegal activity.
+          Obligations to remove or block the use of information under general
+          laws remain unaffected. However, a liability in this regard is only
+          possible from the moment of knowledge of a specific infringement. Upon
+          notification of such violations, we will remove the content
+          immediately.
+        </p>
+
+        <h2>Liability for Links</h2>
+        <p>
+          Our website contains links to external websites, over whose contents
+          we have no control. Therefore, we cannot accept any liability for
+          these external contents. The respective provider or operator of the
+          websites is always responsible for the contents of the linked pages.
+          The linked pages were checked for possible legal violations at the
+          time of linking. Illegal contents were not identified at the time of
+          linking. However, permanent monitoring of the contents of the linked
+          pages is not reasonable without specific indications of a violation.
+          Upon notification of violations, we will remove such links
+          immediately.
+        </p>
+
+        <h2>Copyright</h2>
+        <p>
+          The contents and works on these pages created by the site operator are
+          subject to German copyright law. The duplication, processing,
+          distribution, and any kind of utilization outside the limits of
+          copyright require the written consent of the respective author or
+          creator. Downloads and copies of these pages are only permitted for
+          private, non-commercial use. In so far as the contents on this site
+          were not created by the operator, the copyrights of third parties are
+          respected. In particular, third-party content is marked as such.
+          Should you become aware of a copyright infringement, please inform us
+          accordingly. Upon notification of violations, we will remove such
+          contents immediately.
         </p>
       </div>
     </div>

@@ -9,6 +9,7 @@ interface Props extends IButton {
   newTab?: boolean;
   icon?: string;
   iconVariant?: "solid" | "outline";
+  iconRight?: string;
   nativeLink?: boolean;
 }
 
@@ -20,6 +21,7 @@ const ButtonLink: React.FC<Props> = ({
   newTab,
   icon,
   iconVariant,
+  iconRight,
   children,
   disabled,
   nativeLink,
@@ -38,22 +40,17 @@ const ButtonLink: React.FC<Props> = ({
   const baseClasses = `rounded-md border border-transparent text-base font-medium flex items-center justify-center ${
     disabled ? "pointer-events-none " : ""
   }`;
+
   const commonProps = {
-    href: target,
     className: `${baseClasses} ${dynamicClasses[variant]} ${className || ""}`,
     download,
+    ...(newTab ? { target: "_blank" } : {}),
   };
-  return newTab || nativeLink ? (
-    <a
-      {...commonProps}
-      {...(newTab ? { target: "_blank" } : {})}
-      {...(download ? { download: true } : {})}
-    >
-      {icon && <Icon size={20} name={icon} className="w-5 h-5 mr-2" />}
-      {children}
-    </a>
-  ) : (
-    <Link {...commonProps} {...(download ? { download: true } : {})}>
+
+  const isNative = newTab || nativeLink;
+
+  const linkContent = (
+    <a {...commonProps} {...(target && isNative ? { href: target } : {})}>
       {icon && (
         <Icon
           variant={iconVariant}
@@ -63,8 +60,18 @@ const ButtonLink: React.FC<Props> = ({
         />
       )}
       {children}
-    </Link>
+      {iconRight && (
+        <Icon
+          variant={iconVariant}
+          size={20}
+          name={iconRight}
+          className="w-5 h-5 ml-2"
+        />
+      )}
+    </a>
   );
+
+  return isNative ? linkContent : <Link href={target}>{linkContent}</Link>;
 };
 
 export default ButtonLink;
