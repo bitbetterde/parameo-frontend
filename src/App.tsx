@@ -44,7 +44,7 @@ const footerSocial = [
 
 const logos = [
   {
-    href: "https://www.ifbhh.de/",
+    href: "https://www.ifbhh.de/presse/meldung/updatehamburg-2022-1-5-millionen-euro-fuer-soziale-innovationen",
     alt: "IFB-Hamburg",
     type: "ifbhamburg" as const,
   },
