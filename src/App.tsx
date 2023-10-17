@@ -83,7 +83,10 @@ const App: React.FC = () => {
         navigation={navigation}
         // buttonLinkTarget="https://www.buymeacoffee.com/parameo"
         // buttonLinkCaption="BUY ME A COFFEE"
-        // buttonLinkVariant={"primary"}
+        buttonLinkTarget="https://forms.gle/KDoZBCmJRBaCakXx8"
+        buttonLinkRightIcon="ArrowRightIcon"
+        buttonLinkCaption="FEEDBACK"
+        buttonLinkVariant="primary"
       />
       <Notification
         show={notificationStore.showNotification}
