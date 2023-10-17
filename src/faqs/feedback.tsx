@@ -13,7 +13,7 @@ export default {
   tags: ["Design", "Manufacturing"],
   body,
   teaser:
-    "How much do you know about parametric design? What did you achieve with parameo? Do you know any similiar tools? We'd be glad to get your feedback to improve this tool.",
+    "How much do you know about parametric design? What did you achieve with parameo? We'd be glad to get your feedback to improve this tool.",
   showOnHomePage: true,
   order: 3,
 } as IFaqFile;
