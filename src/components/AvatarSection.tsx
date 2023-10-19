@@ -71,11 +71,9 @@ const AvatarSection: React.FC<Props> = ({ className, people, title }) => {
       }`}
     >
       {title && (
-        <div className="w-full px-6 md:text-center">
-          <h2 className="text-base font-semibold tracking-wide text-indigo-600 uppercase">
-            {title}
-          </h2>
-        </div>
+        <h2 className="w-full px-6 text-center text-base font-semibold tracking-wide text-indigo-600 uppercase">
+          {title}
+        </h2>
       )}
       <div className="flex flex-col justify-center items-center max-w-7xl px-6 text-center lg:px-8 mx-auto">
         <ul
