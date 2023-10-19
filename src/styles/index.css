@@ -20,3 +20,12 @@
   font-named-instance: "Italic";
 }
 
+.touch-only {
+  display: block;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .touch-only {
+    display: none;
+  }
+}
