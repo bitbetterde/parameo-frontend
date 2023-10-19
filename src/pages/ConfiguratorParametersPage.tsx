@@ -275,7 +275,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                 product?.parts?.map((part, index) => (
                   <ProductPartConfigurator
                     key={part.id}
-                    productTitle={product.title.toLowerCase()}
+                    productInfoLink={product.info_target_url}
                     defaultValue={partsValues.find(
                       (partValues) => partValues.part_id === part.id
                     )}

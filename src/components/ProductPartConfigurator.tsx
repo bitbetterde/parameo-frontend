@@ -8,7 +8,7 @@ import type React from "react";
 import { useEffect, useState } from "react";
 
 interface Props {
-  productTitle?: string;
+  productInfoLink?: string;
   part: IProductPart;
   defaultValue?: IPartConfiguration;
   onChange: (a: IPartConfiguration) => void;
@@ -19,7 +19,7 @@ interface Props {
 const CONVERSION_FACTOR_TO_MM = 10; //all parameters have the unit 'mm/10' for the conversation with the backend, we display mm
 
 const ProductPartConfigurator: React.FC<Props> = ({
-  productTitle,
+  productInfoLink,
   part,
   defaultValue,
   onChange,
@@ -91,9 +91,9 @@ const ProductPartConfigurator: React.FC<Props> = ({
             <h3 className="text-xl font-semibold leading-8 pb-2">Dimensions</h3>
             <div className="flex justify-between items-center text-sm font-normal pb-6">
               <p>Adjust dimensions (mm)</p>
-              {productTitle && (
+              {productInfoLink && (
                 <a
-                  href={`/faq/${productTitle}`}
+                  href={productInfoLink}
                   target="_blank"
                   rel="noreferrer"
                   className="text-indigo-600 font-medium no-underline"
