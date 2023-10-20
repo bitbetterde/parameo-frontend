@@ -50,4 +50,5 @@ export interface IProduct {
   parts: IProductPart[];
   preview_file_2d?: string;
   preview_file_3d?: string;
+  info_target_url: string;
 }

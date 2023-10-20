@@ -18,11 +18,11 @@ const AboutPage: React.FC<Props> = ({
     <>
       <HeroSection
         title="parameo"
-        subtitle="Project background"
+        subtitle="project background"
         heroImage="/images/parameo-hero-img_faq.jpg"
         heroImageAlt="cnc mill in action"
       />
-      <div className={`mx-auto max-w-3xl ${className || ""}`}>
+      <div className={`mx-auto max-w-3xl px-6 py-0 ${className || ""}`}>
         <ContentHeader title={title} subtitle={subtitle} teaser={description} />
         <div className="pt-6 max-w-none prose prose-h2:text-[30px] prose-h2:leading-10 prose-lg prose-p:leading-8 prose-a:text-indigo-600 text-gray-500">
           <h2>Toolstack</h2>

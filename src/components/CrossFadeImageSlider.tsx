@@ -45,7 +45,7 @@ const CrossFadeImageSlider: React.FC<Props> = ({
       <Icon
         name="Square2StackIcon"
         variant="outline"
-        className="absolute right-0 top-0 w-6 h-6 m-2 group-hover:text-gray-200 drop-shadow-lg text-white z-10"
+        className="touch-only absolute right-0 top-0 w-6 h-6 m-2 group-hover:text-gray-200 drop-shadow-lg text-white z-10"
       />
       {images?.map((image, i) => {
         const isActive = i === activeImageIndex;

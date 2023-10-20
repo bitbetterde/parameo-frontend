@@ -41,7 +41,6 @@ const CardSlider: React.FC<Props> = ({
     created() {
       setLoaded(true);
     },
-    drag: false,
   });
 
   const [currentSlide, setCurrentSlide] = useState(0);
