@@ -33,7 +33,7 @@ const ModelViewer: React.FC<Props> = ({ className, modelSrc, modelAlt }) => {
       camera-controls
       auto-rotate
       ar
-      class={`w-full h-[540px] rounded-md ${className || ""}`}
+      class={`w-full rounded-md ${className || ""}`}
     >
       {/*// @ts-expect-error test*/}
       <effect-composer render-mode="quality">

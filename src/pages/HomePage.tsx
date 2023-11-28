@@ -179,7 +179,7 @@ const HomePage: React.FC = () => {
             machines &&
             machines?.map((machine: IMachine) => ({
               title: machine?.title_en,
-              externalHref: machine?.documentation_url,
+              href: machine?.documentation_url,
               subtitle: machine.type,
               description: machine?.description_en,
               licence: machine?.manufacturer_subtitle,

@@ -8,12 +8,24 @@ interface ProducerStore {
   selectedProducer: IProducer | null;
   loadAllProducers: () => Promise<void>;
   loadProducer: (id: number) => Promise<void>;
+  getProducersForMachine: (machineType?: string) => IProducer[];
 }
 
 const useProducerStore = create<ProducerStore>()(
   devtools((set, get) => ({
     allProducers: [],
     selectedProducer: null,
+    getProducersForMachine: (machineType?: string) => {
+      if (machineType) {
+        return get().allProducers.filter((producer) => {
+          return Boolean(
+            producer.machines.find((machine) => machine.type === machineType)
+          );
+        });
+      } else {
+        return [];
+      }
+    },
     loadAllProducers: async () => {
       if (!get().allProducers.length) {
         const allProducers = await producerService.getProducers();

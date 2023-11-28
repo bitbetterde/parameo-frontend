@@ -16,7 +16,7 @@ interface Props {
   onValidChange?: (valid: boolean) => void;
 }
 
-const CONVERSION_FACTOR_TO_MM = 10; //all parameters have the unit 'mm/10' for the conversation with the backend, we display mm
+export const CONVERSION_FACTOR_TO_MM = 10; //all parameters have the unit 'mm/10' for the conversation with the backend, we display mm
 
 const ProductPartConfigurator: React.FC<Props> = ({
   productInfoLink,

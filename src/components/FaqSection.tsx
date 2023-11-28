@@ -11,17 +11,14 @@ interface Props {
 const FaqSection: React.FC<Props> = ({ title, className, data }) => {
   return (
     <div
-      className={`bg-white px-6 pb-20 pt-16 lg:px-8 lg:pb-24 lg:pt-12 ${
-        className || ""
-      }`}
+      className={`bg-white pb-20 pt-16 lg:pb-24 lg:pt-12 ${className || ""}`}
     >
-      <div className="relative mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
-        <div>
-          <div className="flex justify-center">
-            <h2 className="lg:w-1/2 lg:px-12 text-center text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {title}
-            </h2>
-          </div>
+      <div className="relative mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl px-6 lg:px-8">
+        <div className="flex justify-center">
+          <h2 className="lg:w-1/2 lg:px-12 text-center text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            {title}
+          </h2>
+
           {/* <SubscriptionBar
             subscriptionCta="Drop us your email and get updates on parameo"
             label="Enter your email"
