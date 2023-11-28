@@ -24,13 +24,14 @@ interface SessionStore {
   session: ISessionBase | null;
   previewFile: IPreviewFile | null;
   isRegenerating: boolean;
-  loadSession: (id: string) => Promise<void>;
+  loadSession: (id: string, ignorePreviewURL?: boolean) => Promise<void>;
   regeneratePreview: (
     product: IProduct,
     machineId: number,
     partsData: IPartConfiguration[],
     projectName?: string
   ) => Promise<void>;
+  regeneratePreviewWithExistingData: () => Promise<void>;
   regenerateFormats: (data: string[]) => Promise<string>;
   createOrUpdateSession: (
     product: IProduct,
@@ -57,13 +58,15 @@ const useSessionStore = create<SessionStore>()(
     resetSession: () => {
       set(() => ({ previewFile: null, session: null }));
     },
-    loadSession: async (id) => {
+    loadSession: async (id, ignorePreviewURL = false) => {
       const session = await sessionService.getSession(id);
       set((state) => ({ ...state, session }));
-      set((state) => ({
-        ...state,
-        previewFile: { url: session.preview_file_3d_url, hash: "" },
-      }));
+      if (!ignorePreviewURL) {
+        set((state) => ({
+          ...state,
+          previewFile: { url: session.preview_file_3d_url, hash: "" },
+        }));
+      }
     },
     createOrUpdateSession: async (
       product,
@@ -130,12 +133,23 @@ const useSessionStore = create<SessionStore>()(
         set((state) => ({ ...state, previewFile }));
       }
     },
+    regeneratePreviewWithExistingData: async () => {
+      const sessionId = get().session?.uuid;
+      if (sessionId) {
+        const previewFile = await sessionService.regeneratePreview(sessionId);
+        set((state) => ({ ...state, previewFile }));
+      }
+    },
     regenerateFormats: async (data) => {
-      set((state) => ({ ...state, isRegenerating: true }));
+      set((state) => ({ ...state, isRegenerating: true, previewFile: null }));
       const sessionId = get().session?.uuid;
       if (sessionId) {
         const session = await sessionService.regenerateFormats(sessionId, data);
-        set((state) => ({ ...state, session, isRegenerating: false }));
+        set((state) => ({
+          ...state,
+          session,
+          isRegenerating: false,
+        }));
       }
       return sessionId as string;
     },

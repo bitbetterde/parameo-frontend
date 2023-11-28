@@ -10,6 +10,13 @@ export interface IProducer {
       image_url: string;
     },
   ];
+  machines: [
+    {
+      id: number;
+      type: string;
+      title_en: string;
+    },
+  ];
   location_lat: string;
   location_long: string;
   location_name: string;

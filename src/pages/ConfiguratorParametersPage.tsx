@@ -420,6 +420,7 @@ const ConfiguratorParametersPage: React.FC<Props> = ({
                   "https://modelviewer.dev/assets/ShopifyModels/Chair.glb"
                 }
                 modelAlt="A 3D model"
+                className={"h-96 lg:h-[540px]"}
               />
             ) : (
               <img

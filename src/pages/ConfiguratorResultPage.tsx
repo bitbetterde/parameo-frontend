@@ -5,48 +5,43 @@ import {
   DownloadListItem,
   FeaturedImageGallery,
   Spinner,
-  ImpactSection,
   EmailResultHint,
   Button,
+  ModelViewer,
 } from "@components";
 import { ISession } from "@interfaces/ISession";
 import { useMachineStore, useProducerStore, useSessionStore } from "@stores";
 import { isISession } from "@stores/session.store";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import useNotificationStore from "@stores/notification.store.ts";
 import ApproveOrderModal from "@components/ApproveOrderModal.tsx";
 import { ICard } from "@interfaces";
 import { IProducer } from "@services/producer.service.ts";
 import orderService from "@services/order.service.ts";
+import CubeTransparentIcon from "@heroicons/react/24/solid/CubeTransparentIcon";
+import Square2StackIcon from "@heroicons/react/24/outline/Square2StackIcon";
+import ExclamationTriangleIcon from "@heroicons/react/24/outline/ExclamationTriangleIcon";
+import ExclamationTriangleSolidIcon from "@heroicons/react/24/solid/ExclamationTriangleIcon";
+import ImpactSectionDataWrapper from "@components/ImpactSectionDataWrapper";
 
 interface Props {
   className?: string;
   sessionId?: string;
 }
 
-// Don't output 0, null, undefined or NaN values
-const getDurationString = (
-  hours?: number,
-  minutes?: number,
-  seconds?: number
-) => {
-  let formattedHours, formattedMinutes, formattedSeconds;
-  if (hours) formattedHours = hours > 0 ? `${hours} h` : ``;
-  if (minutes) formattedMinutes = minutes > 0 ? `${minutes} m` : ``;
-  if (seconds) formattedSeconds = seconds > 0 ? `${seconds} s` : ``;
-
-  return [formattedHours, formattedMinutes, formattedSeconds]
-    .filter(Boolean)
-    .join(" ");
-};
-
 const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
-  const producers = useProducerStore((state) => state.allProducers);
+  const getProducersForMachine = useProducerStore(
+    (state) => state.getProducersForMachine
+  );
   const fetchProducers = useProducerStore((state) => state.loadAllProducers);
   const session = useSessionStore((state) => state.session);
   const loadSession = useSessionStore((state) => state.loadSession);
+  const regeneratePreview = useSessionStore(
+    (state) => state.regeneratePreviewWithExistingData
+  );
   const isRegenerating = useSessionStore((state) => state.isRegenerating);
+  const previewFile = useSessionStore((state) => state.previewFile);
   const setNotificationData = useNotificationStore(
     (state) => state.setNotificationData
   );
@@ -64,7 +59,7 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
     fetchProducers();
     machineStore.loadAllMachines();
     if (sessionId && !session) {
-      loadSession(sessionId).catch(() => {
+      loadSession(sessionId, true).catch(() => {
         setNotificationData({
           title: "Error!",
           variant: "error",
@@ -84,6 +79,12 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
       });
     }
   }, [session?.uuid]);
+
+  useEffect(() => {
+    if (typedSession?.uuid && !isRegenerating) {
+      regeneratePreview();
+    }
+  }, [typedSession?.uuid, isRegenerating]);
 
   const confirmOrder = async (mail: string) => {
     if (session?.state !== "LOCKED") {
@@ -123,94 +124,6 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
     },
   ];
 
-  const materialEmissions = typedSession?.co2_emissions?.find(
-    (item) => item.label === "Material"
-  );
-  const machineEmissions = typedSession?.co2_emissions?.find(
-    (item) => item.label === "Machine"
-  );
-
-  const totalEmissions = typedSession?.co2_emissions?.reduce(
-    (sum, emission) => sum + (emission.value || 0),
-    0
-  );
-
-  const numberFormat = new Intl.NumberFormat("en-US", {
-    style: "decimal",
-    maximumFractionDigits: 2,
-    minimumFractionDigits: 2,
-  });
-
-  const material_need_overall = new Intl.NumberFormat("en-US", {
-    style: "decimal",
-    maximumFractionDigits: 3,
-    minimumFractionDigits: 3,
-  }).format(
-    typedSession?.material_needed
-      ?.map((need) => need.cubic_meters)
-      .reduce((a, b) => a + b, 0) ?? 0
-  );
-  const impactValuesData = [
-    {
-      title: "Material",
-      description:
-        typedSession?.material_needed && !isRegenerating
-          ? //magic round up, because no material need is confusing for the user
-            `${
-              material_need_overall === "0.000"
-                ? "0.001"
-                : material_need_overall
-            } m³`
-          : "",
-      detailData: [
-        {
-          subtitle: "Monetary",
-          icon: "CurrencyEuroIcon",
-          value:
-            typedSession?.material_price && !isRegenerating
-              ? `${numberFormat.format(typedSession?.material_price)} €`
-              : "",
-        },
-        {
-          subtitle: "CO2 Emissions",
-          icon: "GlobeAltIcon",
-          value:
-            materialEmissions && !isRegenerating
-              ? `${numberFormat.format(materialEmissions?.value)} kg`
-              : "",
-        },
-      ],
-    },
-    {
-      title: "Machine",
-      description:
-        typedSession?.machine_time && !isRegenerating
-          ? getDurationString(
-              typedSession?.machine_time.hours,
-              typedSession?.machine_time.minutes
-            )
-          : "",
-      detailData: [
-        {
-          subtitle: "Electricity",
-          icon: "BoltIcon",
-          value:
-            typedSession?.machine_kwh && !isRegenerating
-              ? `${numberFormat.format(typedSession?.machine_kwh)} kWh`
-              : "",
-        },
-        {
-          subtitle: "CO2 Emissions",
-          icon: "GlobeAltIcon",
-          value:
-            machineEmissions && !isRegenerating
-              ? `${numberFormat.format(machineEmissions?.value)} kg`
-              : "",
-        },
-      ],
-    },
-  ];
-
   const selectedMachine = machineStore.allMachines.find(
     (machine) => machine.id === typedSession?.machine_id
   );
@@ -243,19 +156,32 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
               </p>
             )}
           </div>
-          <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-24 lg:pt-4 pb-12">
-            <div className="lg:w-1/3 flex flex-col gap-5">
-              <ButtonLink
-                disabled={isRegenerating || session?.state === "LOCKED"}
-                target={`/configurator/session/${session?.uuid}`}
-                className="py-[13px] justify-center text-base w-full"
-                icon="ArrowPathIcon"
-              >
-                Edit design
-              </ButtonLink>
-              <ImpactSection
-                data={impactValuesData}
-                totalEmissions={totalEmissions}
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-[564px_1fr] lg:gap-24 lg:gap-y-8 lg:pt-4 pb-12">
+            <div
+              className={
+                "col-span-8 lg:row-span-1 lg:order-2 h-96 lg:h-full flex flex-col"
+              }
+            >
+              <h3 className={"text-base leading-6 font-medium flex gap-2 py-4"}>
+                <CubeTransparentIcon className={"h-6 w-6"} />
+                Your Design
+              </h3>
+              {previewFile?.url ? (
+                <ModelViewer
+                  modelSrc={previewFile?.url}
+                  modelAlt="A 3D model"
+                  className={"flex-1"}
+                />
+              ) : (
+                <div className={"flex justify-center items-center h-full"}>
+                  <Spinner />
+                </div>
+              )}
+            </div>
+            <div className="flex flex-col gap-5 lg:col-span-4 lg:row-span-2 lg:order-1">
+              <ImpactSectionDataWrapper
+                isRegenerating={isRegenerating}
+                typedSession={typedSession}
               />
               {descriptionList && (
                 <dl className="divide-y divide-gray-200">
@@ -285,9 +211,71 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
               >
                 Download all files (.zip)
               </ButtonLink>
+              <div className="rounded-md bg-yellow-50 p-4">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <ExclamationTriangleSolidIcon
+                      className={"h-5 w-5 text-yellow-400"}
+                    />
+                  </div>
+                  <div className="ml-3">
+                    <div className="text-sm text-yellow-700">
+                      <p>Please note additional manufacturing instructions.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ButtonLink
+                disabled={isRegenerating || session?.state === "LOCKED"}
+                target={`/configurator/session/${session?.uuid}`}
+                className="py-[13px] justify-center text-base w-full"
+                icon="ArrowPathIcon"
+              >
+                Edit design
+              </ButtonLink>
+              <ButtonLink
+                nativeLink={true}
+                target={"#manufacturing"}
+                variant="secondary"
+                className="py-[13px] justify-center text-base w-full"
+                icon="HomeIcon"
+                iconVariant="solid"
+              >
+                Local manufacturing
+              </ButtonLink>
+              <ButtonLink
+                key={"feedback"}
+                target={"https://forms.gle/KDoZBCmJRBaCakXx8"}
+                variant="secondary"
+                className="py-[13px] justify-center text-base w-full"
+                icon="PencilSquareIcon"
+                iconVariant="solid"
+                newTab
+              >
+                Feedback
+              </ButtonLink>
+              <Button
+                key={"copylink"}
+                variant="secondary"
+                className="py-[13px] justify-center text-base w-full"
+                icon="LinkIcon"
+                onClick={() => {
+                  navigator.clipboard.writeText(window.location.href);
+                  setNotificationData({
+                    title: "Link copied to clipboard",
+                    variant: "success",
+                  });
+                }}
+              >
+                Copy link
+              </Button>
               <EmailResultHint sessionId={session?.uuid} />
             </div>
-            <div className="lg:w-2/3">
+            <div className="col-span-8 lg:row-span-1 lg:order-3 pt-6 lg:pt-0">
+              <h3 className={"text-base leading-6 font-medium flex gap-2 mb-4"}>
+                <Square2StackIcon className={"h-6 w-6"} />
+                Design Examples
+              </h3>
               {session?.product.pictures?.length && (
                 <FeaturedImageGallery
                   images={session?.product.pictures?.map((image) => ({
@@ -295,64 +283,25 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
                   }))}
                 />
               )}
-
-              <div className="flex flex-col lg:flex-row gap-4 justify-start items-center w-full pt-6 lg:pb-12">
-                <ButtonLink
-                  nativeLink={true}
-                  key={"localmanufacturing"}
-                  target={"#manufacturing"}
-                  variant="secondary"
-                  className="w-full lg:w-auto px-5 py-3 text-center text-base font-medium"
-                  icon="HomeIcon"
-                  iconVariant="solid"
-                >
-                  Local manufacturing
-                </ButtonLink>
-                <ButtonLink
-                  key={"feedback"}
-                  target={"https://forms.gle/KDoZBCmJRBaCakXx8"}
-                  variant="secondary"
-                  className="w-full lg:w-auto px-5 py-3 text-center text-base font-medium"
-                  icon="PencilSquareIcon"
-                  iconVariant="solid"
-                  newTab
-                >
-                  Feedback
-                </ButtonLink>
-                <Button
-                  key={"copylink"}
-                  variant="secondary"
-                  className="w-full lg:w-auto px-5 py-3 text-center text-base font-medium"
-                  icon="LinkIcon"
-                  onClick={() => {
-                    navigator.clipboard.writeText(window.location.href);
-                    setNotificationData({
-                      title: "Link copied to clipboard",
-                      variant: "success",
-                    });
-                  }}
-                >
-                  Copy link
-                </Button>
+              <div className={"mt-8"}>
+                {Boolean(selectedMachine) && (
+                  <>
+                    <h3 className="text-base leading-6 font-medium flex gap-2 mb-6">
+                      <ExclamationTriangleIcon className={"h-6 w-6"} />
+                      Instructions for Manufacturers
+                    </h3>
+                    <div className="w-full pb-9">
+                      <div className="border-b-2 border-gray-200 mx-auto max-w-3xl w-full" />
+                      {selectedMachine?.production_hints?.map((hint, i) => (
+                        <Accordion key={i} title={hint.topic}>
+                          {hint.text}
+                        </Accordion>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
-          </div>
-          <div className="mx-auto max-w-3xl flex flex-col justify-center items-center gap-12">
-            {Boolean(selectedMachine) && (
-              <>
-                <h2 className="text-base font-semibold text-indigo-600 uppercase">
-                  Instructions for Manufacturers
-                </h2>
-                <div className="w-full pb-9">
-                  <div className="border-b border-gray-200 mx-auto max-w-3xl w-full" />
-                  {selectedMachine?.production_hints?.map((hint, i) => (
-                    <Accordion key={i} title={hint.topic}>
-                      {hint.text}
-                    </Accordion>
-                  ))}
-                </div>
-              </>
-            )}
           </div>
           <h2
             className="text-base font-semibold text-indigo-600 uppercase pt-7 text-center"
@@ -360,15 +309,15 @@ const ConfiguratorResultPage: React.FC<Props> = ({ className, sessionId }) => {
           >
             Local Manufacturing
           </h2>
-          {!producers ? (
+          {!getProducersForMachine(typedSession?.product.machine_type) ? (
             <div className="w-full h-96 flex items-center justify-center">
               <Spinner />
             </div>
           ) : (
             <CardSlider
               cardsData={
-                producers &&
-                producers?.map(
+                getProducersForMachine(typedSession?.product.machine_type) &&
+                getProducersForMachine(typedSession?.product.machine_type).map(
                   (producer): ICard => ({
                     title: producer?.name,
                     externalHref: producer?.website_url,
