@@ -2,9 +2,7 @@ import type { IFaqFile } from "@interfaces";
 
 const body = (
   <>
-    <p>
-      <h2>Local demands meet local makers</h2>
-    </p>
+    <h2>Local demands meet local makers</h2>
     <p>
       We aim to match individual production demands with local makerspaces and
       FabLabs to empower DIY skills and local making. Therefore we want to

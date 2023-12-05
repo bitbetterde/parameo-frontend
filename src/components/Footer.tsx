@@ -1,26 +1,30 @@
-import GitLabLogo from "@assets/logos/gitlab.svg";
-import InstagramLogo from "@assets/logos/instagram.svg";
-import TwitterLogo from "@assets/logos/twitter.svg";
-import GitHubLogo from "@assets/logos/github.svg";
-import DribbleLogo from "@assets/logos/dribble.svg";
+import { ReactComponent as GitLabLogo } from "@assets/logos/gitlab.svg";
+import { ReactComponent as InstagramLogo } from "@assets/logos/instagram.svg";
+import { ReactComponent as TwitterLogo } from "@assets/logos/twitter.svg";
+import { ReactComponent as GitHubLogo } from "@assets/logos/github.svg";
+import { ReactComponent as DribbleLogo } from "@assets/logos/dribble.svg";
+import { ReactComponent as YouTubeLogo } from "@assets/logos/youtube.svg";
 import type { IMenuItem, ISocialMediaItem } from "@interfaces";
 import type React from "react";
 import { Link } from "wouter";
-import { ReactComponent as CCIcon } from "@assets/icons/cc.svg";
+// import { ReactComponent as CCIcon } from "@assets/icons/cc.svg";
 
 interface Props {
   className?: string;
   menu: Array<IMenuItem>;
   links: Array<ISocialMediaItem>;
-  copyright: string;
+  copyright: React.ReactNode;
 }
 
+const commonClasses = "w-5 h-5 text-gray-400 hover:text-gray-500";
+
 const socialMediaIconMapping = {
-  instagram: InstagramLogo,
-  twitter: TwitterLogo,
-  github: GitHubLogo,
-  gitlab: GitLabLogo,
-  dribble: DribbleLogo,
+  instagram: <InstagramLogo className={commonClasses} />,
+  twitter: <TwitterLogo className={commonClasses} />,
+  github: <GitHubLogo className={commonClasses} />,
+  gitlab: <GitLabLogo className={commonClasses} />,
+  dribble: <DribbleLogo className={commonClasses} />,
+  youtube: <YouTubeLogo className={commonClasses} />,
 };
 
 const Footer: React.FC<Props> = ({ className, menu, links, copyright }) => {
@@ -30,7 +34,7 @@ const Footer: React.FC<Props> = ({ className, menu, links, copyright }) => {
         <HorizontalMenu menu={menu} />
         <SocialMedia links={links} />
         <p className="mt-8 text-center text-base font-normal text-gray-400 flex flex-row justify-center items-center gap-1">
-          <CCIcon className={"h-4 w-4"} />
+          {/* <CCIcon className={"h-4 w-4"} /> */}
           {copyright}
         </p>
       </div>
@@ -73,7 +77,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ links }) => {
     <ul className="mt-10 flex justify-center space-x-10">
       {links?.map((item, i) => (
         <li key={i}>
-          <Link
+          <a
             href={item.href}
             key={item.name}
             className="text-gray-400 hover:text-gray-500"
@@ -81,12 +85,8 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ links }) => {
             rel="noreferrer"
           >
             <span className="sr-only">{item.name}</span>
-            <img
-              className="w-5 h-5"
-              alt={item.alt}
-              src={socialMediaIconMapping[item.type]}
-            />
-          </Link>
+            {socialMediaIconMapping[item.type]}
+          </a>
         </li>
       ))}
     </ul>

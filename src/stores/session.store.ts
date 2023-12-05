@@ -100,7 +100,7 @@ const useSessionStore = create<SessionStore>()(
           session: { name: session.name, user_email_address: userMail },
           parts: session.configured_parts.map((configured_part) => ({
             part_id: configured_part.part.id,
-            material_id: configured_part.selected_material.id,
+            material_id: configured_part.selected_material?.id,
             parameters: configured_part.configured_parameters,
           })),
         });
