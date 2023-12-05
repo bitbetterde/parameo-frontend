@@ -7,7 +7,7 @@ export interface ISocialMediaItem {
   name: string;
   alt: string;
   href: string;
-  type: "instagram" | "twitter" | "github" | "gitlab" | "dribble";
+  type: "instagram" | "twitter" | "github" | "gitlab" | "dribble" | "youtube";
 }
 
 export interface ILogo {

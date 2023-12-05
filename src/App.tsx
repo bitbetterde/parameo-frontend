@@ -12,8 +12,8 @@ import {
   ConfiguratorResultPage,
   FaqPage,
   HomePage,
-  // ImprintPage,
-  // PrivacyPage,
+  ImprintPage,
+  //PrivacyPage,
 } from "@pages";
 import type React from "react";
 import { Route, Switch, useLocation } from "wouter";
@@ -22,9 +22,10 @@ import { useNotificationStore } from "@stores";
 const footerMenu = [
   { name: "Home", href: "/" },
   { name: "Configurator", href: "/configurator/products" },
+  { name: "FAQ", href: "/faq" },
   { name: "About", href: "/about" },
-  // { name: "Imprint", href: "/imprint" },
-  // { name: "Privacy", href: "/privacy" },
+  { name: "Imprint", href: "/imprint" },
+  //{ name: "Privacy", href: "/privacy" },
 ];
 
 const footerSocial = [
@@ -39,6 +40,12 @@ const footerSocial = [
     href: "https://gitlab.regenholz.de/",
     alt: "GitLab",
     type: "gitlab" as const,
+  },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/channel/UCxQ3ThS6Ey31fFIfxAtXgfA",
+    alt: "YouTube",
+    type: "youtube" as const,
   },
 ];
 
@@ -153,20 +160,18 @@ const App: React.FC = () => {
             description="parameo is an open tool for customizing parametric product designs, generating individual production data for CNC machines, calculating impact values and providing a 'build or buy' option for local making with material and manufacturing data for self-production as well as contacts to request local manufacturing capacities. The project was initiated by 'regenholz' and funded by ‘ProfiImpuls‘ from the Hamburg Authority for Economy and Innovation."
           />
         </Route>
-        {/*<Route path="/imprint">*/}
-        {/*  <ImprintPage*/}
-        {/*    title="Imprint"*/}
-        {/*    subtitle="Felis eget velit"*/}
-        {/*    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id aliquet lectus proin nibh. Morbi tristique senectus et netus et malesuada."*/}
-        {/*  />*/}
-        {/*</Route>*/}
-        {/*<Route path="/privacy">*/}
-        {/*  <PrivacyPage*/}
-        {/*    title="Privacy Notice"*/}
-        {/*    subtitle="Lorem ipsum dolor sit amet"*/}
-        {/*    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."*/}
-        {/*  />*/}
-        {/*</Route>*/}
+        <Route path="/imprint">
+          <ImprintPage title="Legal" 
+            subtitle="Imprint"
+          />
+        </Route>
+        {/* <Route path="/privacy">
+          <PrivacyPage
+            title="Privacy Notice"
+            subtitle="Lorem ipsum dolor sit amet"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          />
+        </Route> */}
         <Route>
           <HomePage />
         </Route>
@@ -175,7 +180,21 @@ const App: React.FC = () => {
       <Footer
         menu={footerMenu}
         links={footerSocial}
-        copyright={"2023 beta stage by regenholz."}
+        copyright={
+          <>
+            published by{" "}
+            <a href="https://regenholz.de/" target="_blank">
+              regenholz
+            </a>{" "}
+            under the{" "}
+            <a
+              href="https://gitlab.regenholz.de/bat/parameo-frontend/-/blob/main/LICENSE"
+              target="_blank"
+            >
+              AGPL license
+            </a>
+          </>
+        }
       />
     </>
   );

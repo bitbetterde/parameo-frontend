@@ -10,6 +10,12 @@ const body = (
       insertion: the frame can be filled with changing motifs from above.
     </p>
     <img src="/images/regenholz-parameo-MultiFrame_0521-blank.webp" alt="" />
+    
+    <h2>Configuration hint</h2>
+    <p>
+The main parameters should be set to the size of the image you want to put into the frame. For example, if you want to build a frame for a DIN A4 sized picture, enter the values of width 210 × height 297 mm.
+    </p>
+
 
   </>
 );

@@ -22,6 +22,7 @@ const ImpactSectionTabs: React.FC<Props> = ({ tabs, onChange }) => {
             setSelectedTab(tab.id);
             onChange(tab.id);
           }}
+          key={tab.id}
         >
           <span className={"flex gap-2 text-base font-medium leading-6"}>
             {tab.headline}
